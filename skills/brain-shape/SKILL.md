@@ -20,9 +20,11 @@ You are inside a **pi-brain clone**. The work happens in this repository's own `
 
 `<scope>` is an active repo declared in `brain.config.yml`, or the meta-scopes `org` / `brain`.
 
-## Decision policy — manual by default
+## Decision policy — manual by default, structural first
 
-`/brain:shape` is **manual by default**. Pause at every load-bearing decision and surface options + trade-offs; let the user pick. Do not pick silently.
+`/brain:shape` is **manual by default** and is the correct path for any structural/repo change. Pause at every load-bearing decision and surface options + trade-offs; let the user pick. Do not pick silently.
+
+If the user arrived at `/brain:shape` because they asked for a structural change, the agent has already done the right thing by stopping and routing here. Do not silently return to implementation mode.
 
 Pauses include:
 
@@ -208,9 +210,10 @@ Once the implementation is merged, capture the resulting current truth as a reco
 
 These checks are not optional, even in `--auto` mode:
 
-1. **Constraint gate.** Before accepting a PRD/ADR/epic/bet, read `wiki/<scope>/constraints/*.md`. If the artifact violates a `must` constraint, stop, surface the exact conflict, and do not proceed until the user resolves it. If it violates a `should` constraint, record the exception and rationale in the artifact.
+1. **Constraint gate.** Before accepting a PRD/ADR/epic/bet, read `wiki/<scope>/constraints/*.md`. The default `adr-before-structural-changes` constraint makes structural/repo changes a `must`. If the artifact violates a `must` constraint, stop, surface the exact conflict, and do not proceed until the user resolves it. If it violates a `should` constraint, record the exception and rationale in the artifact.
 2. **Human approval gate.** Do not move AI-suggested drafts to approved shelves without explicit user approval.
 3. **Record gate.** After a forward-mode bet is delivered, create or update `wiki/<scope>/records/<slug>.md`. If delivery hasn't happened yet, capture an inbox task to create the record after merge.
+4. **Implementation gate.** Do not start Phase 4 (developer/implementation) until the ADR and bet are accepted and any `must` constraints are satisfied.
 
 ## Landing the work
 

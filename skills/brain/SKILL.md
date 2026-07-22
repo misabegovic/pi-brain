@@ -59,11 +59,12 @@ Run `brain_validate` + `brain_views` in one step.
 
 1. **Prefer the corpus over memory.** If you are unsure of a fact, ask the brain.
 2. **Capture first, shape later.** A quick capture is low friction. Promoting to ADR/PRD (`/brain:shape`) is a separate, human-gated step.
-3. **Confidence floor.** Any claim you author starts at low confidence unless you can cite evidence.
-4. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the intended workflow.
-5. **Personas converse via RFCs.** For cross-cutting decisions, do not switch personas in sequence; draft an RFC with sections for each persona's perspective.
-6. **Evidence has its own shelves.** Experiments and user feedback live in `wiki/<scope>/experiments/` and `wiki/<scope>/feedback/`. Capture signals there so they can inform bets and records.
-7. **No autonomous LLM schedules.** Only `/brain:tend` when the user asks; never queue long-running work for later.
+3. **Stop and shape structural changes.** If the user asks for a structural/repo change, do not execute. Read `wiki/<scope>/constraints/*.md`, draft or graduate an ADR, and stop for approval. See `AGENTS.md` for the checklist.
+4. **Confidence floor.** Any claim you author starts at low confidence unless you can cite evidence.
+5. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the intended workflow.
+6. **Personas converse via RFCs.** For cross-cutting decisions, do not switch personas in sequence; draft an RFC with sections for each persona's perspective.
+7. **Evidence has its own shelves.** Experiments and user feedback live in `wiki/<scope>/experiments/` and `wiki/<scope>/feedback/`. Capture signals there so they can inform bets and records.
+8. **No autonomous LLM schedules.** Only `/brain:tend` when the user asks; never queue long-running work for later.
 
 ## Commands the human can type
 
