@@ -217,7 +217,12 @@ These checks are not optional, even in `--auto` mode:
 Check the clone's `.env` for `LOCAL_FIRST=true`:
 
 - **LOCAL_FIRST=true:** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks. Use commit titles like `<scope>: <verb> <description>` and reference the ADR/PRD/bet in the commit body.
-- **LOCAL_FIRST=false:** open a PR per phase or per bet. Use `.github/pull_request_template.md`. The PR title should be `<scope>: <verb> <short description>`. The description must link to the ADR/PRD/bet/record it implements. ADR/PRD changes need a human `APPROVED` review before merge.
+- **LOCAL_FIRST=false:** open a PR per phase or per bet. Use `.github/pull_request_template.md` as an executive-summary format. The PR title should be `<scope>: <verb> <short description>`. The description must link to the ADR/PRD/bet/record it implements and must not include sensitive data, session URLs, env vars, or internal system details.
+
+### Decision-record ordering
+
+- **External target repo:** the approved ADR/PRD/bet/record must already be pushed to the pi-brain clone's remote before opening the target-repo PR. The target-repo PR only references it.
+- **Converted repo (brain maintains the code):** the decision record may be included in the same PR as the code change, since the brain and the codebase share a repo.
 
 After merge, update the corresponding record in `wiki/<scope>/records/` and run `brain_sync`.
 

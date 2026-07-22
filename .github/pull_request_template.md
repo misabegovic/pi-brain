@@ -1,27 +1,23 @@
-## What
+## Summary
 
-One-sentence summary of the change.
+One-paragraph executive summary of what this change does and why.
 
-## Why
+## Intent
 
-Link to the approved intent:
-
-- ADR: `wiki/<scope>/adrs/<slug>.md`
-- PRD: `wiki/<scope>/prds/<slug>.md`
-- Bet: `wiki/<scope>/bets/<slug>.md`
-- Record: `wiki/<scope>/records/<slug>.md`
+- ADR / PRD / Bet: link to the decision record in the pi-brain clone.
+- Do not paste sensitive data, session URLs, or environment variables here.
 
 ## Scope
 
 - Included:
-- Explicitly not included:
+- Not included:
 
-## How to validate
+## Validation
 
 - Tests:
 - Manual checks:
 
-## Risks / follow-ups
+## Follow-ups
 
-- Open questions:
 - Future work:
+- Open questions:

@@ -5,16 +5,14 @@ status: draft
 
 # PR — <title>
 
-## What
+## Summary
 
-One-sentence summary of the code change.
+One-paragraph executive summary of what this change does and why.
 
-## Why
+## Intent
 
-- ADR: `<scope>/adrs/<slug>.md`
-- PRD: `<scope>/prds/<slug>.md`
-- Bet: `<scope>/bets/<slug>.md`
-- Record: `<scope>/records/<slug>.md`
+- ADR / PRD / Bet / Record: link to the decision record in the pi-brain clone.
+- Do not paste sensitive data, session URLs, or environment variables here.
 
 ## Scope
 
@@ -26,7 +24,7 @@ One-sentence summary of the code change.
 - Tests:
 - Manual checks:
 
-## Risks / follow-ups
+## Follow-ups
 
-- Open questions:
 - Future work:
+- Open questions:
