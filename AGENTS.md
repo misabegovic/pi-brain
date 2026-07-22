@@ -63,6 +63,10 @@ Agents default to "implement first." In pi-brain that default is wrong for struc
 4. Create or update the record after delivery.
 5. Run `brain_sync`.
 
+### Autonomy mode
+
+When autonomy is ON, the agent may perform low-risk maintenance silently (batching auto-connect ingestions, running `brain_sync`, auto-grooming stale batches, synthesizing low-risk observations into `ai-suggestions/`). Commitment-class work — ADRs, approved wiki edits, structural changes, and expensive `/brain:tend` on high-risk items — remains gated.
+
 ## PR cadence and local-first mode
 
 pi-brain supports two delivery modes, controlled by `LOCAL_FIRST` in `.env`:
