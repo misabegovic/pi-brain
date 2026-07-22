@@ -24,7 +24,9 @@ Turn any directory into a pi-brain home.
    - `sources/README.md`
    - `log/log.md`
    - `wiki/index.md`
-5. Regenerates `wiki/index.md` and validates frontmatter.
+6. Creates the default `must` constraint:
+   - `wiki/org/constraints/adr-before-structural-changes.md`
+7. Regenerates `wiki/index.md` and validates frontmatter.
 
 ## When to use
 
@@ -36,4 +38,5 @@ Turn any directory into a pi-brain home.
 
 - Update `brain.config.yml` manually if you need connectors.
 - Install the pi-brain package: `pi install ./` (from the brain directory).
+- Review `wiki/org/constraints/adr-before-structural-changes.md`. Retire it only if the project explicitly agrees the rule no longer applies.
 - Start capturing, ingesting, and shaping.

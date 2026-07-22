@@ -37,6 +37,31 @@ pi-brain/
 2. **Immutable sources.** When capturing, prefer inbox items or new `sources/` snapshots. Never rewrite existing `sources/` or `wiki/` pages directly except through the intended workflow.
 3. **Confidence floor.** Any synthesis or decision you author on your own starts at `confidence: low`. You cannot self-promote to `high` in the same change.
 4. **PR-required for pi-brain itself.** Changes to the pi-brain product repo land via PR with CI green. Project/customer clones may use `LOCAL_FIRST=true` mode; respect the per-instance rules.
+5. **Stop and shape.** If the user asks for a structural change, do not execute. Respond with a draft ADR and stop for approval. Structural changes include repo layout, `brain.config.yml`, `.github/workflows/`, `AGENTS.md`, skills, prompts, extension code, onboarding/removing repos, and repo conversion. The default constraint `adr-before-structural-changes` makes this a `must`.
+
+## Stop and shape
+
+Agents default to "implement first." In pi-brain that default is wrong for structural decisions. Treat every structural ask as a shape request until proven otherwise.
+
+### Agent checklist before mutating files
+
+1. Is this a structural change? If yes, stop here.
+2. Is there an accepted ADR covering it? If no, stop here.
+3. Are there active `must` constraints? Read `wiki/<scope>/constraints/*.md`. If the change violates one, stop and surface the conflict.
+4. Has the user explicitly approved the change in this session? If no, stop here.
+5. Only after 1–4 are satisfied may you edit files, and only in the smallest scope that satisfies the approved decision.
+
+### What to say when stopping
+
+> "This looks structural: it affects [specific thing]. Before I change files, I'll draft an ADR with `/brain:shape` and pause for your approval."
+
+### What to do when the user approves
+
+1. Graduate the ADR from `ai-suggestions/` to the approved shelf.
+2. Update linked state/roadmap/record pages.
+3. Implement the change.
+4. Create or update the record after delivery.
+5. Run `brain_sync`.
 
 ## PR cadence and local-first mode
 
