@@ -9,7 +9,7 @@
  *   node tools/brain-ingest-repo.mjs <path-or-url> [scope]
  */
 
-import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
+import { readFile, writeFile, readdir, mkdir, rm } from "node:fs/promises";
 import { join, basename, dirname } from "node:path";
 import { execFile } from "node:child_process";
 
@@ -28,6 +28,22 @@ function execFilePromise(file, args, options = {}) {
     child.on("error", reject);
     child.on("close", (code) => resolve({ stdout, stderr, code: code ?? 0 }));
   });
+}
+
+async function ensureGit() {
+  try {
+    const result = await execFilePromise("git", ["--version"]);
+    if (result.code !== 0) throw new Error("git not available");
+  } catch {
+    throw new Error("git is required to onboard repositories. Please install git and try again.");
+  }
+}
+
+function validateScope(scope) {
+  if (!scope) throw new Error("Scope name is required.");
+  if (!/^[a-zA-Z0-9_-]+$/.test(scope)) {
+    throw new Error(`Invalid scope name: ${scope}. Use only letters, numbers, hyphens, and underscores.`);
+  }
 }
 
 async function getRepoInfo(repoPath) {
@@ -85,11 +101,14 @@ async function main() {
     process.exit(1);
   }
 
+  await ensureGit();
+
   let repoPath = rawTarget;
   let isTempClone = false;
+  let tmpDir = "";
 
   if (rawTarget.startsWith("http://") || rawTarget.startsWith("https://") || (rawTarget.includes(":") && rawTarget.includes("@"))) {
-    const tmpDir = join(CWD, ".tmp", "brain-ingest-" + Date.now());
+    tmpDir = join(CWD, ".tmp", "brain-ingest-" + Date.now());
     await mkdir(tmpDir, { recursive: true });
     console.log(`Cloning ${rawTarget} for inspection...`);
     const result = await execFilePromise("git", ["clone", "--depth", "1", rawTarget, tmpDir]);
@@ -103,6 +122,7 @@ async function main() {
 
   const info = await getRepoInfo(repoPath);
   const chosenScope = scope || info.name;
+  validateScope(chosenScope);
 
   // Lightweight metadata snapshot into sources/repos/<scope>.md
   await mkdir(REPO_SOURCE_DIR, { recursive: true });
@@ -288,8 +308,13 @@ async function main() {
     await writeFile(logPath, `# Log\n\n${logEntry}`, "utf-8");
   }
 
-  if (isTempClone) {
-    // temp dir left for deepdives; user can delete manually
+  if (isTempClone && tmpDir) {
+    try {
+      await rm(tmpDir, { recursive: true, force: true });
+      console.log("Temporary clone removed.");
+    } catch (err) {
+      console.error(`Could not remove temporary clone at ${tmpDir}: ${err.message}`);
+    }
   }
 
   console.log(`Onboarded repo as scope \`${chosenScope}\``);

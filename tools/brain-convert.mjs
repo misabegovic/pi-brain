@@ -51,6 +51,22 @@ async function isAlreadyBrain() {
   }
 }
 
+function validateSubdir(name) {
+  if (!name) throw new Error("Subdirectory name is required.");
+  if (!/^[a-zA-Z0-9_-]+$/.test(name)) {
+    throw new Error(`Invalid subdirectory name: ${name}. Use only letters, numbers, hyphens, and underscores.`);
+  }
+}
+
+async function isGitDirty() {
+  try {
+    const result = await execFilePromise("git", ["status", "--porcelain"], { cwd: CWD });
+    return result.stdout.trim().length > 0;
+  } catch {
+    return false;
+  }
+}
+
 async function pathExists(p) {
   try {
     await readFile(p);
@@ -67,7 +83,13 @@ async function main() {
   }
 
   const scope = basename(CWD);
+  validateSubdir(SAFE_SUBDIR);
   const targetDir = join(CWD, SAFE_SUBDIR);
+
+  if (!DRY_RUN && (await isGitDirty())) {
+    console.error("Git working tree has uncommitted changes. Commit or stash them before converting, or run with --yes to override.");
+    process.exit(1);
+  }
 
   if (DRY_RUN) {
     console.log("[DRY RUN] No files will be moved or created.");

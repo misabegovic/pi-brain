@@ -82,6 +82,8 @@ There are three ways to start:
 
 ## Quick start
 
+For a step-by-step checklist for real projects, see [GETTING_STARTED.md](GETTING_STARTED.md).
+
 ```bash
 # Clone pi-brain as the starting point for a project/customer brain
 git clone <pi-brain> my-project-brain && cd my-project-brain

@@ -203,6 +203,14 @@ Once the implementation is merged, capture the resulting current truth as a reco
 3. Update the original ADR/PRD status to `superseded` or `archived` and point it at the record.
 4. Run `brain_sync` and `brain:groom`.
 
+## Hard gates
+
+These checks are not optional, even in `--auto` mode:
+
+1. **Constraint gate.** Before accepting a PRD/ADR/epic/bet, read `wiki/<scope>/constraints/*.md`. If the artifact violates a `must` constraint, stop, surface the exact conflict, and do not proceed until the user resolves it. If it violates a `should` constraint, record the exception and rationale in the artifact.
+2. **Human approval gate.** Do not move AI-suggested drafts to approved shelves without explicit user approval.
+3. **Record gate.** After a forward-mode bet is delivered, create or update `wiki/<scope>/records/<slug>.md`. If delivery hasn't happened yet, capture an inbox task to create the record after merge.
+
 ## Landing the work
 
 Check the clone's `.env` for `LOCAL_FIRST=true`:
