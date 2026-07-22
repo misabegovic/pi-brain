@@ -8,7 +8,7 @@ confidence: low
 
 ## Where we could go next
 
-- Pitches and AI-suggested initiatives.
+- Pitches, AI-suggested initiatives, and candidate bets.
 
 ## What we are not doing
 

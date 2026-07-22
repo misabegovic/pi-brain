@@ -2,7 +2,7 @@
 
 You are the agent maintaining **pi-brain**: a self-contained, cloneable knowledge-base template for pi.
 
-The original [brain](../brain) repository is the **inspiration and guideline**, not a dependency. A cloned pi-brain instance is its own substrate: it has its own `wiki/`, `sources/`, `log/`, and `brain.config.yml`. Your job is to keep that instance accurate, useful, and well-organized.
+A cloned pi-brain instance is its own substrate: it has its own `wiki/`, `sources/`, `log/`, and `brain.config.yml`. Your job is to keep that instance accurate, useful, and well-organized.
 
 ## Mission
 

@@ -4,9 +4,7 @@
 
 **A knowledge home for [pi](https://pi.dev).**
 
-pi-brain is a self-contained, cloneable template for project- or customer-specific knowledge bases. It brings the [brain](https://github.com/muhamed/brain) wiki pattern into pi sessions, but instead of depending on a separate brain repository, **pi-brain is the substrate**. Clone it, rename it, point it at your repos, and pi becomes the tenant: it reads the briefing, captures notes, asks questions, and tends the inbox — all from the terminal.
-
-> The original brain repo is the inspiration and guideline. pi-brain is the product.
+pi-brain is a self-contained, cloneable template for project- or customer-specific knowledge bases inside [pi](https://pi.dev). It is an **intent store**: it keeps the permanent layer of decisions, architecture, and product reasoning alongside the volatile layer of drafts, experiments, and AI suggestions. When volatile work is approved, it is promoted into the permanent layer and can then modify the actual project.
 
 ## What it gives pi
 
@@ -16,6 +14,47 @@ pi-brain is a self-contained, cloneable template for project- or customer-specif
 - **Tend queue integration** — see what queued up while you were away and digest it without leaving pi.
 - **Human-gated shaping** — `/brain:shape` turns pitches into ADRs/PRDs with phase-end approval gates.
 - **A cozy theme** — warm, low-contrast colors so long brain-tending sessions feel like home.
+
+## Vision: how pi-brain manages knowledge
+
+pi-brain separates knowledge into two layers:
+
+### Permanent layer (`wiki/<scope>/{adrs,prds,epics,bets}/`)
+
+These are human-approved commitment-class artifacts. They change slowly, are deeply cited, and describe the project as it actually is:
+
+- **ADRs** record decisions — the bet we made, the alternatives we rejected, and the consequences we accept.
+- **PRDs** describe initiatives — problem, appetite, fat-marker solution, no-gos, rabbit holes.
+- **Epics** group related work under a single outcome.
+- **Bets** are the commitments we actually make from the options — usually one per shaping cycle, linked to a PRD/ADR pair.
+
+### Volatile layer (`wiki/<scope>/{pitches,ai-suggestions}/`, inbox, deepdives)
+
+These are fast, speculative, or AI-generated. They are allowed to be wrong:
+
+- **Pitches** are pre-bet ideas not yet shaped.
+- **AI-suggestions** are agent-authored drafts that a human must review before graduation.
+- **Inbox captures** are raw notes waiting to be triaged.
+- **Deepdives** are transient repo inspections for context.
+
+### Promotion path
+
+```
+inbox / deepdive / pitch
+         ↓
+   ai-suggestion (agent draft)
+         ↓
+   draft PRD / ADR / epic / bet
+         ↓
+   accepted PRD / ADR / epic / bet  ← permanent layer
+         ↓
+   implementation in the project repo
+```
+
+- Volatile drafts never become truth without human approval.
+- Approved artifacts move to the permanent shelves and gain the authority to change code.
+- `brain:groom` decays stale confidence and archives superseded pages.
+- `brain:links`, `brain:state`, and `brain:sync` keep the permanent layer honest and navigable.
 
 ## Using pi-brain for your own project
 
@@ -74,17 +113,25 @@ my-project-brain/
 ├── README.md             # human onboarding
 ├── wiki/                 # synthesis layer
 │   ├── index.md          # auto-regenerated home page
-│   └── _state/
-│       └── inbox.md      # the tend queue
+│   ├── _state/
+│   │   └── inbox.md      # the tend queue
+│   └── <scope>/          # per-project or org scope
+│       ├── prds/         # permanent: product requirement docs
+│       ├── adrs/         # permanent: architecture decision records
+│       ├── epics/        # permanent: outcome groupings
+│       ├── bets/         # permanent: committed bets
+│       ├── pitches/      # volatile: pre-bet ideas
+│       └── ai-suggestions/ # volatile: agent drafts awaiting review
 ├── sources/              # immutable inputs (snapshots, exports, research)
 ├── log/
 │   └── log.md            # append-only operations log
 ├── tools/
-│   ├── templates/        # ADR/PRD/pitch/epic templates
+│   ├── templates/        # ADR/PRD/pitch/epic/bet templates
 │   │   ├── adr.md
 │   │   ├── prd.md
 │   │   ├── pitch.md
 │   │   ├── epic.md
+│   │   ├── bet.md
 │   │   ├── adr-ai-suggestion.md
 │   │   └── prd-ai-suggestion.md
 │   ├── connectors/       # pull connectors
@@ -136,7 +183,7 @@ my-project-brain/
 | `/brain:ask <question>` | Ask a question over the wiki + sources corpus. |
 | `/brain:tend` | Digest the tend queue. |
 | `/brain:sync` | Validate frontmatter and regenerate `wiki/index.md`. |
-| `/brain:shape <scope> <pitch>` | Human-gated ADR/PRD authoring. |
+| `/brain:shape <scope> <pitch>` | Human-gated ADR/PRD/epic/bet authoring. |
 | `/brain:in <path-or-url>` | Ingest a file, directory, or URL into `sources/` (URLs fetched best-effort). |
 | `/brain:setup` | Bootstrap or reconfigure this directory as a pi-brain home. |
 | `/brain:connect` | Run configured pull connectors to snapshot external sources. |
@@ -173,8 +220,6 @@ The extension registers these tools for the agent:
 - `brain_ingest` — ingest a file, directory, or URL into `sources/`.
 
 ## Design principles
-
-Inherited from the brain pattern:
 
 - **Sources are immutable.** Snapshots and exports land in `sources/` and are never rewritten.
 - **Wiki is the synthesis.** The agent maintains `wiki/` with cited claims.

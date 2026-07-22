@@ -11,10 +11,11 @@ You are inside a **pi-brain clone**. The work happens in this repository's own `
 
 | Mode | Invocation | Output |
 |------|------------|--------|
-| **Forward** (default) | `/brain:shape <scope> <pitch>` | `wiki/<scope>/prds/<slug>.md` + `wiki/<scope>/adrs/<slug>.md` |
+| **Forward** (default) | `/brain:shape <scope> <pitch>` | `wiki/<scope>/prds/<slug>.md` + `wiki/<scope>/adrs/<slug>.md` + `wiki/<scope>/bets/<slug>.md` |
 | **Pitch** (pre-bet) | `/brain:shape <scope> --pitch <pitch>` | `wiki/<scope>/pitches/<slug>.md` |
 | **Record-existing** | `/brain:shape <scope> --record <description>` | `wiki/<scope>/adrs/<slug>.md` only |
 | **Epic** | `/brain:shape <scope> --epic <pitch>` | `wiki/<scope>/epics/<slug>.md` |
+| **Bet** | `/brain:shape <scope> --bet <description>` | `wiki/<scope>/bets/<slug>.md` |
 | **RFC pass** | add `--rfc` to forward mode | inserts a standalone RFC section between Phase 1 and Phase 2 |
 
 `<scope>` is an active repo declared in `brain.config.yml`, or the meta-scopes `org` / `brain`.
@@ -44,6 +45,18 @@ Agent-authored synthesis starts at `confidence: low`. It cannot self-promote to 
 3. **Choose a slug.** Kebab-case, ≤6 words, no numeric suffix. Check `wiki/<scope>/{prds,adrs,epics,pitches}/` for collisions.
 4. **Deepdive.** The brain is repo-agnostic. If you need current repo evidence, use `/brain:deepdive <path> [question]` to read files transiently without copying them into `sources/`. Cite repo paths directly. Surface findings in the artifact prose, not a separate dump.
 5. **Epic detection (forward only).** Ask if this pitch belongs to an existing epic in scope. Default = no.
+
+## Promotion path
+
+Knowledge moves from volatile to permanent through explicit human approval:
+
+1. **Inbox / deepdive / pitch** — raw or pre-bet material.
+2. **AI-suggested draft** — agent-authored, lives in `ai-suggestions/`.
+3. **Draft** — human review in progress in the real shelves.
+4. **Accepted** — PRD/ADR/epic/bet status becomes `accepted`/`living` and confidence is bumped.
+5. **Implementation** — the approved artifact authorizes changes to the project repo.
+
+Never move a volatile draft to the permanent layer without the user explicitly approving it.
 
 ## AI-suggested drafts
 
@@ -92,9 +105,10 @@ Before writing, surface the summary and ask for confirmation (unless `--auto`).
 
 Create the page in the correct shelf using the matching template from `tools/templates/`:
 
-- forward → copy `tools/templates/prd.md` → `wiki/<scope>/prds/<slug>.md`
+- forward → copy `tools/templates/prd.md` → `wiki/<scope>/prds/<slug>.md` + ADR + bet
 - pitch → copy `tools/templates/pitch.md` → `wiki/<scope>/pitches/<slug>.md`
 - epic → copy `tools/templates/epic.md` → `wiki/<scope>/epics/<slug>.md`
+- bet → copy `tools/templates/bet.md` → `wiki/<scope>/bets/<slug>.md`
 
 Frontmatter (forward example):
 
@@ -129,7 +143,7 @@ Then:
 
 ## Phase 2 — Tech Lead agent (forward / record-existing)
 
-Skip in pitch and epic modes.
+Skip in pitch, epic, and bet modes.
 
 Load `personas/agents/tech-lead.md` and wear the Tech Lead hat.
 
@@ -137,6 +151,8 @@ Load `personas/agents/tech-lead.md` and wear the Tech Lead hat.
 2. Generate ≥3 alternatives + "do nothing" with trade-offs.
 3. Let the user pick the bet.
 4. Write `wiki/<scope>/adrs/<slug>.md` from `tools/templates/adr.md`.
+
+The chosen alternative becomes the bet that Phase 3 commits to paper.
 
 Frontmatter:
 
@@ -159,9 +175,19 @@ Sections for an ADR:
 
 Then validate, regenerate views, log, and stop for human approval before merge/build.
 
-## Phase 3 — Developer agent (forward only, optional)
+## Phase 3 — Bet agent (forward only)
 
-If the decision requires sibling-repo changes, work in the repo under `$BRAIN_PROJECTS_ROOT/<scope>`. Keep the pi-brain clone and the sibling repo aligned. Do not start Phase 3 until Phase 2 is approved.
+Skip in pitch, epic, record-existing, and bet modes.
+
+1. Write `wiki/<scope>/bets/<slug>.md` from `tools/templates/bet.md`.
+2. Link it to the PRD and ADR.
+3. State the appetite, success criteria, and cancellation signals.
+
+The bet is the commitment: it is what the team actually implements.
+
+## Phase 4 — Developer agent (forward only, optional)
+
+If the bet requires repo changes, work in the project code under the configured path. Keep the pi-brain clone and the project repo aligned. Do not start Phase 4 until the bet is approved.
 
 ## Landing the work
 

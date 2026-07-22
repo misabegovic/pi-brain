@@ -8,7 +8,7 @@ confidence: medium
 
 ## Committed
 
-- PRDs/adrs that are `status: living` or `accepted`.
+- PRDs/ADRs/epics/bets that are `status: living` or `accepted`.
 
 ## In shaping
 

@@ -3,15 +3,19 @@
  *
  * This extension makes the pi-brain repository itself the substrate.
  * It reads and writes the local wiki/, sources/, log/, and wiki/_state/
- * directories, so a cloned pi-brain instance works immediately without
- * a separate brain repository.
+ * directories, so a cloned pi-brain instance works immediately.
  *
  * Capabilities:
  * - Registers tools: brain_status, brain_capture, brain_ask, brain_tend,
- *   brain_validate, brain_views, brain_sync
+ *   brain_validate, brain_views, brain_sync, brain_links, brain_state,
+ *   brain_deepdive, brain_ingest_repo, brain_projects, brain_convert,
+ *   brain_pull_connectors, brain_autonomy, brain_ingest
  * - Registers commands: /brain, /brain:capture, /brain:ask, /brain:tend,
- *   /brain:sync, /brain:shape
- * - Shows a session-start status widget
+ *   /brain:sync, /brain:shape, /brain:in, /brain:setup, /brain:connect,
+ *   /brain:auto, /brain:continue, /brain:investigate, /brain:links,
+ *   /brain:groom, /brain:state, /brain:deepdive, /brain:ingest-repo,
+ *   /brain:projects, /brain:convert
+ * - Shows a session-start status widget and footer status line
  */
 
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
@@ -1264,7 +1268,7 @@ export default function piBrainExtension(pi: ExtensionAPI) {
   });
 
   pi.registerCommand("brain:shape", {
-    description: "Human-gated ADR/PRD authoring in pi-brain",
+    description: "Human-gated ADR/PRD/epic/bet authoring in pi-brain",
     handler: async (args, ctx) => {
       const home = await requireBrain(ctx.cwd, ctx);
       if (!home) return;
