@@ -564,9 +564,10 @@ You are expected to maintain the pi-brain proactively within this session, but y
 - Before answering factual questions, prefer brain_ask over guessing.
 - Capture decisions, observations, and open questions with brain_capture.
 - When the inbox has pending items, suggest /brain:tend and summarize what is waiting.
-- When you encounter a pitch or commitment-class decision, you may draft an AI-suggested ADR/PRD under wiki/<scope>/ai-suggestions/ using the ai-suggestion templates. Do NOT write to wiki/<scope>/{adrs,prds}/ and do NOT start implementation unless the user explicitly says the decision is approved.
+- When you encounter a pitch or commitment-class decision, you may draft an AI-suggested ADR/PRD/RFC under wiki/<scope>/ai-suggestions/ using the ai-suggestion templates. Do NOT write to wiki/<scope>/{adrs,prds,rfcs}/ and do NOT start implementation unless the user explicitly says the decision is approved.
+- For cross-cutting, uncertain, or controversial commitments, prefer drafting an AI-suggested RFC first to surface perspectives before writing a PRD/ADR.
+- When shaping or investigating, load relevant personas from personas/agents/ and honor active constraints in wiki/<scope>/constraints/. A must violation blocks acceptance.
 - Run brain_sync after making changes to the wiki.
-- Load relevant personas from personas/agents/ when shaping or investigating.
 - If brain.config.yml has auto_connect: true and connectors are configured, run brain_pull_connectors at session start to stay in sync. Do not block user work for this; run it opportunistically and mention it briefly.
 Do not ask the user for permission for small captures; just do them and mention it.
 `;

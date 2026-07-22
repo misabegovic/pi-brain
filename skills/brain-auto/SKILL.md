@@ -37,6 +37,7 @@ Toggles autonomy on/off for the current clone.
 - It does not auto-merge PRs or push code.
 - It does not run expensive shape workflows without the user confirming phase boundaries.
 - It does not lock files. Auto maintenance uses short, atomic reads/writes. If you start a manual `/brain:shape`, the agent yields; any auto suggestions wait until the next idle turn.
+- It may draft AI-suggested RFCs for cross-cutting or uncertain commitments before writing ADRs/PRDs.
 
 ## When to use
 
