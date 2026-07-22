@@ -1,0 +1,18 @@
+{
+  "name": "pi-brain",
+  "version": "0.1.0",
+  "description": "A cozy knowledge home for pi. Brings the brain wiki pattern into pi sessions as an extension, skill, prompt, and theme.",
+  "keywords": ["pi-package", "brain", "knowledge-base", "wiki", "memory"],
+  "license": "MIT",
+  "author": "Muhamed Isabegovic",
+  "pi": {
+    "extensions": ["./extensions/pi-brain.ts"],
+    "skills": ["./skills"],
+    "prompts": ["./prompts"],
+    "themes": ["./themes"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  }
+}
