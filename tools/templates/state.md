@@ -12,6 +12,7 @@ Summarize the current truth for this scope. Be honest about gaps.
 
 ## What is stable
 
+- Records (`kind: record`) that describe the current system.
 - Items with `confidence: high` and recent validation.
 
 ## What is uncertain

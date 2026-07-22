@@ -20,9 +20,10 @@ Run a judgement sweep over the pi-brain corpus. This is deterministic, human-gat
    - Pages with `confidence: medium` that are load-bearing (many incoming links) but not deeply cited.
    - Suggest demoting `high` → `medium` or `medium` → `low` with a note in `log/log.md`.
 
-2. **Supersede → archive**
+2. **Supersede → archive → record**
    - Pages with `status: superseded` and a valid `superseded_by:`.
-   - Move them to `wiki/<scope>/_archive/<kind>/<slug>.md` if they have been superseded for a while.
+   - For delivered ADRs/PRDs/bets, ensure a `kind: record` exists capturing the current truth. Then move the original commitment to `wiki/<scope>/_archive/<kind>/<slug>.md`.
+   - If multiple old decisions describe the same system surface, compact them into one record and archive the originals.
 
 3. **Freshness**
    - Pages whose `ingested_at` or last-edit date is older than the sources they cite.

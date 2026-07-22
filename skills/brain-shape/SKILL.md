@@ -48,15 +48,16 @@ Agent-authored synthesis starts at `confidence: low`. It cannot self-promote to 
 
 ## Promotion path
 
-Knowledge moves from volatile to permanent through explicit human approval:
+Knowledge moves from raw to committed to permanent through explicit human approval:
 
 1. **Inbox / deepdive / pitch** — raw or pre-bet material.
 2. **AI-suggested draft** — agent-authored, lives in `ai-suggestions/`.
-3. **Draft** — human review in progress in the real shelves.
-4. **Accepted** — PRD/ADR/epic/bet status becomes `accepted`/`living` and confidence is bumped.
+3. **Draft commitment** — PRD/ADR/epic/bet under review in the real shelves.
+4. **Accepted commitment** — status becomes `accepted`/`living` and confidence is bumped.
 5. **Implementation** — the approved artifact authorizes changes to the project repo.
+6. **Record** — once delivered, the current truth is captured in `wiki/<scope>/records/<slug>.md`. The original ADR/PRD may be archived or compacted into the record's history.
 
-Never move a volatile draft to the permanent layer without the user explicitly approving it.
+Never move a volatile draft to the commitment layer without the user explicitly approving it. Records are created after delivery, not before.
 
 ## AI-suggested drafts
 
@@ -105,10 +106,11 @@ Before writing, surface the summary and ask for confirmation (unless `--auto`).
 
 Create the page in the correct shelf using the matching template from `tools/templates/`:
 
-- forward → copy `tools/templates/prd.md` → `wiki/<scope>/prds/<slug>.md` + ADR + bet
+- forward → copy `tools/templates/prd.md` → `wiki/<scope>/prds/<slug>.md` + ADR + bet + record (after delivery)
 - pitch → copy `tools/templates/pitch.md` → `wiki/<scope>/pitches/<slug>.md`
 - epic → copy `tools/templates/epic.md` → `wiki/<scope>/epics/<slug>.md`
 - bet → copy `tools/templates/bet.md` → `wiki/<scope>/bets/<slug>.md`
+- record → copy `tools/templates/record.md` → `wiki/<scope>/records/<slug>.md`
 
 Frontmatter (forward example):
 
@@ -188,6 +190,15 @@ The bet is the commitment: it is what the team actually implements.
 ## Phase 4 — Developer agent (forward only, optional)
 
 If the bet requires repo changes, work in the project code under the configured path. Keep the pi-brain clone and the project repo aligned. Do not start Phase 4 until the bet is approved.
+
+## Phase 5 — Record keeper (after delivery)
+
+Once the implementation is merged, capture the resulting current truth as a record:
+
+1. Write `wiki/<scope>/records/<slug>.md` from `tools/templates/record.md`.
+2. Link it to the PRD, ADR, and bet that produced it.
+3. Update the original ADR/PRD status to `superseded` or `archived` and point it at the record.
+4. Run `brain_sync` and `brain:groom`.
 
 ## Landing the work
 

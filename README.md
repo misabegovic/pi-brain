@@ -17,23 +17,31 @@ pi-brain is a self-contained, cloneable template for project- or customer-specif
 
 ## Vision: how pi-brain manages knowledge
 
-pi-brain separates knowledge into two layers:
+pi-brain separates knowledge into three layers:
 
-### Permanent layer (`wiki/<scope>/{adrs,prds,epics,bets}/`)
+### Permanent layer (`wiki/<scope>/records/`)
 
-These are human-approved commitment-class artifacts. They change slowly, are deeply cited, and describe the project as it actually is:
+These describe the project **as it actually is right now**. They are the residue of delivered decisions and the source of truth for future work:
 
-- **ADRs** record decisions — the bet we made, the alternatives we rejected, and the consequences we accept.
-- **PRDs** describe initiatives — problem, appetite, fat-marker solution, no-gos, rabbit holes.
+- **Records** state the current, approved shape of a system, feature, or decision. They cite the ADR/PRD/bet that produced them and the code that implements them.
+
+Records change only when the project itself changes.
+
+### Volatile commitment layer (`wiki/<scope>/{adrs,prds,epics,bets}/`)
+
+These are human-approved or in-progress commitment-class artifacts. They are true *at the time they are written*, but they become historical once the work is delivered:
+
+- **ADRs** record the decision being made, the alternatives rejected, and the accepted consequences.
+- **PRDs** describe the initiative — problem, appetite, fat-marker solution, no-gos, rabbit holes.
 - **Epics** group related work under a single outcome.
 - **Bets** are the commitments we actually make from the options — usually one per shaping cycle, linked to a PRD/ADR pair.
 
-### Volatile layer (`wiki/<scope>/{pitches,ai-suggestions}/`, inbox, deepdives)
+### Raw / speculative layer (`wiki/<scope>/{pitches,ai-suggestions}/`, inbox, deepdives)
 
-These are fast, speculative, or AI-generated. They are allowed to be wrong:
+Fast, speculative, or AI-generated material that is allowed to be wrong:
 
 - **Pitches** are pre-bet ideas not yet shaped.
-- **AI-suggestions** are agent-authored drafts that a human must review before graduation.
+- **AI-suggestions** are agent-authored drafts awaiting human review.
 - **Inbox captures** are raw notes waiting to be triaged.
 - **Deepdives** are transient repo inspections for context.
 
@@ -46,14 +54,17 @@ inbox / deepdive / pitch
          ↓
    draft PRD / ADR / epic / bet
          ↓
-   accepted PRD / ADR / epic / bet  ← permanent layer
+   accepted PRD / ADR / epic / bet  ← commitment layer
          ↓
    implementation in the project repo
+         ↓
+   record in wiki/<scope>/records/  ← permanent layer
 ```
 
-- Volatile drafts never become truth without human approval.
-- Approved artifacts move to the permanent shelves and gain the authority to change code.
-- `brain:groom` decays stale confidence and archives superseded pages.
+- Raw drafts never become truth without human approval.
+- Accepted commitment artifacts authorize changes to the project repo.
+- Once delivered, the useful residue is captured as a **record**. The original ADR/PRD may then be archived or compacted into the record's history.
+- `brain:groom` decays stale confidence, archives superseded commitments, and flags delivered work that needs a record.
 - `brain:links`, `brain:state`, and `brain:sync` keep the permanent layer honest and navigable.
 
 ## Using pi-brain for your own project
@@ -116,22 +127,24 @@ my-project-brain/
 │   ├── _state/
 │   │   └── inbox.md      # the tend queue
 │   └── <scope>/          # per-project or org scope
-│       ├── prds/         # permanent: product requirement docs
-│       ├── adrs/         # permanent: architecture decision records
-│       ├── epics/        # permanent: outcome groupings
-│       ├── bets/         # permanent: committed bets
+│       ├── records/      # permanent: current truth about the system
+│       ├── prds/         # volatile commitment: product requirement docs
+│       ├── adrs/         # volatile commitment: architecture decision records
+│       ├── epics/        # volatile commitment: outcome groupings
+│       ├── bets/         # volatile commitment: committed bets
 │       ├── pitches/      # volatile: pre-bet ideas
 │       └── ai-suggestions/ # volatile: agent drafts awaiting review
 ├── sources/              # immutable inputs (snapshots, exports, research)
 ├── log/
 │   └── log.md            # append-only operations log
 ├── tools/
-│   ├── templates/        # ADR/PRD/pitch/epic/bet templates
+│   ├── templates/        # ADR/PRD/pitch/epic/bet/record templates
 │   │   ├── adr.md
 │   │   ├── prd.md
 │   │   ├── pitch.md
 │   │   ├── epic.md
 │   │   ├── bet.md
+│   │   ├── record.md
 │   │   ├── adr-ai-suggestion.md
 │   │   └── prd-ai-suggestion.md
 │   ├── connectors/       # pull connectors
