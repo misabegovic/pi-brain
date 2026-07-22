@@ -1,23 +1,5 @@
-## Summary
+A short, human-readable summary of what this change does and why.
 
-One-paragraph executive summary of what this change does and why.
+Do not include sensitive data, session URLs, or environment variables.
 
-## Intent
-
-- ADR / PRD / Bet: link to the decision record in the pi-brain clone.
-- Do not paste sensitive data, session URLs, or environment variables here.
-
-## Scope
-
-- Included:
-- Not included:
-
-## Validation
-
-- Tests:
-- Manual checks:
-
-## Follow-ups
-
-- Future work:
-- Open questions:
+Intent: link to the ADR / PRD / bet / record in the pi-brain clone.

@@ -48,7 +48,7 @@ pi-brain supports two delivery modes, controlled by `LOCAL_FIRST` in `.env`:
 ### PR conventions
 
 1. **Title format:** `<scope>: <verb> <short description>` (e.g., `billing: add invoice retry logic`).
-2. **Description:** use `.github/pull_request_template.md`. Keep it a short, human-readable executive summary. Do not paste sensitive data, session URLs, API keys, environment variables, or internal system details. Link to decision records in the pi-brain clone for full context.
+2. **Description:** use `.github/pull_request_template.md`. Keep it as natural text: a short summary of what and why, plus inline links to the ADR/PRD/bet/record in the pi-brain clone. Do not paste sensitive data, session URLs, API keys, environment variables, or internal system details.
 3. **Link intent.** Every PR must cite the ADR/PRD/bet/record it implements.
 4. **Decision records first.** For external target repos, the decision record must already exist in the pi-brain clone's remote before the target-repo PR is opened. The target-repo PR only references it.
 5. **Same-repo exception.** If the pi-brain clone also maintains the code (converted repo), the decision record may be included in the same PR as the code change.

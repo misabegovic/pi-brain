@@ -74,7 +74,7 @@ A quick checklist for using pi-brain on a real project.
 
 - [ ] Implement the approved bet in the project repo.
   - Local-first: commit with title `<scope>: <verb> <description>` and reference the ADR/PRD/bet in the body.
-  - Team mode: open a PR using `.github/pull_request_template.md`; keep the description as a short executive summary. Link to the ADR/PRD/bet/record in the pi-brain clone. Do not include sensitive data, session URLs, or env vars.
+  - Team mode: open a PR using `.github/pull_request_template.md`; write a short natural summary and link inline to the ADR/PRD/bet/record in the pi-brain clone. Do not include sensitive data, session URLs, or env vars.
 - [ ] For external target repos, push the decision record to the pi-brain remote **before** opening the target-repo PR.
 - [ ] After merge, create/update the record in `wiki/<scope>/records/`.
 - [ ] Mark the original ADR/PRD as superseded or archived if needed.
