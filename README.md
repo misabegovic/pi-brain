@@ -27,7 +27,7 @@ These describe the project **as it actually is right now**. They are the residue
 
 Records change only when the project itself changes.
 
-### Volatile commitment layer (`wiki/<scope>/{adrs,prds,epics,bets}/`)
+### Volatile commitment layer (`wiki/<scope>/{adrs,prds,epics,bets,constraints}/`)
 
 These are human-approved or in-progress commitment-class artifacts. They are true *at the time they are written*, but they become historical once the work is delivered:
 
@@ -35,6 +35,7 @@ These are human-approved or in-progress commitment-class artifacts. They are tru
 - **PRDs** describe the initiative — problem, appetite, fat-marker solution, no-gos, rabbit holes.
 - **Epics** group related work under a single outcome.
 - **Bets** are the commitments we actually make from the options — usually one per shaping cycle, linked to a PRD/ADR pair.
+- **Constraints** are durable rules the project agrees to honor — architecture, UI, UX, language, workflow, security, performance. They shape what is allowed in every PRD/ADR/bet until explicitly retired.
 
 ### Raw / speculative layer (`wiki/<scope>/{pitches,ai-suggestions}/`, inbox, deepdives)
 
@@ -63,6 +64,7 @@ inbox / deepdive / pitch
 
 - Raw drafts never become truth without human approval.
 - Accepted commitment artifacts authorize changes to the project repo.
+- **Constraint check:** before accepting a PRD/ADR/epic/bet, verify it honors active `constraints/` in the scope. Flag violations and resolve them before acceptance.
 - Once delivered, the useful residue is captured as a **record**. The original ADR/PRD may then be archived or compacted into the record's history.
 - `brain:groom` decays stale confidence, archives superseded commitments, and flags delivered work that needs a record.
 - `brain:links`, `brain:state`, and `brain:sync` keep the permanent layer honest and navigable.
@@ -132,19 +134,21 @@ my-project-brain/
 │       ├── adrs/         # volatile commitment: architecture decision records
 │       ├── epics/        # volatile commitment: outcome groupings
 │       ├── bets/         # volatile commitment: committed bets
+│       ├── constraints/  # volatile commitment: durable project rules
 │       ├── pitches/      # volatile: pre-bet ideas
 │       └── ai-suggestions/ # volatile: agent drafts awaiting review
 ├── sources/              # immutable inputs (snapshots, exports, research)
 ├── log/
 │   └── log.md            # append-only operations log
 ├── tools/
-│   ├── templates/        # ADR/PRD/pitch/epic/bet/record templates
+│   ├── templates/        # ADR/PRD/pitch/epic/bet/record/constraint templates
 │   │   ├── adr.md
 │   │   ├── prd.md
 │   │   ├── pitch.md
 │   │   ├── epic.md
 │   │   ├── bet.md
 │   │   ├── record.md
+│   │   ├── constraint.md
 │   │   ├── adr-ai-suggestion.md
 │   │   └── prd-ai-suggestion.md
 │   ├── connectors/       # pull connectors

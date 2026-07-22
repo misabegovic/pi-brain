@@ -126,6 +126,7 @@ async function main() {
 
   // Create pi-brain skeleton
   await mkdir(join(CWD, "wiki", "org"), { recursive: true });
+  await mkdir(join(CWD, "wiki", "org", "constraints"), { recursive: true });
   await mkdir(join(CWD, "sources"), { recursive: true });
   await mkdir(join(CWD, "log"), { recursive: true });
 

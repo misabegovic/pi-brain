@@ -29,6 +29,7 @@ Pauses include:
 - Slug selection — propose 1–3 candidates.
 - Appetite (`small` / `medium` / `big`).
 - Affected user personas.
+- Active constraints — load `wiki/<scope>/constraints/*.md` and flag any conflict with the proposed solution.
 - No-gos and rabbit holes.
 - Phase 2 alternatives + bet — generate ≥3 options plus "do nothing"; **do not pick the bet**.
 
@@ -44,7 +45,8 @@ Agent-authored synthesis starts at `confidence: low`. It cannot self-promote to 
 2. **Validate scope.** Read `brain.config.yml` and confirm `<scope>` is in `active_repos` or is `org`/`brain`.
 3. **Choose a slug.** Kebab-case, ≤6 words, no numeric suffix. Check `wiki/<scope>/{prds,adrs,epics,pitches}/` for collisions.
 4. **Deepdive.** The brain is repo-agnostic. If you need current repo evidence, use `/brain:deepdive <path> [question]` to read files transiently without copying them into `sources/`. Cite repo paths directly. Surface findings in the artifact prose, not a separate dump.
-5. **Epic detection (forward only).** Ask if this pitch belongs to an existing epic in scope. Default = no.
+5. **Constraints.** Read `wiki/<scope>/constraints/*.md`. Note any active constraints that affect this pitch. If the proposed solution violates a `must` constraint, stop and resolve it with the user before drafting.
+6. **Epic detection (forward only).** Ask if this pitch belongs to an existing epic in scope. Default = no.
 
 ## Promotion path
 
@@ -111,6 +113,7 @@ Create the page in the correct shelf using the matching template from `tools/tem
 - epic → copy `tools/templates/epic.md` → `wiki/<scope>/epics/<slug>.md`
 - bet → copy `tools/templates/bet.md` → `wiki/<scope>/bets/<slug>.md`
 - record → copy `tools/templates/record.md` → `wiki/<scope>/records/<slug>.md`
+- constraint → copy `tools/templates/constraint.md` → `wiki/<scope>/constraints/<slug>.md`
 
 Frontmatter (forward example):
 

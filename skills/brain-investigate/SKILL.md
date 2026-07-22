@@ -26,6 +26,7 @@ Run a structured investigation inside the pi-brain workflow.
 3. **Search the corpus.**
    - `brain_ask` over the wiki and sources.
    - `read` relevant wiki pages and sources.
+   - Read `wiki/<scope>/constraints/*.md` for active project rules that may explain or bound the issue.
    - For code-level questions, use `/brain:deepdive <path> [question]` to inspect the target repo transiently. Do not copy repo files into `sources/` unless explicitly asked.
 
 4. **Synthesize findings.**

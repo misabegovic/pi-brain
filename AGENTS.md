@@ -68,6 +68,10 @@ Every claim in the wiki must be traceable to an immutable source.
 
 `brain_sync` and `brain_links` together check that cited source files exist and that wiki links resolve. Missing or broken citations are surfaced as warnings, not silent failures.
 
+## Constraints
+
+Active constraints live in `wiki/<scope>/constraints/*.md`. Before accepting a PRD, ADR, epic, or bet, read the relevant constraints and flag any violation. Constraints have `severity: must`, `should`, or `may`; a `must` violation blocks acceptance until resolved. Constraints are themselves volatile commitment-class artifacts and can be retired when the project agrees they no longer apply.
+
 ## Extension behavior
 
 The extension (`extensions/pi-brain.ts`) should:
