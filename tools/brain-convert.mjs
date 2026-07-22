@@ -150,6 +150,8 @@ async function main() {
   await mkdir(join(CWD, "wiki", "org"), { recursive: true });
   await mkdir(join(CWD, "wiki", "org", "constraints"), { recursive: true });
   await mkdir(join(CWD, "wiki", "org", "records"), { recursive: true });
+  await mkdir(join(CWD, "wiki", "org", "experiments"), { recursive: true });
+  await mkdir(join(CWD, "wiki", "org", "feedback"), { recursive: true });
   await mkdir(join(CWD, "sources"), { recursive: true });
   await mkdir(join(CWD, "log"), { recursive: true });
 

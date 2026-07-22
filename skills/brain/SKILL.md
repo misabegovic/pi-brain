@@ -27,7 +27,7 @@ Capture a note into the inbox.
 
 - `note`: the full text of the note.
 - `scope` (optional): repo name, `org`, or `brain`.
-- `kind` (optional): `decision`, `insight`, `discussion`, `task`, `source`.
+- `kind` (optional): `decision`, `insight`, `discussion`, `task`, `source`, `experiment`, `feedback`.
 
 Keep captures factual and cite sources when you have them. Do not rewrite the note; record what was said or observed.
 
@@ -61,7 +61,9 @@ Run `brain_validate` + `brain_views` in one step.
 2. **Capture first, shape later.** A quick capture is low friction. Promoting to ADR/PRD (`/brain:shape`) is a separate, human-gated step.
 3. **Confidence floor.** Any claim you author starts at low confidence unless you can cite evidence.
 4. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the intended workflow.
-5. **No autonomous LLM schedules.** Only `/brain:tend` when the user asks; never queue long-running work for later.
+5. **Personas converse via RFCs.** For cross-cutting decisions, do not switch personas in sequence; draft an RFC with sections for each persona's perspective.
+6. **Evidence has its own shelves.** Experiments and user feedback live in `wiki/<scope>/experiments/` and `wiki/<scope>/feedback/`. Capture signals there so they can inform bets and records.
+7. **No autonomous LLM schedules.** Only `/brain:tend` when the user asks; never queue long-running work for later.
 
 ## Commands the human can type
 

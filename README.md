@@ -37,14 +37,24 @@ These are human-approved or in-progress commitment-class artifacts. They are tru
 - **Bets** are the commitments we actually make from the options — usually one per shaping cycle, linked to a PRD/ADR pair.
 - **Constraints** are durable rules the project agrees to honor — architecture, UI, UX, language, workflow, security, performance. They shape what is allowed in every PRD/ADR/bet until explicitly retired.
 
-### Raw / speculative layer (`wiki/<scope>/{pitches,ai-suggestions}/`, inbox, deepdives)
+### Raw / speculative layer (`wiki/<scope>/{pitches,rfcs,ai-suggestions}/`, inbox, deepdives)
 
 Fast, speculative, or AI-generated material that is allowed to be wrong:
 
 - **Pitches** are pre-bet ideas not yet shaped.
+- **RFCs** are multi-perspective review documents — the conversation format between personas.
 - **AI-suggestions** are agent-authored drafts awaiting human review.
 - **Inbox captures** are raw notes waiting to be triaged.
 - **Deepdives** are transient repo inspections for context.
+
+### Evidence layer (`wiki/<scope>/{experiments,feedback}/`)
+
+Observations from the real world that inform decisions:
+
+- **Experiments** — A/B tests and other experiments with hypothesis, results, and decision.
+- **Feedback** — user feedback, interviews, support signals, analytics observations.
+
+Evidence pages feed into options, bets, and records.
 
 ### Promotion path
 
@@ -137,13 +147,16 @@ my-project-brain/
 │       ├── epics/        # volatile commitment: outcome groupings
 │       ├── bets/         # volatile commitment: committed bets
 │       ├── constraints/  # volatile commitment: durable project rules
+│       ├── rfcs/         # volatile: multi-perspective review documents
 │       ├── pitches/      # volatile: pre-bet ideas
-│       └── ai-suggestions/ # volatile: agent drafts awaiting review
+│       ├── ai-suggestions/ # volatile: agent drafts awaiting review
+│       ├── experiments/  # evidence: A/B tests and experiments
+│       └── feedback/     # evidence: user feedback and signals
 ├── sources/              # immutable inputs (snapshots, exports, research)
 ├── log/
 │   └── log.md            # append-only operations log
 ├── tools/
-│   ├── templates/        # ADR/PRD/pitch/epic/bet/record/constraint templates
+│   ├── templates/        # ADR/PRD/pitch/epic/bet/record/constraint/RFC/evidence templates
 │   │   ├── adr.md
 │   │   ├── prd.md
 │   │   ├── pitch.md
@@ -151,6 +164,9 @@ my-project-brain/
 │   │   ├── bet.md
 │   │   ├── record.md
 │   │   ├── constraint.md
+│   │   ├── rfc.md
+│   │   ├── experiment.md
+│   │   ├── feedback.md
 │   │   ├── adr-ai-suggestion.md
 │   │   └── prd-ai-suggestion.md
 │   ├── connectors/       # pull connectors

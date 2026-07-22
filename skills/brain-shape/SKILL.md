@@ -92,7 +92,7 @@ Required:
 
 ## Phase 1 — PM agent (forward / pitch / epic)
 
-Load `personas/agents/pm.md` and wear the PM hat.
+Load `personas/agents/pm.md` and wear the PM hat for role-specific authoring.
 
 If the work has security implications, also load `personas/agents/security-reviewer.md` and fold the security questions into the PRD.
 
@@ -139,7 +139,7 @@ Sections for a PRD:
 - `## Rabbit holes`
 - `## Related` (links to ADRs, epics, sources)
 
-If `--rfc` is set, create `wiki/<scope>/rfcs/<slug>.md` from `tools/templates/rfc.md` before Phase 2. Load `pm.md`, `tech-lead.md`, `developer.md`, and (if relevant) `security-reviewer.md` personas and capture each perspective's concerns and trade-offs.
+If `--rfc` is set, create `wiki/<scope>/rfcs/<slug>.md` from `tools/templates/rfc.md` before Phase 2. This is the multi-perspective conversation artifact. Capture each persona's concerns and trade-offs in the RFC sections rather than switching personas in sequence.
 
 Then:
 
@@ -149,9 +149,9 @@ Then:
 
 ## Phase 2 — Tech Lead agent (forward / record-existing)
 
-Skip in pitch, epic, and bet modes.
+Skip in pitch, epic, rfc, and bet modes.
 
-Load `personas/agents/tech-lead.md` and wear the Tech Lead hat.
+Load `personas/agents/tech-lead.md` and wear the Tech Lead hat for role-specific authoring.
 
 1. Identify the decision to be made.
 2. Generate ≥3 alternatives + "do nothing" with trade-offs.

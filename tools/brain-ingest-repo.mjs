@@ -182,6 +182,8 @@ async function main() {
   await mkdir(scopeWikiDir, { recursive: true });
   await mkdir(join(scopeWikiDir, "constraints"), { recursive: true });
   await mkdir(join(scopeWikiDir, "records"), { recursive: true });
+  await mkdir(join(scopeWikiDir, "experiments"), { recursive: true });
+  await mkdir(join(scopeWikiDir, "feedback"), { recursive: true });
 
   const indexLines = [
     "---",
