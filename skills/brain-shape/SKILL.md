@@ -16,7 +16,7 @@ You are inside a **pi-brain clone**. The work happens in this repository's own `
 | **Record-existing** | `/brain:shape <scope> --record <description>` | `wiki/<scope>/adrs/<slug>.md` only |
 | **Epic** | `/brain:shape <scope> --epic <pitch>` | `wiki/<scope>/epics/<slug>.md` |
 | **Bet** | `/brain:shape <scope> --bet <description>` | `wiki/<scope>/bets/<slug>.md` |
-| **RFC pass** | add `--rfc` to forward mode | inserts a standalone RFC section between Phase 1 and Phase 2 |
+| **RFC pass** | add `--rfc` to forward mode | writes `wiki/<scope>/rfcs/<slug>.md` from `tools/templates/rfc.md` with multi-perspective input before Phase 2 |
 
 `<scope>` is an active repo declared in `brain.config.yml`, or the meta-scopes `org` / `brain`.
 
@@ -114,6 +114,7 @@ Create the page in the correct shelf using the matching template from `tools/tem
 - bet → copy `tools/templates/bet.md` → `wiki/<scope>/bets/<slug>.md`
 - record → copy `tools/templates/record.md` → `wiki/<scope>/records/<slug>.md`
 - constraint → copy `tools/templates/constraint.md` → `wiki/<scope>/constraints/<slug>.md`
+- rfc → copy `tools/templates/rfc.md` → `wiki/<scope>/rfcs/<slug>.md`
 
 Frontmatter (forward example):
 
@@ -138,7 +139,7 @@ Sections for a PRD:
 - `## Rabbit holes`
 - `## Related` (links to ADRs, epics, sources)
 
-If `--rfc` is set, append a multi-perspective RFC section before Phase 2.
+If `--rfc` is set, create `wiki/<scope>/rfcs/<slug>.md` from `tools/templates/rfc.md` before Phase 2. Load `pm.md`, `tech-lead.md`, `developer.md`, and (if relevant) `security-reviewer.md` personas and capture each perspective's concerns and trade-offs.
 
 Then:
 
