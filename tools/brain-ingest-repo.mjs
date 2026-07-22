@@ -2,18 +2,14 @@
 /**
  * brain-ingest-repo — onboard a repository as a maintained project in pi-brain.
  *
+ * The repository code stays outside the brain. This script only creates a
+ * lightweight metadata snapshot and scaffolds wiki/<scope>/.
+ *
  * Usage:
  *   node tools/brain-ingest-repo.mjs <path-or-url> [scope]
- *
- * What it does:
- * - Resolves the repo path (clones URLs to a temp dir if needed).
- * - Ingests a lightweight snapshot into sources/repos/<scope>/.
- * - Creates wiki/<scope>/ with index.md, state.md, roadmap.md, options.md.
- * - Adds <scope> to brain.config.yml active_repos if missing.
- * - Logs the onboarding.
  */
 
-import { readFile, writeFile, readdir, mkdir, cp } from "node:fs/promises";
+import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { join, basename, dirname } from "node:path";
 import { execFile } from "node:child_process";
 
@@ -32,15 +28,6 @@ function execFilePromise(file, args, options = {}) {
     child.on("error", reject);
     child.on("close", (code) => resolve({ stdout, stderr, code: code ?? 0 }));
   });
-}
-
-async function pathExists(p) {
-  try {
-    await readdir(p);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 async function getRepoInfo(repoPath) {
@@ -83,7 +70,7 @@ function readConfig() {
 async function addActiveRepo(scope) {
   let text = await readConfig();
   if (!text) {
-    text = `org: "${scope}"\nactive_repos:\n  - ${scope}\narchived_repos: []\nconnectors:\n  github:\n    repos: []\n`;
+    text = `org: "${scope}"\nactive_repos:\n  - ${scope}\narchived_repos: []\nauto_connect: false\nconnectors:\n  github:\n    repos: []\n`;
   } else if (!text.includes(`- ${scope}`)) {
     text = text.replace(/(active_repos:\n(?:  - .*\n)*)/, `$1  - ${scope}\n`);
   }
@@ -101,10 +88,10 @@ async function main() {
   let repoPath = rawTarget;
   let isTempClone = false;
 
-  if (rawTarget.startsWith("http://") || rawTarget.startsWith("https://") || rawTarget.includes(":") && rawTarget.includes("@")) {
+  if (rawTarget.startsWith("http://") || rawTarget.startsWith("https://") || (rawTarget.includes(":") && rawTarget.includes("@"))) {
     const tmpDir = join(CWD, ".tmp", "brain-ingest-" + Date.now());
     await mkdir(tmpDir, { recursive: true });
-    console.log(`Cloning ${rawTarget}...`);
+    console.log(`Cloning ${rawTarget} for inspection...`);
     const result = await execFilePromise("git", ["clone", "--depth", "1", rawTarget, tmpDir]);
     if (result.code !== 0) {
       console.error(result.stderr || result.stdout);
@@ -117,13 +104,58 @@ async function main() {
   const info = await getRepoInfo(repoPath);
   const chosenScope = scope || info.name;
 
-  // Snapshot into sources/repos/<scope>/
-  const snapshotDir = join(REPO_SOURCE_DIR, chosenScope);
-  await mkdir(snapshotDir, { recursive: true });
-  await cp(repoPath, snapshotDir, { recursive: true, force: true, filter: (src) => {
-    const name = basename(src);
-    return !name.startsWith(".") && name !== "node_modules" && name !== "dist" && name !== "build";
-  }});
+  // Lightweight metadata snapshot into sources/repos/<scope>.md
+  await mkdir(REPO_SOURCE_DIR, { recursive: true });
+  const tree = await getFileTree(repoPath);
+  const treeText = tree.length ? tree.slice(0, 100).join("\n") : "(empty tree)";
+
+  let readmeSnippet = "";
+  try {
+    readmeSnippet = await readFile(join(repoPath, "README.md"), "utf-8");
+    readmeSnippet = readmeSnippet.slice(0, 5000);
+  } catch {
+    // no README
+  }
+
+  const sourceLines = [
+    "---",
+    "kind: repo-snapshot",
+    "source_kind: repo",
+    `scope: ${chosenScope}`,
+    `repo_path: ${repoPath}`,
+    info.url ? `repo_url: ${info.url}` : "",
+    info.branch ? `branch: ${info.branch}` : "",
+    `generated_at: ${new Date().toISOString()}`,
+    "---",
+    "",
+    `# Repository snapshot: ${chosenScope}`,
+    "",
+    "This is a lightweight metadata snapshot. The repository code stays outside the brain.",
+    "",
+    "## Repository",
+    "",
+    `- Local path: \`${repoPath}\``,
+    info.url ? `- URL: ${info.url}` : "",
+    info.branch ? `- Branch: \`${info.branch}\`` : "",
+    "",
+    "## File tree",
+    "",
+    "```",
+    treeText,
+    "```",
+    "",
+  ];
+
+  if (readmeSnippet) {
+    sourceLines.push(
+      "## README excerpt",
+      "",
+      readmeSnippet,
+      ""
+    );
+  }
+
+  await writeFile(join(REPO_SOURCE_DIR, `${chosenScope}.md`), sourceLines.filter(Boolean).join("\n"), "utf-8");
 
   // Create wiki/<scope>/
   const scopeWikiDir = join(WIKI_DIR, chosenScope);
@@ -131,14 +163,11 @@ async function main() {
   await mkdir(join(scopeWikiDir, "constraints"), { recursive: true });
   await mkdir(join(scopeWikiDir, "records"), { recursive: true });
 
-  const tree = await getFileTree(repoPath);
-  const treeText = tree.length ? tree.slice(0, 50).join("\n") : "(empty tree)";
-
   const indexLines = [
     "---",
     "kind: project",
     "status: active",
-    "confidence: medium",
+    "confidence: low",
     `repo_path: ${repoPath}`,
     info.url ? `repo_url: ${info.url}` : "",
     info.branch ? `branch: ${info.branch}` : "",
@@ -181,20 +210,22 @@ async function main() {
     "",
     "## Where we are",
     "",
-    "Initial ingestion. Verify the repo state and update confidence.",
+    "Initial onboarding. The repo code lives outside the brain; use deepdives to inspect it and records to capture current truth.",
     "",
     "## What is stable",
     "",
-    "- Repository ingested.",
+    "- Project scaffolded in pi-brain.",
     "",
     "## What is uncertain",
     "",
     "- Purpose and boundaries.",
+    "- Active constraints.",
     "- Active workstreams.",
     "",
     "## What needs attention",
     "",
     "- Run /brain:deepdive on key files.",
+    "- Capture initial constraints in constraints/.",
     "",
   ];
 
@@ -213,7 +244,7 @@ async function main() {
     "",
     "## In shaping",
     "",
-    "- Define first initiatives.",
+    "- Define first initiatives and constraints.",
     "",
     "## Candidate",
     "",
@@ -249,7 +280,7 @@ async function main() {
 
   // Log
   const logPath = join(CWD, "log", "log.md");
-  const logEntry = `\n- ${new Date().toISOString()} — ingested repo ${info.url || repoPath} as scope \`${chosenScope}\`\n`;
+  const logEntry = `\n- ${new Date().toISOString()} — onboarded repo ${info.url || repoPath} as scope \`${chosenScope}\` (code stays outside brain)\n`;
   try {
     const existing = await readFile(logPath, "utf-8");
     await writeFile(logPath, existing + logEntry, "utf-8");
@@ -258,11 +289,11 @@ async function main() {
   }
 
   if (isTempClone) {
-    // temp dir left for deepdives; user can delete manually or we could clean up
+    // temp dir left for deepdives; user can delete manually
   }
 
-  console.log(`Ingested repo as scope \`${chosenScope}\``);
-  console.log(`Sources: ${snapshotDir}`);
+  console.log(`Onboarded repo as scope \`${chosenScope}\``);
+  console.log(`Metadata snapshot: sources/repos/${chosenScope}.md`);
   console.log(`Wiki: ${scopeWikiDir}`);
 }
 

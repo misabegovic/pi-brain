@@ -9,8 +9,10 @@ You are inside a **pi-brain clone**. This skill writes immutable snapshots into 
 
 ## When to use
 
-- The user says "ingest this repo", "/in <path>", "add this doc", "capture this conversation", or "track this URL".
+- The user says "/in <path>", "add this doc", "capture this conversation", or "track this URL".
 - You spot a pitch or pre-existing decision in an ingested source and need to hand off to `/brain:shape`.
+
+For repositories you intend to actively maintain as a pi-brain project, use `/brain:ingest-repo` instead. That command keeps the code outside the brain and only stores a lightweight metadata snapshot.
 
 ## Inputs
 

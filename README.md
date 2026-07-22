@@ -78,7 +78,7 @@ There are three ways to start:
    bash tools/clone-pi-brain.sh ~/projects/my-project-brain "My Org"
    ```
 2. **Convert an existing repo** with `/brain:convert [subdir] [--dry-run]` — moves the project code into `files/` and makes the repo itself a pi-brain clone.
-3. **Onboard an external repo** with `/brain:ingest-repo <path-or-url> [scope]` — keeps the brain repo-agnostic and snapshots the target repo under `sources/repos/<scope>/`.
+3. **Onboard an external repo** with `/brain:ingest-repo <path-or-url> [scope]` — keeps the brain repo-agnostic. The code stays outside the brain; only a lightweight metadata snapshot and wiki scaffold are created.
 
 ## Quick start
 
