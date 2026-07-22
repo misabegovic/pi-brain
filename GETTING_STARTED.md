@@ -34,6 +34,9 @@ A quick checklist for using pi-brain on a real project.
   ```
 - [ ] Configure a provider API key so pi can use an LLM.
   - Set `GOOGLE_API_KEY`, `ANTHROPIC_API_KEY`, etc. in `.env` or via `/login`.
+- [ ] Decide on delivery mode.
+  - Solo/local-first: set `LOCAL_FIRST="true"` in `.env` (default). Land small commits directly.
+  - Team/CI mode: set `LOCAL_FIRST="false"`. Open a PR per bet, using `.github/pull_request_template.md`.
 
 ## 3. Configure the brain
 
@@ -70,6 +73,8 @@ A quick checklist for using pi-brain on a real project.
 ## 6. Deliver and record
 
 - [ ] Implement the approved bet in the project repo.
+  - Local-first: commit with title `<scope>: <verb> <description>` and reference the ADR/PRD/bet in the body.
+  - Team mode: open a PR using `.github/pull_request_template.md`; link to the ADR/PRD/bet/record.
 - [ ] After merge, create/update the record in `wiki/<scope>/records/`.
 - [ ] Mark the original ADR/PRD as superseded or archived if needed.
 

@@ -38,6 +38,21 @@ pi-brain/
 3. **Confidence floor.** Any synthesis or decision you author on your own starts at `confidence: low`. You cannot self-promote to `high` in the same change.
 4. **PR-required for pi-brain itself.** Changes to the pi-brain product repo land via PR with CI green. Project/customer clones may use `LOCAL_FIRST=true` mode; respect the per-instance rules.
 
+## PR cadence and local-first mode
+
+pi-brain supports two delivery modes, controlled by `LOCAL_FIRST` in `.env`:
+
+- **LOCAL_FIRST=true (default for solo operators):** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks. Keep commits small and focused on one ADR/PRD/bet at a time.
+- **LOCAL_FIRST=false (team/CI mode):** open a PR per phase or per bet. Each PR must link to the approved ADR/PRD/bet in the brain.
+
+### PR conventions
+
+1. **Title format:** `<scope>: <verb> <short description>` (e.g., `billing: add invoice retry logic`).
+2. **Description:** use `.github/pull_request_template.md`.
+3. **Link intent.** Every PR must cite the ADR/PRD/bet/record it implements.
+4. **One bet per PR.** Avoid PRs that implement multiple unrelated bets.
+5. **Update the brain after merge.** Once a PR lands, create or update the corresponding record and run `brain_sync`.
+
 ## Concurrency and auto maintenance
 
 pi-brain is local-first. There are no scheduled background LLM runs.

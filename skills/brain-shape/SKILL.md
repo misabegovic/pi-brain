@@ -216,8 +216,10 @@ These checks are not optional, even in `--auto` mode:
 
 Check the clone's `.env` for `LOCAL_FIRST=true`:
 
-- **LOCAL_FIRST=true:** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks.
-- **Otherwise:** open a PR per phase via the normal git flow. ADR/PRD changes need a human `APPROVED` review before merge.
+- **LOCAL_FIRST=true:** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks. Use commit titles like `<scope>: <verb> <description>` and reference the ADR/PRD/bet in the commit body.
+- **LOCAL_FIRST=false:** open a PR per phase or per bet. Use `.github/pull_request_template.md`. The PR title should be `<scope>: <verb> <short description>`. The description must link to the ADR/PRD/bet/record it implements. ADR/PRD changes need a human `APPROVED` review before merge.
+
+After merge, update the corresponding record in `wiki/<scope>/records/` and run `brain_sync`.
 
 Always run `brain_sync` before declaring a phase done.
 
