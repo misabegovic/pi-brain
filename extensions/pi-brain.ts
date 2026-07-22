@@ -525,18 +525,141 @@ async function ingestUrl(
 async function appendInboxItem(home: BrainHome, title: string, note: string) {
   const id = slugify(title);
   const date = new Date().toISOString().slice(0, 10);
-  const entry = [
-    "",
-    `### ${id} (${date})`,
-    "",
-    `- **kind:** ingest`,
-    `- **scope:** brain`,
-    `- **summary:** ${note}`,
-    "",
-  ].join("\n");
+  const entry = buildInboxEntry(id, date, "ingest", note);
   const inboxPath = join(home.path, "wiki", "_state", "inbox.md");
   const current = await readInbox(home);
   await writeFile(inboxPath, current.trimEnd() + entry + "\n", "utf-8");
+}
+
+function buildInboxEntry(id: string, date: string, kind: string, summary: string): string {
+  return [
+    "",
+    `### ${id} (${date})`,
+    "",
+    `- **kind:** ${kind}`,
+    `- **scope:** brain`,
+    `- **summary:** ${summary}`,
+    "",
+  ].join("\n");
+}
+
+async function replaceInboxItem(home: BrainHome, id: string, newEntry: string) {
+  const inboxPath = join(home.path, "wiki", "_state", "inbox.md");
+  const current = await readInbox(home);
+  const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`\\n### ${escapedId} \\([^)]*\\)[\\s\\S]*?(?=\\n### |$)`);
+  let updated: string;
+  if (pattern.test(current)) {
+    updated = current.replace(pattern, newEntry + "\n");
+  } else {
+    updated = current.trimEnd() + newEntry + "\n";
+  }
+  await writeFile(inboxPath, updated, "utf-8");
+}
+
+interface AutoIngestBatchEntry {
+  source: string;
+  targetPath: string;
+  date: string;
+}
+
+interface AutoIngestBatch {
+  entries: AutoIngestBatchEntry[];
+  createdAt: string;
+}
+
+const AUTO_INGEST_BATCH_PATH = ["wiki", "_state", "auto-ingest-batch.json"];
+
+async function readAutoIngestBatch(home: BrainHome): Promise<AutoIngestBatch> {
+  try {
+    const text = await readFile(join(home.path, ...AUTO_INGEST_BATCH_PATH), "utf-8");
+    return JSON.parse(text) as AutoIngestBatch;
+  } catch {
+    return { entries: [], createdAt: new Date().toISOString().slice(0, 10) };
+  }
+}
+
+async function writeAutoIngestBatch(home: BrainHome, batch: AutoIngestBatch) {
+  await mkdir(join(home.path, "wiki", "_state"), { recursive: true });
+  await writeFile(join(home.path, ...AUTO_INGEST_BATCH_PATH), JSON.stringify(batch, null, 2), "utf-8");
+}
+
+async function appendAutoIngestBatch(home: BrainHome, source: string, targetPath: string) {
+  const batch = await readAutoIngestBatch(home);
+  batch.entries.push({ source, targetPath: relative(home.path, targetPath), date: new Date().toISOString().slice(0, 10) });
+  await writeAutoIngestBatch(home, batch);
+  await flushAutoIngestInboxItem(home, batch);
+}
+
+async function flushAutoIngestInboxItem(home: BrainHome, batch: AutoIngestBatch) {
+  const id = "auto-ingest-batch";
+  const date = batch.createdAt;
+  const summary = `Auto-ingested ${batch.entries.length} source(s). Review at ${AUTO_INGEST_BATCH_PATH.join("/")}. Run /brain:tend to synthesize, or /brain:groom to archive if stale.`;
+  const entry = buildInboxEntry(id, date, "auto-ingest", summary);
+  await replaceInboxItem(home, id, entry);
+}
+
+async function clearAutoIngestBatch(home: BrainHome) {
+  try {
+    await unlink(join(home.path, ...AUTO_INGEST_BATCH_PATH));
+  } catch {
+    // ignore if missing
+  }
+}
+
+async function findRecentSources(home: BrainHome, since: number): Promise<string[]> {
+  const sourcesDir = join(home.path, "sources");
+  if (!(await pathExists(sourcesDir))) return [];
+  const result: string[] = [];
+  async function walk(dir: string) {
+    let entries;
+    try {
+      entries = await readdir(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(full);
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        try {
+          const s = await stat(full);
+          if (s.mtimeMs >= since) {
+            result.push(relative(home.path, full));
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }
+  await walk(sourcesDir);
+  return result;
+}
+
+const AUTO_INGEST_TTL_DAYS = 7;
+
+function daysAgo(dateStr: string): number {
+  const then = new Date(dateStr).getTime();
+  const now = Date.now();
+  return Math.floor((now - then) / (1000 * 60 * 60 * 24));
+}
+
+async function appendLog(home: BrainHome, line: string) {
+  const logPath = join(home.path, "log", "log.md");
+  const current = await readFile(logPath, "utf-8").catch(() => "# Log\n\n");
+  const date = new Date().toISOString().slice(0, 10);
+  await writeFile(logPath, current.trimEnd() + `\n- ${date}: ${line}\n`, "utf-8");
+}
+
+async function autoGroom(home: BrainHome) {
+  const batch = await readAutoIngestBatch(home);
+  if (batch.entries.length > 0 && daysAgo(batch.createdAt) >= AUTO_INGEST_TTL_DAYS) {
+    await replaceInboxItem(home, "auto-ingest-batch", buildInboxEntry("auto-ingest-batch", batch.createdAt, "auto-ingest", "[archived] Stale auto-ingest batch archived by auto-groom."));
+    await clearAutoIngestBatch(home);
+    await appendLog(home, `auto-groom archived stale auto-ingest batch from ${batch.createdAt} (${batch.entries.length} entries)`);
+  }
 }
 
 interface AutonomyState {
@@ -559,17 +682,21 @@ async function writeAutonomy(home: BrainHome, state: AutonomyState) {
 
 const AUTONOMY_PROMPT = `
 Brain autonomy mode is ON.
-You are expected to maintain the pi-brain proactively within this session, but you may only produce AI-suggested drafts — never human-approved commitment-class artifacts without explicit human approval.
-- At session start, call brain_status to orient yourself.
-- Before answering factual questions, prefer brain_ask over guessing.
-- Capture decisions, observations, and open questions with brain_capture.
-- When the inbox has pending items, suggest /brain:tend and summarize what is waiting.
-- When you encounter a pitch or commitment-class decision, you may draft an AI-suggested ADR/PRD/RFC under wiki/<scope>/ai-suggestions/ using the ai-suggestion templates. Do NOT write to wiki/<scope>/{adrs,prds,rfcs}/ and do NOT start implementation unless the user explicitly says the decision is approved.
-- For cross-cutting, uncertain, or controversial commitments, prefer drafting an AI-suggested RFC first to surface perspectives before writing a PRD/ADR.
-- When shaping or investigating, load relevant personas from personas/agents/ and honor active constraints in wiki/<scope>/constraints/. A must violation blocks acceptance.
-- Run brain_sync after making changes to the wiki.
-- If brain.config.yml has auto_connect: true and connectors are configured, run brain_pull_connectors at session start to stay in sync. Do not block user work for this; run it opportunistically and mention it briefly.
-Do not ask the user for permission for small captures; just do them and mention it.
+You are working inside a pi-brain clone. The brain home is {BRAIN_HOME}. Read AGENTS.md and follow its contract, including the "Stop and shape" rule and the adr-before-structural-changes constraint.
+You are expected to maintain the pi-brain proactively within this session. The boundary is:
+- SILENTLY allowed: low-risk maintenance — batch auto-connect ingestions, run brain_sync, auto-groom stale auto-ingest items, synthesize low-risk observations into wiki/<scope>/ai-suggestions/ with ai_suggestion: true and the required banner, flag broken citations or drift.
+- EXPLICITLY gated: commitment-class work — writing/moving ADRs, PRDs, epics, bets, or records; editing approved wiki pages; running the expensive /brain:tend digest on high-risk/structural items; any structural/repo change.
+At session start, call brain_status to orient yourself.
+Before answering factual questions, prefer brain_ask over guessing.
+Capture decisions, observations, and open questions with brain_capture without asking permission.
+When auto-ingesting sources (including via brain_pull_connectors), batch them into a single inbox summary item instead of creating one item per source.
+Auto-groom stale auto-connect batches without asking.
+When the inbox has pending items, distinguish low-risk captures (auto-ingest, minor observations) from high-risk/structural items. Suggest /brain:tend only for the high-risk ones; summarize low-risk ones in ai-suggestions/.
+When you encounter a pitch or commitment-class decision, you may draft an AI-suggested ADR/PRD/RFC under wiki/<scope>/ai-suggestions/ using the ai-suggestion templates. Do NOT write to wiki/<scope>/{adrs,prds,rfcs,epics,bets,records}/ and do NOT start implementation unless the user explicitly says the decision is approved.
+For cross-cutting, uncertain, or controversial commitments, prefer drafting an AI-suggested RFC first to surface perspectives before writing a PRD/ADR.
+When shaping or investigating, load relevant personas from personas/agents/ and honor active constraints in wiki/<scope>/constraints/. A must violation blocks acceptance.
+Run brain_sync after making changes to the wiki.
+If brain.config.yml has auto_connect: true and connectors are configured, run brain_pull_connectors at session start to stay in sync. Do not block user work for this; run it opportunistically and mention it briefly.
 `;
 
 export default function piBrainExtension(pi: ExtensionAPI) {
@@ -845,8 +972,18 @@ export default function piBrainExtension(pi: ExtensionAPI) {
         return { content: [{ type: "text", text: "Connector runner not found at tools/connectors/run.mjs" }], details: {} };
       }
 
+      const startTime = Date.now();
+      const autonomy = await readAutonomy(home);
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
+
+      if (autonomy.enabled) {
+        const recent = await findRecentSources(home, startTime);
+        for (const path of recent) {
+          await appendAutoIngestBatch(home, `auto-connect: ${path}`, join(home.path, path));
+        }
+      }
+
       return {
         content: [{ type: "text", text: output || "Connectors finished with no output." }],
         details: {},
@@ -1146,11 +1283,16 @@ export default function piBrainExtension(pi: ExtensionAPI) {
         }
 
         const relativePath = relative(home.path, targetPath);
-        const note = `Ingested ${params.source} → ${relativePath}. Synthesize into wiki if useful.`;
-        await appendInboxItem(home, `ingest-${params.source}`, note);
+        const autonomy = await readAutonomy(home);
+        if (autonomy.enabled) {
+          await appendAutoIngestBatch(home, params.source, targetPath);
+        } else {
+          const note = `Ingested ${params.source} → ${relativePath}. Synthesize into wiki if useful.`;
+          await appendInboxItem(home, `ingest-${params.source}`, note);
+        }
 
         return {
-          content: [{ type: "text", text: `Ingested to ${relativePath}\n\n${note}` }],
+          content: [{ type: "text", text: `Ingested to ${relativePath}` }],
           details: {},
         };
       } catch (err: any) {
@@ -1596,6 +1738,13 @@ export default function piBrainExtension(pi: ExtensionAPI) {
   // Session start widget
   pi.on("session_start", async (_event, ctx) => {
     await loadBriefing(ctx);
+    const home = await requireBrain(ctx.cwd);
+    if (home) {
+      const state = await readAutonomy(home);
+      if (state.enabled) {
+        await autoGroom(home);
+      }
+    }
   });
 
   pi.on("session_tree", async (_event, ctx) => {
@@ -1608,7 +1757,7 @@ export default function piBrainExtension(pi: ExtensionAPI) {
     const state = await readAutonomy(home);
     if (!state.enabled) return {};
 
-    let extra = AUTONOMY_PROMPT;
+    let extra = AUTONOMY_PROMPT.replace("{BRAIN_HOME}", home.path);
     if (await readAutoConnect(home)) {
       extra += "\nauto_connect is enabled in brain.config.yml — run brain_pull_connectors opportunistically at session start if connectors are configured, but do not block user work for it.\n";
     }
