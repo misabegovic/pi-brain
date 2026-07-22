@@ -129,6 +129,7 @@ async function main() {
   const scopeWikiDir = join(WIKI_DIR, chosenScope);
   await mkdir(scopeWikiDir, { recursive: true });
   await mkdir(join(scopeWikiDir, "constraints"), { recursive: true });
+  await mkdir(join(scopeWikiDir, "records"), { recursive: true });
 
   const tree = await getFileTree(repoPath);
   const treeText = tree.length ? tree.slice(0, 50).join("\n") : "(empty tree)";
