@@ -1,28 +1,29 @@
 ---
 name: brain
-description: Use the connected brain instance as persistent working memory — capture notes, ask questions, and digest queued work.
+description: Use the connected pi-brain clone as persistent working memory — capture notes, ask questions, validate the corpus, and digest queued work.
 ---
 
 # brain skill
 
-You are wearing the brain skill. A brain instance is available to pi via the `pi-brain` extension. Use it as your long-term memory, not your own assumptions.
+You are wearing the brain skill. The current project is (or should be) a pi-brain clone. Use the local `wiki/`, `sources/`, and `wiki/_state/inbox.md` as your long-term memory, not your own assumptions.
 
 ## When to use
 
 - The user asks "what do we know about X?" → `brain_ask`.
 - The user makes a decision, observation, or asks to "remember this" → `brain_capture`.
 - The user says "tend the brain", "what's waiting?", or "digest the queue" → `brain_tend`.
+- The user wants a health check → `brain_validate` or `brain_sync`.
 - At the start of a task, glance at `brain_status` if the session widget is not enough.
 
 ## Tools
 
 ### `brain_status`
 
-Read the brain's status dashboard and inbox summary. Good for grounding.
+Read the status dashboard and inbox summary.
 
 ### `brain_capture`
 
-Capture a note into the brain inbox.
+Capture a note into the inbox.
 
 - `note`: the full text of the note.
 - `scope` (optional): repo name, `org`, or `brain`.
@@ -32,25 +33,34 @@ Keep captures factual and cite sources when you have them. Do not rewrite the no
 
 ### `brain_ask`
 
-Ask the brain a question. The brain searches the wiki synthesis first, then sources.
+Ask a question. The tool searches the wiki synthesis and sources with TF-IDF ranking, stop-word filtering, and term-frequency scoring.
 
 - `question`: plain-language question.
-- `scope` (optional): limit to a repo/org/brain scope.
 
 If the answer is incomplete, say so and suggest capturing the missing signal.
 
 ### `brain_tend`
 
-List the pending inbox queue. This tool is read-only; use it to summarize what needs work, then ask the user which items to digest. Do not perform expensive synthesis autonomously.
+List the pending inbox queue. Use it to summarize what needs work, then ask the user which items to digest. Do not perform expensive synthesis autonomously.
 
-- `budget` (optional): count, time-box, kind filter, or item id.
+### `brain_validate`
+
+Validate frontmatter conformance of wiki pages. Required fields: `kind`, `status`, `confidence`.
+
+### `brain_views`
+
+Regenerate `wiki/index.md` from the corpus.
+
+### `brain_sync`
+
+Run `brain_validate` + `brain_views` in one step.
 
 ## Rules
 
 1. **Prefer the corpus over memory.** If you are unsure of a fact, ask the brain.
 2. **Capture first, shape later.** A quick capture is low friction. Promoting to ADR/PRD (`/brain:shape`) is a separate, human-gated step.
 3. **Confidence floor.** Any claim you author starts at low confidence unless you can cite evidence.
-4. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the brain CLI.
+4. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the intended workflow.
 5. **No autonomous LLM schedules.** Only `/brain:tend` when the user asks; never queue long-running work for later.
 
 ## Commands the human can type
@@ -59,4 +69,18 @@ List the pending inbox queue. This tool is read-only; use it to summarize what n
 - `/brain:capture <note>`
 - `/brain:ask <question>`
 - `/brain:tend [budget]`
-- `/brain:sync` — validate health
+- `/brain:sync` — validate + regenerate views
+- `/brain:shape <scope> <pitch>` — human-gated ADR/PRD authoring
+- `/brain:in <path-or-url>` — ingest a source into `sources/`
+- `/brain:setup` — bootstrap or reconfigure a pi-brain home
+- `/brain:connect` — run configured pull connectors
+- `/brain:auto` — toggle autonomous brain-maintenance mode
+- `/brain:continue [slug]` — continue in-flight work
+- `/brain:investigate <question>` — investigate a bug, risk, or open question
+- `/brain:links` — derive and show the link graph
+- `/brain:groom` — groom the corpus
+- `/brain:state [scope]` — regenerate state/roadmap/options pages
+- `/brain:deepdive <path> [question]` — transiently inspect a target repo file/directory
+- `/brain:ingest-repo <path-or-url> [scope]` — onboard a repository as a maintained project
+- `/brain:projects` — list onboarded projects
+- `/brain:convert [subdir]` — convert current repo into a pi-brain clone

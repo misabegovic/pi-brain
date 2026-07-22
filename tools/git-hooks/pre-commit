@@ -1,0 +1,10 @@
+#!/bin/sh
+# pi-brain pre-commit hook
+# Runs validation + view regeneration before allowing a commit.
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+BRAIN_SYNC="$REPO_ROOT/tools/brain-sync.mjs"
+
+node "$BRAIN_SYNC"

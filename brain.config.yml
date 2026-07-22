@@ -1,0 +1,34 @@
+# pi-brain configuration for this project/customer instance.
+#
+# This is the per-instance rulebook: org name, active repos, and connector
+# settings. The shared mechanism lives in AGENTS.md and the pi-brain package.
+
+# Human-readable organisation or customer name.
+org: "pi-brain"
+
+# Repositories this pi-brain actively tracks.
+# Paths are resolved relative to $BRAIN_PROJECTS_ROOT (default: ~/projects/)
+# or as absolute paths.
+active_repos: []
+
+# If true, autonomous mode may run configured pull connectors at session start.
+auto_connect: false
+
+# Repos that were tracked once and are now archived.
+archived_repos: []
+
+# Connector configuration (all pull-only, off until configured).
+# Credentials live in .env (read-only-scoped tokens), never in this file.
+connectors:
+  github:
+    repos: []
+  notion:
+    pages: []
+  slack:
+    channels: []
+  datadog:
+    site: ""
+  langfuse:
+    host: ""
+  structure:
+    repos: []

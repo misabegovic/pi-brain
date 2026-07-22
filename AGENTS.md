@@ -1,14 +1,14 @@
 # AGENTS.md — pi-brain
 
-You are the agent maintaining **pi-brain**: a pi-native home for the brain knowledge-base pattern.
+You are the agent maintaining **pi-brain**: a self-contained, cloneable knowledge-base template for pi.
 
-This repository does not replace the [brain](../brain) substrate. It is the **shell**: the pi package (extension, skill, prompt template, and theme) that lets pi sessions read, capture, and tend a brain instance.
+The original [brain](../brain) repository is the **inspiration and guideline**, not a dependency. A cloned pi-brain instance is its own substrate: it has its own `wiki/`, `sources/`, `log/`, and `brain.config.yml`. Your job is to keep that instance accurate, useful, and well-organized.
 
 ## Mission
 
-Make pi a capable tenant of a brain instance:
+Make each pi-brain clone a reliable working memory for its project or customer:
 
-1. **Always know the state of the brain** at session start — briefing, inbox, recent changes.
+1. **Know the state at session start** — briefing, inbox, recent changes.
 2. **Capture signal with one command** — decisions, questions, observations, sources.
 3. **Answer from the corpus** before guessing — prefer `brain_ask` over hallucinating facts.
 4. **Tend on human request** — digest queued work, but never autonomously run the expensive shape workflow without explicit approval.
@@ -17,38 +17,87 @@ Make pi a capable tenant of a brain instance:
 
 ```
 pi-brain/
-├── extensions/pi-brain.ts    # pi extension: tools, commands, widgets
-├── skills/brain/SKILL.md     # agent instructions for using the brain
-├── prompts/brain-home.md     # /brain-home prompt template
-├── themes/pi-brain.json      # cozy TUI theme
-├── AGENTS.md                 # this file
-└── README.md                 # user-facing quickstart
+├── brain.config.yml        # org + active repos + connectors
+├── wiki/                   # synthesis layer
+│   ├── index.md            # auto-generated home
+│   └── _state/inbox.md     # tend queue
+├── sources/                # immutable inputs
+├── log/log.md              # append-only log
+├── extensions/pi-brain.ts  # pi extension: tools, commands, widgets
+├── skills/                 # agent skills
+├── prompts/                # prompt templates
+├── themes/                 # TUI theme
+├── AGENTS.md               # this file
+└── README.md               # human onboarding
 ```
 
 ## Governance
 
-1. **Brain home is the source of truth.** pi-brain reads and writes through the brain CLI (`tools/brain.py`). It does not maintain its own wiki or state files (except this repo's own docs).
-2. **Immutable sources.** When capturing, prefer inbox items or new `sources/` snapshots. Never rewrite existing `sources/` or `wiki/` pages directly except through the brain's intended commands.
-3. **Confidence floor.** Any synthesis or decision pi-brain authors on its own starts at `confidence: low`. It cannot self-promote to `high` in the same change.
-4. **PR-required for this repo.** Changes to `pi-brain` itself land via PR with CI green. The brain instance it talks to may be in `LOCAL_FIRST=true` mode; respect that.
+1. **This repo is the source of truth.** Read and write through the pi-brain extension tools or the documented file conventions. Do not depend on an external brain repository.
+2. **Immutable sources.** When capturing, prefer inbox items or new `sources/` snapshots. Never rewrite existing `sources/` or `wiki/` pages directly except through the intended workflow.
+3. **Confidence floor.** Any synthesis or decision you author on your own starts at `confidence: low`. You cannot self-promote to `high` in the same change.
+4. **PR-required for pi-brain itself.** Changes to the pi-brain product repo land via PR with CI green. Project/customer clones may use `LOCAL_FIRST=true` mode; respect the per-instance rules.
+
+## Concurrency and auto maintenance
+
+pi-brain is local-first. There are no scheduled background LLM runs.
+
+- **Autonomous mode** adds instructions to each turn; the agent may run maintenance tools opportunistically.
+- **Auto maintenance never locks files.** It uses short, atomic reads/writes.
+- **Manual work wins.** If you start `/brain:shape`, `/brain:continue`, `/brain:investigate`, or any explicit command, the agent yields. Any auto-generated suggestions wait for the next idle turn.
+- **Auto-connect** (`auto_connect: true`) instructs the agent to run configured pull connectors at session start, but it must not block your work.
+- **AI-suggestion guardrail:** even in autonomous mode, the agent may only draft under `wiki/<scope>/ai-suggestions/`. It cannot write to approved shelves or start implementation without explicit human approval.
+
+## Citations
+
+Every claim in the wiki must be traceable to an immutable source.
+
+### Required
+
+1. `sources:` frontmatter field on wiki pages — a list of source file paths the page is built from.
+2. Inline citations in the form `(source: <relative-source-path>)` or a markdown link to the source file.
+3. `## Related` section linking to prior ADRs, PRDs, and sources.
+
+### Discipline
+
+- Do not state a fact in the wiki without citing a source.
+- Do not rewrite sources to match the wiki; update the wiki and cite the new source snapshot.
+- If a source changes, ingest the new snapshot and update the page rather than editing the old source.
+
+### Verification
+
+`brain_sync` and `brain_links` together check that cited source files exist and that wiki links resolve. Missing or broken citations are surfaced as warnings, not silent failures.
 
 ## Extension behavior
 
 The extension (`extensions/pi-brain.ts`) should:
 
-- Auto-discover the brain home via `PI_BRAIN_HOME`, `.pi/brain-home`, or sibling `brain/`.
-- On `session_start`, load `brain status` and `brain inbox summary` and render a compact footer/widget.
-- Register tools that wrap brain CLI commands and return clean text for the agent.
-- Register `/brain:*` commands for quick human access.
-- Be defensive: if the brain home is missing or the CLI fails, return helpful setup text, not stack traces.
+- Treat the project root as the brain home by default (overridable via `PI_BRAIN_HOME` or `.pi/brain-home`).
+- On `session_start`, read `brain.config.yml`, count wiki/sources/inbox, and render a compact widget.
+- Register tools that operate on local files and return clean text.
+- Register `/brain:*` commands for quick human access, including `/brain:shape`, `/brain:in`, `/brain:setup`, `/brain:connect`, `/brain:auto`, `/brain:continue`, and `/brain:investigate`.
+- Be defensive: if the directory is not a pi-brain home, return helpful setup text, not stack traces.
+
+## Personas
+
+The agent wears different hats depending on the work:
+
+- `personas/agents/pm.md` — framing, appetite, user personas.
+- `personas/agents/tech-lead.md` — alternatives, consequences, ADRs.
+- `personas/agents/developer.md` — implementation, pattern fit, build phase.
+- `personas/agents/security-reviewer.md` — trust boundaries and risk.
+- `personas/users/` — customer/user archetypes per project/customer.
+
+Skills instruct the agent when to load each persona.
 
 ## Skill behavior
 
-The skill (`skills/brain/SKILL.md`) teaches the agent:
+The skills (`skills/brain/SKILL.md`, `skills/brain-shape/SKILL.md`, etc.) teach the agent:
 
-- When to use each brain tool.
+- When to use each tool.
 - How to format captures (scope, kind, confidence, source citation).
-- That `/brain:shape` is human-gated and follows brain's ADR/PRD rules.
+- That `/brain:shape` is human-gated and follows ADR/PRD rules.
+- That unsupervised/autonomous output must live in `ai-suggestions/`.
 
 ## Prompt template
 
