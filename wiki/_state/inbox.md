@@ -55,4 +55,9 @@ Items are appended below. The agent tends them on request.
 - **scope:** brain
 - **summary:** User asks whether to create the first version release (0.1.0) and first package for pi-brain. This aligns with the upstream-template-sync ADR which assumes tagged template versions. Need to decide: GitHub release vs npm package vs both; versioning scheme; what 0.1.0 includes; release notes; package publishing workflow. This is a product/release decision.
 - **status:** resolved — created ADR and bet; cut GitHub release v0.1.0 and git tag. npm package prepared but not published due to missing auth. Record: [Record — pi-brain v0.1.0 release](../../brain/records/version-0-1-0.md).
+### user-decided-to-abort-the-pi-brain-pi-mind-rebra (2026-07-23)
+
+- **kind:** decision
+- **scope:** brain
+- **summary:** User decided to abort the pi-brain → pi-mind rebrand and keep pi-brain for now. Rationale: despite npm/GitHub naming collisions, the rebrand cost (command namespace change, file renames, docs, package migration, deprecation) outweighs the benefit at v0.1.0. Will continue with scoped npm package @misabegovic/pi-brain and revisit if the project grows or naming conflicts become a real problem. Rebrand ADR/bet were discarded.
 
