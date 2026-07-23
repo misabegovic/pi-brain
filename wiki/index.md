@@ -15,11 +15,13 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
+- [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
 ### bet
 - [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
 - [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
+- [Bet — Cut pi-brain v0.1.0](wiki/brain/bets/version-0-1-0.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
