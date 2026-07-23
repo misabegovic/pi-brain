@@ -7,11 +7,11 @@
  *
  * Capabilities:
  * - Registers tools: brain_status, brain_capture, brain_ask, brain_tend,
- *   brain_validate, brain_views, brain_sync, brain_links, brain_state,
+ *   brain_validate, brain_views, brain_sync, brain_update, brain_links, brain_state,
  *   brain_deepdive, brain_ingest_repo, brain_projects, brain_convert,
  *   brain_pull_connectors, brain_autonomy, brain_ingest
  * - Registers commands: /brain, /brain:capture, /brain:ask, /brain:tend,
- *   /brain:sync, /brain:shape, /brain:in, /brain:setup, /brain:connect,
+ *   /brain:sync, /brain:update, /brain:shape, /brain:in, /brain:setup, /brain:connect,
  *   /brain:auto, /brain:continue, /brain:investigate, /brain:links,
  *   /brain:groom, /brain:state, /brain:deepdive, /brain:ingest-repo,
  *   /brain:projects, /brain:convert
@@ -662,6 +662,130 @@ async function autoGroom(home: BrainHome) {
   }
 }
 
+const TEMPLATE_OWNER = "misabegovic";
+const TEMPLATE_REPO = "pi-brain";
+
+const TEMPLATE_OWNED_PATHS = [
+  "AGENTS.md",
+  "GETTING_STARTED.md",
+  "README.md",
+  "extensions",
+  "skills",
+  "prompts",
+  "themes",
+  "tools/templates",
+  "tools/connectors",
+  "tools/brain-convert.mjs",
+  "tools/brain-ingest-repo.mjs",
+  "tools/brain-links.mjs",
+  "tools/brain-projects.mjs",
+  "tools/brain-state.mjs",
+  "tools/brain-sync.mjs",
+  "tools/clone-pi-brain.sh",
+  "tools/setup-local.sh",
+  "tools/git-hooks",
+  ".github",
+];
+
+interface TemplateChange {
+  path: string;
+  status: "added" | "modified" | "removed";
+}
+
+async function fetchJson(url: string): Promise<any> {
+  const response = await fetch(url, {
+    headers: { "User-Agent": "pi-brain-update" },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+  }
+  return response.json();
+}
+
+async function getLatestTemplateVersion(): Promise<string> {
+  const data = await fetchJson(`https://api.github.com/repos/${TEMPLATE_OWNER}/${TEMPLATE_REPO}/releases/latest`);
+  return data.tag_name;
+}
+
+async function cloneUpstreamTemplate(home: BrainHome, version: string): Promise<string> {
+  const upstreamDir = join(home.path, ".pi", "upstream-ref");
+  await mkdir(join(home.path, ".pi"), { recursive: true });
+  // Remove existing upstream ref if present.
+  try {
+    await execFilePromise("rm", ["-rf", upstreamDir]);
+  } catch {
+    // ignore
+  }
+  const result = await execFilePromise("git", [
+    "clone",
+    "--branch", version,
+    "--depth", "1",
+    `https://github.com/${TEMPLATE_OWNER}/${TEMPLATE_REPO}.git`,
+    upstreamDir,
+  ], { cwd: home.path });
+  if (result.code !== 0) {
+    throw new Error(result.stderr || `Failed to clone upstream template at ${version}`);
+  }
+  return upstreamDir;
+}
+
+async function readTemplateVersion(home: BrainHome): Promise<string | undefined> {
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    return extractSimpleYamlValue(config, "template_version");
+  } catch {
+    return undefined;
+  }
+}
+
+async function updateTemplateVersion(home: BrainHome, version: string) {
+  const configPath = join(home.path, "brain.config.yml");
+  const config = await readFile(configPath, "utf-8");
+  if (config.match(/^template_version:/m)) {
+    await writeFile(configPath, config.replace(/^template_version:.*$/m, `template_version: "${version}"`), "utf-8");
+  } else {
+    await writeFile(configPath, config.trimEnd() + `\n\n# pi-brain template version this clone was created from or last updated to.\ntemplate_version: "${version}"\n`, "utf-8");
+  }
+}
+
+async function diffTemplatePaths(home: BrainHome, upstreamDir: string): Promise<TemplateChange[]> {
+  const changes: TemplateChange[] = [];
+  for (const rel of TEMPLATE_OWNED_PATHS) {
+    const localPath = join(home.path, rel);
+    const upstreamPath = join(upstreamDir, rel);
+    const localExists = await pathExists(localPath);
+    const upstreamExists = await pathExists(upstreamPath);
+    if (!localExists && upstreamExists) {
+      changes.push({ path: rel, status: "added" });
+    } else if (localExists && !upstreamExists) {
+      changes.push({ path: rel, status: "removed" });
+    } else if (localExists && upstreamExists) {
+      const diff = await execFilePromise("diff", ["-rq", localPath, upstreamPath], { cwd: home.path });
+      if (diff.code !== 0) {
+        changes.push({ path: rel, status: "modified" });
+      }
+    }
+  }
+  return changes;
+}
+
+async function applyTemplateChange(home: BrainHome, upstreamDir: string, change: TemplateChange) {
+  const localPath = join(home.path, change.path);
+  const upstreamPath = join(upstreamDir, change.path);
+  if (change.status === "removed") {
+    await execFilePromise("rm", ["-rf", localPath]);
+  } else {
+    const parent = dirname(localPath);
+    await mkdir(parent, { recursive: true });
+    const s = await stat(upstreamPath);
+    if (s.isDirectory()) {
+      await execFilePromise("cp", ["-R", upstreamPath, localPath]);
+    } else {
+      await copyFile(upstreamPath, localPath);
+    }
+  }
+}
+
 interface AutonomyState {
   enabled: boolean;
 }
@@ -955,6 +1079,73 @@ export default function piBrainExtension(pi: ExtensionAPI) {
         content: [{ type: "text", text: `${viewMessage}\n\n${errorText}` }],
         details: {},
       };
+    },
+  });
+
+  pi.registerTool({
+    name: "brain_update",
+    label: "Brain update",
+    description: "Pull upstream pi-brain template updates into this clone. Shows changes by default; apply with apply=true.",
+    parameters: Type.Object({
+      version: Type.Optional(Type.String({ description: "Target template version tag (e.g., v0.2.0). Defaults to latest release." })),
+      apply: Type.Optional(Type.Boolean({ description: "If true, apply all template-owned changes. If false, show the diff summary." })),
+    }),
+    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+
+      try {
+        const currentVersion = await readTemplateVersion(home);
+        const targetVersion = params.version || (await getLatestTemplateVersion());
+
+        if (currentVersion === targetVersion) {
+          return {
+            content: [{ type: "text", text: `This clone is already on template version ${targetVersion}.` }],
+            details: {},
+          };
+        }
+
+        const upstreamDir = await cloneUpstreamTemplate(home, targetVersion);
+        const changes = await diffTemplatePaths(home, upstreamDir);
+
+        if (changes.length === 0) {
+          return {
+            content: [{ type: "text", text: `No template-owned changes between ${currentVersion || "unknown"} and ${targetVersion}.` }],
+            details: {},
+          };
+        }
+
+        const summary = changes.map((c) => `- ${c.status}: ${c.path}`).join("\n");
+
+        if (!params.apply) {
+          return {
+            content: [{
+              type: "text",
+              text: `Template update from ${currentVersion || "unknown"} to ${targetVersion}:\n${summary}\n\nRun again with apply=true to apply these changes, or specify a version with version=...`,
+            }],
+            details: {},
+          };
+        }
+
+        for (const change of changes) {
+          await applyTemplateChange(home, upstreamDir, change);
+        }
+        await updateTemplateVersion(home, targetVersion);
+        await appendLog(home, `applied template update from ${currentVersion || "unknown"} to ${targetVersion}`);
+
+        return {
+          content: [{
+            type: "text",
+            text: `Applied ${changes.length} template-owned change(s) from ${currentVersion || "unknown"} to ${targetVersion}.\n${summary}`,
+          }],
+          details: {},
+        };
+      } catch (err: any) {
+        return {
+          content: [{ type: "text", text: `Update failed: ${err?.message ?? err}` }],
+          details: {},
+        };
+      }
     },
   });
 
@@ -1410,6 +1601,19 @@ export default function piBrainExtension(pi: ExtensionAPI) {
     },
   });
 
+  pi.registerCommand("brain:update", {
+    description: "Pull upstream pi-brain template updates into this clone",
+    handler: async (args, ctx) => {
+      const home = await requireBrain(ctx.cwd, ctx);
+      if (!home) return;
+      const tokens = args.trim().split(/\s+/).filter(Boolean);
+      const apply = tokens.includes("--apply");
+      const versionFlag = tokens.find((t) => t.startsWith("--version="));
+      const version = versionFlag ? versionFlag.replace("--version=", "") : undefined;
+      pi.sendUserMessage(`/tool:brain_update ${apply ? "apply=true " : ""}${version ? `version=${version}` : ""}`.trim());
+    },
+  });
+
   pi.registerCommand("brain:shape", {
     description: "Human-gated ADR/PRD/epic/bet authoring in pi-brain",
     handler: async (args, ctx) => {
@@ -1486,6 +1690,9 @@ export default function piBrainExtension(pi: ExtensionAPI) {
         '    host: ""',
         "  structure:",
         "    repos: []",
+        "",
+        "# pi-brain template version this clone was created from or last updated to.",
+        `template_version: "v0.2.0"`,
         "",
       ];
       await writeFile(join(cwd, "brain.config.yml"), configLines.join("\n"), "utf-8");

@@ -221,6 +221,7 @@ my-project-brain/
 | `/brain:ask <question>` | Ask a question over the wiki + sources corpus. |
 | `/brain:tend` | Digest the tend queue. |
 | `/brain:sync` | Validate frontmatter and regenerate `wiki/index.md`. |
+| `/brain:update [--version=<tag>] [--apply]` | Pull upstream pi-brain template updates into this clone. |
 | `/brain:shape <scope> <pitch>` | Human-gated ADR/PRD/epic/bet authoring. |
 | `/brain:in <path-or-url>` | Ingest a file, directory, or URL into `sources/` (URLs fetched best-effort). |
 | `/brain:setup` | Bootstrap or reconfigure this directory as a pi-brain home. |
