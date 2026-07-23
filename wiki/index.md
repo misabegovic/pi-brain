@@ -11,11 +11,13 @@ This is the synthesis layer for this pi-brain instance.
 ## Pages
 
 ### decision
+- [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
 
 ### bet
+- [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
 - [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
 
@@ -33,11 +35,21 @@ This is the synthesis layer for this pi-brain instance.
 - [PRD — Upstream template sync for pi-brain clones](wiki/brain/prds/upstream-template-sync.md)
 
 ### record
+- [Record — brain-state preserves custom content](wiki/brain/records/brain-state-preserves-custom-content.md)
 - [Record — Smarter autonomy for pi-brain clones](wiki/brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](wiki/brain/records/stronger-default-implementation-guardrails.md)
 
 ### meta
 - [pi-brain home](wiki/index.md)
+
+### options
+- [Options — org](wiki/org/options.md)
+
+### roadmap
+- [Roadmap — org](wiki/org/roadmap.md)
+
+### state
+- [State — org](wiki/org/state.md)
 
 ## Getting started
 

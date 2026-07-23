@@ -2,18 +2,29 @@
 /**
  * brain-state — regenerate state, roadmap, and options pages from the corpus.
  *
+ * Preserves custom content outside of marker-delimited sections.
+ *
  * Usage:
  *   node tools/brain-state.mjs [scope]
  *
  * If no scope is given, generates org-level pages at wiki/org/.
  */
 
-import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
+import { readFile, writeFile, readdir, mkdir, access } from "node:fs/promises";
 import { join, dirname } from "node:path";
 
 const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
 const WIKI_DIR = join(CWD, "wiki");
 const SCOPE = process.argv[2] || "org";
+
+async function pathExists(p) {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 async function getMarkdownFiles(dir) {
   const result = [];
@@ -58,6 +69,27 @@ function extractTitle(body) {
   return body.split("\n")[0].replace(/^#+\s*/, "").trim();
 }
 
+function markerSection(lines, name) {
+  return [`<!-- brain-state: ${name} -->`, ...lines, `<!-- /brain-state -->`];
+}
+
+function hasMarker(text, name) {
+  return text.includes(`<!-- brain-state: ${name} -->`);
+}
+
+function replaceMarkerSection(text, name, newLines) {
+  const startMarker = `<!-- brain-state: ${name} -->`;
+  const endMarker = `<!-- /brain-state -->`;
+  const startIdx = text.indexOf(startMarker);
+  if (startIdx === -1) return text;
+  const endIdx = text.indexOf(endMarker, startIdx + startMarker.length);
+  if (endIdx === -1) return text;
+  const before = text.slice(0, startIdx + startMarker.length);
+  const after = text.slice(endIdx);
+  const inner = newLines.length > 0 ? "\n" + newLines.join("\n") + "\n" : "\n";
+  return before + inner + after;
+}
+
 async function main() {
   const files = await getMarkdownFiles(WIKI_DIR);
   const pages = [];
@@ -84,7 +116,7 @@ async function main() {
   const scopeDir = join(WIKI_DIR, SCOPE);
   await mkdir(scopeDir, { recursive: true });
 
-  const stateLines = [
+  const stateTemplate = [
     "---",
     "kind: state",
     "status: living",
@@ -99,11 +131,11 @@ async function main() {
     "",
     "## What is stable",
     "",
-    ...highConfidence.map((p) => `- [${p.title}](${p.path})`),
+    ...markerSection(highConfidence.map((p) => `- [${p.title}](${p.path})`), "stable"),
     "",
     "## What is uncertain",
     "",
-    ...uncertain.map((p) => `- [${p.title}](${p.path})`),
+    ...markerSection(uncertain.map((p) => `- [${p.title}](${p.path})`), "uncertain"),
     "",
     "## What changed recently",
     "",
@@ -115,7 +147,7 @@ async function main() {
     "",
   ];
 
-  const roadmapLines = [
+  const roadmapTemplate = [
     "---",
     "kind: roadmap",
     "status: living",
@@ -126,11 +158,11 @@ async function main() {
     "",
     "## Committed",
     "",
-    ...committed.map((p) => `- [${p.title}](${p.path})`),
+    ...markerSection(committed.map((p) => `- [${p.title}](${p.path})`), "committed"),
     "",
     "## In shaping",
     "",
-    ...shaping.map((p) => `- [${p.title}](${p.path})`),
+    ...markerSection(shaping.map((p) => `- [${p.title}](${p.path})`), "shaping"),
     "",
     "## Candidate",
     "",
@@ -142,7 +174,7 @@ async function main() {
     "",
   ];
 
-  const optionsLines = [
+  const optionsTemplate = [
     "---",
     "kind: options",
     "status: living",
@@ -153,7 +185,7 @@ async function main() {
     "",
     "## Where we could go next",
     "",
-    ...shaping.map((p) => `- [${p.title}](${p.path})`),
+    ...markerSection(shaping.map((p) => `- [${p.title}](${p.path})`), "shaping"),
     "",
     "## What we are not doing",
     "",
@@ -165,11 +197,56 @@ async function main() {
     "",
   ];
 
-  await writeFile(join(scopeDir, "state.md"), stateLines.join("\n"), "utf-8");
-  await writeFile(join(scopeDir, "roadmap.md"), roadmapLines.join("\n"), "utf-8");
-  await writeFile(join(scopeDir, "options.md"), optionsLines.join("\n"), "utf-8");
+  const targets = [
+    { name: "state.md", template: stateTemplate, sections: ["stable", "uncertain"] },
+    { name: "roadmap.md", template: roadmapTemplate, sections: ["committed", "shaping"] },
+    { name: "options.md", template: optionsTemplate, sections: ["shaping"] },
+  ];
 
-  console.log(`Regenerated ${SCOPE}/state.md, ${SCOPE}/roadmap.md, ${SCOPE}/options.md`);
+  for (const target of targets) {
+    const targetPath = join(scopeDir, target.name);
+    const exists = await pathExists(targetPath);
+    if (!exists) {
+      await writeFile(targetPath, target.template.join("\n"), "utf-8");
+      console.log(`Created ${SCOPE}/${target.name}`);
+      continue;
+    }
+
+    const existing = await readFile(targetPath, "utf-8");
+    const hasAnyMarker = target.sections.some((name) => hasMarker(existing, name));
+    if (!hasAnyMarker) {
+      console.warn(`Skipping ${SCOPE}/${target.name}: existing file has no brain-state markers. Delete it to regenerate from template.`);
+      continue;
+    }
+
+    let updated = existing;
+    for (const sectionName of target.sections) {
+      const sectionLines = markerSection(
+        extractSectionLines(target.template, sectionName),
+        sectionName
+      );
+      // Strip markers; replaceMarkerSection adds them back.
+      const innerLines = sectionLines.slice(1, -1);
+      updated = replaceMarkerSection(updated, sectionName, innerLines);
+    }
+
+    if (updated !== existing) {
+      await writeFile(targetPath, updated, "utf-8");
+      console.log(`Updated ${SCOPE}/${target.name}`);
+    } else {
+      console.log(`No changes ${SCOPE}/${target.name}`);
+    }
+  }
+}
+
+function extractSectionLines(template, name) {
+  const startMarker = `<!-- brain-state: ${name} -->`;
+  const endMarker = `<!-- /brain-state -->`;
+  const startIdx = template.indexOf(startMarker);
+  if (startIdx === -1) return [];
+  const endIdx = template.indexOf(endMarker, startIdx);
+  if (endIdx === -1) return [];
+  return template.slice(startIdx + 1, endIdx);
 }
 
 main().catch((err) => {

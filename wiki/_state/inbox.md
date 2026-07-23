@@ -43,4 +43,10 @@ Items are appended below. The agent tends them on request.
 - **scope:** brain
 - **summary:** Autonomy boundary clarified by user: in auto mode, the agent must NOT silently write ADRs, reshape the wiki, or run expensive /brain:tend digest without asking. ALLOWED silently: batch auto-connect ingestions, auto-groom stale items, smart-tend low-risk items into ai-suggestions/, run brain_sync after captures, flag drift, suggest shape. Agent must also be aware it's in brain setup and follow brain instructions. This is the design brief for smarter autonomy.
 - **status:** resolved — encoded in [ADR — Smarter autonomy boundaries](../../brain/adrs/smarter-autonomy.md) and implemented. Record: [Record — Smarter autonomy for pi-brain clones](../../brain/records/smarter-autonomy.md).
+### bug-report-from-another-session-backfilling-upst (2026-07-23)
+
+- **kind:** task
+- **scope:** brain
+- **summary:** Bug report from another session: backfilling upstream tools/brain-state.mjs and running brain_sync overwrites project-specific content in wiki/org/state.md, roadmap.md, and options.md with generic templates. User restored custom state page and used brain_validate + brain_views instead. Need to decide whether to patch upstream state runner or change maintenance workflow. This breaks the contract that project-specific synthesis pages should not be clobbered by generic templates.
+- **status:** resolved — patched tools/brain-state.mjs to preserve custom content via marker comments. ADR: [ADR — brain-state must preserve custom content](../../brain/adrs/brain-state-preserves-custom-content.md). Record: [Record — brain-state preserves custom content](../../brain/records/brain-state-preserves-custom-content.md).
 
