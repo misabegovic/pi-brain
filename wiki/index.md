@@ -40,6 +40,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — brain-state preserves custom content](wiki/brain/records/brain-state-preserves-custom-content.md)
 - [Record — Smarter autonomy for pi-brain clones](wiki/brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](wiki/brain/records/stronger-default-implementation-guardrails.md)
+- [Record — pi-brain v0.1.0 release](wiki/brain/records/version-0-1-0.md)
 
 ### meta
 - [pi-brain home](wiki/index.md)
