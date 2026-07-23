@@ -49,4 +49,9 @@ Items are appended below. The agent tends them on request.
 - **scope:** brain
 - **summary:** Bug report from another session: backfilling upstream tools/brain-state.mjs and running brain_sync overwrites project-specific content in wiki/org/state.md, roadmap.md, and options.md with generic templates. User restored custom state page and used brain_validate + brain_views instead. Need to decide whether to patch upstream state runner or change maintenance workflow. This breaks the contract that project-specific synthesis pages should not be clobbered by generic templates.
 - **status:** resolved — patched tools/brain-state.mjs to preserve custom content via marker comments. ADR: [ADR — brain-state must preserve custom content](../../brain/adrs/brain-state-preserves-custom-content.md). Record: [Record — brain-state preserves custom content](../../brain/records/brain-state-preserves-custom-content.md).
+### user-asks-whether-to-create-the-first-version-re (2026-07-23)
+
+- **kind:** task
+- **scope:** brain
+- **summary:** User asks whether to create the first version release (0.1.0) and first package for pi-brain. This aligns with the upstream-template-sync ADR which assumes tagged template versions. Need to decide: GitHub release vs npm package vs both; versioning scheme; what 0.1.0 includes; release notes; package publishing workflow. This is a product/release decision.
 
