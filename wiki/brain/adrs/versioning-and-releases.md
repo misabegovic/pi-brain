@@ -22,7 +22,7 @@ Each release produces:
 
 1. A **git tag** in the format `v0.1.0`.
 2. A **GitHub release** with release notes summarizing the changes and linking to ADRs/records.
-3. An **npm package** (`pi-brain`) so users can install the extension/skills/prompts/themes via `pi install pi-brain`.
+3. An **npm package** (`@misabegovic/pi-brain`) so users can install the extension/skills/prompts/themes via `pi install @misabegovic/pi-brain`. The unscoped name `pi-brain` is already taken on npm, so we use a scoped package under the maintainer's npm username.
 
 The template-clone workflow and the pi-package workflow are complementary:
 - Clone the repo or use a GitHub template to create a new brain home.

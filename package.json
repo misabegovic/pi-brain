@@ -1,5 +1,5 @@
 {
-  "name": "pi-brain",
+  "name": "@misabegovic/pi-brain",
   "version": "0.1.0",
   "description": "A cozy knowledge home for pi. Brings the brain wiki pattern into pi sessions as an extension, skill, prompt, and theme.",
   "keywords": ["pi-package", "brain", "knowledge-base", "wiki", "memory"],
