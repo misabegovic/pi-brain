@@ -1,6 +1,6 @@
 # pi-brain 🧠🏠
 
-[![Validate pi-brain](https://github.com/earendil-works/pi-brain/actions/workflows/validate.yml/badge.svg)](https://github.com/earendil-works/pi-brain/actions/workflows/validate.yml)
+[![Validate pi-brain](https://github.com/misabegovic/pi-brain/actions/workflows/validate.yml/badge.svg)](https://github.com/misabegovic/pi-brain/actions/workflows/validate.yml)
 [![npm](https://img.shields.io/npm/v/@misabegovic/pi-brain)](https://www.npmjs.com/package/@misabegovic/pi-brain)
 
 **A knowledge home for [pi](https://pi.dev).**
