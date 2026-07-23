@@ -1,6 +1,6 @@
 ---
 name: brain-shape
-description: The human-gated ADR/PRD authoring path for the current pi-brain clone. Use when the user says "shape", "write a PRD", "record a decision", "ADR for X", or when a pitch needs to become a commitment-class artifact in the wiki.
+description: The human-gated ADR/PRD authoring path for the current pi-brain clone. Use when the user says "shape", "write a PRD", "record a decision", "ADR for X", or when a pitch needs to become a commitment-class artifact in the wiki. Plain-language requests for PRDs/ADRs/epics/bets default to forward mode and write to the real shelves, not ai-suggestions/.
 ---
 
 # brain-shape
@@ -71,6 +71,8 @@ Write suggestions to the separate `ai-suggestions/` shelf:
 
 - `wiki/<scope>/ai-suggestions/prds/<slug>.md`
 - `wiki/<scope>/ai-suggestions/adrs/<slug>.md`
+
+Plain-language user requests such as "write a PRD for X", "ADR for Y", "shape this bet", or "turn this pitch into a PRD and ADR" are NOT ai-suggestions. They are supervised `/brain:shape` forward-mode requests and must be written to the real shelves with phase-end approval gates.
 
 Use the AI-suggestion templates:
 
