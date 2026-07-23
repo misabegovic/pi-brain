@@ -58,7 +58,7 @@ Run `brain_validate` + `brain_views` in one step.
 ## Rules
 
 1. **Prefer the corpus over memory.** If you are unsure of a fact, ask the brain.
-2. **Capture first, shape later.** A quick capture is low friction. Promoting to ADR/PRD (`/brain:shape`) is a separate, human-gated step.
+2. **Plain-language shape requests default to `/brain:shape`.** If the user asks for a PRD, ADR, epic, or bet in plain language — e.g., "write a PRD for X", "ADR for Y", "shape this", "make this a bet" — treat it as a supervised `/brain:shape` forward-mode request. Write to the real shelves (`wiki/<scope>/{prds,adrs,epics,bets}/`) and pause at phase-end approval gates. Do NOT put plain-language shape requests into `ai-suggestions/` unless the user explicitly calls it a draft or suggestion.
 3. **Stop and shape structural changes.** If the user asks for a structural/repo change, do not execute. Read `wiki/<scope>/constraints/*.md`, draft or graduate an ADR, and stop for approval. See `AGENTS.md` for the checklist.
 4. **Confidence floor.** Any claim you author starts at low confidence unless you can cite evidence.
 5. **Sources are immutable.** Never rewrite `sources/` or existing `wiki/` pages directly; go through the intended workflow.

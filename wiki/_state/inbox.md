@@ -60,4 +60,10 @@ Items are appended below. The agent tends them on request.
 - **kind:** decision
 - **scope:** brain
 - **summary:** User decided to abort the pi-brain → pi-mind rebrand and keep pi-brain for now. Rationale: despite npm/GitHub naming collisions, the rebrand cost (command namespace change, file renames, docs, package migration, deprecation) outweighs the benefit at v0.1.0. Will continue with scoped npm package @misabegovic/pi-brain and revisit if the project grows or naming conflicts become a real problem. Rebrand ADR/bet were discarded.
+### user-expectation-plain-language-requests-for-prd (2026-07-23)
+
+- **kind:** task
+- **scope:** brain
+- **summary:** User expectation: plain-language requests for PRDs/ADRs/epics/bets should trigger proper /brain:shape forward mode, not dump drafts into ai-suggestions. Current skill language makes the agent default to ai-suggestions unless explicit /brain:shape command is used. Need ADR to change skill behavior so plain-language shape requests are treated as supervised forward-mode shape, with phase-end approval gates still applied.
+- **status:** resolved — implemented. Plain-language shape requests now default to forward mode. ADR: [ADR — Plain-language shape requests default to forward mode](../../brain/adrs/plain-language-triggers-shape.md). Record: [Record — Plain-language shape requests default to forward mode](../../brain/records/plain-language-triggers-shape.md).
 
