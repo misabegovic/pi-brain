@@ -1,7 +1,8 @@
 # pi-brain configuration for this project/customer instance.
 #
-# This is the per-instance rulebook: org name, active repos, and connector
-# settings. The shared mechanism lives in AGENTS.md and the pi-brain package.
+# This is the per-instance rulebook: org name, active repos, connector
+# settings, and template version. The shared mechanism lives in AGENTS.md
+# and the pi-brain package.
 
 # Human-readable organisation or customer name.
 org: "pi-brain"
@@ -32,3 +33,7 @@ connectors:
     host: ""
   structure:
     repos: []
+
+# pi-brain template version this clone was created from or last updated to.
+# Used by /brain:update to diff against upstream releases.
+template_version: "v0.2.0"

@@ -73,6 +73,7 @@ Run `brain_validate` + `brain_views` in one step.
 - `/brain:ask <question>`
 - `/brain:tend [budget]`
 - `/brain:sync` — validate + regenerate views
+- `/brain:update [--version=<tag>] [--apply]` — pull upstream template updates
 - `/brain:shape <scope> <pitch>` — human-gated ADR/PRD authoring
 - `/brain:in <path-or-url>` — ingest a source into `sources/`
 - `/brain:setup` — bootstrap or reconfigure a pi-brain home

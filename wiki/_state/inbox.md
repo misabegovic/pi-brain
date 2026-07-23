@@ -66,4 +66,10 @@ Items are appended below. The agent tends them on request.
 - **scope:** brain
 - **summary:** User expectation: plain-language requests for PRDs/ADRs/epics/bets should trigger proper /brain:shape forward mode, not dump drafts into ai-suggestions. Current skill language makes the agent default to ai-suggestions unless explicit /brain:shape command is used. Need ADR to change skill behavior so plain-language shape requests are treated as supervised forward-mode shape, with phase-end approval gates still applied.
 - **status:** resolved — implemented. Plain-language shape requests now default to forward mode. ADR: [ADR — Plain-language shape requests default to forward mode](../../brain/adrs/plain-language-triggers-shape.md). Record: [Record — Plain-language shape requests default to forward mode](../../brain/records/plain-language-triggers-shape.md).
+### user-requests-1-make-a-new-release-likely-v0-2-0 (2026-07-23)
+
+- **kind:** task
+- **scope:** brain
+- **summary:** User requests: 1) make a new release (likely v0.2.0), and 2) make the /brain:update command aware of releases. This is implementation of the upstream-template-sync bet and a new release. Need to add /brain:update command that fetches upstream pi-brain releases/tags, diffs template-owned files, and offers interactive apply. Then cut v0.2.0 release.
+- **status:** resolved — /brain:update implemented with release-aware version fetching; package.json bumped to 0.2.0. Record: [Record — Upstream template sync](../../brain/records/upstream-template-sync.md).
 
