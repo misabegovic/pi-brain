@@ -64,6 +64,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — Plain-language shape requests default to forward mode](wiki/brain/records/plain-language-triggers-shape.md)
 - [Record — Smarter autonomy for pi-brain clones](wiki/brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](wiki/brain/records/stronger-default-implementation-guardrails.md)
+- [Current truth](wiki/brain/records/tap-pi-extension-surface.md)
 - [Record — Upstream template sync](wiki/brain/records/upstream-template-sync.md)
 - [Record — pi-brain v0.1.0 release](wiki/brain/records/version-0-1-0.md)
 - [Record — pi-brain v0.2.0 release](wiki/brain/records/version-0-2-0.md)

@@ -26,3 +26,4 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-27: Tended inbox — synthesized auto-ingest batch (web source + Pi TUI docs) into the extension-surface PRD/ADR/bet and Phase 1 implementation; cleared batch.
 - 2026-07-27: Workflow lesson logged: `gh pr create --body "...\n..."` renders literal `\n` in GitHub; use `gh api` with JSON-encoded body for real line breaks.
 - 2026-07-27: Accepted ADR — Local-first brain self-maintenance workflow (wiki/brain/adrs/local-first-brain-self-maintenance.md) and updated the `explicit-approval-for-commits` constraint to exempt brain self-maintenance when LOCAL_FIRST=true.
+- 2026-07-27: Merged PR #8 — Tap pi's full extension surface for pi-brain; created record wiki/brain/records/tap-pi-extension-surface.md.
