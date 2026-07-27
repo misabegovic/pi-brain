@@ -1,9 +1,9 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { readFile, writeFile, mkdir, copyFile, unlink } from "node:fs/promises";
-import { execFilePromise, pathExists } from "./utils.ts";
+import { execFilePromise, pathExists, countInboxItems } from "./utils.ts";                                                                                                           
 import { readAutoConnect, readHarvestCompaction, readAutonomy, countPages, countSources, readInbox } from "./brain-home.ts";
-import { resolveResource } from "./resources.ts";
+import { resolveResource, getPackageRoot } from "./resources.ts";
 import { searchFiles } from "./search.ts";
 import { replaceInboxItem, buildInboxEntry, appendLog, autoGroom } from "./inbox.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
@@ -14,15 +14,29 @@ export function registerHooks(
   pi: ExtensionAPI,
   lastSystemPrompt: { current: string },
   briefedSessions: Set<string>,
-  computeActiveTools: (hasBrainHome: boolean) => string[]
+  computeActiveTools: (hasBrainHome: boolean) => string[],
+  toolTiers: { always: string[]; home: string[]; bootstrap: string[] }
 ) {
   pi.on("session_start", async (_event, ctx) => {
     await loadBriefing(ctx);
     const home = await requireBrain(ctx.cwd);
-    const active = computeActiveTools(!!home);
-    if (typeof pi.setActiveTools === "function") {
-      pi.setActiveTools(active);
+
+    // Use setActiveTools additively: keep built-in/extension tools already
+    // active and only add/remove pi-brain tier tools. This preserves the
+    // default read/bash/edit/write tools and any other extension tools.
+    if (typeof pi.getActiveTools === "function" && typeof pi.setActiveTools === "function") {
+      const active = new Set(pi.getActiveTools());
+      if (home) {
+        toolTiers.home.forEach((name) => active.add(name));
+        toolTiers.bootstrap.forEach((name) => active.delete(name));
+      } else {
+        toolTiers.bootstrap.forEach((name) => active.add(name));
+        toolTiers.home.forEach((name) => active.delete(name));
+      }
+      toolTiers.always.forEach((name) => active.add(name));
+      pi.setActiveTools([...active]);
     }
+
     if (home) {
       const state = await readAutonomy(home);
       if (state.enabled) {
