@@ -29,6 +29,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Explicit approval required for commits](wiki/brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/adrs/extension-cleanup-resource-conflicts.md)
+- [ADR — Local-first brain self-maintenance workflow](wiki/brain/adrs/local-first-brain-self-maintenance.md)
 - [ADR — Plain-language shape requests default to forward mode](wiki/brain/adrs/plain-language-triggers-shape.md)
 - [ADR — Remote promotion requires a pull request](wiki/brain/adrs/remote-promotion-requires-pr.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
