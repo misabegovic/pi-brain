@@ -1,4 +1,17 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "source": "https://muhamed.at/brain/pi-untapped-extension-surface-for-pi-brain/",
+      "targetPath": "sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md",
+      "date": "2026-07-27"
+    },
+    {
+      "source": "/home/muhamed/.nvm/versions/node/v22.22.2/lib/node_modules/@earendil-works/pi-coding-agent/docs/tui.md",
+      "targetPath": "sources/doc/2026-07-27--tui-md.md",
+      "date": "2026-07-27"
+    }
+  ],
   "clearedAt": "2026-07-27"
+}"2026-07-27"
+}
 }
