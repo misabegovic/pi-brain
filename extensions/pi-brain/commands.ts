@@ -230,7 +230,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
         "brain_session_shutdown: true",
         "",
         "# pi-brain template version this clone was created from or last updated to.",
-        `template_version: "v0.3.1"`,
+        `template_version: "v0.3.2"`,
         "",
       ];
       await writeFile(join(cwd, "brain.config.yml"), configLines.join("\n"), "utf-8");
