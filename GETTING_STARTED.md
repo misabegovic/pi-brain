@@ -2,9 +2,17 @@
 
 A quick checklist for using pi-brain on a real project.
 
-## 1. Choose your setup
+## 1. Install the pi-brain package once
 
-- [ ] **Fork/clone** this repo as a standalone brain for one or more projects.
+```bash
+pi install @misabegovic/pi-brain
+```
+
+This gives every pi session the brain extension, skills, prompts, themes, templates, personas, and tools.
+
+## 2. Choose your setup
+
+- [ ] **Create a content-only clone** for a new brain.
   ```bash
   bash tools/clone-pi-brain.sh ~/projects/my-project-brain "My Org"
   cd ~/projects/my-project-brain
@@ -22,12 +30,8 @@ A quick checklist for using pi-brain on a real project.
   /brain:ingest-repo https://github.com/org/repo.git my-project
   ```
 
-## 2. Bootstrap the environment
+## 3. Bootstrap the environment
 
-- [ ] Install the pi package globally.
-  ```bash
-  pi install ./
-  ```
 - [ ] Run the local setup script.
   ```bash
   bash tools/setup-local.sh
@@ -86,9 +90,16 @@ A quick checklist for using pi-brain on a real project.
 - [ ] Run `/brain:groom` to decay confidence, archive stale pages, and compact commitments into records.
 - [ ] Run `/brain:state` to regenerate state/roadmap/options pages.
 - [ ] Run `/brain:sync` before committing to validate and regenerate `wiki/index.md`.
+- [ ] Run `/brain:update` to update pi-brain. It tries the package path first (`pi install @misabegovic/pi-brain@latest`) and falls back to the legacy GitHub diff/apply flow if needed.
+- [ ] Run `node tools/migrate-clone.mjs <clone-path> --dry-run` to migrate an existing full-repo clone to the content-only, package-resolved model.
+
+## Experimental features
+
+- `PI_BRAIN_EXPERIMENTAL_CONTEXT=1` enables relevant-record injection on every turn. Prototype only — measure quality before relying on it.
 
 ## Troubleshooting
 
 - **No pi-brain home found:** run `/brain:setup` or set `PI_BRAIN_HOME`.
 - **LLM not responding:** check that your provider API key is set.
 - **Pre-commit hook fails:** run `node tools/brain-sync.mjs` manually and fix frontmatter errors.
+- **Missing skills/prompts/themes after install:** verify `pi install @misabegovic/pi-brain` succeeded and that the package manifest is loaded.

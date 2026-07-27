@@ -72,4 +72,9 @@ Items are appended below. The agent tends them on request.
 - **scope:** brain
 - **summary:** User requests: 1) make a new release (likely v0.2.0), and 2) make the /brain:update command aware of releases. This is implementation of the upstream-template-sync bet and a new release. Need to add /brain:update command that fetches upstream pi-brain releases/tags, diffs template-owned files, and offers interactive apply. Then cut v0.2.0 release.
 - **status:** resolved — /brain:update implemented with release-aware version fetching; package.json bumped to 0.2.0. Record: [Record — Upstream template sync](../../brain/records/upstream-template-sync.md).
+### auto-ingest-batch (2026-07-27)
+
+- **kind:** auto-ingest
+- **scope:** brain
+- **summary:** Auto-ingested 1 source(s). Review at wiki/_state/auto-ingest-batch.json. Run /brain:tend to synthesize, or /brain:groom to archive if stale.
 

@@ -12,6 +12,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### decision
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
+- [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Plain-language shape requests default to forward mode](wiki/brain/adrs/plain-language-triggers-shape.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
@@ -20,6 +21,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### bet
 - [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
+- [Bet — Embed pi-brain as default pi behaviour](wiki/brain/bets/embed-pi-brain-default-behaviour.md)
 - [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
 - [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
@@ -35,11 +37,13 @@ This is the synthesis layer for this pi-brain instance.
 - [Upstream template sync for pi-brain clones](wiki/brain/pitches/upstream-template-sync.md)
 
 ### initiative
+- [PRD — Embed pi-brain as default pi behaviour](wiki/brain/prds/embed-pi-brain-default-behaviour.md)
 - [PRD — Smarter autonomy for pi-brain clones](wiki/brain/prds/smarter-autonomy.md)
 - [PRD — Upstream template sync for pi-brain clones](wiki/brain/prds/upstream-template-sync.md)
 
 ### record
 - [Record — brain-state preserves custom content](wiki/brain/records/brain-state-preserves-custom-content.md)
+- [Record — Embed pi-brain as default pi behaviour](wiki/brain/records/embed-pi-brain-default-behaviour.md)
 - [Record — Plain-language shape requests default to forward mode](wiki/brain/records/plain-language-triggers-shape.md)
 - [Record — Smarter autonomy for pi-brain clones](wiki/brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](wiki/brain/records/stronger-default-implementation-guardrails.md)

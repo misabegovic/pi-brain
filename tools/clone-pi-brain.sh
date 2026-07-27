@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# clone-pi-brain — create a new pi-brain clone for your project.
+# clone-pi-brain — create a new content-only pi-brain clone for your project.
+#
+# With package-resolved resources, the installed pi-brain package provides
+# skills, prompts, themes, tools, personas, and the extension. A clone only
+# needs content, config, and project-specific docs.
 #
 # Usage:
 #   bash tools/clone-pi-brain.sh <target-dir> [org-name]
@@ -10,7 +14,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SOURCE_REPO="${PI_BRAIN_TEMPLATE:-${SCRIPT_DIR}/..}"
+TEMPLATE_REPO="${PI_BRAIN_TEMPLATE:-${SCRIPT_DIR}/..}"
 TARGET_DIR="${1:-}"
 ORG_NAME="${2:-}"
 
@@ -30,27 +34,94 @@ fi
 TARGET_DIR="$(mkdir -p "$(dirname "${TARGET_DIR}")" && cd "$(dirname "${TARGET_DIR}")" && pwd)/$(basename "${TARGET_DIR}")"
 ORG_NAME="${ORG_NAME:-$(basename "${TARGET_DIR}")}"
 
-echo "Cloning pi-brain template into ${TARGET_DIR}..."
-git clone "${SOURCE_REPO}" "${TARGET_DIR}"
-
+mkdir -p "${TARGET_DIR}"
 cd "${TARGET_DIR}"
 
-# Rename the template origin so the user can add their own later
-git remote rename origin template-upstream || true
+# Content directories
+mkdir -p wiki/_state sources log
 
-echo "Setting org name to: ${ORG_NAME}"
-# Simple sed replacement for the default org line in brain.config.yml
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  sed -i '' "s/^org: .*/org: \"${ORG_NAME}\"/" brain.config.yml
-else
-  sed -i "s/^org: .*/org: \"${ORG_NAME}\"/" brain.config.yml
+# Project-specific config
+cat > brain.config.yml <<EOF
+# pi-brain configuration for ${ORG_NAME}.
+
+org: "${ORG_NAME}"
+
+active_repos: []
+
+archived_repos: []
+
+auto_connect: false
+
+connectors:
+  github:
+    repos: []
+  notion:
+    pages: []
+  slack:
+    channels: []
+  datadog:
+    site: ""
+  langfuse:
+    host: ""
+  structure:
+    repos: []
+
+template_version: "v0.3.0"
+EOF
+
+# Core wiki pages
+cat > wiki/index.md <<'EOF'
+---
+kind: meta
+status: living
+confidence: high
+---
+
+# Home
+
+Welcome to the pi-brain home for this project.
+EOF
+
+cat > wiki/_state/inbox.md <<'EOF'
+---
+kind: inbox
+---
+
+# Inbox
+
+Queued items waiting to be digested.
+EOF
+
+cat > sources/README.md <<'EOF'
+# sources
+
+Immutable inputs for this pi-brain instance.
+EOF
+
+cat > log/log.md <<'EOF'
+# Log
+
+Append-only operations log for this pi-brain instance.
+EOF
+
+# Project-specific docs (copied from template as starting points)
+cp "${TEMPLATE_REPO}/README.md" README.md
+cp "${TEMPLATE_REPO}/GETTING_STARTED.md" GETTING_STARTED.md
+cp "${TEMPLATE_REPO}/AGENTS.md" AGENTS.md
+cp "${TEMPLATE_REPO}/.gitignore" .gitignore 2>/dev/null || true
+cp "${TEMPLATE_REPO}/.env.example" .env.example 2>/dev/null || true
+
+# Optional git init
+if ! [[ -d ".git" ]]; then
+  git init -q
 fi
 
-# Optionally update README title
+echo "Created content-only pi-brain clone at ${TARGET_DIR}"
 echo ""
 echo "Next steps:"
 echo "  cd ${TARGET_DIR}"
-echo "  bash tools/setup-local.sh"
-echo "  pi install ./"
+echo "  pi install @misabegovic/pi-brain"
+echo "  pi"
+echo "  /brain:setup"
 echo ""
-echo "You can also run /brain:setup from pi to reconfigure active repos and connectors."
+echo "The installed package provides skills, prompts, themes, tools, and the extension."

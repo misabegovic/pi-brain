@@ -5,6 +5,9 @@ confidence: high
 severity: <must|should|may>
 category: <architecture|ui|ux|language|workflow|security|performance|other>
 scope: <global|scope-name>
+globs:
+  - "<path-or-glob>"
+  - "<path-or-glob>"
 ---
 
 # Constraint — <title>

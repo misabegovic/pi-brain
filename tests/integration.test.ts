@@ -14,6 +14,11 @@ interface MockTool {
   execute: (...args: any[]) => Promise<any>;
 }
 
+interface MockApi extends ExtensionAPI {
+  tools: MockTool[];
+  activeToolCalls: string[][];
+}
+
 async function createTempBrainHome(): Promise<string> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-test-"));
   await mkdir(join(dir, "wiki", "_state"), { recursive: true });
@@ -31,15 +36,24 @@ async function createTempBrainHome(): Promise<string> {
   return dir;
 }
 
-function createMockApi(): ExtensionAPI & { tools: MockTool[] } {
+function createMockApi(): MockApi {
   const tools: MockTool[] = [];
+  const activeToolCalls: string[][] = [];
+  const handlers: Record<string, any> = {};
   const api = {
     tools,
+    activeToolCalls,
+    handlers,
     registerTool: (tool: any) => {
       tools.push({ name: tool.name, execute: tool.execute });
     },
     registerCommand: () => {},
-    on: () => {},
+    on: (event: string, handler: any) => {
+      handlers[event] = handler;
+    },
+    setActiveTools: (names: string[]) => {
+      activeToolCalls.push(names);
+    },
   } as any;
   return api;
 }
@@ -107,6 +121,24 @@ async function main() {
     );
     if (!ingestResult.content[0].text.includes("Ingested to sources/doc/")) {
       throw new Error(`Unexpected ingest result: ${ingestResult.content[0].text}`);
+    }
+
+    // Phase 2: tool tiers — fire session_start and verify brain-home tool set
+    const tmpApi = createMockApi();
+    piBrainExtension(tmpApi);
+    const sessionStartHandler = tmpApi.handlers["session_start"];
+    if (!sessionStartHandler) throw new Error("session_start handler missing");
+    const mockCtx = {
+      cwd: home,
+      ui: { setWidget: () => {}, setStatus: () => {}, theme: { fg: (_: string, text: string) => text } },
+    };
+    await sessionStartHandler({}, mockCtx);
+    if (tmpApi.activeToolCalls.length === 0) {
+      throw new Error("setActiveTools was never called during session_start");
+    }
+    const activeNames = tmpApi.activeToolCalls[tmpApi.activeToolCalls.length - 1];
+    if (!activeNames.includes("brain_ask") || !activeNames.includes("brain_capture")) {
+      throw new Error(`Unexpected active tools: ${activeNames.join(", ")}`);
     }
 
     console.log("✓ integration test passed");
