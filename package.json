@@ -1,6 +1,6 @@
 {
   "name": "@misabegovic/pi-brain",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A cozy knowledge home for pi. Distributed as a global package; brain clones are content-only and inherit skills, prompts, themes, tools, and the extension from the install.",
   "keywords": ["pi-package", "brain", "knowledge-base", "wiki", "memory"],
   "license": "MIT",
