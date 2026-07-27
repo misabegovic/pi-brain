@@ -1,11 +1,10 @@
-import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join, relative } from "node:path";
-import { readFile, writeFile, mkdir, copyFile, unlink } from "node:fs/promises";
-import { execFilePromise, pathExists, countInboxItems } from "./utils.ts";                                                                                                           
+import { pathExists, countInboxItems } from "./utils.ts";
 import { readAutoConnect, readHarvestCompaction, readAutonomy, countPages, countSources, readInbox } from "./brain-home.ts";
-import { resolveResource, getPackageRoot } from "./resources.ts";
+import { getPackageRoot } from "./resources.ts";
 import { searchFiles } from "./search.ts";
-import { replaceInboxItem, buildInboxEntry, appendLog, autoGroom } from "./inbox.ts";
+import { replaceInboxItem, buildInboxEntry, autoGroom } from "./inbox.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
 import { requireBrain, loadBriefing } from "./context.ts";
@@ -42,7 +41,6 @@ export function registerHooks(
   pi: ExtensionAPI,
   lastSystemPrompt: { current: string },
   briefedSessions: Set<string>,
-  computeActiveTools: (hasBrainHome: boolean) => string[],
   toolTiers: { always: string[]; home: string[]; bootstrap: string[] }
 ) {
   pi.on("session_start", async (_event, ctx) => {
@@ -95,8 +93,8 @@ export function registerHooks(
     }
     return {
       skillPaths: [join(pkgRoot, "skills"), ...overrides.skillPaths],
-      promptPaths: [join(pkgRoot, "prompts"), ...overrides.promptPaths],
-      themePaths: [join(pkgRoot, "themes"), ...overrides.themePaths],
+      promptPaths: [...overrides.promptPaths],
+      themePaths: [...overrides.themePaths],
     };
   });
 

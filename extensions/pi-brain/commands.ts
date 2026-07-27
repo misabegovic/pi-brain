@@ -1,15 +1,15 @@
-import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { Type } from "typebox";
-import { readFile, writeFile, readdir, stat, mkdir, copyFile, unlink } from "node:fs/promises";
-import { join, relative, resolve, dirname } from "node:path";
-import { execFilePromise, pathExists, slugify } from "./utils.ts";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { writeFile, mkdir, copyFile, unlink } from "node:fs/promises";
+import { join } from "node:path";
+import type { BrainHome } from "./types.ts";
+import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
 import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
 import { resolveResource, getPackageRoot } from "./resources.ts";
+import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
-import { appendLog, autoGroom } from "./inbox.ts";
-import { requireBrain, setupHint, loadBriefing } from "./context.ts";
+import { requireBrain } from "./context.ts";
 
-export function registerCommands(pi: ExtensionAPI) {
+export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {
@@ -441,7 +441,7 @@ export function registerCommands(pi: ExtensionAPI) {
       const fixturesDir = join(home.path, "tests", "fixtures");
       await mkdir(fixturesDir, { recursive: true });
       const outPath = join(fixturesDir, fileName);
-      await writeFile(outPath, lastSystemPrompt || "(no system prompt captured yet)\n", "utf-8");
+      await writeFile(outPath, lastSystemPrompt.current || "(no system prompt captured yet)\n", "utf-8");
       ctx.ui.notify(`Dumped system prompt to tests/fixtures/${fileName}`, "info");
     },
   });

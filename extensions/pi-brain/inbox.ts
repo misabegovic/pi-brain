@@ -1,7 +1,7 @@
-import { readFile, writeFile, readdir, mkdir, unlink, stat } from "node:fs/promises";
+import { readFile, writeFile, readdir, mkdir, unlink } from "node:fs/promises";
 import { join, relative } from "node:path";
-import type { BrainHome, AutoIngestBatch, AutoIngestBatchEntry } from "./types.ts";
-import { pathExists, isTextFile, slugify } from "./utils.ts";
+import type { BrainHome, AutoIngestBatch } from "./types.ts";
+import { isTextFile, slugify } from "./utils.ts";
 import { readInbox } from "./brain-home.ts";
 
 export function buildInboxEntry(id: string, date: string, kind: string, summary: string): string {

@@ -1,18 +1,23 @@
-import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { readFile, writeFile, readdir, stat, mkdir, copyFile } from "node:fs/promises";
-import { join, relative, resolve, dirname } from "node:path";
-import type { BrainHome } from "./types.ts";
-import { execFilePromise, pathExists, getMarkdownFiles, slugify, isTextFile, countInboxItems, listInboxItems, extractSimpleYamlValue } from "./utils.ts";
-import { findBrainHome, readOrg, readAutoConnect, readHarvestCompaction, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
-import { resolveResource, getPackageRoot, readPackageVersion } from "./resources.ts";
+import { readFile, writeFile, readdir, stat } from "node:fs/promises";
+import { join, relative, resolve } from "node:path";
+import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
+import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
+import { resolveResource, readPackageVersion } from "./resources.ts";
 import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
-import { buildInboxEntry, appendInboxItem, replaceInboxItem, readAutoIngestBatch, writeAutoIngestBatch, appendAutoIngestBatch, flushAutoIngestInboxItem, clearAutoIngestBatch, autoGroom, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
-import { loadPrompt, hasAgentsMd } from "./prompts.ts";
-import { loadActiveConstraints, matchGlob } from "./state.ts";
-import { requireBrain, setupHint, loadBriefing } from "./context.ts";
+import { appendInboxItem, appendAutoIngestBatch, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
+import { requireBrain, setupHint } from "./context.ts";
 import { wrapTool } from "./tool-wrapper.ts";
+import {
+  getLatestTemplateVersion,
+  cloneUpstreamTemplate,
+  readTemplateVersion,
+  updateTemplateVersion,
+  diffTemplatePaths,
+  applyTemplateChange,
+} from "./template-update.ts";
 
 export function registerTools(pi: ExtensionAPI) {
 
