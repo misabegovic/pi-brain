@@ -28,6 +28,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/adrs/extension-cleanup-resource-conflicts.md)
 - [ADR — Plain-language shape requests default to forward mode](wiki/brain/adrs/plain-language-triggers-shape.md)
+- [ADR — Remote promotion requires a pull request](wiki/brain/adrs/remote-promotion-requires-pr.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
@@ -35,6 +36,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
+- [Constraint — Remote promotion requires a pull request](wiki/brain/constraints/remote-promotion-requires-pr.md)
 
 ### feedback
 - [Feedback — Agent implemented structural changes before ADR approval](wiki/brain/feedback/eager-implementation-contract-breach.md)
