@@ -37,5 +37,7 @@ Local commits and phase-level work may still land directly on the current branch
 ## Related
 
 - [wiki/brain/adrs/remote-promotion-requires-pr.md](../adrs/remote-promotion-requires-pr.md)
+- [wiki/brain/constraints/explicit-approval-for-commits.md](./explicit-approval-for-commits.md)
+- [wiki/brain/adrs/explicit-approval-for-commits.md](../adrs/explicit-approval-for-commits.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](./adr-before-structural-changes.md)
 - [AGENTS.md](../../../../AGENTS.md)
