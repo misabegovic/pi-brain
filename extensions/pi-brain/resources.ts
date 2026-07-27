@@ -5,7 +5,9 @@ import type { BrainHome } from "./types.ts";
 import { pathExists } from "./utils.ts";
 
 export function getPackageRoot(): string {
-  return dirname(dirname(fileURLToPath(import.meta.url)));
+  // resources.ts lives at extensions/pi-brain/resources.ts, so the package root
+  // is three directories up from this file.
+  return dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 }
 
 export async function resolveResource(name: string, brainHome?: BrainHome): Promise<string> {
