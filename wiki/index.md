@@ -26,6 +26,7 @@ This is the synthesis layer for this pi-brain instance.
 ### decision
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
+- [ADR — Explicit approval required for commits](wiki/brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/adrs/extension-cleanup-resource-conflicts.md)
 - [ADR — Plain-language shape requests default to forward mode](wiki/brain/adrs/plain-language-triggers-shape.md)
 - [ADR — Remote promotion requires a pull request](wiki/brain/adrs/remote-promotion-requires-pr.md)
@@ -36,6 +37,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
+- [Constraint — Explicit approval required for commits](wiki/brain/constraints/explicit-approval-for-commits.md)
 - [Constraint — Remote promotion requires a pull request](wiki/brain/constraints/remote-promotion-requires-pr.md)
 
 ### feedback
