@@ -9,6 +9,34 @@ import { replaceInboxItem, buildInboxEntry, appendLog, autoGroom } from "./inbox
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
 import { requireBrain, loadBriefing } from "./context.ts";
+import type { BrainHome } from "./types.ts";
+
+const STATE_CHANGING_BRAIN_TOOLS = new Set([
+  "brain_capture",
+  "brain_ingest",
+  "brain_pull_connectors",
+  "brain_sync",
+  "brain_update",
+  "brain_state",
+  "brain_views",
+  "brain_validate",
+  "brain_links",
+  "brain_convert",
+  "brain_ingest_repo",
+  "brain_autonomy",
+]);
+
+async function renderBrainBriefing(home: BrainHome) {
+  const pages = await countPages(home);
+  const sources = await countSources(home);
+  const inbox = await readInbox(home);
+  const inboxCount = countInboxItems(inbox);
+  return {
+    customType: "pi-brain-briefing",
+    content: `🧠 Brain home: ${home.path} — ${pages} pages, ${sources} sources, ${inboxCount} inbox items.`,
+    display: false,
+  };
+}
 
 export function registerHooks(
   pi: ExtensionAPI,
@@ -105,15 +133,7 @@ export function registerHooks(
     let message;
     if (sessionFile && !briefedSessions.has(sessionFile)) {
       briefedSessions.add(sessionFile);
-      const pages = await countPages(home);
-      const sources = await countSources(home);
-      const inbox = await readInbox(home);
-      const inboxCount = countInboxItems(inbox);
-      message = {
-        customType: "pi-brain-briefing",
-        content: `🧠 Brain home: ${home.path} — ${pages} pages, ${sources} sources, ${inboxCount} inbox items.`,
-        display: false,
-      };
+      message = await renderBrainBriefing(home);
     }
 
     return { systemPrompt, message };
@@ -203,5 +223,37 @@ export function registerHooks(
     await replaceInboxItem(home, id, entry);
 
     return {};
+  });
+
+  // Live-refresh the brain status widget after state-changing operations.
+  pi.on("tool_result", async (event, ctx) => {
+    const home = await requireBrain(ctx.cwd);
+    if (!home) return;
+
+    const toolName = (event as any).toolName as string;
+    let shouldRefresh = false;
+
+    if (STATE_CHANGING_BRAIN_TOOLS.has(toolName)) {
+      shouldRefresh = true;
+    } else if (
+      (toolName === "write" || toolName === "edit") &&
+      event.input &&
+      typeof event.input.path === "string"
+    ) {
+      const targetPath = event.input.path as string;
+      const relPath = relative(home.path, targetPath);
+      if (
+        !relPath.startsWith("..") &&
+        (relPath === "wiki/_state/inbox.md" || relPath === "wiki/_state/auto-ingest-batch.json")
+      ) {
+        shouldRefresh = true;
+      }
+    }
+
+    if (!shouldRefresh) return;
+    if (typeof pi.sendMessage !== "function") return;
+
+    const message = await renderBrainBriefing(home);
+    pi.sendMessage(message);
   });
 }

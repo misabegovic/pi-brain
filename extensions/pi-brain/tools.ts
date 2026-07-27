@@ -12,6 +12,7 @@ import { buildInboxEntry, appendInboxItem, replaceInboxItem, readAutoIngestBatch
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
 import { requireBrain, setupHint, loadBriefing } from "./context.ts";
+import { wrapTool } from "./tool-wrapper.ts";
 
 export function registerTools(pi: ExtensionAPI) {
 
@@ -64,7 +65,7 @@ export function registerTools(pi: ExtensionAPI) {
     },
   });
 
-  pi.registerTool({
+  const brainCaptureTool = {
     name: "brain_capture",
     label: "Brain capture",
     description: "Capture a note into the pi-brain inbox.",
@@ -105,7 +106,21 @@ export function registerTools(pi: ExtensionAPI) {
         details: {},
       };
     },
+  };
+
+  // Dogfood the wrapper policy on a brain-internal tool: the base capture
+  // always succeeds, and the after-hook just appends a log entry. If the
+  // hook fails, the capture is preserved.
+  brainCaptureTool.execute = wrapTool(brainCaptureTool.execute, {
+    name: "brain_capture",
+    after: async (_result, [_toolCallId, params, _signal, _onUpdate, ctx]) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) return;
+      await appendLog(home, `capture: ${params.note.slice(0, 120)}`);
+    },
   });
+
+  pi.registerTool(brainCaptureTool);
 
   pi.registerTool({
     name: "brain_ask",
