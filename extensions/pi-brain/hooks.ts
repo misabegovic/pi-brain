@@ -1,10 +1,11 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join, relative } from "node:path";
 import { pathExists, countInboxItems } from "./utils.ts";
-import { readAutoConnect, readHarvestCompaction, readAutonomy, countPages, countSources, readInbox } from "./brain-home.ts";
+import { readAutoConnect, readHarvestConfig, readAutonomy, countPages, countSources, readInbox } from "./brain-home.ts";
 import { getPackageRoot } from "./resources.ts";
 import { searchFiles } from "./search.ts";
-import { replaceInboxItem, buildInboxEntry, autoGroom } from "./inbox.ts";
+import { autoGroom } from "./inbox.ts";
+import { runCompactionHarvest } from "./compaction-harvest.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
 import { requireBrain, loadBriefing } from "./context.ts";
@@ -189,36 +190,10 @@ export function registerHooks(
   pi.on("session_before_compact", async (event, ctx) => {
     const home = await requireBrain(ctx.cwd);
     if (!home) return {};
-    if (!(await readHarvestCompaction(home))) return {};
 
+    const config = await readHarvestConfig(home);
     const entries = (event as any).branchEntries ?? [];
-    const harvests: string[] = [];
-    const decisionPattern = /\b(decided|decision|we agreed|let's|let us|we will|we should|we must|constraint|no-go|rabbit hole|open question|todo|action item)\b/i;
-
-    for (const entry of entries) {
-      if (entry.type !== "message") continue;
-      const msg = entry.message;
-      if (!msg || msg.role !== "user") continue;
-      const text = typeof msg.content === "string" ? msg.content : "";
-      if (decisionPattern.test(text)) {
-        const snippet = text.length > 200 ? text.slice(0, 197) + "..." : text;
-        harvests.push(`- ${snippet.replace(/\n/g, " ")}`);
-      }
-    }
-
-    if (harvests.length === 0) return {};
-
-    const note = [
-      "Compaction harvest (confidence: low):",
-      ...harvests,
-      "",
-      "Review and either capture as a real inbox item or discard.",
-    ].join("\n");
-
-    const id = "compaction-harvest";
-    const date = new Date().toISOString().slice(0, 10);
-    const entry = buildInboxEntry(id, date, "compaction-harvest", note);
-    await replaceInboxItem(home, id, entry);
+    await runCompactionHarvest(home, entries, config);
 
     return {};
   });

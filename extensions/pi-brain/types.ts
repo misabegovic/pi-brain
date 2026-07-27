@@ -16,3 +16,9 @@ export interface AutoIngestBatch {
 export interface AutonomyState {
   enabled: boolean;
 }
+
+export interface CompactionHarvestConfig {
+  enabled: boolean;
+  maxItems: number;
+  minScore: number;
+}

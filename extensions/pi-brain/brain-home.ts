@@ -1,6 +1,6 @@
 import { readFile, writeFile, readdir, stat, mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import type { BrainHome, AutonomyState } from "./types.ts";
+import type { BrainHome, AutonomyState, CompactionHarvestConfig } from "./types.ts";
 import { pathExists, getMarkdownFiles, extractSimpleYamlValue, parseFrontmatter } from "./utils.ts";
 
 export async function findBrainHome(cwd: string): Promise<BrainHome | null> {
@@ -50,12 +50,24 @@ export async function readAutoConnect(home: BrainHome): Promise<boolean> {
 }
 
 export async function readHarvestCompaction(home: BrainHome): Promise<boolean> {
+  const config = await readHarvestConfig(home);
+  return config.enabled;
+}
+
+export async function readHarvestConfig(home: BrainHome): Promise<CompactionHarvestConfig> {
+  const defaults: CompactionHarvestConfig = { enabled: true, maxItems: 5, minScore: 1 };
   try {
     const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
-    const value = extractSimpleYamlValue(config, "harvest_compaction");
-    return value !== "false";
+    const enabled = extractSimpleYamlValue(config, "harvest_compaction");
+    const maxItems = extractSimpleYamlValue(config, "harvest_compaction_max_items");
+    const minScore = extractSimpleYamlValue(config, "harvest_compaction_min_score");
+    return {
+      enabled: enabled === null ? defaults.enabled : enabled !== "false",
+      maxItems: maxItems ? parseInt(maxItems, 10) : defaults.maxItems,
+      minScore: minScore ? parseInt(minScore, 10) : defaults.minScore,
+    };
   } catch {
-    return true;
+    return defaults;
   }
 }
 

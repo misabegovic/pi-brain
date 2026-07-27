@@ -21,3 +21,5 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-27: Gathered context for extension-surface PRD — ingested Pi extension, TUI, and keybinding docs; deep-dived existing `extensions/pi-brain/hooks.ts` to confirm compaction harvest, context injection, and tool-result refresh are already partially implemented; updated PRD confidence to medium.
 - 2026-07-27: Accepted ADR — Tap pi's full extension surface for pi-brain (wiki/brain/adrs/tap-pi-extension-surface.md), choosing phased all-seven approach with feature flags.
 - 2026-07-27: Accepted bet — Tap pi's full extension surface for pi-brain (wiki/brain/bets/tap-pi-extension-surface.md), committing to seven phased, flag-gated extension hooks.
+- 2026-07-27: Implemented Phase 1 — hardened compaction harvest with scoring heuristic, review queue, config flags (`harvest_compaction_max_items`, `harvest_compaction_min_score`), and lightweight logging in `extensions/pi-brain/compaction-harvest.ts`.
+- 2026-07-27: capture: Workflow insight: `gh pr create --body "...\n..."` renders the literal string `\n` in the GitHub PR description. To get 
