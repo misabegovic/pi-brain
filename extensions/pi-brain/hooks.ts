@@ -1,10 +1,27 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join, relative } from "node:path";
 import { pathExists, countInboxItems } from "./utils.ts";
-import { readAutoConnect, readHarvestCompaction, readAutonomy, countPages, countSources, readInbox } from "./brain-home.ts";
+import {
+  readAutoConnect,
+  readHarvestConfig,
+  readAutonomy,
+  readContextInjectionConfig,
+  readToolResultEnrichmentConfig,
+  readEventBusConfig,
+  countPages,
+  countSources,
+  readInbox,
+} from "./brain-home.ts";
 import { getPackageRoot } from "./resources.ts";
 import { searchFiles } from "./search.ts";
-import { replaceInboxItem, buildInboxEntry, autoGroom } from "./inbox.ts";
+import { autoGroom } from "./inbox.ts";
+import { runCompactionHarvest } from "./compaction-harvest.ts";
+import { buildInjectedMessages } from "./context-injection.ts";
+import { enrichToolResult } from "./tool-result-enrichment.ts";
+import { registerBrainEntryRenderers } from "./entry-renderers.ts";
+import { registerBrainShortcuts } from "./shortcuts.ts";
+import { registerBrainShutdown } from "./session-shutdown.ts";
+import { emitBrainEvent } from "./events.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
 import { requireBrain, loadBriefing } from "./context.ts";
@@ -43,13 +60,14 @@ export function registerHooks(
   briefedSessions: Set<string>,
   toolTiers: { always: string[]; home: string[]; bootstrap: string[] }
 ) {
+  registerBrainEntryRenderers(pi);
+  registerBrainShortcuts(pi);
+  registerBrainShutdown(pi, briefedSessions, lastSystemPrompt);
+
   pi.on("session_start", async (_event, ctx) => {
     await loadBriefing(ctx);
     const home = await requireBrain(ctx.cwd);
 
-    // Use setActiveTools additively: keep built-in/extension tools already
-    // active and only add/remove pi-brain tier tools. This preserves the
-    // default read/bash/edit/write tools and any other extension tools.
     if (typeof pi.getActiveTools === "function" && typeof pi.setActiveTools === "function") {
       const active = new Set(pi.getActiveTools());
       if (home) {
@@ -107,7 +125,6 @@ export function registerHooks(
     const agentsLoaded = hasAgentsMd(event.systemPromptOptions?.contextFiles);
     const parts: string[] = [];
 
-    // Tier 1: brain home present — base brain awareness.
     if (!agentsLoaded) {
       const base = await loadPrompt("brain-base.md", home);
       if (base) parts.push(base.replace("{BRAIN_HOME}", home.path));
@@ -115,7 +132,6 @@ export function registerHooks(
       parts.push(`You are working inside a pi-brain clone at ${home.path}. AGENTS.md already covers the brain contract; prefer brain_ask over guessing and use brain_capture freely.`);
     }
 
-    // Tier 2: autonomy enabled — extended autonomy boundary.
     if (state.enabled) {
       const autonomy = await loadPrompt("brain-autonomy.md", home);
       if (autonomy) parts.push(autonomy);
@@ -126,7 +142,6 @@ export function registerHooks(
 
     const systemPrompt = parts.length > 0 ? event.systemPrompt + "\n\n" + parts.join("\n\n") : event.systemPrompt;
 
-    // First-run briefing message: volatile state that should not live in the system prompt.
     const sessionFile = ctx.sessionManager?.getSessionFile?.();
     let message;
     if (sessionFile && !briefedSessions.has(sessionFile)) {
@@ -138,27 +153,15 @@ export function registerHooks(
   });
 
   pi.on("context", async (event, ctx) => {
-    if (process.env.PI_BRAIN_EXPERIMENTAL_CONTEXT !== "1") return {};
     const home = await requireBrain(ctx.cwd);
     if (!home) return {};
 
+    const config = await readContextInjectionConfig(home);
     const messages = (event as any).messages ?? [];
-    const lastUser = [...messages].reverse().find((m: any) => m.role === "user");
-    if (!lastUser) return {};
+    const injected = await buildInjectedMessages(home, messages, config);
+    if (!injected) return {};
 
-    const query = typeof lastUser.content === "string" ? lastUser.content : "";
-    if (!query) return {};
-
-    const results = await searchFiles(home, query);
-    const records = results.filter((r) => r.path.includes("/records/")).slice(0, 2);
-    if (records.length === 0) return {};
-
-    const injection = {
-      role: "user",
-      content: `Relevant records for this turn:\n${records.map((r) => `- ${r.path}: ${r.snippet}`).join("\n")}`,
-    };
-
-    return { messages: [...messages, injection] };
+    return { messages: injected };
   });
 
   pi.on("tool_call", async (event, ctx) => {
@@ -172,7 +175,7 @@ export function registerHooks(
     if (!targetPath) return {};
 
     const relPath = relative(home.path, targetPath);
-    if (relPath.startsWith("..")) return {}; // outside brain home
+    if (relPath.startsWith("..")) return {};
 
     const constraints = await loadActiveConstraints(home);
     for (const constraint of constraints) {
@@ -189,41 +192,14 @@ export function registerHooks(
   pi.on("session_before_compact", async (event, ctx) => {
     const home = await requireBrain(ctx.cwd);
     if (!home) return {};
-    if (!(await readHarvestCompaction(home))) return {};
 
+    const config = await readHarvestConfig(home);
     const entries = (event as any).branchEntries ?? [];
-    const harvests: string[] = [];
-    const decisionPattern = /\b(decided|decision|we agreed|let's|let us|we will|we should|we must|constraint|no-go|rabbit hole|open question|todo|action item)\b/i;
-
-    for (const entry of entries) {
-      if (entry.type !== "message") continue;
-      const msg = entry.message;
-      if (!msg || msg.role !== "user") continue;
-      const text = typeof msg.content === "string" ? msg.content : "";
-      if (decisionPattern.test(text)) {
-        const snippet = text.length > 200 ? text.slice(0, 197) + "..." : text;
-        harvests.push(`- ${snippet.replace(/\n/g, " ")}`);
-      }
-    }
-
-    if (harvests.length === 0) return {};
-
-    const note = [
-      "Compaction harvest (confidence: low):",
-      ...harvests,
-      "",
-      "Review and either capture as a real inbox item or discard.",
-    ].join("\n");
-
-    const id = "compaction-harvest";
-    const date = new Date().toISOString().slice(0, 10);
-    const entry = buildInboxEntry(id, date, "compaction-harvest", note);
-    await replaceInboxItem(home, id, entry);
+    await runCompactionHarvest(home, entries, config);
 
     return {};
   });
 
-  // Live-refresh the brain status widget after state-changing operations.
   pi.on("tool_result", async (event, ctx) => {
     const home = await requireBrain(ctx.cwd);
     if (!home) return;
@@ -248,10 +224,25 @@ export function registerHooks(
       }
     }
 
-    if (!shouldRefresh) return;
-    if (typeof pi.sendMessage !== "function") return;
+    // Enrich tool results the model sees.
+    const enrichmentConfig = await readToolResultEnrichmentConfig(home);
+    const enrichment = await enrichToolResult(home, event, enrichmentConfig);
 
-    const message = await renderBrainBriefing(home);
-    pi.sendMessage(message);
+    // Refresh the brain status widget when state changes.
+    if (shouldRefresh && typeof pi.sendMessage === "function") {
+      const message = await renderBrainBriefing(home);
+      pi.sendMessage(message);
+    }
+
+    // Emit lightweight state events for other extensions.
+    const eventBusConfig = await readEventBusConfig(home);
+    if (eventBusConfig.enabled && shouldRefresh) {
+      const pages = await countPages(home);
+      const sources = await countSources(home);
+      const inbox = await readInbox(home);
+      emitBrainEvent(pi, { type: "brain:stateChanged", payload: { pages, sources, inbox: countInboxItems(inbox) } });
+    }
+
+    return enrichment;
   });
 }
