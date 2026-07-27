@@ -1,6 +1,15 @@
 import { readFile, writeFile, readdir, stat, mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import type { BrainHome, AutonomyState, CompactionHarvestConfig } from "./types.ts";
+import type {
+  BrainHome,
+  AutonomyState,
+  CompactionHarvestConfig,
+  ContextInjectionConfig,
+  ToolResultEnrichmentConfig,
+  BrainShortcutsConfig,
+  BrainEventBusConfig,
+  SessionShutdownConfig,
+} from "./types.ts";
 import { pathExists, getMarkdownFiles, extractSimpleYamlValue, parseFrontmatter } from "./utils.ts";
 
 export async function findBrainHome(cwd: string): Promise<BrainHome | null> {
@@ -68,6 +77,70 @@ export async function readHarvestConfig(home: BrainHome): Promise<CompactionHarv
     };
   } catch {
     return defaults;
+  }
+}
+
+export async function readContextInjectionConfig(home: BrainHome): Promise<ContextInjectionConfig> {
+  const defaults: ContextInjectionConfig = { enabled: false, maxRecords: 2, minScore: 0 };
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const enabled = extractSimpleYamlValue(config, "inject_context");
+    const maxRecords = extractSimpleYamlValue(config, "inject_context_max_records");
+    const minScore = extractSimpleYamlValue(config, "inject_context_min_score");
+    return {
+      enabled: enabled === "true",
+      maxRecords: maxRecords ? parseInt(maxRecords, 10) : defaults.maxRecords,
+      minScore: minScore ? parseInt(minScore, 10) : defaults.minScore,
+    };
+  } catch {
+    return defaults;
+  }
+}
+
+export async function readToolResultEnrichmentConfig(home: BrainHome): Promise<ToolResultEnrichmentConfig> {
+  const defaults: ToolResultEnrichmentConfig = { enabled: true, maxRelated: 2, largeOutputThreshold: 4000 };
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const enabled = extractSimpleYamlValue(config, "enrich_tool_results");
+    const maxRelated = extractSimpleYamlValue(config, "enrich_tool_results_max_related");
+    const threshold = extractSimpleYamlValue(config, "enrich_tool_results_large_threshold");
+    return {
+      enabled: enabled === null ? defaults.enabled : enabled !== "false",
+      maxRelated: maxRelated ? parseInt(maxRelated, 10) : defaults.maxRelated,
+      largeOutputThreshold: threshold ? parseInt(threshold, 10) : defaults.largeOutputThreshold,
+    };
+  } catch {
+    return defaults;
+  }
+}
+
+export async function readShortcutsConfig(home: BrainHome): Promise<BrainShortcutsConfig> {
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const value = extractSimpleYamlValue(config, "brain_shortcuts");
+    return { enabled: value !== "false" };
+  } catch {
+    return { enabled: true };
+  }
+}
+
+export async function readEventBusConfig(home: BrainHome): Promise<BrainEventBusConfig> {
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const value = extractSimpleYamlValue(config, "brain_event_bus");
+    return { enabled: value === "true" };
+  } catch {
+    return { enabled: false };
+  }
+}
+
+export async function readSessionShutdownConfig(home: BrainHome): Promise<SessionShutdownConfig> {
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const value = extractSimpleYamlValue(config, "brain_session_shutdown");
+    return { enabled: value !== "false" };
+  } catch {
+    return { enabled: true };
   }
 }
 
