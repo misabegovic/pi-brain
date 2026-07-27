@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-27T11:20:50.665Z",
-  "node_count": 34,
-  "edge_count": 170,
+  "generated_at": "2026-07-27T11:26:09.560Z",
+  "node_count": 35,
+  "edge_count": 175,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -212,6 +212,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Record — pi-brain v0.2.0 release"
+    },
+    {
+      "path": "brain/records/version-0-3-0.md",
+      "kind": "record",
+      "status": "current",
+      "confidence": "high",
+      "title": "Release"
     },
     {
       "path": "index.md",
@@ -964,6 +971,34 @@
       "context": "Record — brain-state preserves custom content"
     },
     {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/adr-pi-tool-wrapper-override",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Wrap, Don't Replace"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/adr-live-status-widget-refresh",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Live-refresh the brain status widget"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
       "source": "index",
       "target": "wiki/brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -1172,6 +1207,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — pi-brain v0.2.0 release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
     },
     {
       "source": "index",
@@ -1449,7 +1491,8 @@
     "brain/records/plain-language-triggers-shape.md",
     "brain/records/upstream-template-sync.md",
     "brain/records/version-0-1-0.md",
-    "brain/records/version-0-2-0.md"
+    "brain/records/version-0-2-0.md",
+    "brain/records/version-0-3-0.md"
   ],
   "hubs": [
     {
@@ -2179,6 +2222,34 @@
       "context": "Record — brain-state preserves custom content"
     },
     {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/adr-pi-tool-wrapper-override",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Wrap, Don't Replace"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../adrs/adr-live-status-widget-refresh",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Live-refresh the brain status widget"
+    },
+    {
+      "source": "brain/records/version-0-3-0",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
       "source": "index",
       "target": "wiki/brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -2387,6 +2458,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — pi-brain v0.2.0 release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
     },
     {
       "source": "index",
