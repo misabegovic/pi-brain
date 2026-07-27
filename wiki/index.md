@@ -16,6 +16,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Bet — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/bets/extension-cleanup-resource-conflicts.md)
 - [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
 - [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
+- [Bet — Tap pi’s full extension surface for pi-brain](wiki/brain/bets/tap-pi-extension-surface.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
 - [Bet — Cut pi-brain v0.1.0](wiki/brain/bets/version-0-1-0.md)
 
@@ -28,10 +29,12 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Explicit approval required for commits](wiki/brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/adrs/extension-cleanup-resource-conflicts.md)
+- [ADR — Local-first brain self-maintenance workflow](wiki/brain/adrs/local-first-brain-self-maintenance.md)
 - [ADR — Plain-language shape requests default to forward mode](wiki/brain/adrs/plain-language-triggers-shape.md)
 - [ADR — Remote promotion requires a pull request](wiki/brain/adrs/remote-promotion-requires-pr.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
+- [ADR — Tap pi’s full extension surface for pi-brain](wiki/brain/adrs/tap-pi-extension-surface.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
@@ -50,6 +53,7 @@ This is the synthesis layer for this pi-brain instance.
 - [PRD — Embed pi-brain as default pi behaviour](wiki/brain/prds/embed-pi-brain-default-behaviour.md)
 - [PRD — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/prds/extension-cleanup-resource-conflicts.md)
 - [PRD — Smarter autonomy for pi-brain clones](wiki/brain/prds/smarter-autonomy.md)
+- [PRD — Tap pi’s full extension surface for pi-brain](wiki/brain/prds/tap-pi-extension-surface.md)
 - [PRD — Upstream template sync for pi-brain clones](wiki/brain/prds/upstream-template-sync.md)
 
 ### record

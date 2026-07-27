@@ -10,6 +10,7 @@ confidence: low
 
 <!-- brain-state: shaping -->
 - [Upstream template sync for pi-brain clones](brain/pitches/upstream-template-sync.md)
+- [PRD — Tap pi’s full extension surface for pi-brain](brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
 
 ## What we are not doing
