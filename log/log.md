@@ -11,4 +11,4 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-27: Decision recorded — aborted pi-brain → pi-mind rebrand; keep pi-brain name and use scoped npm package @misabegovic/pi-brain.
 - 2026-07-27: Tended inbox — auto-ingest batch for sources/doc/2026-07-27--pi-brain-embed-plan-md.md was already synthesized into the Embed pi-brain default behaviour record; batch cleared and inbox emptied.
 - 2026-07-27: Accepted ADR and implemented live status widget refresh — brain status widget re-renders after state-changing brain tools or direct edits to inbox/auto-ingest state files (wiki/brain/adrs/adr-live-status-widget-refresh.md, wiki/brain/records/live-status-widget-refresh.md, extensions/pi-brain/hooks.ts).
-- 2026-07-27: Released pi-brain v0.3.0 — git tag and GitHub release created; npm publish attempted but failed with 404 (scope/auth not configured). Record: wiki/brain/records/version-0-3-0.md.
+- 2026-07-27: Released pi-brain v0.3.0 — git tag, GitHub release, and npm package `@misabegovic/pi-brain@0.3.0` published. Record: wiki/brain/records/version-0-3-0.md.
