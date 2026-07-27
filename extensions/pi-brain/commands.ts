@@ -206,7 +206,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
         "    repos: []",
         "",
         "# pi-brain template version this clone was created from or last updated to.",
-        `template_version: "v0.3.0"`,
+        `template_version: "v0.3.1"`,
         "",
       ];
       await writeFile(join(cwd, "brain.config.yml"), configLines.join("\n"), "utf-8");
