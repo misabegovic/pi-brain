@@ -20,7 +20,7 @@ author: pi-brain-agent
 
 - Git tag: [`v0.3.0`](https://github.com/misabegovic/pi-brain/releases/tag/v0.3.0)
 - GitHub release: [pi-brain v0.3.0](https://github.com/misabegovic/pi-brain/releases/tag/v0.3.0)
-- npm package: `@misabegovic/pi-brain@0.3.0` — publish attempted but failed with 404 (scope/auth not configured in this environment).
+- npm package: [`@misabegovic/pi-brain@0.3.0`](https://www.npmjs.com/package/@misabegovic/pi-brain/v/0.3.0) published.
 
 ## What's in v0.3.0
 
