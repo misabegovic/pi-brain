@@ -1,6 +1,8 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 export function registerBrainShortcuts(pi: ExtensionAPI) {
+  if (typeof pi.registerShortcut !== "function" || typeof pi.registerFlag !== "function") return;
+
   pi.registerShortcut("ctrl+shift+c", {
     description: "Capture a note to the pi-brain inbox",
     handler: async (_args, ctx) => {

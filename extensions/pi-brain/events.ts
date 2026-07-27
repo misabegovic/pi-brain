@@ -5,5 +5,6 @@ export type BrainEvent =
   | { type: "brain:inboxUpdated"; payload: { count: number } };
 
 export function emitBrainEvent(pi: ExtensionAPI, event: BrainEvent) {
+  if (!pi.events || typeof pi.events.emit !== "function") return;
   pi.events.emit(event.type, event.payload);
 }

@@ -2,6 +2,8 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Text, Box, Container } from "@earendil-works/pi-tui";
 
 export function registerBrainEntryRenderers(pi: ExtensionAPI) {
+  if (typeof pi.registerEntryRenderer !== "function") return;
+
   pi.registerEntryRenderer("pi-brain-briefing", (entry, _options, theme) => {
     const data = entry.data as { content?: string } | undefined;
     const text = data?.content ?? "";
