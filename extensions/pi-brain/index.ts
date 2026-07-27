@@ -146,8 +146,8 @@ async function applyTemplateChange(home: BrainHome, upstreamDir: string, change:
   }
 }
 
-const ALWAYS_ACTIVE_TOOLS = ["brain_status", "brain_capture"];
-const BRAIN_HOME_TOOLS = [
+export const ALWAYS_ACTIVE_TOOLS = ["brain_status", "brain_capture"];
+export const BRAIN_HOME_TOOLS = [
   "brain_ask",
   "brain_tend",
   "brain_validate",
@@ -162,7 +162,7 @@ const BRAIN_HOME_TOOLS = [
   "brain_projects",
   "brain_ingest",
 ];
-const BOOTSTRAP_TOOLS = ["brain_convert", "brain_ingest_repo"];
+export const BOOTSTRAP_TOOLS = ["brain_convert", "brain_ingest_repo"];
 
 function computeActiveTools(hasBrainHome: boolean): string[] {
   if (hasBrainHome) {
@@ -174,5 +174,9 @@ function computeActiveTools(hasBrainHome: boolean): string[] {
 export default function piBrainExtension(pi: ExtensionAPI) {
   registerTools(pi);
   registerCommands(pi);
-  registerHooks(pi, lastSystemPrompt, briefedSessions, computeActiveTools);
+  registerHooks(pi, lastSystemPrompt, briefedSessions, computeActiveTools, {
+    always: ALWAYS_ACTIVE_TOOLS,
+    home: BRAIN_HOME_TOOLS,
+    bootstrap: BOOTSTRAP_TOOLS,
+  });
 }

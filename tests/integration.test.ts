@@ -51,6 +51,7 @@ function createMockApi(): MockApi {
     on: (event: string, handler: any) => {
       handlers[event] = handler;
     },
+    getActiveTools: () => ["read", "bash", "edit", "write"],
     setActiveTools: (names: string[]) => {
       activeToolCalls.push(names);
     },
@@ -139,6 +140,12 @@ async function main() {
     const activeNames = tmpApi.activeToolCalls[tmpApi.activeToolCalls.length - 1];
     if (!activeNames.includes("brain_ask") || !activeNames.includes("brain_capture")) {
       throw new Error(`Unexpected active tools: ${activeNames.join(", ")}`);
+    }
+    if (!activeNames.includes("read") || !activeNames.includes("bash") || !activeNames.includes("edit") || !activeNames.includes("write")) {
+      throw new Error(`Built-in tools were dropped from active set: ${activeNames.join(", ")}`);
+    }
+    if (activeNames.includes("brain_convert") || activeNames.includes("brain_ingest_repo")) {
+      throw new Error(`Bootstrap tools should not be active inside a brain home: ${activeNames.join(", ")}`);
     }
 
     console.log("✓ integration test passed");
