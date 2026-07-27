@@ -4,3 +4,4 @@ node_modules/
 .vscode/
 .idea/
 wiki/_state/deepdives.json
+.env
