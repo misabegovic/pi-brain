@@ -24,7 +24,9 @@ globs:
 
 No commit may be created in the local repository, and no local branch may be pushed or merged, without explicit user approval in the same turn.
 
-This applies to phase-level commits under `LOCAL_FIRST=true`, autonomous maintenance commits, and any other repository mutation. The agent may prepare a diff or a branch, but it must wait for explicit approval before running `git commit`, `git push`, or merging a pull request.
+This applies to phase-level commits under `LOCAL_FIRST=true`, autonomous maintenance commits, and any other repository mutation — **except brain self-maintenance when `LOCAL_FIRST=true`**. For brain self-maintenance in this clone, the agent may commit locally without per-commit approval, provided remote promotion still goes through the `remote-promotion-requires-pr` protocol.
+
+The agent may prepare a diff or a branch, but it must wait for explicit approval before running `git push` or merging a pull request.
 
 ## Rationale
 
@@ -44,4 +46,5 @@ Repository mutations are commitment-class actions. Even when the change is low-r
 
 - [wiki/brain/constraints/remote-promotion-requires-pr.md](./remote-promotion-requires-pr.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](./adr-before-structural-changes.md)
+- [ADR — Local-first brain self-maintenance workflow](../adrs/local-first-brain-self-maintenance.md)
 - [AGENTS.md](../../../../AGENTS.md)
