@@ -28,3 +28,4 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-27: Accepted ADR — Local-first brain self-maintenance workflow (wiki/brain/adrs/local-first-brain-self-maintenance.md) and updated the `explicit-approval-for-commits` constraint to exempt brain self-maintenance when LOCAL_FIRST=true.
 - 2026-07-27: Merged PR #8 — Tap pi's full extension surface for pi-brain; created record wiki/brain/records/tap-pi-extension-surface.md.
 - 2026-07-27: Prepared pi-brain v0.3.2 release — bumped `package.json` to `0.3.2`, updated `template_version` defaults, added release record `wiki/brain/records/version-0-3-2.md`.
+- 2026-07-27: Released pi-brain v0.3.2 — git tag, GitHub release, and npm package `@misabegovic/pi-brain@0.3.2` published. Record: wiki/brain/records/version-0-3-2.md.
