@@ -5,6 +5,22 @@ confidence: medium
 severity: must
 category: workflow
 scope: global
+globs:
+  - "AGENTS.md"
+  - "brain.config.yml"
+  - ".github/**"
+  - "extensions/**"
+  - "skills/**"
+  - "prompts/**"
+  - "themes/**"
+  - "tools/templates/**"
+  - "tools/connectors/**"
+  - "tools/brain-*.mjs"
+  - "tools/clone-pi-brain.sh"
+  - "tools/setup-local.sh"
+  - "tools/git-hooks/**"
+  - "personas/**"
+  - "wiki/**/constraints/*.md"
 ---
 
 # Constraint — ADR before structural changes

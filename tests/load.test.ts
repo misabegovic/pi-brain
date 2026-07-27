@@ -39,6 +39,7 @@ function createMockApi(): ExtensionAPI & {
     on: (event: string, _handler: any) => {
       handlers[event] = (handlers[event] ?? 0) + 1;
     },
+    setActiveTools: () => {},
   } as any;
 
   return api;

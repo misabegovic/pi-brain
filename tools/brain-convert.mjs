@@ -127,7 +127,7 @@ async function main() {
     console.log("  wiki/org/options.md");
     console.log("  sources/README.md");
     console.log("  log/log.md");
-    if (!(await pathExists2(join(CWD, "AGENTS.md")))) {
+    if (!(await pathExists(join(CWD, "AGENTS.md")))) {
       console.log("  AGENTS.md (minimal)");
     }
     console.log("");
@@ -154,6 +154,7 @@ async function main() {
   await mkdir(join(CWD, "wiki", "org", "feedback"), { recursive: true });
   await mkdir(join(CWD, "sources"), { recursive: true });
   await mkdir(join(CWD, "log"), { recursive: true });
+  await mkdir(join(CWD, ".brain", "overrides"), { recursive: true });
 
   const configLines = [
     `# pi-brain configuration`,
@@ -175,6 +176,9 @@ async function main() {
     `    host: ""`,
     `  structure:`,
     `    repos: []`,
+    "",
+    "# pi-brain template version this clone was created from or last updated to.",
+    `template_version: "v0.3.0"`,
     "",
   ];
   await writeFile(join(CWD, "brain.config.yml"), configLines.join("\n"), "utf-8");

@@ -82,27 +82,45 @@ inbox / deepdive / pitch
 
 ## Using pi-brain for your own project
 
-There are three ways to start:
+pi-brain is distributed as a **global pi package**. Install it once and every pi session becomes brain-aware when a brain home is present.
 
-1. **Fork/clone this repo** on GitHub and customize it for your project. Or use the helper:
-   ```bash
-   bash tools/clone-pi-brain.sh ~/projects/my-project-brain "My Org"
-   ```
-2. **Convert an existing repo** with `/brain:convert [subdir] [--dry-run]` — moves the project code into `files/` and makes the repo itself a pi-brain clone.
-3. **Onboard an external repo** with `/brain:ingest-repo <path-or-url> [scope]` — keeps the brain repo-agnostic. The code stays outside the brain; only a lightweight metadata snapshot and wiki scaffold are created.
+### 1. Install the package globally
+
+```bash
+pi install @misabegovic/pi-brain
+```
+
+The package provides the extension, skills, prompts, themes, templates, personas, and tools. Your clones contain only content and config.
+
+### 2. Create a content-only clone
+
+```bash
+bash tools/clone-pi-brain.sh ~/projects/my-project-brain "My Org"
+cd ~/projects/my-project-brain
+pi
+/brain:setup
+/brain
+```
+
+### 3. Convert an existing repo
+
+`/brain:convert [subdir] [--dry-run]` moves the project code into `files/` (or the subdir you specify) and scaffolds the brain content directories.
+
+### 4. Onboard an external repo
+
+`/brain:ingest-repo <path-or-url> [scope]` keeps the brain repo-agnostic. The code stays outside the brain; only a lightweight metadata snapshot and wiki scaffold are created.
 
 ## Quick start
 
 For a step-by-step checklist for real projects, see [GETTING_STARTED.md](GETTING_STARTED.md).
 
 ```bash
-# Clone pi-brain as the starting point for a project/customer brain
-git clone <pi-brain> my-project-brain && cd my-project-brain
-
-# Install the pi package (from npm or locally)
+# Install pi-brain once
 pi install @misabegovic/pi-brain
-# or, when working on the template itself:
-# pi install ./
+
+# Create a content-only brain for your project
+bash tools/clone-pi-brain.sh ~/projects/my-project-brain "My Org"
+cd ~/projects/my-project-brain
 
 # Bootstrap the local environment (Node check, pre-commit hook, health check)
 bash tools/setup-local.sh
@@ -134,83 +152,45 @@ The extension uses the current project directory as the brain home by default. Y
 
 ## Repository layout
 
+A pi-brain **clone** now contains only content and project-specific config. The installed package provides skills, prompts, themes, templates, personas, tools, and the extension.
+
 ```
-my-project-brain/
-├── brain.config.yml      # org name + active repos + connectors
-├── AGENTS.md             # rulebook the agent follows
-├── README.md             # human onboarding
-├── wiki/                 # synthesis layer
-│   ├── index.md          # auto-regenerated home page
+my-project-brain/                    # content-only clone
+├── brain.config.yml                 # org name + active repos + connectors
+├── AGENTS.md                        # rulebook the agent follows
+├── README.md                        # human onboarding
+├── .brain/
+│   └── overrides/                   # optional per-clone overrides
+├── wiki/                            # synthesis layer
+│   ├── index.md                     # auto-regenerated home page
 │   ├── _state/
-│   │   └── inbox.md      # the tend queue
-│   └── <scope>/          # per-project or org scope
-│       ├── records/      # permanent: current truth about the system
-│       ├── prds/         # volatile commitment: product requirement docs
-│       ├── adrs/         # volatile commitment: architecture decision records
-│       ├── epics/        # volatile commitment: outcome groupings
-│       ├── bets/         # volatile commitment: committed bets
-│       ├── constraints/  # volatile commitment: durable project rules
-│       ├── rfcs/         # volatile: multi-perspective review documents
-│       ├── pitches/      # volatile: pre-bet ideas
-│       ├── ai-suggestions/ # volatile: agent drafts awaiting review
-│       ├── experiments/  # evidence: A/B tests and experiments
-│       └── feedback/     # evidence: user feedback and signals
-├── sources/              # immutable inputs (snapshots, exports, research)
-├── log/
-│   └── log.md            # append-only operations log
-├── tools/
-│   ├── templates/        # ADR/PRD/pitch/epic/bet/record/constraint/RFC/evidence templates
-│   │   ├── adr.md
-│   │   ├── prd.md
-│   │   ├── pitch.md
-│   │   ├── epic.md
-│   │   ├── bet.md
-│   │   ├── record.md
-│   │   ├── constraint.md
-│   │   ├── rfc.md
-│   │   ├── experiment.md
-│   │   ├── feedback.md
-│   │   ├── adr-ai-suggestion.md
-│   │   └── prd-ai-suggestion.md
-│   ├── connectors/       # pull connectors
-│   ├── git-hooks/        # pre-commit hook
-│   └── brain-sync.mjs    # validation + view regeneration
-├── extensions/
-│   └── pi-brain.ts       # pi extension: tools, commands, widgets
-├── skills/               # agent skills
-│   ├── brain/
-│   │   └── SKILL.md
-│   ├── brain-shape/
-│   │   └── SKILL.md
-│   ├── brain-ingest/
-│   │   └── SKILL.md
-│   ├── brain-setup/
-│   │   └── SKILL.md
-│   ├── brain-connect/
-│   │   └── SKILL.md
-│   ├── brain-auto/
-│   │   └── SKILL.md
-│   ├── brain-continue/
-│   │   └── SKILL.md
-│   └── brain-investigate/
-│       └── SKILL.md
-├── personas/             # agent + user personas
-│   ├── README.md
-│   ├── agents/
-│   │   ├── pm.md
-│   │   ├── tech-lead.md
-│   │   ├── developer.md
-│   │   └── security-reviewer.md
-│   └── users/
-│       └── README.md
-├── prompts/
-│   └── brain-home.md     # /brain-home prompt template
-├── themes/
-│   └── pi-brain.json     # cozy terminal theme
-└── tests/
-    ├── load.test.ts      # smoke test
-    └── integration.test.ts
+│   │   └── inbox.md                 # the tend queue
+│   └── <scope>/                     # per-project or org scope
+│       ├── records/                 # permanent: current truth about the system
+│       ├── prds/                    # volatile commitment: product requirement docs
+│       ├── adrs/                   # volatile commitment: architecture decision records
+│       ├── epics/                  # volatile commitment: outcome groupings
+│       ├── bets/                   # volatile commitment: committed bets
+│       ├── constraints/            # volatile commitment: durable project rules
+│       ├── rfcs/                   # volatile: multi-perspective review documents
+│       ├── pitches/                # volatile: pre-bet ideas
+│       ├── ai-suggestions/         # volatile: agent drafts awaiting review
+│       ├── experiments/            # evidence: A/B tests and experiments
+│       └── feedback/               # evidence: user feedback and signals
+├── sources/                         # immutable inputs (snapshots, exports, research)
+└── log/
+    └── log.md                       # append-only operations log
 ```
+
+The **package** (installed globally via `pi install @misabegovic/pi-brain`) provides:
+
+- `extensions/pi-brain.ts` — the pi extension
+- `skills/*` — agent skills
+- `prompts/*` — prompt templates
+- `themes/*` — TUI themes
+- `tools/*` — CLI helpers and templates
+- `personas/*` — agent and user personas
+- `tests/*` — smoke and integration tests
 
 ## Commands
 
