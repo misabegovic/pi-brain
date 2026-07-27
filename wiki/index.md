@@ -55,6 +55,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — Upstream template sync](wiki/brain/records/upstream-template-sync.md)
 - [Record — pi-brain v0.1.0 release](wiki/brain/records/version-0-1-0.md)
 - [Record — pi-brain v0.2.0 release](wiki/brain/records/version-0-2-0.md)
+- [Release](wiki/brain/records/version-0-3-0.md)
 
 ### meta
 - [pi-brain home](wiki/index.md)
