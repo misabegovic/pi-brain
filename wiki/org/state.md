@@ -25,11 +25,13 @@ Summarize the current truth for this scope. Be honest about gaps.
 - [Record — Plain-language shape requests default to forward mode](brain/records/plain-language-triggers-shape.md)
 - [Record — Smarter autonomy for pi-brain clones](brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](brain/records/stronger-default-implementation-guardrails.md)
+- [Current truth](brain/records/tap-pi-extension-surface.md)
 - [Record — Upstream template sync](brain/records/upstream-template-sync.md)
 - [Record — pi-brain v0.1.0 release](brain/records/version-0-1-0.md)
 - [Record — pi-brain v0.2.0 release](brain/records/version-0-2-0.md)
 - [Release](brain/records/version-0-3-0.md)
 - [Release](brain/records/version-0-3-1.md)
+- [Release](brain/records/version-0-3-2.md)
 - [pi-brain home](index.md)
 <!-- /brain-state -->
 
