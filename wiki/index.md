@@ -10,6 +10,18 @@ This is the synthesis layer for this pi-brain instance.
 
 ## Pages
 
+### bet
+- [Bet — Embed pi-brain as default pi behaviour](wiki/brain/_archive/bets/embed-pi-brain-default-behaviour.md)
+- [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
+- [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
+- [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
+- [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
+- [Bet — Cut pi-brain v0.1.0](wiki/brain/bets/version-0-1-0.md)
+
+### adr
+- [Context](wiki/brain/adrs/adr-live-status-widget-refresh.md)
+- [Context](wiki/brain/adrs/adr-pi-tool-wrapper-override.md)
+
 ### decision
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
@@ -18,14 +30,6 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
-
-### bet
-- [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
-- [Bet — Embed pi-brain as default pi behaviour](wiki/brain/bets/embed-pi-brain-default-behaviour.md)
-- [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
-- [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
-- [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
-- [Bet — Cut pi-brain v0.1.0](wiki/brain/bets/version-0-1-0.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
@@ -44,6 +48,7 @@ This is the synthesis layer for this pi-brain instance.
 ### record
 - [Record — brain-state preserves custom content](wiki/brain/records/brain-state-preserves-custom-content.md)
 - [Record — Embed pi-brain as default pi behaviour](wiki/brain/records/embed-pi-brain-default-behaviour.md)
+- [Current truth](wiki/brain/records/live-status-widget-refresh.md)
 - [Record — Plain-language shape requests default to forward mode](wiki/brain/records/plain-language-triggers-shape.md)
 - [Record — Smarter autonomy for pi-brain clones](wiki/brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](wiki/brain/records/stronger-default-implementation-guardrails.md)

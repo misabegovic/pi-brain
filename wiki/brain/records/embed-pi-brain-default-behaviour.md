@@ -44,7 +44,7 @@ The current state of how pi-brain is distributed and how it becomes the default 
 
 - Decision: [ADR — Embed pi-brain as default pi behaviour](../adrs/embed-pi-brain-default-behaviour.md)
 - Requirement: [PRD — Embed pi-brain as default pi behaviour](../prds/embed-pi-brain-default-behaviour.md)
-- Bet: [Bet — Embed pi-brain as default pi behaviour](../bets/embed-pi-brain-default-behaviour.md)
+- Bet: archived at `wiki/brain/_archive/bets/embed-pi-brain-default-behaviour.md`
 
 ## Implementation
 
