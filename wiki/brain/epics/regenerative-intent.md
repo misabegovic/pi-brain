@@ -106,6 +106,20 @@ Research into the pi coding-agent extension surface shows that most of the build
 
 ## Related
 
+### Child bets under this epic
+
+- [Bet — Autonomous refinement protocol](../bets/autonomous-refinement-protocol.md) | [PRD](../prds/autonomous-refinement-protocol.md) | [ADR](../adrs/autonomous-refinement-protocol.md)
+- [Bet — Multi-agent intent collaboration](../bets/multi-agent-intent-collaboration.md) | [PRD](../prds/multi-agent-intent-collaboration.md) | [ADR](../adrs/multi-agent-intent-collaboration.md)
+- [Bet — Structured intent and build](../bets/structured-intent-and-build.md) | [PRD](../prds/structured-intent-and-build.md) | [ADR](../adrs/structured-intent-and-build.md)
+- [Bet — `/brain:diff` drift detection](../bets/brain-diff-drift-detection.md) | [PRD](../prds/brain-diff-drift-detection.md) | [ADR](../adrs/brain-diff-drift-detection.md)
+- [Bet — Agent-maintained intent](../bets/agent-maintained-intent.md) | [PRD](../prds/agent-maintained-intent.md) | [ADR](../adrs/agent-maintained-intent.md)
+- [Bet — Autonomous colleague mode](../bets/autonomous-colleague-mode.md) | [PRD](../prds/autonomous-colleague-mode.md) | [ADR](../adrs/autonomous-colleague-mode.md)
+- [Bet — Background task runner](../bets/background-task-runner.md) | [PRD](../prds/background-task-runner.md) | [ADR](../adrs/background-task-runner.md)
+- [Bet — `/brain:sync-code` reconciliation](../bets/brain-sync-code.md) | [PRD](../prds/brain-sync-code.md) | [ADR](../adrs/brain-sync-code.md)
+- [Bet — Multi-agent RFC collaboration](../bets/multi-agent-rfc-collaboration.md) | [PRD](../prds/multi-agent-rfc-collaboration.md) | [ADR](../adrs/multi-agent-rfc-collaboration.md)
+
+### Context
+
 - [sources/web/2026-07-28--aicoding-leaflet-pub.md](../../../../sources/web/2026-07-28--aicoding-leaflet-pub.md) — external source on spec-driven AI coding; content could not be fetched automatically.
 - [wiki/brain/adrs/smarter-autonomy.md](../adrs/smarter-autonomy.md) — current autonomy boundary; this epic revisits it.
 - [wiki/brain/adrs/local-first-brain-self-maintenance.md](../adrs/local-first-brain-self-maintenance.md) — current local-first commit rules; may need amendment.

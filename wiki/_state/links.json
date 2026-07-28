@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T15:48:39.330Z",
+  "generated_at": "2026-07-28T15:59:30.271Z",
   "node_count": 78,
-  "edge_count": 482,
+  "edge_count": 509,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -1886,6 +1886,195 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous refinement protocol"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent intent collaboration"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Structured intent and build"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:diff` drift detection"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Agent-maintained intent"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous colleague mode"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Background task runner"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
     },
     {
       "source": "brain/epics/regenerative-intent",
@@ -5298,6 +5487,195 @@
     },
     {
       "source": "brain/epics/regenerative-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous refinement protocol"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent intent collaboration"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Structured intent and build"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:diff` drift detection"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Agent-maintained intent"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous colleague mode"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Background task runner"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
       "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
       "kind": "markdown",
       "provenance": "body",
@@ -6873,6 +7251,17 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/epics/regenerative-intent",
+      "via": [
+        "../prds/agent-maintained-intent",
+        "../bets/agent-maintained-intent",
+        "../adrs/autonomous-refinement-protocol",
+        "../adrs/multi-agent-intent-collaboration",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/prds/agent-maintained-intent",
       "via": [
         "../epics/regenerative-intent",
@@ -6906,14 +7295,6 @@
     {
       "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/prds/brain-diff-drift-detection",
-      "via": [
-        "../epics/regenerative-intent",
-        "../constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/brain-sync-code",
       "via": [
         "../epics/regenerative-intent",
         "../constraints/adr-before-structural-changes"
