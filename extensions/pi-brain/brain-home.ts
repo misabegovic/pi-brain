@@ -3,6 +3,8 @@ import { join, resolve } from "node:path";
 import type {
   BrainHome,
   AutonomyState,
+  AutonomyTrustConfig,
+  TrustLevel,
   CompactionHarvestConfig,
   ContextInjectionConfig,
   ToolResultEnrichmentConfig,
@@ -156,6 +158,37 @@ export async function readAutonomy(home: BrainHome): Promise<AutonomyState> {
 export async function writeAutonomy(home: BrainHome, state: AutonomyState) {
   await mkdir(join(home.path, "wiki", "_state"), { recursive: true });
   await writeFile(join(home.path, "wiki", "_state", "autonomy.json"), JSON.stringify(state, null, 2), "utf-8");
+}
+
+const DEFAULT_TRUST: AutonomyTrustConfig = {
+  sync: "silent",
+  groom: "notify",
+  refine: "notify",
+  suggest: "notify",
+  shelves: "blocked",
+  commits: "blocked",
+  code: "blocked",
+};
+
+const TRUST_LEVELS = new Set<TrustLevel>(["silent", "notify", "ask", "blocked"]);
+
+function parseTrustLevel(value: string | undefined, fallback: TrustLevel): TrustLevel {
+  if (value && TRUST_LEVELS.has(value as TrustLevel)) return value as TrustLevel;
+  return fallback;
+}
+
+export async function readAutonomyTrust(home: BrainHome): Promise<AutonomyTrustConfig> {
+  try {
+    const text = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const result: Partial<AutonomyTrustConfig> = {};
+    for (const key of Object.keys(DEFAULT_TRUST) as Array<keyof AutonomyTrustConfig>) {
+      const value = extractSimpleYamlValue(text, `autonomy_trust.${key}`);
+      result[key] = parseTrustLevel(value, DEFAULT_TRUST[key]);
+    }
+    return result as AutonomyTrustConfig;
+  } catch {
+    return { ...DEFAULT_TRUST };
+  }
 }
 
 export async function countPages(home: BrainHome): Promise<number> {
