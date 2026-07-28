@@ -13,6 +13,7 @@ import { registerBuild } from "./build.ts";
 import { registerDiff } from "./diff.ts";
 import { registerRevise } from "./revise.ts";
 import { registerTasks } from "./tasks.ts";
+import { registerSyncCode } from "./sync-code.ts";
 
 export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   registerCollaboration(pi);
@@ -20,6 +21,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
   registerDiff(pi);
   registerRevise(pi);
   registerTasks(pi);
+  registerSyncCode(pi);
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {
