@@ -10,10 +10,12 @@ import { validateMarkdown, regenerateViews } from "./views.ts";
 import { requireBrain } from "./context.ts";
 import { registerCollaboration } from "./collaboration.ts";
 import { registerBuild } from "./build.ts";
+import { registerDiff } from "./diff.ts";
 
 export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   registerCollaboration(pi);
   registerBuild(pi);
+  registerDiff(pi);
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {
