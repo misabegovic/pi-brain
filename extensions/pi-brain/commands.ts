@@ -9,9 +9,11 @@ import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
 import { requireBrain } from "./context.ts";
 import { registerCollaboration } from "./collaboration.ts";
+import { registerBuild } from "./build.ts";
 
 export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   registerCollaboration(pi);
+  registerBuild(pi);
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {

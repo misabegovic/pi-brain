@@ -21,6 +21,19 @@ How much time are we willing to spend? small / medium / big.
 
 Fat-marker sketch of the solution. Not a spec — enough to evaluate the bet.
 
+### Intent blocks (optional)
+
+If this PRD drives code generation, add structured intent blocks. Example:
+
+```intent:data_model:example
+name: Example
+fields:
+  - name: id
+    type: string
+  - name: count
+    type: integer
+```
+
 ## No-gos
 
 What is explicitly out of scope?

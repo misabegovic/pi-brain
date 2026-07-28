@@ -69,6 +69,23 @@ Behavior:
 
 The first proof target generates TypeScript interfaces from `data_model` blocks.
 
+```intent:data_model:intent_block
+name: IntentBlock
+fields:
+  - name: type
+    type: string
+    description: Block type (data_model, api_surface, behavior, invariant)
+  - name: name
+    type: string
+    description: Stable identifier for the block
+  - name: source
+    type: string
+    description: Path to the source PRD/ADR
+  - name: data
+    type: json
+    description: Parsed block payload
+```
+
 Example output:
 
 ```typescript
