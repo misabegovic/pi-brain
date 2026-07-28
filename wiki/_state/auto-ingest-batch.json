@@ -1,4 +1,10 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "source": "https://aicoding.leaflet.pub/",
+      "targetPath": "sources/web/2026-07-28--aicoding-leaflet-pub.md",
+      "date": "2026-07-28"
+    }
+  ],
   "clearedAt": "2026-07-27"
 }

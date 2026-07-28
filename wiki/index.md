@@ -12,6 +12,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### bet
 - [Bet — Embed pi-brain as default pi behaviour](wiki/brain/_archive/bets/embed-pi-brain-default-behaviour.md)
+- [Bet — Autonomous refinement protocol for pi-brain](wiki/brain/bets/autonomous-refinement-protocol.md)
 - [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
 - [Bet — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/bets/extension-cleanup-resource-conflicts.md)
 - [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
@@ -25,6 +26,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Context](wiki/brain/adrs/adr-pi-tool-wrapper-override.md)
 
 ### decision
+- [ADR — Autonomous refinement protocol for pi-brain](wiki/brain/adrs/autonomous-refinement-protocol.md)
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Explicit approval required for commits](wiki/brain/adrs/explicit-approval-for-commits.md)
@@ -43,6 +45,9 @@ This is the synthesis layer for this pi-brain instance.
 - [Constraint — Explicit approval required for commits](wiki/brain/constraints/explicit-approval-for-commits.md)
 - [Constraint — Remote promotion requires a pull request](wiki/brain/constraints/remote-promotion-requires-pr.md)
 
+### epic
+- [Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration](wiki/brain/epics/regenerative-intent.md)
+
 ### feedback
 - [Feedback — Agent implemented structural changes before ADR approval](wiki/brain/feedback/eager-implementation-contract-breach.md)
 
@@ -50,6 +55,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Upstream template sync for pi-brain clones](wiki/brain/pitches/upstream-template-sync.md)
 
 ### initiative
+- [PRD — Autonomous refinement protocol for pi-brain](wiki/brain/prds/autonomous-refinement-protocol.md)
 - [PRD — Embed pi-brain as default pi behaviour](wiki/brain/prds/embed-pi-brain-default-behaviour.md)
 - [PRD — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/prds/extension-cleanup-resource-conflicts.md)
 - [PRD — Smarter autonomy for pi-brain clones](wiki/brain/prds/smarter-autonomy.md)
