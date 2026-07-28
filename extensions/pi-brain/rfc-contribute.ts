@@ -93,7 +93,7 @@ export function registerRfcContribute(pi: ExtensionAPI) {
       const updated = appendContribution(rfcText, contribution);
       await writeFile(rfcPath, updated, "utf-8");
 
-      ctx.ui.notify(`Added contribution to ${relative(home.path, rfcPath)}`, "success");
+      ctx.ui.notify(`Added contribution to ${relative(home.path, rfcPath)}`, "info");
     },
   });
 }
