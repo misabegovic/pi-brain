@@ -18,6 +18,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Bet — Multi-agent intent collaboration for pi-brain](wiki/brain/bets/multi-agent-intent-collaboration.md)
 - [Bet — Plain-language shape requests default to forward mode](wiki/brain/bets/plain-language-triggers-shape.md)
 - [Bet — Smarter autonomy for pi-brain clones](wiki/brain/bets/smarter-autonomy.md)
+- [Bet — Structured intent and `/brain:build`](wiki/brain/bets/structured-intent-and-build.md)
 - [Bet — Tap pi’s full extension surface for pi-brain](wiki/brain/bets/tap-pi-extension-surface.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](wiki/brain/bets/upstream-template-sync.md)
 - [Bet — Cut pi-brain v0.1.0](wiki/brain/bets/version-0-1-0.md)
@@ -38,6 +39,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Remote promotion requires a pull request](wiki/brain/adrs/remote-promotion-requires-pr.md)
 - [ADR — Smarter autonomy boundaries](wiki/brain/adrs/smarter-autonomy.md)
 - [ADR — Stronger default guardrails against eager implementation](wiki/brain/adrs/stronger-default-implementation-guardrails.md)
+- [ADR — Structured intent and `/brain:build`](wiki/brain/adrs/structured-intent-and-build.md)
 - [ADR — Tap pi’s full extension surface for pi-brain](wiki/brain/adrs/tap-pi-extension-surface.md)
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
@@ -62,6 +64,7 @@ This is the synthesis layer for this pi-brain instance.
 - [PRD — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/prds/extension-cleanup-resource-conflicts.md)
 - [PRD — Multi-agent intent collaboration for pi-brain](wiki/brain/prds/multi-agent-intent-collaboration.md)
 - [PRD — Smarter autonomy for pi-brain clones](wiki/brain/prds/smarter-autonomy.md)
+- [PRD — Structured intent and `/brain:build`](wiki/brain/prds/structured-intent-and-build.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](wiki/brain/prds/tap-pi-extension-surface.md)
 - [PRD — Upstream template sync for pi-brain clones](wiki/brain/prds/upstream-template-sync.md)
 
