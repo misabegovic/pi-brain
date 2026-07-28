@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-27T11:26:09.560Z",
-  "node_count": 35,
-  "edge_count": 175,
+  "generated_at": "2026-07-28T15:48:39.330Z",
+  "node_count": 78,
+  "edge_count": 482,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -25,11 +25,53 @@
       "title": "Context"
     },
     {
+      "path": "brain/adrs/agent-maintained-intent.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Agent-maintained intent"
+    },
+    {
+      "path": "brain/adrs/autonomous-colleague-mode.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Autonomous colleague mode"
+    },
+    {
+      "path": "brain/adrs/autonomous-refinement-protocol.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "path": "brain/adrs/background-task-runner.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Background task runner"
+    },
+    {
+      "path": "brain/adrs/brain-diff-drift-detection.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — `/brain:diff` drift detection"
+    },
+    {
       "path": "brain/adrs/brain-state-preserves-custom-content.md",
       "kind": "decision",
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — brain-state must preserve custom content"
+    },
+    {
+      "path": "brain/adrs/brain-sync-code.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — `/brain:sync-code` reconciliation"
     },
     {
       "path": "brain/adrs/embed-pi-brain-default-behaviour.md",
@@ -39,11 +81,53 @@
       "title": "ADR — Embed pi-brain as default pi behaviour"
     },
     {
+      "path": "brain/adrs/explicit-approval-for-commits.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "high",
+      "title": "ADR — Explicit approval required for commits"
+    },
+    {
+      "path": "brain/adrs/extension-cleanup-resource-conflicts.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "ADR — Extension cleanup: remove duplicate resource registration and dead code"
+    },
+    {
+      "path": "brain/adrs/local-first-brain-self-maintenance.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "high",
+      "title": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "path": "brain/adrs/multi-agent-intent-collaboration.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "path": "brain/adrs/multi-agent-rfc-collaboration.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Multi-agent RFC collaboration"
+    },
+    {
       "path": "brain/adrs/plain-language-triggers-shape.md",
       "kind": "decision",
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Plain-language shape requests default to forward mode"
+    },
+    {
+      "path": "brain/adrs/remote-promotion-requires-pr.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "high",
+      "title": "ADR — Remote promotion requires a pull request"
     },
     {
       "path": "brain/adrs/smarter-autonomy.md",
@@ -60,6 +144,20 @@
       "title": "ADR — Stronger default guardrails against eager implementation"
     },
     {
+      "path": "brain/adrs/structured-intent-and-build.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Structured intent and `/brain:build`"
+    },
+    {
+      "path": "brain/adrs/tap-pi-extension-surface.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "low",
+      "title": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
       "path": "brain/adrs/upstream-template-sync.md",
       "kind": "decision",
       "status": "accepted",
@@ -74,11 +172,74 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/bets/agent-maintained-intent.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Agent-maintained intent"
+    },
+    {
+      "path": "brain/bets/autonomous-colleague-mode.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Autonomous colleague mode"
+    },
+    {
+      "path": "brain/bets/autonomous-refinement-protocol.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "path": "brain/bets/background-task-runner.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Background task runner"
+    },
+    {
+      "path": "brain/bets/brain-diff-drift-detection.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — `/brain:diff` drift detection"
+    },
+    {
       "path": "brain/bets/brain-state-preserves-custom-content.md",
       "kind": "bet",
       "status": "accepted",
       "confidence": "medium",
       "title": "Bet — Patch brain-state to preserve custom content"
+    },
+    {
+      "path": "brain/bets/brain-sync-code.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — `/brain:sync-code` reconciliation"
+    },
+    {
+      "path": "brain/bets/extension-cleanup-resource-conflicts.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Extension cleanup: remove duplicate resource registration and dead code"
+    },
+    {
+      "path": "brain/bets/multi-agent-intent-collaboration.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "path": "brain/bets/multi-agent-rfc-collaboration.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Multi-agent RFC collaboration"
     },
     {
       "path": "brain/bets/plain-language-triggers-shape.md",
@@ -93,6 +254,20 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "Bet — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "path": "brain/bets/structured-intent-and-build.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Structured intent and `/brain:build`"
+    },
+    {
+      "path": "brain/bets/tap-pi-extension-surface.md",
+      "kind": "bet",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "Bet — Tap pi’s full extension surface for pi-brain"
     },
     {
       "path": "brain/bets/upstream-template-sync.md",
@@ -116,6 +291,27 @@
       "title": "Constraint — ADR before structural changes"
     },
     {
+      "path": "brain/constraints/explicit-approval-for-commits.md",
+      "kind": "constraint",
+      "status": "active",
+      "confidence": "high",
+      "title": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "path": "brain/constraints/remote-promotion-requires-pr.md",
+      "kind": "constraint",
+      "status": "active",
+      "confidence": "high",
+      "title": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "path": "brain/epics/regenerative-intent.md",
+      "kind": "epic",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration"
+    },
+    {
       "path": "brain/feedback/eager-implementation-contract-breach.md",
       "kind": "feedback",
       "status": "captured",
@@ -130,6 +326,48 @@
       "title": "Upstream template sync for pi-brain clones"
     },
     {
+      "path": "brain/prds/agent-maintained-intent.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Agent-maintained intent"
+    },
+    {
+      "path": "brain/prds/autonomous-colleague-mode.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Autonomous colleague mode"
+    },
+    {
+      "path": "brain/prds/autonomous-refinement-protocol.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "path": "brain/prds/background-task-runner.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Background task runner"
+    },
+    {
+      "path": "brain/prds/brain-diff-drift-detection.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — `/brain:diff` drift detection"
+    },
+    {
+      "path": "brain/prds/brain-sync-code.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — `/brain:sync-code` reconciliation"
+    },
+    {
       "path": "brain/prds/embed-pi-brain-default-behaviour.md",
       "kind": "initiative",
       "status": "living",
@@ -137,11 +375,46 @@
       "title": "PRD — Embed pi-brain as default pi behaviour"
     },
     {
+      "path": "brain/prds/extension-cleanup-resource-conflicts.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "medium",
+      "title": "PRD — Extension cleanup: remove duplicate resource registration and dead code"
+    },
+    {
+      "path": "brain/prds/multi-agent-intent-collaboration.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "path": "brain/prds/multi-agent-rfc-collaboration.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Multi-agent RFC collaboration"
+    },
+    {
       "path": "brain/prds/smarter-autonomy.md",
       "kind": "initiative",
       "status": "living",
       "confidence": "low",
       "title": "PRD — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "path": "brain/prds/structured-intent-and-build.md",
+      "kind": "initiative",
+      "status": "living",
+      "confidence": "low",
+      "title": "PRD — Structured intent and `/brain:build`"
+    },
+    {
+      "path": "brain/prds/tap-pi-extension-surface.md",
+      "kind": "initiative",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "PRD — Tap pi’s full extension surface for pi-brain"
     },
     {
       "path": "brain/prds/upstream-template-sync.md",
@@ -163,6 +436,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "path": "brain/records/extension-cleanup-resource-conflicts.md",
+      "kind": "record",
+      "status": "current",
+      "confidence": "high",
+      "title": "Record — Extension cleanup: remove duplicate resource registration and dead code"
     },
     {
       "path": "brain/records/live-status-widget-refresh.md",
@@ -193,6 +473,13 @@
       "title": "Record — Stronger default guardrails against eager implementation"
     },
     {
+      "path": "brain/records/tap-pi-extension-surface.md",
+      "kind": "record",
+      "status": "current",
+      "confidence": "high",
+      "title": "Current truth"
+    },
+    {
       "path": "brain/records/upstream-template-sync.md",
       "kind": "record",
       "status": "current",
@@ -215,6 +502,20 @@
     },
     {
       "path": "brain/records/version-0-3-0.md",
+      "kind": "record",
+      "status": "current",
+      "confidence": "high",
+      "title": "Release"
+    },
+    {
+      "path": "brain/records/version-0-3-1.md",
+      "kind": "record",
+      "status": "current",
+      "confidence": "high",
+      "title": "Release"
+    },
+    {
+      "path": "brain/records/version-0-3-2.md",
       "kind": "record",
       "status": "current",
       "confidence": "high",
@@ -320,6 +621,216 @@
       "context": "extensions/pi-brain/tool-wrapper.ts"
     },
     {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/adrs/brain-state-preserves-custom-content",
       "target": "wiki/brain/prds/some-page",
       "kind": "markdown",
@@ -339,6 +850,48 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/bets/brain-state-preserves-custom-content.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/adrs/embed-pi-brain-default-behaviour",
@@ -369,6 +922,153 @@
       "context": "pi-brain v0.2.0 release"
     },
     {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/adrs/plain-language-triggers-shape",
       "target": "../bets/plain-language-triggers-shape",
       "kind": "markdown",
@@ -395,6 +1095,27 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
     },
     {
       "source": "brain/adrs/smarter-autonomy",
@@ -481,6 +1202,111 @@
       "context": "prompts/brain-home.md"
     },
     {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--keybindings-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi keybindings docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
       "source": "brain/adrs/upstream-template-sync",
       "target": "../prds/upstream-template-sync",
       "kind": "markdown",
@@ -530,6 +1356,188 @@
       "context": "package.json"
     },
     {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
       "source": "brain/bets/brain-state-preserves-custom-content",
       "target": "../adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
@@ -542,6 +1550,125 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "tools/brain-state.mjs"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "brain/prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "brain/adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
     },
     {
       "source": "brain/bets/plain-language-triggers-shape",
@@ -584,6 +1711,69 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
     },
     {
       "source": "brain/bets/upstream-template-sync",
@@ -635,6 +1825,118 @@
       "context": "AGENTS.md"
     },
     {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "./remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "./adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "./explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "./adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/local-first-brain-self-maintenance.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/stronger-default-implementation-guardrails",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/stronger-default-implementation-guardrails.m"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
       "source": "brain/feedback/eager-implementation-contract-breach",
       "target": "../../../../sources/brain/feedback/eager-implementation-session-snippet",
       "kind": "markdown",
@@ -663,6 +1965,181 @@
       "context": "AGENTS.md"
     },
     {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/prds/embed-pi-brain-default-behaviour",
       "target": "../../../sources/doc/2026-07-27--pi-brain-embed-plan-md",
       "kind": "markdown",
@@ -682,6 +2159,90 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "pi-brain v0.2.0 release"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/prds/smarter-autonomy",
@@ -710,6 +2271,97 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "skills/brain-auto/SKILL.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--keybindings-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi keybindings docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../adrs/stronger-default-implementation-guardrails",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Stronger default guardrails against eager implementati"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
     },
     {
       "source": "brain/prds/upstream-template-sync",
@@ -787,6 +2439,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/records/live-status-widget-refresh",
@@ -871,6 +2551,55 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "sources/brain/feedback/eager-implementation-session-snippet."
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
     },
     {
       "source": "brain/records/upstream-template-sync",
@@ -999,6 +2728,76 @@
       "context": "package.json"
     },
     {
+      "source": "brain/records/version-0-3-1",
+      "target": "extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Extension cleanup: remove duplicate resource regist"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.3.0 release"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Tap pi's full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
       "source": "index",
       "target": "wiki/brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -1007,10 +2806,73 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/bets/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Patch brain-state to preserve custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent RFC collaboration"
     },
     {
       "source": "index",
@@ -1025,6 +2887,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -1056,10 +2932,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — brain-state must preserve custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — `/brain:sync-code` reconciliation"
     },
     {
       "source": "index",
@@ -1070,10 +2988,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Explicit approval required for commits"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/adrs/plain-language-triggers-shape",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Plain-language shape requests default to forward mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Remote promotion requires a pull request"
     },
     {
       "source": "index",
@@ -1088,6 +3048,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Stronger default guardrails against eager implementati"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -1112,6 +3086,27 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Regenerative pi-brain: intent as the living substrate"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/feedback/eager-implementation-contract-breach",
       "kind": "markdown",
       "provenance": "body",
@@ -1126,6 +3121,48 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/prds/embed-pi-brain-default-behaviour",
       "kind": "markdown",
       "provenance": "body",
@@ -1133,10 +3170,45 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/prds/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -1158,6 +3230,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Extension cleanup: remove duplicate resource regist"
     },
     {
       "source": "index",
@@ -1189,6 +3268,13 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Current truth"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
@@ -1211,6 +3297,20 @@
     {
       "source": "index",
       "target": "wiki/brain/records/version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-1",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-2",
       "kind": "markdown",
       "provenance": "body",
       "context": "Release"
@@ -1251,11 +3351,74 @@
       "context": "Upstream template sync for pi-brain clones"
     },
     {
+      "source": "org/options",
+      "target": "brain/prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/adr-live-status-widget-refresh",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Context"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/adr-pi-tool-wrapper-override",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Context"
+    },
+    {
       "source": "org/roadmap",
       "target": "brain/adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — brain-state must preserve custom content"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Explicit approval required for commits"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/plain-language-triggers-shape",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Plain-language shape requests default to forward mode"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Remote promotion requires a pull request"
     },
     {
       "source": "org/roadmap",
@@ -1273,10 +3436,24 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/adrs/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Upstream template sync mechanism"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy for pi-brain"
     },
     {
       "source": "org/roadmap",
@@ -1287,6 +3464,20 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/bets/plain-language-triggers-shape",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Plain-language shape requests default to forward mode"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/bets/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
@@ -1294,10 +3485,38 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/bets/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Build `/brain:update` for safe upstream template sync"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/bets/version-0-1-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Cut pi-brain v0.1.0"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/prds/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
     },
     {
       "source": "org/roadmap",
@@ -1349,6 +3568,83 @@
       "context": "Upstream template sync for pi-brain clones"
     },
     {
+      "source": "org/roadmap",
+      "target": "brain/prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Explicit approval required for commits"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Remote promotion requires a pull request"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/brain-state-preserves-custom-content",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — brain-state preserves custom content"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Extension cleanup: remove duplicate resource regist"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/live-status-widget-refresh",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Current truth"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/plain-language-triggers-shape",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Plain-language shape requests default to forward mo"
+    },
+    {
       "source": "org/state",
       "target": "brain/records/smarter-autonomy",
       "kind": "markdown",
@@ -1364,6 +3660,55 @@
     },
     {
       "source": "org/state",
+      "target": "brain/records/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Current truth"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/upstream-template-sync",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Upstream template sync"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/version-0-1-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.1.0 release"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/version-0-2-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.2.0 release"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/version-0-3-1",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/version-0-3-2",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "org/state",
       "target": "index",
       "kind": "markdown",
       "provenance": "body",
@@ -1371,10 +3716,52 @@
     },
     {
       "source": "org/state",
+      "target": "brain/_archive/bets/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/adr-live-status-widget-refresh",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Context"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/adr-pi-tool-wrapper-override",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Context"
+    },
+    {
+      "source": "org/state",
       "target": "brain/adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — brain-state must preserve custom content"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/plain-language-triggers-shape",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Plain-language shape requests default to forward mode"
     },
     {
       "source": "org/state",
@@ -1392,10 +3779,24 @@
     },
     {
       "source": "org/state",
+      "target": "brain/adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/state",
       "target": "brain/adrs/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Upstream template sync mechanism"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy for pi-brain"
     },
     {
       "source": "org/state",
@@ -1406,6 +3807,20 @@
     },
     {
       "source": "org/state",
+      "target": "brain/bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/bets/plain-language-triggers-shape",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Plain-language shape requests default to forward mode"
+    },
+    {
+      "source": "org/state",
       "target": "brain/bets/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
@@ -1413,10 +3828,24 @@
     },
     {
       "source": "org/state",
+      "target": "brain/bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "org/state",
       "target": "brain/bets/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Build `/brain:update` for safe upstream template sync"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/bets/version-0-1-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Cut pi-brain v0.1.0"
     },
     {
       "source": "org/state",
@@ -1441,10 +3870,31 @@
     },
     {
       "source": "org/state",
+      "target": "brain/prds/embed-pi-brain-default-behaviour",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "org/state",
       "target": "brain/prds/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "org/state",
@@ -1476,27 +3926,50 @@
     }
   ],
   "orphans": [
-    "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
-    "brain/adrs/adr-live-status-widget-refresh.md",
-    "brain/adrs/adr-pi-tool-wrapper-override.md",
-    "brain/adrs/embed-pi-brain-default-behaviour.md",
-    "brain/adrs/plain-language-triggers-shape.md",
-    "brain/adrs/versioning-and-releases.md",
-    "brain/bets/plain-language-triggers-shape.md",
-    "brain/bets/version-0-1-0.md",
-    "brain/prds/embed-pi-brain-default-behaviour.md",
-    "brain/records/brain-state-preserves-custom-content.md",
-    "brain/records/embed-pi-brain-default-behaviour.md",
-    "brain/records/live-status-widget-refresh.md",
-    "brain/records/plain-language-triggers-shape.md",
-    "brain/records/upstream-template-sync.md",
-    "brain/records/version-0-1-0.md",
-    "brain/records/version-0-2-0.md",
-    "brain/records/version-0-3-0.md"
+    "brain/adrs/agent-maintained-intent.md",
+    "brain/adrs/autonomous-colleague-mode.md",
+    "brain/adrs/autonomous-refinement-protocol.md",
+    "brain/adrs/background-task-runner.md",
+    "brain/adrs/brain-diff-drift-detection.md",
+    "brain/adrs/brain-sync-code.md",
+    "brain/adrs/multi-agent-intent-collaboration.md",
+    "brain/adrs/multi-agent-rfc-collaboration.md",
+    "brain/adrs/structured-intent-and-build.md",
+    "brain/bets/agent-maintained-intent.md",
+    "brain/bets/autonomous-colleague-mode.md",
+    "brain/bets/autonomous-refinement-protocol.md",
+    "brain/bets/background-task-runner.md",
+    "brain/bets/brain-diff-drift-detection.md",
+    "brain/bets/brain-sync-code.md",
+    "brain/bets/multi-agent-intent-collaboration.md",
+    "brain/bets/multi-agent-rfc-collaboration.md",
+    "brain/bets/structured-intent-and-build.md",
+    "brain/epics/regenerative-intent.md",
+    "brain/prds/agent-maintained-intent.md",
+    "brain/prds/autonomous-colleague-mode.md",
+    "brain/prds/autonomous-refinement-protocol.md",
+    "brain/prds/background-task-runner.md",
+    "brain/prds/brain-diff-drift-detection.md",
+    "brain/prds/brain-sync-code.md",
+    "brain/prds/multi-agent-intent-collaboration.md",
+    "brain/prds/multi-agent-rfc-collaboration.md",
+    "brain/prds/structured-intent-and-build.md"
   ],
   "hubs": [
     {
+      "path": "brain/adrs/extension-cleanup-resource-conflicts.md",
+      "incoming": 3
+    },
+    {
       "path": "brain/pitches/upstream-template-sync.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/prds/extension-cleanup-resource-conflicts.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/prds/tap-pi-extension-surface.md",
       "incoming": 3
     }
   ],
@@ -1571,6 +4044,216 @@
       "context": "extensions/pi-brain/tool-wrapper.ts"
     },
     {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/autonomous-refinement-protocol",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/background-task-runner",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/brain-diff-drift-detection",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/adrs/brain-state-preserves-custom-content",
       "target": "wiki/brain/prds/some-page",
       "kind": "markdown",
@@ -1590,6 +4273,48 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/bets/brain-state-preserves-custom-content.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/brain-sync-code",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/adrs/embed-pi-brain-default-behaviour",
@@ -1620,6 +4345,153 @@
       "context": "pi-brain v0.2.0 release"
     },
     {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/explicit-approval-for-commits",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/adrs/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "brain/adrs/local-first-brain-self-maintenance",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-intent-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/multi-agent-rfc-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/adrs/plain-language-triggers-shape",
       "target": "../bets/plain-language-triggers-shape",
       "kind": "markdown",
@@ -1646,6 +4518,27 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/remote-promotion-requires-pr",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
     },
     {
       "source": "brain/adrs/smarter-autonomy",
@@ -1732,6 +4625,111 @@
       "context": "prompts/brain-home.md"
     },
     {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/structured-intent-and-build",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--keybindings-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi keybindings docs"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/adrs/tap-pi-extension-surface",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
       "source": "brain/adrs/upstream-template-sync",
       "target": "../prds/upstream-template-sync",
       "kind": "markdown",
@@ -1781,6 +4779,188 @@
       "context": "package.json"
     },
     {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/bets/agent-maintained-intent",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/autonomous-colleague-mode",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/bets/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/background-task-runner",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/brain-diff-drift-detection",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
       "source": "brain/bets/brain-state-preserves-custom-content",
       "target": "../adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
@@ -1793,6 +4973,111 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "tools/brain-state.mjs"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/bets/brain-sync-code",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record"
+    },
+    {
+      "source": "brain/bets/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-intent-collaboration",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
     },
     {
       "source": "brain/bets/plain-language-triggers-shape",
@@ -1835,6 +5120,69 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/bets/structured-intent-and-build",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/bets/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
     },
     {
       "source": "brain/bets/upstream-template-sync",
@@ -1886,6 +5234,118 @@
       "context": "AGENTS.md"
     },
     {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "./remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "./adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "brain/constraints/explicit-approval-for-commits",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/remote-promotion-requires-pr.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "./explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "./adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/constraints/remote-promotion-requires-pr",
+      "target": "../../../../AGENTS",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "AGENTS.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/local-first-brain-self-maintenance.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../adrs/stronger-default-implementation-guardrails",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/stronger-default-implementation-guardrails.m"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/epics/regenerative-intent",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/remote-promotion-requires-pr.md"
+    },
+    {
       "source": "brain/feedback/eager-implementation-contract-breach",
       "target": "../../../../sources/brain/feedback/eager-implementation-session-snippet",
       "kind": "markdown",
@@ -1914,6 +5374,181 @@
       "context": "AGENTS.md"
     },
     {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/agent-maintained-intent",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-colleague-mode",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/autonomous-refinement-protocol",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../adrs/smarter-autonomy",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/smarter-autonomy.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/background-task-runner",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/prds/brain-diff-drift-detection",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/prds/brain-sync-code",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
       "source": "brain/prds/embed-pi-brain-default-behaviour",
       "target": "../../../sources/doc/2026-07-27--pi-brain-embed-plan-md",
       "kind": "markdown",
@@ -1933,6 +5568,90 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "pi-brain v0.2.0 release"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/extension-cleanup-resource-conflicts.md"
+    },
+    {
+      "source": "brain/prds/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-intent-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/multi-agent-rfc-collaboration",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/prds/smarter-autonomy",
@@ -1961,6 +5680,97 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "skills/brain-auto/SKILL.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/prds/structured-intent-and-build",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--keybindings-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi keybindings docs"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../adrs/stronger-default-implementation-guardrails",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Stronger default guardrails against eager implementati"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/prds/tap-pi-extension-surface",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
     },
     {
       "source": "brain/prds/upstream-template-sync",
@@ -2038,6 +5848,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Constraint — ADR before structural changes"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "brain/records/extension-cleanup-resource-conflicts",
+      "target": "../constraints/adr-before-structural-changes",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
       "source": "brain/records/live-status-widget-refresh",
@@ -2122,6 +5960,55 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "sources/brain/feedback/eager-implementation-session-snippet."
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi has way more extension surface than pi-brain uses"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--extensions-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi extension docs"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../../../sources/doc/2026-07-27--tui-md",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pi TUI docs"
+    },
+    {
+      "source": "brain/records/tap-pi-extension-surface",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
     },
     {
       "source": "brain/records/upstream-template-sync",
@@ -2250,6 +6137,76 @@
       "context": "package.json"
     },
     {
+      "source": "brain/records/version-0-3-1",
+      "target": "extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Extension cleanup: remove duplicate resource regist"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.3.0 release"
+    },
+    {
+      "source": "brain/records/version-0-3-1",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Tap pi's full extension surface for pi-brain"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../adrs/versioning-and-releases",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Versioning and release strategy"
+    },
+    {
+      "source": "brain/records/version-0-3-2",
+      "target": "../../../package.json",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "package.json"
+    },
+    {
       "source": "index",
       "target": "wiki/brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -2258,10 +6215,73 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/bets/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Patch brain-state to preserve custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Multi-agent RFC collaboration"
     },
     {
       "source": "index",
@@ -2276,6 +6296,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/bets/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Bet — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -2307,10 +6341,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — brain-state must preserve custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — `/brain:sync-code` reconciliation"
     },
     {
       "source": "index",
@@ -2321,10 +6397,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/adrs/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Explicit approval required for commits"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/local-first-brain-self-maintenance",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Local-first brain self-maintenance workflow"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/adrs/plain-language-triggers-shape",
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Plain-language shape requests default to forward mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Remote promotion requires a pull request"
     },
     {
       "source": "index",
@@ -2339,6 +6457,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Stronger default guardrails against eager implementati"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/adrs/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -2363,6 +6495,27 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/constraints/explicit-approval-for-commits",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Explicit approval required for commits"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/constraints/remote-promotion-requires-pr",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Regenerative pi-brain: intent as the living substrate"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/feedback/eager-implementation-contract-breach",
       "kind": "markdown",
       "provenance": "body",
@@ -2377,6 +6530,48 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Autonomous refinement protocol for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — `/brain:sync-code` reconciliation"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/prds/embed-pi-brain-default-behaviour",
       "kind": "markdown",
       "provenance": "body",
@@ -2384,10 +6579,45 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/prds/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Extension cleanup: remove duplicate resource registrat"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Multi-agent intent collaboration for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/prds/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Structured intent and `/brain:build`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/prds/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "PRD — Tap pi’s full extension surface for pi-brain"
     },
     {
       "source": "index",
@@ -2409,6 +6639,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/extension-cleanup-resource-conflicts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Extension cleanup: remove duplicate resource regist"
     },
     {
       "source": "index",
@@ -2440,6 +6677,13 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/tap-pi-extension-surface",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Current truth"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
@@ -2462,6 +6706,20 @@
     {
       "source": "index",
       "target": "wiki/brain/records/version-0-3-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-1",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Release"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/version-0-3-2",
       "kind": "markdown",
       "provenance": "body",
       "context": "Release"
@@ -2513,152 +6771,152 @@
       ]
     },
     {
-      "source": "brain/adrs/embed-pi-brain-default-behaviour",
-      "target": "brain/prds/embed-pi-brain-default-behaviour",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/autonomous-colleague-mode",
       "via": [
-        "../../../sources/doc/2026-07-27--pi-brain-embed-plan-md",
-        "../constraints/adr-before-structural-changes",
-        "../records/version-0-2-0"
-      ]
-    },
-    {
-      "source": "brain/adrs/embed-pi-brain-default-behaviour",
-      "target": "brain/records/embed-pi-brain-default-behaviour",
-      "via": [
-        "../constraints/adr-before-structural-changes",
-        "../prds/embed-pi-brain-default-behaviour"
-      ]
-    },
-    {
-      "source": "brain/adrs/plain-language-triggers-shape",
-      "target": "brain/adrs/stronger-default-implementation-guardrails",
-      "via": [
-        "../../../../skills/brain-shape/SKILL",
-        "../../../../skills/brain/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/plain-language-triggers-shape",
-      "target": "brain/bets/plain-language-triggers-shape",
-      "via": [
-        "../../../../skills/brain-shape/SKILL",
-        "../../../../skills/brain/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/plain-language-triggers-shape",
-      "target": "brain/records/plain-language-triggers-shape",
-      "via": [
-        "../bets/plain-language-triggers-shape",
-        "../../../../skills/brain-shape/SKILL",
-        "../../../../skills/brain/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/smarter-autonomy",
-      "target": "brain/bets/smarter-autonomy",
-      "via": [
-        "../prds/smarter-autonomy",
+        "../epics/regenerative-intent",
         "../constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/smarter-autonomy",
-      "target": "brain/prds/smarter-autonomy",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/autonomous-refinement-protocol",
       "via": [
-        "../bets/smarter-autonomy",
-        "../constraints/adr-before-structural-changes",
-        "../../../../skills/brain-auto/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/smarter-autonomy",
-      "target": "brain/records/smarter-autonomy",
-      "via": [
-        "../prds/smarter-autonomy",
-        "../bets/smarter-autonomy"
-      ]
-    },
-    {
-      "source": "brain/adrs/stronger-default-implementation-guardrails",
-      "target": "brain/bets/plain-language-triggers-shape",
-      "via": [
-        "../../../../skills/brain/SKILL",
-        "../../../../skills/brain-shape/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/stronger-default-implementation-guardrails",
-      "target": "brain/records/plain-language-triggers-shape",
-      "via": [
-        "../../../../skills/brain/SKILL",
-        "../../../../skills/brain-shape/SKILL"
-      ]
-    },
-    {
-      "source": "brain/adrs/upstream-template-sync",
-      "target": "brain/bets/upstream-template-sync",
-      "via": [
-        "../prds/upstream-template-sync",
-        "../pitches/upstream-template-sync"
-      ]
-    },
-    {
-      "source": "brain/adrs/upstream-template-sync",
-      "target": "brain/prds/upstream-template-sync",
-      "via": [
-        "../bets/upstream-template-sync",
-        "../pitches/upstream-template-sync",
+        "../epics/regenerative-intent",
         "../constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/upstream-template-sync",
-      "target": "brain/records/upstream-template-sync",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/background-task-runner",
       "via": [
-        "../prds/upstream-template-sync",
-        "../bets/upstream-template-sync"
-      ]
-    },
-    {
-      "source": "brain/bets/plain-language-triggers-shape",
-      "target": "brain/records/plain-language-triggers-shape",
-      "via": [
-        "../adrs/plain-language-triggers-shape",
-        "../../../../skills/brain-shape/SKILL",
-        "../../../../skills/brain/SKILL"
-      ]
-    },
-    {
-      "source": "brain/bets/smarter-autonomy",
-      "target": "brain/prds/smarter-autonomy",
-      "via": [
-        "../adrs/smarter-autonomy",
+        "../epics/regenerative-intent",
         "../constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/bets/smarter-autonomy",
-      "target": "brain/records/smarter-autonomy",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/brain-diff-drift-detection",
       "via": [
-        "../prds/smarter-autonomy",
-        "../adrs/smarter-autonomy"
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/bets/upstream-template-sync",
-      "target": "brain/prds/upstream-template-sync",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/brain-sync-code",
       "via": [
-        "../adrs/upstream-template-sync",
-        "../pitches/upstream-template-sync"
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/bets/upstream-template-sync",
-      "target": "brain/records/upstream-template-sync",
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/multi-agent-intent-collaboration",
       "via": [
-        "../prds/upstream-template-sync",
-        "../adrs/upstream-template-sync"
+        "../epics/regenerative-intent",
+        "../adrs/autonomous-refinement-protocol",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/multi-agent-rfc-collaboration",
+      "via": [
+        "../epics/regenerative-intent",
+        "../adrs/multi-agent-intent-collaboration",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/structured-intent-and-build",
+      "via": [
+        "../epics/regenerative-intent",
+        "../adrs/autonomous-refinement-protocol",
+        "../adrs/multi-agent-intent-collaboration",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/agent-maintained-intent",
+      "via": [
+        "../prds/agent-maintained-intent",
+        "../epics/regenerative-intent"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/autonomous-colleague-mode",
+      "via": [
+        "../bets/agent-maintained-intent",
+        "../epics/regenerative-intent"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/autonomous-refinement-protocol",
+      "via": [
+        "../epics/regenerative-intent",
+        "../adrs/autonomous-refinement-protocol",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/multi-agent-intent-collaboration",
+      "via": [
+        "../epics/regenerative-intent",
+        "../adrs/multi-agent-intent-collaboration"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/agent-maintained-intent",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/autonomous-colleague-mode",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/autonomous-refinement-protocol",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/background-task-runner",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/brain-diff-drift-detection",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/brain-sync-code",
+      "via": [
+        "../epics/regenerative-intent",
+        "../constraints/adr-before-structural-changes"
       ]
     }
   ]

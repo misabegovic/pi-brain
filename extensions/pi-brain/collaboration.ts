@@ -177,16 +177,16 @@ export async function loadBrainAgent(name: string): Promise<AgentConfig | null> 
   const content = await fs.promises.readFile(filePath, "utf-8");
   const { frontmatter, body, valid } = parseFrontmatter(content);
   if (!valid) return null;
-  const name = extractSimpleYamlValue(frontmatter, "name");
+  const agentName = extractSimpleYamlValue(frontmatter, "name");
   const description = extractSimpleYamlValue(frontmatter, "description");
-  if (!name || !description) return null;
+  if (!agentName || !description) return null;
   const toolsRaw = extractSimpleYamlValue(frontmatter, "tools");
   const tools = toolsRaw
     ?.split(",")
     .map((t) => t.trim())
     .filter(Boolean);
   return {
-    name,
+    name: agentName,
     description,
     tools: tools && tools.length > 0 ? tools : undefined,
     model: extractSimpleYamlValue(frontmatter, "model"),

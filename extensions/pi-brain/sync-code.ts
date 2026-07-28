@@ -209,7 +209,7 @@ export function registerSyncCode(pi: ExtensionAPI) {
       const { items, proposalPaths } = await generateSyncProposals(home, scope, target);
 
       if (items.length === 0) {
-        ctx.ui.notify("No drift detected. Nothing to sync.", "success");
+        ctx.ui.notify("No drift detected. Nothing to sync.", "info");
         return;
       }
 
@@ -227,7 +227,7 @@ export function registerSyncCode(pi: ExtensionAPI) {
         for (const item of items) {
           await applyCodeChange(generatedPath, item);
         }
-        ctx.ui.notify(`Applied ${items.length} code change(s). Proposals remain in ai-suggestions/sync-code/.`, "success");
+        ctx.ui.notify(`Applied ${items.length} code change(s). Proposals remain in ai-suggestions/sync-code/.`, "info");
       } else {
         ctx.ui.notify(
           `Generated ${proposalPaths.length} proposal(s) in ai-suggestions/sync-code/${target}/. Use --apply to update code.`,

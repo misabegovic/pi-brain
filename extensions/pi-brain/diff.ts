@@ -19,7 +19,7 @@ export function parseTypeScriptInterfaces(text: string): TsInterface[] {
     const name = match[1];
     const body = match[2];
     const fields: TsInterface["fields"] = [];
-    const fieldRe = /(\w+)(\?):?\s*([^;\/]+)(?:\/\/.*)?/g;
+    const fieldRe = /(\w+)(\?)?:?\s*([^;\/]+)(?:\/\/.*)?/g;
     let fieldMatch: RegExpExecArray | null;
     while ((fieldMatch = fieldRe.exec(body)) !== null) {
       fields.push({
@@ -204,7 +204,7 @@ export function registerDiff(pi: ExtensionAPI) {
       await mkdir(outputDir, { recursive: true });
       await writeFile(outputPath, report, "utf-8");
 
-      ctx.ui.notify(`Drift report: ${outputPath}\n\n${report.slice(0, 1200)}`, items.length === 0 ? "success" : "warning");
+      ctx.ui.notify(`Drift report: ${outputPath}\n\n${report.slice(0, 1200)}`, items.length === 0 ? "info" : "warning");
     },
   });
 }
