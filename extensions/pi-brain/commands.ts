@@ -12,12 +12,14 @@ import { registerCollaboration } from "./collaboration.ts";
 import { registerBuild } from "./build.ts";
 import { registerDiff } from "./diff.ts";
 import { registerRevise } from "./revise.ts";
+import { registerTasks } from "./tasks.ts";
 
 export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   registerCollaboration(pi);
   registerBuild(pi);
   registerDiff(pi);
   registerRevise(pi);
+  registerTasks(pi);
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {
