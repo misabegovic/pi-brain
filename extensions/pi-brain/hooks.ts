@@ -21,6 +21,7 @@ import { enrichToolResult } from "./tool-result-enrichment.ts";
 import { registerBrainEntryRenderers } from "./entry-renderers.ts";
 import { registerBrainShortcuts } from "./shortcuts.ts";
 import { registerBrainShutdown } from "./session-shutdown.ts";
+import { registerRefinement } from "./refinement.ts";
 import { emitBrainEvent } from "./events.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
@@ -63,6 +64,7 @@ export function registerHooks(
   registerBrainEntryRenderers(pi);
   registerBrainShortcuts(pi);
   registerBrainShutdown(pi, briefedSessions, lastSystemPrompt);
+  registerRefinement(pi, (cwd) => requireBrain(cwd));
 
   pi.on("session_start", async (_event, ctx) => {
     await loadBriefing(ctx);

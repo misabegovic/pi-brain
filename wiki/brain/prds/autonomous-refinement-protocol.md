@@ -1,6 +1,6 @@
 ---
 kind: initiative
-status: draft
+status: living
 confidence: low
 appetite: medium
 team: brain
