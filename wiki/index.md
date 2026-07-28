@@ -12,6 +12,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### bet
 - [Bet — Embed pi-brain as default pi behaviour](wiki/brain/_archive/bets/embed-pi-brain-default-behaviour.md)
+- [Bet — Agent-maintained intent](wiki/brain/bets/agent-maintained-intent.md)
 - [Bet — Autonomous refinement protocol for pi-brain](wiki/brain/bets/autonomous-refinement-protocol.md)
 - [Bet — `/brain:diff` drift detection](wiki/brain/bets/brain-diff-drift-detection.md)
 - [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
@@ -29,6 +30,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Context](wiki/brain/adrs/adr-pi-tool-wrapper-override.md)
 
 ### decision
+- [ADR — Agent-maintained intent](wiki/brain/adrs/agent-maintained-intent.md)
 - [ADR — Autonomous refinement protocol for pi-brain](wiki/brain/adrs/autonomous-refinement-protocol.md)
 - [ADR — `/brain:diff` drift detection](wiki/brain/adrs/brain-diff-drift-detection.md)
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
@@ -61,6 +63,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Upstream template sync for pi-brain clones](wiki/brain/pitches/upstream-template-sync.md)
 
 ### initiative
+- [PRD — Agent-maintained intent](wiki/brain/prds/agent-maintained-intent.md)
 - [PRD — Autonomous refinement protocol for pi-brain](wiki/brain/prds/autonomous-refinement-protocol.md)
 - [PRD — `/brain:diff` drift detection](wiki/brain/prds/brain-diff-drift-detection.md)
 - [PRD — Embed pi-brain as default pi behaviour](wiki/brain/prds/embed-pi-brain-default-behaviour.md)
