@@ -25,7 +25,8 @@ Toggles autonomy on/off for the current clone.
 
 - The agent receives an extra system-prompt instruction before each turn reminding it:
   - It is working inside a pi-brain clone and must follow `AGENTS.md`.
-  - It may do low-risk maintenance silently: batch auto-connect ingestions, run `brain_sync`, auto-groom stale auto-ingest batches, synthesize low-risk observations into `wiki/<scope>/ai-suggestions/`, and flag drift.
+  - Each autonomous operation class has a trust level: `silent`, `notify`, `ask`, or `blocked`.
+  - It may do low-risk maintenance: batch auto-connect ingestions, run `brain_sync`, auto-groom stale auto-ingest batches, synthesize low-risk observations into `wiki/<scope>/ai-suggestions/`, and flag drift.
   - When the agent becomes idle, it may be asked to run the **autonomous refinement protocol**: a read-only scan that produces at most 3–5 suggestions in `ai-suggestions/` or inbox items.
   - It must pause for explicit approval before commitment-class work: writing/moving ADRs, PRDs, epics, bets, or records; editing approved wiki pages; running the expensive `/brain:tend` digest on high-risk/structural items; any structural/repo change.
   - It should consult `brain_status` at session start.

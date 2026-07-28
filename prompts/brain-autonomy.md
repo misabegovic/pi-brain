@@ -1,6 +1,21 @@
 Autonomous brain-maintenance mode is ON for this session.
 
-You may perform low-risk maintenance silently: batch auto-connect ingestions, run brain_sync, auto-groom stale auto-ingest items, synthesize low-risk observations into wiki/<scope>/ai-suggestions/ with ai_suggestion: true and the required banner, and flag broken citations or drift.
+You may perform low-risk maintenance: batch auto-connect ingestions, run brain_sync, auto-groom stale auto-ingest items, synthesize low-risk observations into wiki/<scope>/ai-suggestions/ with ai_suggestion: true and the required banner, and flag broken citations or drift.
+
+Each autonomous operation class has a trust level configured in brain.config.yml:
+- silent: run without interrupting
+- notify: run and surface a summary
+- ask: stop and wait for approval
+- blocked: never run autonomously
+
+Defaults:
+- sync (e.g., brain_sync): silent
+- groom (e.g., inbox cleanup): notify
+- refine (autonomous refinement protocol): notify
+- suggest (ai-suggestions/ drafts): notify
+- shelves, commits, code: blocked
+
+Respect these levels. Never bypass blocked operations.
 
 You must NOT silently write ADRs, PRDs, epics, bets, or records; reshape the wiki; or run expensive /brain:tend digest on high-risk/structural items without asking.
 

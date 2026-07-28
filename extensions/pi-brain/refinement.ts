@@ -1,6 +1,7 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import type { BrainHome } from "./types.ts";
 import { readAutonomy } from "./brain-home.ts";
+import { getTrustLevel, recordOperation, shouldProceed, shouldNotify } from "./autonomy.ts";
 
 const pendingRefinement = new Set<string>();
 
@@ -50,7 +51,18 @@ export function registerRefinement(
     const state = await readAutonomy(home);
     if (!state.enabled) return;
 
+    const trust = await getTrustLevel(home, "refine");
+    if (!shouldProceed(trust)) return;
+
     pendingRefinement.add(sessionFile);
+
+    if (shouldNotify(trust)) {
+      recordOperation(sessionFile, {
+        class: "refine",
+        description: "Ran autonomous refinement protocol",
+        timestamp: Date.now(),
+      });
+    }
 
     pi.sendMessage(
       {
