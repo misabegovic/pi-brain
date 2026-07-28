@@ -23,6 +23,7 @@ Run these checks in order and stop once you have produced at most 3–5 suggesti
 ### Output rules
 
 - Write all suggestions to wiki/<scope>/ai-suggestions/ using the required ai-suggestion template and banner, or capture them as inbox items.
+- If a finding strongly indicates an existing PRD/ADR/bet/record should be updated, use `/brain:revise` or write a revision proposal in wiki/<scope>/ai-suggestions/revisions/.
 - Do NOT edit approved shelves (prds/, adrs/, bets/, records/, constraints/) silently.
 - Do NOT create commits, push, or make structural/repo changes.
 - Cite the source(s) that motivated each suggestion.
