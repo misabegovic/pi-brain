@@ -13,6 +13,7 @@ This is the synthesis layer for this pi-brain instance.
 ### bet
 - [Bet — Embed pi-brain as default pi behaviour](wiki/brain/_archive/bets/embed-pi-brain-default-behaviour.md)
 - [Bet — Autonomous refinement protocol for pi-brain](wiki/brain/bets/autonomous-refinement-protocol.md)
+- [Bet — `/brain:diff` drift detection](wiki/brain/bets/brain-diff-drift-detection.md)
 - [Bet — Patch brain-state to preserve custom content](wiki/brain/bets/brain-state-preserves-custom-content.md)
 - [Bet — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/bets/extension-cleanup-resource-conflicts.md)
 - [Bet — Multi-agent intent collaboration for pi-brain](wiki/brain/bets/multi-agent-intent-collaboration.md)
@@ -29,6 +30,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### decision
 - [ADR — Autonomous refinement protocol for pi-brain](wiki/brain/adrs/autonomous-refinement-protocol.md)
+- [ADR — `/brain:diff` drift detection](wiki/brain/adrs/brain-diff-drift-detection.md)
 - [ADR — brain-state must preserve custom content](wiki/brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — Embed pi-brain as default pi behaviour](wiki/brain/adrs/embed-pi-brain-default-behaviour.md)
 - [ADR — Explicit approval required for commits](wiki/brain/adrs/explicit-approval-for-commits.md)
@@ -60,6 +62,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### initiative
 - [PRD — Autonomous refinement protocol for pi-brain](wiki/brain/prds/autonomous-refinement-protocol.md)
+- [PRD — `/brain:diff` drift detection](wiki/brain/prds/brain-diff-drift-detection.md)
 - [PRD — Embed pi-brain as default pi behaviour](wiki/brain/prds/embed-pi-brain-default-behaviour.md)
 - [PRD — Extension cleanup: remove duplicate resource registration and dead code](wiki/brain/prds/extension-cleanup-resource-conflicts.md)
 - [PRD — Multi-agent intent collaboration for pi-brain](wiki/brain/prds/multi-agent-intent-collaboration.md)
