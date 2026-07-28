@@ -14,6 +14,7 @@ import { registerDiff } from "./diff.ts";
 import { registerRevise } from "./revise.ts";
 import { registerTasks } from "./tasks.ts";
 import { registerSyncCode } from "./sync-code.ts";
+import { registerRfcContribute } from "./rfc-contribute.ts";
 
 export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: string }) {
   registerCollaboration(pi);
@@ -22,6 +23,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
   registerRevise(pi);
   registerTasks(pi);
   registerSyncCode(pi);
+  registerRfcContribute(pi);
   pi.registerCommand("brain", {
     description: "Show the pi-brain briefing",
     handler: async (_args, ctx) => {

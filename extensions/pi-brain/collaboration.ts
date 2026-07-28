@@ -168,6 +168,8 @@ async function mapWithConcurrency<TIn, TOut>(
   return results;
 }
 
+export { runAgent };
+
 export async function loadBrainAgent(name: string): Promise<AgentConfig | null> {
   const pkgRoot = getPackageRoot();
   const filePath = path.join(pkgRoot, "personas", "agents", `${name}.md`);
