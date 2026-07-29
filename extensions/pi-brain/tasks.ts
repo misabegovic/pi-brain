@@ -7,6 +7,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import type { BrainHome, AutonomyTrustConfig, TrustLevel } from "./types.ts";
 import { requireBrain } from "./context.ts";
 import { getTrustLevel, shouldProceed } from "./autonomy.ts";
+import { isValidIdentifier } from "./utils.ts";
 
 const ALLOWED_BG_OPERATIONS = new Set(["sync", "groom", "refine", "suggest"]);
 
@@ -233,6 +234,10 @@ export function registerTasks(pi: ExtensionAPI) {
         return;
       }
       const [scope, operation, ...descriptionParts] = parts;
+      if (!isValidIdentifier(scope)) {
+        ctx.ui.notify("Scope must be a simple identifier (letters, numbers, -, _).", "warning");
+        return;
+      }
       const description = descriptionParts.join(" ");
       const home = await requireBrain(ctx.cwd);
       if (!home) {
