@@ -10,7 +10,7 @@ created_at: 2026-07-29
 
 ## Observation
 
-`brain_links` reports hundreds of dead links and dozens of orphans that are not actually broken. The checker appears to strip `.md` from markdown link targets while keeping `.md` on node names, causing every relative wiki link to be reported as dead.
+`brain_links` reports hundreds of dead links and dozens of orphans that are not actually broken. The checker strips `.md` from markdown link targets while keeping `.md` on node names, causing relative wiki links to be reported as dead.
 
 Current output example:
 
@@ -23,11 +23,11 @@ High false-positive noise makes the link checker unreliable. The team cannot tru
 
 ## Suggested action
 
-1. Inspect the link-graph builder in the brain tooling (likely `tools/brain-links.mjs` or similar).
-2. Normalize node IDs and link targets consistently — either keep or strip `.md` on both sides.
+1. Inspect the link-graph builder in `tools/brain-links.mjs`.
+2. Normalize node IDs and link targets consistently — resolve relative paths against the source file directory and compare wiki-root-relative paths.
 3. Re-run `brain_links` and confirm dead-link/orphan counts drop to near zero.
 
 ## Sources
 
-- [wiki/_state/links.json](../../../../wiki/_state/links.json)
-- [wiki/brain/epics/regenerative-intent.md](../../../epics/regenerative-intent.md)
+- `wiki/_state/links.json`
+- [wiki/brain/epics/regenerative-intent.md](../../epics/regenerative-intent.md)

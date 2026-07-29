@@ -26,5 +26,5 @@ Records for the regenerative-intent bets are now complete. The only remaining tr
 
 ## Sources
 
-- [sources/web/2026-07-28--aicoding-leaflet-pub.md](../../../../sources/web/2026-07-28--aicoding-leaflet-pub.md)
-- [wiki/brain/epics/regenerative-intent.md](../../../epics/regenerative-intent.md)
+- `sources/web/2026-07-28--aicoding-leaflet-pub.md`
+- [wiki/brain/epics/regenerative-intent.md](../../epics/regenerative-intent.md)

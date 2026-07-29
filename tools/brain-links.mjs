@@ -21,7 +21,7 @@
  */
 
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
-import { join, relative, dirname } from "node:path";
+import { join, relative, dirname, resolve as resolvePath } from "node:path";
 
 const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
 const WIKI_DIR = join(CWD, "wiki");
@@ -128,12 +128,17 @@ function resolveLink(raw, fileDir) {
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return null;
   if (trimmed.startsWith("#")) return null;
   if (trimmed.startsWith("mailto:")) return null;
-  return trimmed.replace(/\.md$/, "");
+  const withoutMd = trimmed.replace(/\.md$/, "");
+  if (!fileDir) return withoutMd;
+  // Resolve relative paths against the source file directory and normalize
+  // to a wiki-root-relative path without the .md extension.
+  const resolved = resolvePath(fileDir, withoutMd);
+  const rel = relative(WIKI_DIR, resolved).replace(/\\/g, "/");
+  return rel.startsWith("..") ? withoutMd : rel;
 }
 
 function targetExists(target, pagePaths) {
-  const candidates = [target, target + ".md", join(target, "index.md")];
-  return candidates.some((c) => pagePaths.has(c.replace(/\\/g, "/")));
+  return pagePaths.has(target);
 }
 
 function normalizePagePath(file, wikiDir) {

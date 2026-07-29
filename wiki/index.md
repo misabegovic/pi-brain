@@ -57,20 +57,12 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Create records for the nine bets delivered in PR #12](wiki/brain/ai-suggestions/refinement/create-records-for-nine-bets.md)
+- [Create records for the nine regenerative-intent bets](wiki/brain/ai-suggestions/refinement/create-records-for-nine-bets.md)
 - [Decide the fate of the demo ai-suggestions artifacts](wiki/brain/ai-suggestions/refinement/decide-demo-artifacts-fate.md)
-- [Create a demo RFC to exercise `/brain:rfc-contribute`](wiki/brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute.md)
 - [Fetch or manually capture the aicoding.leaflet.pub source content](wiki/brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md)
-- [Fetch or manually capture the aicoding.leaflet.pub content](wiki/brain/ai-suggestions/refinement/fetch-aicoding-source.md)
 - [Fix `brain_links` markdown `.md` handling bug](wiki/brain/ai-suggestions/refinement/fix-brain-links-md-handling.md)
-- [Merge PR #12 and create records for the nine delivered bets](wiki/brain/ai-suggestions/refinement/merge-pr-and-create-records.md)
 - [Resolve the aicoding.leaflet.pub source](wiki/brain/ai-suggestions/refinement/resolve-aicoding-source.md)
-- [Review or remove the demo ai-suggestions artifacts](wiki/brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts.md)
 - [Tend the three queued inbox items now that records exist](wiki/brain/ai-suggestions/refinement/tend-inbox-items-after-records.md)
-- [Tend the three queued inbox items now that PR #12 has merged](wiki/brain/ai-suggestions/refinement/tend-inbox-items-post-merge.md)
-- [Tend the three queued inbox items](wiki/brain/ai-suggestions/refinement/tend-inbox-items.md)
-- [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206.md)
-- [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
