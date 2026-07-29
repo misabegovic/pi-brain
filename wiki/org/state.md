@@ -46,6 +46,7 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [Release](../brain/records/version-0-3-0.md)
 - [Release](../brain/records/version-0-3-1.md)
 - [Release](../brain/records/version-0-3-2.md)
+- [Record — pi-brain v0.3.3 release](../brain/records/version-0-3-3.md)
 - [pi-brain home](../index.md)
 <!-- /brain-state -->
 
@@ -73,8 +74,6 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [ADR — Tap pi’s full extension surface for pi-brain](../brain/adrs/tap-pi-extension-surface.md)
 - [ADR — Upstream template sync mechanism](../brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](../brain/adrs/versioning-and-releases.md)
-- [Add end-to-end tests for the new PR #12 commands](../brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
-- [Consider a v0.3.3 release](../brain/ai-suggestions/refinement/consider-v0-3-3-release.md)
 - [Implement confidence decay or TTL for AI suggestions](../brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
 - [Review top `brain_links` suggestions for missing cross-links](../brain/ai-suggestions/refinement/review-top-link-suggestions.md)
 - [Verify extension reload in a fresh pi session](../brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md)

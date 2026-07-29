@@ -1,6 +1,6 @@
 {
   "name": "@misabegovic/pi-brain",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A cozy knowledge home for pi. Distributed as a global package; brain clones are content-only and inherit skills, prompts, themes, tools, and the extension from the install.",
   "keywords": [
     "pi-package",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts"
+    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts"
   },
   "devDependencies": {
     "@earendil-works/pi-coding-agent": "^0.82.1",
