@@ -56,6 +56,10 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Upstream template sync mechanism](wiki/brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
+### ai-suggestion
+- [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206.md)
+- [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831.md)
+
 ### constraint
 - [Constraint — ADR before structural changes](wiki/brain/constraints/adr-before-structural-changes.md)
 - [Constraint — Explicit approval required for commits](wiki/brain/constraints/explicit-approval-for-commits.md)
