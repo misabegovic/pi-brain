@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T11:30:37.747Z",
-  "node_count": 97,
-  "edge_count": 592,
+  "generated_at": "2026-07-29T11:33:48.594Z",
+  "node_count": 100,
+  "edge_count": 595,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -193,11 +193,25 @@
       "title": "Add human narrative to roadmap and options pages"
     },
     {
+      "path": "brain/ai-suggestions/refinement/ci-is-green-close-verify-suggestion.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "CI is green — close the verification suggestion"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/consider-v0-3-3-release.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Consider a v0.3.3 release"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/continue-with-remaining-five-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Continue with the remaining 5 original suggestions"
     },
     {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
@@ -226,6 +240,13 @@
       "status": "draft",
       "confidence": "high",
       "title": "Verify the GitHub Actions CI workflow runs green on main"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Verify extension reload in a fresh pi session"
     },
     {
       "path": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md",
@@ -3303,10 +3324,24 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/ci-is-green-close-verify-suggestion",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "CI is green — close the verification suggestion"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
       "kind": "markdown",
       "provenance": "body",
       "context": "Consider a v0.3.3 release"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/continue-with-remaining-five-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Continue with the remaining 5 original suggestions"
     },
     {
       "source": "index",
@@ -3335,6 +3370,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Verify the GitHub Actions CI workflow runs green on main"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Verify extension reload in a fresh pi session"
     },
     {
       "source": "index",
