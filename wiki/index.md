@@ -57,10 +57,14 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Act on the remaining 5 refinement suggestions](brain/ai-suggestions/refinement/act-on-remaining-five-suggestions.md)
 - [Add end-to-end tests for the new PR #12 commands](brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
+- [Add human narrative to roadmap and options pages](brain/ai-suggestions/refinement/add-human-narrative-to-roadmap-and-options.md)
+- [Consider a v0.3.3 release](brain/ai-suggestions/refinement/consider-v0-3-3-release.md)
 - [Implement confidence decay or TTL for AI suggestions](brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
 - [Review active constraints after regenerative-intent delivery](brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
 - [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
+- [Verify the GitHub Actions CI workflow runs green on main](brain/ai-suggestions/refinement/verify-ci-runs-green-on-main.md)
 - [Verify the pi extension reloads the PR #13 view fix](brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 
 ### constraint
