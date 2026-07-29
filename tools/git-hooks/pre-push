@@ -1,0 +1,17 @@
+#!/bin/sh
+# pi-brain pre-push hook
+# Prevents accidental direct pushes to main when remote-promotion-requires-pr
+# is active. Override with ALLOW_MAIN_PUSH=1 in an emergency.
+
+set -e
+
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ] && [ -z "$ALLOW_MAIN_PUSH" ]; then
+    echo ""
+    echo "❌ Direct pushes to main are disabled by remote-promotion-requires-pr."
+    echo "   Open a pull request instead."
+    echo "   Override with: ALLOW_MAIN_PUSH=1 git push origin main"
+    echo ""
+    exit 1
+  fi
+done
