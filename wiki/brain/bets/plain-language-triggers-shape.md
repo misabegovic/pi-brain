@@ -35,5 +35,5 @@ Small. Update skill instructions and verify the agent routes trigger phrases cor
 ## Related
 
 - [ADR — Plain-language shape requests default to forward mode](../adrs/plain-language-triggers-shape.md)
-- [skills/brain-shape/SKILL.md](../../../../skills/brain-shape/SKILL.md)
-- [skills/brain/SKILL.md](../../../../skills/brain/SKILL.md)
+- `skills/brain-shape/SKILL.md`
+- `skills/brain/SKILL.md`

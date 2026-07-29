@@ -63,6 +63,6 @@ The agent should treat these as shape requests:
 ## Related
 
 - [wiki/brain/bets/plain-language-triggers-shape.md](../bets/plain-language-triggers-shape.md)
-- [skills/brain-shape/SKILL.md](../../../../skills/brain-shape/SKILL.md)
-- [skills/brain/SKILL.md](../../../../skills/brain/SKILL.md)
+- `skills/brain-shape/SKILL.md`
+- `skills/brain/SKILL.md`
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)

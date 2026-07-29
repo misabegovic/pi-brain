@@ -71,10 +71,10 @@ Each phase ships as a separate, small PR linked to this ADR and the bet. Flags d
 
 - [PRD — Tap pi’s full extension surface for pi-brain](../prds/tap-pi-extension-surface.md)
 - [Bet — Tap pi’s full extension surface for pi-brain](../bets/tap-pi-extension-surface.md)
-- Source: [Pi has way more extension surface than pi-brain uses](../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
-- Source: [Pi extension docs](../../../sources/doc/2026-07-27--extensions-md.md)
-- Source: [Pi TUI docs](../../../sources/doc/2026-07-27--tui-md.md)
-- Source: [Pi keybindings docs](../../../sources/doc/2026-07-27--keybindings-md.md)
+- Source: (source: sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
+- Source: (source: sources/doc/2026-07-27--extensions-md.md)
+- Source: (source: sources/doc/2026-07-27--tui-md.md)
+- Source: (source: sources/doc/2026-07-27--keybindings-md.md)
 - Source: `extensions/pi-brain/hooks.ts`
 - Source: `extensions/pi-brain/brain-home.ts`
 - [Constraint — ADR before structural changes](../constraints/adr-before-structural-changes.md)

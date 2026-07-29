@@ -35,7 +35,7 @@ Small — one focused build session.
 
 ## Related
 
-- [PRD](brain/prds/extension-cleanup-resource-conflicts.md)
-- [ADR](brain/adrs/extension-cleanup-resource-conflicts.md)
+- [PRD](../prds/extension-cleanup-resource-conflicts.md)
+- [ADR](../adrs/extension-cleanup-resource-conflicts.md)
 - [Record](../records/extension-cleanup-resource-conflicts.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
