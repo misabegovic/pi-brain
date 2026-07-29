@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T11:28:17.059Z",
-  "node_count": 93,
-  "edge_count": 588,
+  "generated_at": "2026-07-29T11:30:37.747Z",
+  "node_count": 97,
+  "edge_count": 592,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,11 +172,32 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/refinement/act-on-remaining-five-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Act on the remaining 5 refinement suggestions"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Add end-to-end tests for the new PR #12 commands"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-human-narrative-to-roadmap-and-options.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add human narrative to roadmap and options pages"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/consider-v0-3-3-release.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Consider a v0.3.3 release"
     },
     {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
@@ -198,6 +219,13 @@
       "status": "draft",
       "confidence": "low",
       "title": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/verify-ci-runs-green-on-main.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Verify the GitHub Actions CI workflow runs green on main"
     },
     {
       "path": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md",
@@ -3254,10 +3282,31 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/act-on-remaining-five-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Act on the remaining 5 refinement suggestions"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
       "kind": "markdown",
       "provenance": "body",
       "context": "Add end-to-end tests for the new PR #12 commands"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-human-narrative-to-roadmap-and-options",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add human narrative to roadmap and options pages"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Consider a v0.3.3 release"
     },
     {
       "source": "index",
@@ -3279,6 +3328,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/verify-ci-runs-green-on-main",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Verify the GitHub Actions CI workflow runs green on main"
     },
     {
       "source": "index",
