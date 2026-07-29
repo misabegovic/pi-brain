@@ -1,5 +1,5 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import type { BrainHome, SessionShutdownConfig } from "./types.ts";
+import type { BrainHome } from "./types.ts";
 import { appendLog } from "./inbox.ts";
 
 export function registerBrainShutdown(

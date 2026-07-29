@@ -1,10 +1,10 @@
 import { spawn } from "node:child_process";
-import { mkdir, readFile, readdir, rename, writeFile, unlink } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import * as path from "node:path";
 import { randomUUID } from "node:crypto";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import type { BrainHome, AutonomyTrustConfig, TrustLevel } from "./types.ts";
+import type { BrainHome, AutonomyTrustConfig } from "./types.ts";
 import { requireBrain } from "./context.ts";
 import { getTrustLevel, shouldProceed } from "./autonomy.ts";
 import { isValidIdentifier } from "./utils.ts";

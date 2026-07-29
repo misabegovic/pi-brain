@@ -1,4 +1,4 @@
-import type { BrainHome, AutonomyTrustConfig, TrustLevel } from "./types.ts";
+import type { BrainHome, TrustLevel } from "./types.ts";
 import { readAutonomyTrust } from "./brain-home.ts";
 
 export type OperationClass = "sync" | "groom" | "refine" | "suggest" | "shelves" | "commits" | "code";

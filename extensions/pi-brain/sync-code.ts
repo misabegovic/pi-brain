@@ -163,7 +163,7 @@ export async function applyCodeChange(generatedPath: string, item: DriftItem): P
         continue;
       }
       changed = true;
-      const [, name, optional, _type] = fieldMatch;
+      const [, _fieldName, optional, _type] = fieldMatch;
       if (item.kind === "extra_in_code") {
         continue; // drop the field line
       }
