@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T11:06:09.389Z",
-  "node_count": 108,
-  "edge_count": 587,
+  "generated_at": "2026-07-29T11:08:33.090Z",
+  "node_count": 111,
+  "edge_count": 590,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -235,11 +235,25 @@
       "title": "Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`"
     },
     {
+      "path": "brain/ai-suggestions/refinement/emergency-queue-groom-stop-adding-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Emergency queue groom: stop adding suggestions"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "medium",
       "title": "Groom stale refinement suggestions"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Implement confidence decay or TTL for AI suggestions"
     },
     {
       "path": "brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries.md",
@@ -261,6 +275,13 @@
       "status": "draft",
       "confidence": "high",
       "title": "Merge PR #14 and act on its four suggestions"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/one-focus-pr-to-clear-top-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "One focused PR to clear the top suggestions"
     },
     {
       "path": "brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed.md",
@@ -3408,10 +3429,24 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/emergency-queue-groom-stop-adding-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Emergency queue groom: stop adding suggestions"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions",
       "kind": "markdown",
       "provenance": "body",
       "context": "Groom stale refinement suggestions"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Implement confidence decay or TTL for AI suggestions"
     },
     {
       "source": "index",
@@ -3433,6 +3468,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Merge PR #14 and act on its four suggestions"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/one-focus-pr-to-clear-top-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "One focused PR to clear the top suggestions"
     },
     {
       "source": "index",
