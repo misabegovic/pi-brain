@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T14:17:01.689Z",
-  "node_count": 91,
-  "edge_count": 580,
+  "generated_at": "2026-07-29T14:18:19.206Z",
+  "node_count": 93,
+  "edge_count": 582,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,6 +170,20 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-pre-push-hook-for-main.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add a pre-push hook to prevent direct pushes to main"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/audit-local-first-env-configuration.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Audit `LOCAL_FIRST` in gitignored `.env`"
     },
     {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
@@ -3251,6 +3265,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-pre-push-hook-for-main",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a pre-push hook to prevent direct pushes to main"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/audit-local-first-env-configuration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Audit `LOCAL_FIRST` in gitignored `.env`"
     },
     {
       "source": "index",
