@@ -11,7 +11,7 @@
  */
 
 import { readFile, writeFile, readdir, mkdir, access } from "node:fs/promises";
-import { join, dirname } from "node:path";
+import { join, dirname, relative } from "node:path";
 
 const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
 const WIKI_DIR = join(CWD, "wiki");
@@ -92,15 +92,15 @@ function replaceMarkerSection(text, name, newLines) {
 
 async function main() {
   const files = await getMarkdownFiles(WIKI_DIR);
+  const scopeDir = join(WIKI_DIR, SCOPE);
   const pages = [];
   for (const file of files) {
     if (file.includes("/_state/")) continue;
     const text = await readFile(file, "utf-8");
     const { valid, frontmatter, body } = parseFrontmatter(text);
     if (!valid) continue;
-    const rel = file.replace(WIKI_DIR + "/", "").replace(/\.md$/, "");
     pages.push({
-      path: rel + ".md",
+      path: relative(scopeDir, file),
       kind: getYamlValue(frontmatter, "kind") || "unknown",
       status: getYamlValue(frontmatter, "status") || "",
       confidence: getYamlValue(frontmatter, "confidence") || "",
@@ -113,7 +113,6 @@ async function main() {
   const highConfidence = pages.filter((p) => p.confidence === "high");
   const uncertain = pages.filter((p) => ["low", "medium"].includes(p.confidence));
 
-  const scopeDir = join(WIKI_DIR, SCOPE);
   await mkdir(scopeDir, { recursive: true });
 
   const stateTemplate = [

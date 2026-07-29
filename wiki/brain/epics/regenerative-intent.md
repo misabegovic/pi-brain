@@ -120,7 +120,7 @@ Research into the pi coding-agent extension surface shows that most of the build
 
 ### Context
 
-- [sources/web/2026-07-28--aicoding-leaflet-pub.md](../../../../sources/web/2026-07-28--aicoding-leaflet-pub.md) — external source on spec-driven AI coding; content could not be fetched automatically.
+- (source: sources/web/2026-07-28--aicoding-leaflet-pub.md) — external source on spec-driven AI coding; content could not be fetched automatically.
 - [wiki/brain/adrs/smarter-autonomy.md](../adrs/smarter-autonomy.md) — current autonomy boundary; this epic revisits it.
 - [wiki/brain/adrs/local-first-brain-self-maintenance.md](../adrs/local-first-brain-self-maintenance.md) — current local-first commit rules; may need amendment.
 - [wiki/brain/adrs/stronger-default-implementation-guardrails.md](../adrs/stronger-default-implementation-guardrails.md) — guardrails this epic must preserve.

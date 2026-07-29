@@ -40,5 +40,5 @@ The pi-brain template should make the "stop and shape" stance the default, not a
 
 ## Related
 
-- [sources/brain/feedback/eager-implementation-session-snippet.md](../../../../sources/brain/feedback/eager-implementation-session-snippet.md)
-- [wiki/brain/ai-suggestions/adrs/stronger-default-implementation-guardrails.md](../ai-suggestions/adrs/stronger-default-implementation-guardrails.md)
+- (source: sources/brain/feedback/eager-implementation-session-snippet.md)
+- [wiki/brain/adrs/stronger-default-implementation-guardrails.md](../adrs/stronger-default-implementation-guardrails.md)

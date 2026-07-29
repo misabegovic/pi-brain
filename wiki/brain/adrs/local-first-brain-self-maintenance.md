@@ -45,5 +45,5 @@ This ADR amends the active `explicit-approval-for-commits` constraint to exempt 
 
 - [Constraint — Explicit approval required for commits](../constraints/explicit-approval-for-commits.md)
 - [Constraint — Remote promotion requires a pull request](../constraints/remote-promotion-requires-pr.md)
-- [AGENTS.md](../../../../AGENTS.md)
+- `AGENTS.md`
 - `.env`

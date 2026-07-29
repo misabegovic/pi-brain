@@ -105,7 +105,7 @@ async function regenerateViews() {
     if (!valid) continue;
     const kind = getYamlValue(frontmatter, "kind") ?? "unknown";
     const title = body.split("\n")[0].replace(/^#+\s*/, "").trim();
-    pages.push({ path: relative(CWD, file), kind, title });
+    pages.push({ path: relative(wikiDir, file), kind, title });
   }
 
   const byKind = new Map();

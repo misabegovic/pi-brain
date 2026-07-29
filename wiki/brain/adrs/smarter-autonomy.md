@@ -64,4 +64,4 @@ Autonomy ON allows silent, low-risk maintenance; autonomy OFF requires explicit 
 - [wiki/brain/prds/smarter-autonomy.md](../prds/smarter-autonomy.md)
 - [wiki/brain/bets/smarter-autonomy.md](../bets/smarter-autonomy.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
-- [skills/brain-auto/SKILL.md](../../../../skills/brain-auto/SKILL.md)
+- `skills/brain-auto/SKILL.md`

@@ -33,4 +33,4 @@ author: pi-brain-agent
 - [ADR — Versioning and release strategy](../adrs/versioning-and-releases.md)
 - [Record — Tap pi's full extension surface for pi-brain](tap-pi-extension-surface.md)
 - [ADR — Local-first brain self-maintenance workflow](../adrs/local-first-brain-self-maintenance.md)
-- [package.json](../../../package.json)
+- `package.json`

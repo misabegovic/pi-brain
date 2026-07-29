@@ -35,4 +35,4 @@ Small. One focused change to `tools/brain-state.mjs` plus a test that custom con
 ## Related
 
 - [ADR](../adrs/brain-state-preserves-custom-content.md)
-- [tools/brain-state.mjs](../../../../tools/brain-state.mjs)
+- `tools/brain-state.mjs`
