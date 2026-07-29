@@ -60,11 +60,14 @@ This is the synthesis layer for this pi-brain instance.
 - [Act on the remaining 5 refinement suggestions](brain/ai-suggestions/refinement/act-on-remaining-five-suggestions.md)
 - [Add end-to-end tests for the new PR #12 commands](brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
 - [Add human narrative to roadmap and options pages](brain/ai-suggestions/refinement/add-human-narrative-to-roadmap-and-options.md)
+- [CI is green — close the verification suggestion](brain/ai-suggestions/refinement/ci-is-green-close-verify-suggestion.md)
 - [Consider a v0.3.3 release](brain/ai-suggestions/refinement/consider-v0-3-3-release.md)
+- [Continue with the remaining 5 original suggestions](brain/ai-suggestions/refinement/continue-with-remaining-five-suggestions.md)
 - [Implement confidence decay or TTL for AI suggestions](brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
 - [Review active constraints after regenerative-intent delivery](brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
 - [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
 - [Verify the GitHub Actions CI workflow runs green on main](brain/ai-suggestions/refinement/verify-ci-runs-green-on-main.md)
+- [Verify extension reload in a fresh pi session](brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md)
 - [Verify the pi extension reloads the PR #13 view fix](brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 
 ### constraint
