@@ -40,11 +40,11 @@ The default constraint applies to the brain home and to any repo the brain maint
 
 ## Related
 
-- [sources/brain/feedback/eager-implementation-session-snippet.md](../../../../sources/brain/feedback/eager-implementation-session-snippet.md)
-- [wiki/brain/feedback/eager-implementation-contract-breach.md](../../feedback/eager-implementation-contract-breach.md)
-- [wiki/brain/constraints/adr-before-structural-changes.md](../../constraints/adr-before-structural-changes.md)
-- [AGENTS.md](../../../../AGENTS.md)
-- [skills/brain/SKILL.md](../../../../skills/brain/SKILL.md)
-- [skills/brain-shape/SKILL.md](../../../../skills/brain-shape/SKILL.md)
-- [skills/brain-setup/SKILL.md](../../../../skills/brain-setup/SKILL.md)
-- [prompts/brain-home.md](../../../../prompts/brain-home.md)
+- (source: sources/brain/feedback/eager-implementation-session-snippet.md)
+- [wiki/brain/feedback/eager-implementation-contract-breach.md](../feedback/eager-implementation-contract-breach.md)
+- [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+- `AGENTS.md`
+- `skills/brain/SKILL.md`
+- `skills/brain-shape/SKILL.md`
+- `skills/brain-setup/SKILL.md`
+- `prompts/brain-home.md`

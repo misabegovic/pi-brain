@@ -12,7 +12,7 @@ sources:
 
 pi-brain is currently a repository template. A user clones or converts a repo, keeps content and code together, and must explicitly enable autonomy before the agent behaves brain-aware. This makes pi-brain an optional add-on rather than the default memory layer for pi.
 
-The source plan (see [pi-brain embed plan](../../../sources/doc/2026-07-27--pi-brain-embed-plan-md.md)) evaluated pi's documented extension API and concluded that every required capability — global availability, system-prompt weaving, agent-loop participation, centrally updated skills/templates — is reachable without forking the harness.
+The source plan (see (source: sources/doc/2026-07-27--pi-brain-embed-plan-md.md)) evaluated pi's documented extension API and concluded that every required capability — global availability, system-prompt weaving, agent-loop participation, centrally updated skills/templates — is reachable without forking the harness.
 
 The active constraint [ADR before structural changes](../constraints/adr-before-structural-changes.md) requires an approved ADR before we change repository layout, the extension, or the distribution model. This ADR satisfies that gate.
 
@@ -78,6 +78,6 @@ Cons: does not address the problem statement.
 
 - PRD: [Embed pi-brain as default pi behaviour](../prds/embed-pi-brain-default-behaviour.md)
 - Constraint: [ADR before structural changes](../constraints/adr-before-structural-changes.md)
-- Source: [pi-brain embed plan](../../../sources/doc/2026-07-27--pi-brain-embed-plan-md.md)
+- Source: (source: sources/doc/2026-07-27--pi-brain-embed-plan-md.md)
 - Record: [pi-brain v0.2.0 release](../records/version-0-2-0.md)
 - Bet: (to be drafted in Phase 3)

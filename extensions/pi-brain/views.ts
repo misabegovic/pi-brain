@@ -25,7 +25,8 @@ export async function validateMarkdown(home: BrainHome): Promise<Array<{ path: s
 }
 
 export async function regenerateViews(home: BrainHome): Promise<string> {
-  const files = await getMarkdownFiles(join(home.path, "wiki"));
+  const wikiDir = join(home.path, "wiki");
+  const files = await getMarkdownFiles(wikiDir);
   const pages: Array<{ path: string; kind: string; title: string }> = [];
   for (const file of files) {
     if (file.includes("/_state/")) continue;
@@ -34,7 +35,7 @@ export async function regenerateViews(home: BrainHome): Promise<string> {
     if (!valid) continue;
     const kind = extractSimpleYamlValue(frontmatter, "kind") ?? "unknown";
     const title = body.split("\n")[0].replace(/^#+\s*/, "").trim();
-    pages.push({ path: relative(home.path, file), kind, title });
+    pages.push({ path: relative(wikiDir, file), kind, title });
   }
 
   const byKind = new Map<string, Array<{ path: string; title: string }>>();
