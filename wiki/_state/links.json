@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T10:26:22.965Z",
-  "node_count": 88,
-  "edge_count": 567,
+  "generated_at": "2026-07-29T10:27:36.437Z",
+  "node_count": 92,
+  "edge_count": 571,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,6 +170,34 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add a GitHub Actions CI workflow for checks and tests"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Delete or promote the archived demo RFC"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Mark regenerative-intent epic as accepted and record PR #13"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3202,6 +3230,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a GitHub Actions CI workflow for checks and tests"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Delete or promote the archived demo RFC"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Document the new commands in `skills/brain/SKILL.md` and `pr"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Mark regenerative-intent epic as accepted and record PR #13"
     },
     {
       "source": "index",

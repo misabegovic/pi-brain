@@ -56,6 +56,12 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Upstream template sync mechanism](brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
+### ai-suggestion
+- [Add a GitHub Actions CI workflow for checks and tests](brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md)
+- [Delete or promote the archived demo RFC](brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md)
+- [Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`](brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md)
+- [Mark regenerative-intent epic as accepted and record PR #13](brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md)
+
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
 - [Constraint — Explicit approval required for commits](brain/constraints/explicit-approval-for-commits.md)
