@@ -38,3 +38,4 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-29: Merged PR #16 — autonomous refinement protocol output: 4 suggestions (queue grooming, org state narrative, constraints review, setup skill).
 - 2026-07-29: Merged PR #17 — autonomous refinement protocol output: 4 meta-suggestions about queue grooming.
 - 2026-07-29: Merged PR #18 — autonomous refinement protocol output: 3 meta-suggestions about queue grooming.
+- 2026-07-29: capture: Decision: No further releases beyond v0.3.3. Any additional work the agent suggests and the user approves will land in t

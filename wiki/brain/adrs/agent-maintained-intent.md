@@ -79,3 +79,25 @@ Proposals use the existing `ai-suggestion: true` convention with a `target:` fro
 - [wiki/brain/adrs/multi-agent-rfc-collaboration.md](../adrs/multi-agent-rfc-collaboration.md)
 - [wiki/brain/adrs/structured-intent-and-build.md](../adrs/structured-intent-and-build.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+
+### Related PRDs
+
+- [wiki/brain/prds/autonomous-refinement-protocol.md](../prds/autonomous-refinement-protocol.md)
+- [wiki/brain/prds/autonomous-colleague-mode.md](../prds/autonomous-colleague-mode.md)
+- [wiki/brain/prds/background-task-runner.md](../prds/background-task-runner.md)
+- [wiki/brain/prds/brain-diff-drift-detection.md](../prds/brain-diff-drift-detection.md)
+- [wiki/brain/prds/brain-sync-code.md](../prds/brain-sync-code.md)
+- [wiki/brain/prds/multi-agent-intent-collaboration.md](../prds/multi-agent-intent-collaboration.md)
+- [wiki/brain/prds/multi-agent-rfc-collaboration.md](../prds/multi-agent-rfc-collaboration.md)
+- [wiki/brain/prds/structured-intent-and-build.md](../prds/structured-intent-and-build.md)
+
+### Related records
+
+- [wiki/brain/records/autonomous-colleague-mode.md](../records/autonomous-colleague-mode.md)
+- [wiki/brain/records/autonomous-refinement-protocol.md](../records/autonomous-refinement-protocol.md)
+- [wiki/brain/records/background-task-runner.md](../records/background-task-runner.md)
+- [wiki/brain/records/brain-diff-drift-detection.md](../records/brain-diff-drift-detection.md)
+- [wiki/brain/records/brain-sync-code.md](../records/brain-sync-code.md)
+- [wiki/brain/records/multi-agent-intent-collaboration.md](../records/multi-agent-intent-collaboration.md)
+- [wiki/brain/records/multi-agent-rfc-collaboration.md](../records/multi-agent-rfc-collaboration.md)
+- [wiki/brain/records/structured-intent-and-build.md](../records/structured-intent-and-build.md)
