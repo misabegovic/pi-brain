@@ -1,6 +1,6 @@
 ---
 kind: epic
-status: draft
+status: accepted
 confidence: low
 appetite: big
 sources:
