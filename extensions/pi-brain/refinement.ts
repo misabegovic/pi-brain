@@ -1,9 +1,21 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import { readdir } from "node:fs/promises";
+import { join } from "node:path";
 import type { BrainHome } from "./types.ts";
 import { readAutonomy } from "./brain-home.ts";
 import { getTrustLevel, recordOperation, shouldProceed, shouldNotify } from "./autonomy.ts";
 
 const pendingRefinement = new Set<string>();
+const MAX_SUGGESTIONS = 5;
+
+async function countRefinementSuggestions(home: BrainHome): Promise<number> {
+  try {
+    const files = await readdir(join(home.path, "wiki", "brain", "ai-suggestions", "refinement"));
+    return files.filter((f) => f.endsWith(".md")).length;
+  } catch {
+    return 0;
+  }
+}
 
 function getSessionFile(ctx: ExtensionContext): string | undefined {
   return ctx.sessionManager?.getSessionFile?.();
@@ -52,6 +64,19 @@ export function registerRefinement(
     if (!state.enabled) return;
 
     const trust = await getTrustLevel(home, "refine");
+
+    const suggestionCount = await countRefinementSuggestions(home);
+    if (suggestionCount > MAX_SUGGESTIONS) {
+      if (shouldNotify(trust)) {
+        recordOperation(sessionFile, {
+          class: "refine",
+          description: `Skipped refinement protocol: ${suggestionCount} suggestions queued (max ${MAX_SUGGESTIONS})`,
+          timestamp: Date.now(),
+        });
+      }
+      return;
+    }
+
     if (!shouldProceed(trust)) return;
 
     pendingRefinement.add(sessionFile);
