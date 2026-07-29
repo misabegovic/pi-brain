@@ -38,7 +38,7 @@ Turn any directory into a pi-brain home.
 
 - Update `brain.config.yml` manually if you need connectors.
 - Install the pi-brain package: `pi install ./` (from the brain directory).
-- Run `npm install` and `npm run check` to validate the local tooling.
+- Run `npm install` and `npm run validate` to validate the local tooling.
 - Copy `.env.example` to `.env` and set `LOCAL_FIRST` according to the project's delivery model. For the product repo and shared clones, use PR-first mode (`LOCAL_FIRST=false` or leave the default).
 - Review `wiki/org/constraints/adr-before-structural-changes.md` and `wiki/brain/constraints/remote-promotion-requires-pr.md`. Retire them only if the project explicitly agrees the rules no longer apply.
 - Start capturing, ingesting, and shaping. Use `/brain:build`, `/brain:diff`, and `/brain:sync-code` to turn approved intent into code.
