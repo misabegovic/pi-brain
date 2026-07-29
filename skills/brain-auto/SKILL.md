@@ -25,7 +25,9 @@ Toggles autonomy on/off for the current clone.
 
 - The agent receives an extra system-prompt instruction before each turn reminding it:
   - It is working inside a pi-brain clone and must follow `AGENTS.md`.
-  - It may do low-risk maintenance silently: batch auto-connect ingestions, run `brain_sync`, auto-groom stale auto-ingest batches, synthesize low-risk observations into `wiki/<scope>/ai-suggestions/`, and flag drift.
+  - Each autonomous operation class has a trust level: `silent`, `notify`, `ask`, or `blocked`.
+  - It may do low-risk maintenance: batch auto-connect ingestions, run `brain_sync`, auto-groom stale auto-ingest batches, synthesize low-risk observations into `wiki/<scope>/ai-suggestions/`, and flag drift.
+  - When the agent becomes idle, it may be asked to run the **autonomous refinement protocol**: a read-only scan that produces at most 3–5 suggestions in `ai-suggestions/` or inbox items.
   - It must pause for explicit approval before commitment-class work: writing/moving ADRs, PRDs, epics, bets, or records; editing approved wiki pages; running the expensive `/brain:tend` digest on high-risk/structural items; any structural/repo change.
   - It should consult `brain_status` at session start.
   - It should use `brain_ask` before guessing facts.
@@ -34,9 +36,26 @@ Toggles autonomy on/off for the current clone.
   - It should hand off to `/brain:shape` for pitches and commitment-class decisions.
   - It should run `brain_sync` after wiki changes.
 
+## Autonomous refinement protocol
+
+When autonomy is ON and the agent becomes idle, the pi-brain extension may trigger a refinement turn. The agent then:
+
+1. Runs a gap scan over recent sources, inbox items, and approved intent.
+2. Checks for broken citations, orphan pages, and wiki/source drift.
+3. Audits specs and target-repo code for KISS/YAGNI violations.
+4. Looks for performance/throughput smells in accessible target repos.
+5. Prefers revising existing PRDs/ADRs/bets/records over creating new artifacts.
+
+Output rules:
+- All output goes to `ai-suggestions/` or the inbox.
+- Approved shelves are never edited silently.
+- No commits, pushes, or structural/repo changes happen autonomously.
+- Each suggestion cites its source(s).
+- High-risk or ambiguous findings become inbox tasks, not ai-suggestions.
+
 ## What autonomy does NOT do
 
-- It does not schedule background LLM runs.
+- It does not schedule background LLM runs outside the current session.
 - It does not auto-merge PRs or push code.
 - It does not silently write ADRs, PRDs, epics, bets, or records.
 - It does not silently reshape approved wiki pages.

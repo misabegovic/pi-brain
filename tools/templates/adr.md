@@ -14,6 +14,17 @@ What forced the decision? Constraints, prior art, affected systems.
 
 What we decided, stated plainly.
 
+### Intent blocks (optional)
+
+If this ADR defines structures that drive code generation, add structured intent blocks. Example:
+
+```intent:data_model:example
+name: Example
+fields:
+  - name: id
+    type: string
+```
+
 ## Alternatives considered
 
 At least three options plus "do nothing", with trade-offs.

@@ -17,6 +17,18 @@ export interface AutonomyState {
   enabled: boolean;
 }
 
+export type TrustLevel = "silent" | "notify" | "ask" | "blocked";
+
+export interface AutonomyTrustConfig {
+  sync: TrustLevel;
+  groom: TrustLevel;
+  refine: TrustLevel;
+  suggest: TrustLevel;
+  shelves: TrustLevel;
+  commits: TrustLevel;
+  code: TrustLevel;
+}
+
 export interface CompactionHarvestConfig {
   enabled: boolean;
   maxItems: number;

@@ -135,3 +135,7 @@ export function slugify(text: string): string {
 export function relativeToHome(home: BrainHome, file: string): string {
   return relative(home.path, file);
 }
+
+export function isValidIdentifier(value: string): boolean {
+  return /^[a-zA-Z0-9_-]+$/.test(value);
+}

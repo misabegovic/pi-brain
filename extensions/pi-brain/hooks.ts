@@ -13,7 +13,6 @@ import {
   readInbox,
 } from "./brain-home.ts";
 import { getPackageRoot } from "./resources.ts";
-import { searchFiles } from "./search.ts";
 import { autoGroom } from "./inbox.ts";
 import { runCompactionHarvest } from "./compaction-harvest.ts";
 import { buildInjectedMessages } from "./context-injection.ts";
@@ -21,6 +20,8 @@ import { enrichToolResult } from "./tool-result-enrichment.ts";
 import { registerBrainEntryRenderers } from "./entry-renderers.ts";
 import { registerBrainShortcuts } from "./shortcuts.ts";
 import { registerBrainShutdown } from "./session-shutdown.ts";
+import { registerRefinement } from "./refinement.ts";
+import { formatSummary, getSessionSummary, clearSessionSummary } from "./autonomy.ts";
 import { emitBrainEvent } from "./events.ts";
 import { loadPrompt, hasAgentsMd } from "./prompts.ts";
 import { loadActiveConstraints, matchGlob } from "./state.ts";
@@ -63,6 +64,19 @@ export function registerHooks(
   registerBrainEntryRenderers(pi);
   registerBrainShortcuts(pi);
   registerBrainShutdown(pi, briefedSessions, lastSystemPrompt);
+  registerRefinement(pi, (cwd) => requireBrain(cwd));
+
+  pi.on("agent_settled", async (_event, ctx) => {
+    if (!ctx.isIdle()) return;
+    const sessionFile = ctx.sessionManager?.getSessionFile?.();
+    if (!sessionFile) return;
+    const summary = getSessionSummary(sessionFile);
+    if (summary.length === 0) return;
+    if (ctx.hasUI) {
+      ctx.ui.notify(formatSummary(summary), "info");
+    }
+    clearSessionSummary(sessionFile);
+  });
 
   pi.on("session_start", async (_event, ctx) => {
     await loadBriefing(ctx);
