@@ -19,7 +19,7 @@ import {
   applyTemplateChange,
 } from "./template-update.ts";
 
-async function findRecentSources(home: { path: string }, since: number): Promise<string[]> {
+export async function findRecentSources(home: { path: string }, since: number): Promise<string[]> {
   const sourcesDir = join(home.path, "sources");
   if (!(await pathExists(sourcesDir))) return [];
 
