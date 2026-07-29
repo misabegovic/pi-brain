@@ -180,16 +180,24 @@ export async function applyCodeChange(generatedPath: string, item: DriftItem): P
         continue;
       }
       if (item.kind === "missing_in_code") {
-        // Add field from intent; drift item does not carry the full intent type,
-        // so use a placeholder. In practice users should regenerate from intent.
+        // Field already exists but type/optionality may differ; leave it in place.
         newLines.push(line);
-        newLines.push(`  ${item.fieldName}: ${item.intentType ?? "unknown"};`);
         continue;
       }
       newLines.push(line);
     }
+    if (item.kind === "missing_in_code" && !changed) {
+      // Field does not exist in the interface; append it before the closing brace.
+      const indent = "  ";
+      newLines.push(`${indent}${item.fieldName}: ${item.intentType ?? "unknown"};`);
+      changed = true;
+    }
     if (!changed) return match;
-    return header + newLines.join("\n") + footer;
+    // Trim trailing blank lines inside the body to avoid formatting artifacts.
+    while (newLines.length > 0 && newLines[newLines.length - 1].trim() === "") {
+      newLines.pop();
+    }
+    return header + newLines.join("\n") + "\n" + footer;
   });
 
   await writeFile(generatedPath, text, "utf-8");
