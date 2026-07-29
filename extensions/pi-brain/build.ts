@@ -50,7 +50,7 @@ export function registerBuild(pi: ExtensionAPI) {
       await mkdir(outputDir, { recursive: true });
       await writeFile(outputPath, output, "utf-8");
 
-      ctx.ui.notify(`Generated ${outputPath}\n\n${output.slice(0, 1200)}`, "success");
+      ctx.ui.notify(`Generated ${outputPath}\n\n${output.slice(0, 1200)}`, "info");
     },
   });
 }

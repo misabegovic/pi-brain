@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { readFile, writeFile, readdir, stat } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
@@ -19,6 +19,29 @@ import {
   applyTemplateChange,
 } from "./template-update.ts";
 
+async function findRecentSources(home: { path: string }, since: number): Promise<string[]> {
+  const sourcesDir = join(home.path, "sources");
+  if (!(await pathExists(sourcesDir))) return [];
+
+  const results: string[] = [];
+  async function walk(dir: string) {
+    const entries = await readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(fullPath);
+      } else if (entry.isFile()) {
+        const info = await stat(fullPath);
+        if (info.mtimeMs >= since || info.birthtimeMs >= since) {
+          results.push(relative(home.path, fullPath));
+        }
+      }
+    }
+  }
+  await walk(sourcesDir);
+  return results;
+}
+
 export function registerTools(pi: ExtensionAPI) {
 
   pi.registerTool({
@@ -26,9 +49,9 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain status",
     description: "Read the pi-brain status dashboard and inbox summary.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const org = await readOrg(home);
       const pages = await countPages(home);
@@ -79,9 +102,9 @@ export function registerTools(pi: ExtensionAPI) {
       scope: Type.Optional(Type.String({ description: "Optional repo/org/brain scope." })),
       kind: Type.Optional(Type.String({ description: "Optional kind: decision, insight, task, source." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const id = params.note
         .toLowerCase()
@@ -107,7 +130,7 @@ export function registerTools(pi: ExtensionAPI) {
       await writeFile(inboxPath, current.trimEnd() + entry + "\n", "utf-8");
 
       return {
-        content: [{ type: "text", text: `Captured to inbox: ${id}` }],
+        content: [{ type: "text" as const, text: `Captured to inbox: ${id}` }],
         details: {},
       };
     },
@@ -134,13 +157,13 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       question: Type.String({ description: "The question to ask." }),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const results = await searchFiles(home, params.question);
       if (results.length === 0) {
-        return { content: [{ type: "text", text: "No matches found." }], details: {} };
+        return { content: [{ type: "text" as const, text: "No matches found." }], details: {} };
       }
 
       const text = results
@@ -155,9 +178,9 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain tend",
     description: "List the pi-brain inbox queue.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const inbox = await readInbox(home);
       const count = countInboxItems(inbox);
@@ -178,13 +201,13 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain validate",
     description: "Validate frontmatter conformance of wiki pages.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const errors = await validateMarkdown(home);
       if (errors.length === 0) {
-        return { content: [{ type: "text", text: "All wiki pages pass frontmatter validation." }], details: {} };
+        return { content: [{ type: "text" as const, text: "All wiki pages pass frontmatter validation." }], details: {} };
       }
 
       const text = errors.map((e) => `${e.path}: ${e.errors.join(", ")}`).join("\n");
@@ -197,12 +220,12 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain views",
     description: "Regenerate the pi-brain index view from the wiki corpus.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const message = await regenerateViews(home);
-      return { content: [{ type: "text", text: message }], details: {} };
+      return { content: [{ type: "text" as const, text: message }], details: {} };
     },
   });
 
@@ -211,16 +234,16 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain sync",
     description: "Run validate and regenerate views.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const errors = await validateMarkdown(home);
       const viewMessage = await regenerateViews(home);
       const errorText = errors.length > 0 ? errors.map((e) => `${e.path}: ${e.errors.join(", ")}`).join("\n") : "No validation errors.";
 
       return {
-        content: [{ type: "text", text: `${viewMessage}\n\n${errorText}` }],
+        content: [{ type: "text" as const, text: `${viewMessage}\n\n${errorText}` }],
         details: {},
       };
     },
@@ -234,9 +257,9 @@ export function registerTools(pi: ExtensionAPI) {
       version: Type.Optional(Type.String({ description: "Target version tag (e.g., v0.2.2). Defaults to latest." })),
       apply: Type.Optional(Type.Boolean({ description: "If true, apply changes. If false, show the diff summary." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const targetVersion = params.version || "latest";
       const packageRef = targetVersion === "latest"
@@ -264,7 +287,7 @@ export function registerTools(pi: ExtensionAPI) {
 
         if (currentVersion === ghTargetVersion) {
           return {
-            content: [{ type: "text", text: `Package update failed; GitHub fallback shows this clone is already on template version ${ghTargetVersion}.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}` }],
+            content: [{ type: "text" as const, text: `Package update failed; GitHub fallback shows this clone is already on template version ${ghTargetVersion}.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}` }],
             details: {},
           };
         }
@@ -274,7 +297,7 @@ export function registerTools(pi: ExtensionAPI) {
 
         if (changes.length === 0) {
           return {
-            content: [{ type: "text", text: `Package update failed; GitHub fallback found no template-owned changes between ${currentVersion || "unknown"} and ${ghTargetVersion}.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}` }],
+            content: [{ type: "text" as const, text: `Package update failed; GitHub fallback found no template-owned changes between ${currentVersion || "unknown"} and ${ghTargetVersion}.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}` }],
             details: {},
           };
         }
@@ -306,7 +329,7 @@ export function registerTools(pi: ExtensionAPI) {
         };
       } catch (err: any) {
         return {
-          content: [{ type: "text", text: `Update failed. Package path failed and GitHub fallback also failed.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}\n\nFallback error: ${err?.message ?? err}` }],
+          content: [{ type: "text" as const, text: `Update failed. Package path failed and GitHub fallback also failed.\n\nPackage error:\n${pkgResult.stderr || pkgResult.stdout}\n\nFallback error: ${err?.message ?? err}` }],
           details: {},
         };
       }
@@ -318,13 +341,13 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain pull connectors",
     description: "Run configured pull connectors (GitHub, etc.) to snapshot external sources into sources/.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const script = await resolveResource(join("tools", "connectors", "run.mjs"), home);
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "Connector runner not found at tools/connectors/run.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "Connector runner not found at tools/connectors/run.mjs" }], details: {} };
       }
 
       const startTime = Date.now();
@@ -340,7 +363,7 @@ export function registerTools(pi: ExtensionAPI) {
       }
 
       return {
-        content: [{ type: "text", text: output || "Connectors finished with no output." }],
+        content: [{ type: "text" as const, text: output || "Connectors finished with no output." }],
         details: {},
       };
     },
@@ -353,9 +376,9 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       enabled: Type.Optional(Type.Boolean({ description: "Set to true/false to toggle; omit to read current state." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const state = await readAutonomy(home);
       if (params.enabled !== undefined) {
@@ -393,15 +416,15 @@ export function registerTools(pi: ExtensionAPI) {
       subdir: Type.Optional(Type.String({ description: "Subdirectory for existing project code (default: files)." })),
       dry_run: Type.Optional(Type.Boolean({ description: "Preview the conversion without moving files." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (home) {
-        return { content: [{ type: "text", text: "This directory already looks like a pi-brain home. Aborting to avoid data loss." }], details: {} };
+        return { content: [{ type: "text" as const, text: "This directory already looks like a pi-brain home. Aborting to avoid data loss." }], details: {} };
       }
 
       const script = join(ctx.cwd, "tools", "brain-convert.mjs");
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "Convert runner not found at tools/brain-convert.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "Convert runner not found at tools/brain-convert.mjs" }], details: {} };
       }
 
       const args = [script];
@@ -410,7 +433,7 @@ export function registerTools(pi: ExtensionAPI) {
       const result = await execFilePromise("node", args, { cwd: ctx.cwd });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
-        content: [{ type: "text", text: output || "Conversion complete." }],
+        content: [{ type: "text" as const, text: output || "Conversion complete." }],
         details: {},
       };
     },
@@ -420,19 +443,19 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain projects",
     description: "List onboarded projects in this pi-brain clone.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const script = await resolveResource(join("tools", "brain-projects.mjs"), home);
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "Projects runner not found at tools/brain-projects.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "Projects runner not found at tools/brain-projects.mjs" }], details: {} };
       }
 
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
-        content: [{ type: "text", text: output || "No projects found." }],
+        content: [{ type: "text" as const, text: output || "No projects found." }],
         details: {},
       };
     },
@@ -445,20 +468,20 @@ export function registerTools(pi: ExtensionAPI) {
       target: Type.String({ description: "Path or URL to the repository." }),
       scope: Type.Optional(Type.String({ description: "Scope name (default: repo basename)." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const script = await resolveResource(join("tools", "brain-ingest-repo.mjs"), home);
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "Repo ingest runner not found at tools/brain-ingest-repo.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "Repo ingest runner not found at tools/brain-ingest-repo.mjs" }], details: {} };
       }
 
       const args = params.scope ? [script, params.target, params.scope] : [script, params.target];
       const result = await execFilePromise("node", args, { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
-        content: [{ type: "text", text: output || "Repo ingested." }],
+        content: [{ type: "text" as const, text: output || "Repo ingested." }],
         details: {},
       };
     },
@@ -473,13 +496,13 @@ export function registerTools(pi: ExtensionAPI) {
       max_files: Type.Optional(Type.Number({ description: "Max files to read when target is a directory.", default: 10 })),
       store: Type.Optional(Type.Boolean({ description: "Store a lightweight record in wiki/_state/deepdives.json.", default: true })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: { files: [] } };
 
       const target = resolve(params.target);
       if (!(await pathExists(target))) {
-        return { content: [{ type: "text", text: `Target not found: ${target}` }], details: {} };
+        return { content: [{ type: "text" as const, text: `Target not found: ${target}` }], details: { files: [] } };
       }
 
       const maxFiles = params.max_files ?? 10;
@@ -539,7 +562,7 @@ export function registerTools(pi: ExtensionAPI) {
       const questionLine = params.question ? `Question: ${params.question}\n` : "";
       const summary = records.map((r) => `--- ${r.path} ---\n${r.snippet}`).join("\n\n");
       return {
-        content: [{ type: "text", text: `${questionLine}Deepdive into ${target}\n\n${summary}` }],
+        content: [{ type: "text" as const, text: `${questionLine}Deepdive into ${target}\n\n${summary}` }],
         details: { files: records.map((r) => r.path) },
       };
     },
@@ -551,20 +574,20 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       scope: Type.Optional(Type.String({ description: "Scope to regenerate (default: org)." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const script = await resolveResource(join("tools", "brain-state.mjs"), home);
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "State runner not found at tools/brain-state.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "State runner not found at tools/brain-state.mjs" }], details: {} };
       }
 
       const args = params.scope ? [script, params.scope] : [script];
       const result = await execFilePromise("node", args, { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
-        content: [{ type: "text", text: output || "State pages regenerated." }],
+        content: [{ type: "text" as const, text: output || "State pages regenerated." }],
         details: {},
       };
     },
@@ -574,19 +597,19 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain links",
     description: "Derive the pi-brain link graph: orphans, hubs, dead links, and suggestions.",
     parameters: Type.Object({}),
-    async execute(_toolCallId, _params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const script = await resolveResource(join("tools", "brain-links.mjs"), home);
       if (!(await pathExists(script))) {
-        return { content: [{ type: "text", text: "Link graph runner not found at tools/brain-links.mjs" }], details: {} };
+        return { content: [{ type: "text" as const, text: "Link graph runner not found at tools/brain-links.mjs" }], details: {} };
       }
 
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
-        content: [{ type: "text", text: output || "Link graph finished with no output." }],
+        content: [{ type: "text" as const, text: output || "Link graph finished with no output." }],
         details: {},
       };
     },
@@ -604,9 +627,9 @@ export function registerTools(pi: ExtensionAPI) {
       ),
       summary: Type.Optional(Type.String({ description: "Optional one-line summary of the source." })),
     }),
-    async execute(_toolCallId, params, _signal, _onUpdate, ctx) {
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
-      if (!home) return { content: [{ type: "text", text: setupHint() }], details: {} };
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
 
       const isUrl = /^https?:\/\//i.test(params.source);
       let sourcePath = params.source;
@@ -647,12 +670,12 @@ export function registerTools(pi: ExtensionAPI) {
         }
 
         return {
-          content: [{ type: "text", text: `Ingested to ${relativePath}` }],
+          content: [{ type: "text" as const, text: `Ingested to ${relativePath}` }],
           details: {},
         };
       } catch (err: any) {
         return {
-          content: [{ type: "text", text: `Ingest failed: ${err?.message ?? err}` }],
+          content: [{ type: "text" as const, text: `Ingest failed: ${err?.message ?? err}` }],
           details: {},
         };
       }
