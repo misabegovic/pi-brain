@@ -25,5 +25,5 @@ Run `/brain:tend` and decide for each item:
 
 ## Sources
 
-- [wiki/_state/inbox.md](../../../_state/inbox.md)
-- [wiki/brain/records/](../../../records/)
+- `wiki/brain/_state/inbox.md`
+- `wiki/brain/records/`

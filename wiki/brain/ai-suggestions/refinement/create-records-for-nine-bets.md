@@ -6,11 +6,11 @@ topic: records
 created_at: 2026-07-29
 ---
 
-# Create records for the nine bets delivered in PR #12
+# Create records for the nine regenerative-intent bets
 
 ## Observation
 
-PR #12 has merged to `main` (commit `0ffbf91`). It delivered all nine bets under the regenerative-intent epic, but no `wiki/brain/records/` entries exist for any of them yet.
+PR #12 (`brain/autonomous-refinement-protocol`) has merged to `main`. It delivered all nine bets under the regenerative-intent epic, but no `wiki/brain/records/` entries exist for any of them yet.
 
 ## Why now
 
@@ -40,5 +40,5 @@ Then run `brain_sync`.
 ## Sources
 
 - PR #12: https://github.com/misabegovic/pi-brain/pull/12
-- [wiki/brain/epics/regenerative-intent.md](../../../epics/regenerative-intent.md)
-- [wiki/brain/bets/](../../../bets/)
+- [wiki/brain/epics/regenerative-intent.md](../../epics/regenerative-intent.md)
+- `wiki/brain/bets/`

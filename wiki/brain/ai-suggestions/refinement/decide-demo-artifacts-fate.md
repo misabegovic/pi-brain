@@ -19,7 +19,7 @@ These were created as smoke-test outputs and were never reviewed as real proposa
 
 ## Why now
 
-The regenerative-intent epic is merged and recorded. Transient demo artifacts now clutter the corpus and may confuse future refinement scans.
+The regenerative-intent epic is merged and recorded. Transient demo artifacts clutter the corpus and may confuse future refinement scans.
 
 ## Suggested action
 
@@ -32,5 +32,5 @@ After deciding, remove any related stale refinement suggestions.
 
 ## Sources
 
-- [wiki/brain/ai-suggestions/build/types/generated.ts](../../../../ai-suggestions/build/types/generated.ts)
-- [wiki/brain/ai-suggestions/sync-code/types/](../../../../ai-suggestions/sync-code/types/)
+- `wiki/brain/ai-suggestions/build/types/generated.ts`
+- `wiki/brain/ai-suggestions/sync-code/types/`
