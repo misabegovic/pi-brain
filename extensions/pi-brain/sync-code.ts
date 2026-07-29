@@ -129,7 +129,7 @@ export async function generateSyncProposals(
   return { items, proposalPaths };
 }
 
-async function applyCodeChange(generatedPath: string, item: DriftItem): Promise<void> {
+export async function applyCodeChange(generatedPath: string, item: DriftItem): Promise<void> {
   if (!existsSync(generatedPath)) return;
   let text = await readFile(generatedPath, "utf-8");
 
@@ -139,39 +139,58 @@ async function applyCodeChange(generatedPath: string, item: DriftItem): Promise<
   }
 
   if (item.kind === "extra_in_code" && !item.fieldName) {
-    // Remove entire interface
-    const re = new RegExp(`export\\s+interface\\s+${item.interfaceName}\\s*\\{[^}]*\\}`, "g");
+    // Remove entire interface block
+    const re = new RegExp(`export\\s+interface\\s+${item.interfaceName}\\s*\\{[\\s\\S]*?\\}`, "g");
     text = text.replace(re, "// Removed interface " + item.interfaceName);
-  } else if (item.fieldName) {
-    // Field-level changes
-    const interfaceRe = new RegExp(`(export\\s+interface\\s+${item.interfaceName}\\s*\\{)([^}]*)\\}`, "g");
-    text = text.replace(interfaceRe, (match, header, body) => {
-      const fieldRe = new RegExp(`\\b${item.fieldName}\\b(?:\\?)?:?[^;]*;`, "g");
-
-      if (item.kind === "missing_in_code") {
-        // Add field from intent; we know the intent type from the diff internals is not stored,
-        // so use a placeholder. In practice the user should regenerate from intent.
-        return `${header}${body}  ${item.fieldName}: ${item.intentType ?? "unknown"};\n}`;
-      }
-
-      if (item.kind === "extra_in_code") {
-        return `${header}${body.replace(fieldRe, "")}}`;
-      }
-
-      if (item.kind === "type_mismatch") {
-        return `${header}${body.replace(fieldRe, `${item.fieldName}${body.match(new RegExp(`\\b${item.fieldName}\\b(\\?)?:?[^;]*;`))?.[1] ?? ""}: ${item.intentType ?? "unknown"};`)}`;
-      }
-
-      if (item.kind === "optional_mismatch") {
-        return `${header}${body.replace(fieldRe, (line: string) => {
-          if (line.includes("?")) return line.replace("?", "");
-          return line.replace(":", "?:");
-        })}`;
-      }
-
-      return match;
-    });
+    await writeFile(generatedPath, text, "utf-8");
+    return;
   }
+
+  if (!item.fieldName) return;
+
+  // Line-based field-level edits inside the matching interface block.
+  const interfaceRe = new RegExp(`(export\\s+interface\\s+${item.interfaceName}\\s*\\{)([\\s\\S]*?)(\\})`, "g");
+  text = text.replace(interfaceRe, (match, header: string, body: string, footer: string) => {
+    const lines = body.split("\n");
+    const newLines: string[] = [];
+    let changed = false;
+    for (const line of lines) {
+      const trimmed = line.trim();
+      const fieldMatch = trimmed.match(/^(\w+)(\?)?:\s*(.+);$/);
+      if (!fieldMatch || fieldMatch[1] !== item.fieldName) {
+        newLines.push(line);
+        continue;
+      }
+      changed = true;
+      const [, name, optional, _type] = fieldMatch;
+      if (item.kind === "extra_in_code") {
+        continue; // drop the field line
+      }
+      if (item.kind === "type_mismatch") {
+        const newType = item.intentType ?? "unknown";
+        newLines.push(line.replace(/:\s*.+;/, `: ${newType};`));
+        continue;
+      }
+      if (item.kind === "optional_mismatch") {
+        if (optional === "?") {
+          newLines.push(line.replace("?", ""));
+        } else {
+          newLines.push(line.replace(/(\w+):/, "$1?:"));
+        }
+        continue;
+      }
+      if (item.kind === "missing_in_code") {
+        // Add field from intent; drift item does not carry the full intent type,
+        // so use a placeholder. In practice users should regenerate from intent.
+        newLines.push(line);
+        newLines.push(`  ${item.fieldName}: ${item.intentType ?? "unknown"};`);
+        continue;
+      }
+      newLines.push(line);
+    }
+    if (!changed) return match;
+    return header + newLines.join("\n") + footer;
+  });
 
   await writeFile(generatedPath, text, "utf-8");
 }

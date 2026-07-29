@@ -19,14 +19,19 @@ export function parseTypeScriptInterfaces(text: string): TsInterface[] {
     const name = match[1];
     const body = match[2];
     const fields: TsInterface["fields"] = [];
-    const fieldRe = /(\w+)(\?)?:?\s*([^;\/]+)(?:\/\/.*)?/g;
-    let fieldMatch: RegExpExecArray | null;
-    while ((fieldMatch = fieldRe.exec(body)) !== null) {
-      fields.push({
-        name: fieldMatch[1].trim(),
-        optional: fieldMatch[2] === "?",
-        type: fieldMatch[3].trim(),
-      });
+    // Split body on semicolons, strip line comments, and parse each field.
+    const statements = body.split(";");
+    for (const raw of statements) {
+      const line = raw.replace(/\/\/[^\n]*/g, "").trim();
+      if (!line) continue;
+      const fieldMatch = line.match(/^(\w+)(\?)?:\s*(.+)$/);
+      if (fieldMatch) {
+        fields.push({
+          name: fieldMatch[1].trim(),
+          optional: fieldMatch[2] === "?",
+          type: fieldMatch[3].trim(),
+        });
+      }
     }
     interfaces.push({ name, fields });
   }
