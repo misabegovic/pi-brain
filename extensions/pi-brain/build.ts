@@ -4,6 +4,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { requireBrain } from "./context.ts";
 import { collectBlocks } from "./intent-blocks.ts";
 import { renderTarget } from "./build-renderers.ts";
+import { isValidIdentifier } from "./utils.ts";
 
 export function registerBuild(pi: ExtensionAPI) {
   pi.registerCommand("brain:build", {
@@ -22,6 +23,10 @@ export function registerBuild(pi: ExtensionAPI) {
       }
 
       const [scope, target] = parts;
+      if (!isValidIdentifier(scope) || !isValidIdentifier(target)) {
+        ctx.ui.notify("Scope and target must be simple identifiers (letters, numbers, -, _).", "warning");
+        return;
+      }
       const home = await requireBrain(ctx.cwd);
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
