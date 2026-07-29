@@ -57,10 +57,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Add CHANGELOG.md](brain/ai-suggestions/refinement/add-changelog-md.md)
-- [Add tests for brain-home helpers](brain/ai-suggestions/refinement/add-tests-for-brain-home-helpers.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
-- [Run `npm pack --dry-run` before publishing](brain/ai-suggestions/refinement/run-npm-pack-dry-run-before-publish.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
