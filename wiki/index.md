@@ -57,12 +57,8 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Extend e2e tests for the remaining commands](brain/ai-suggestions/refinement/extend-e2e-tests-for-remaining-commands.md)
-- [Implement lightweight suggestion TTL](brain/ai-suggestions/refinement/implement-lightweight-suggestion-ttl.md)
-- [Implement confidence decay or TTL for AI suggestions](brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 - [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
-- [Verify extension reload in a fresh pi session](brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)

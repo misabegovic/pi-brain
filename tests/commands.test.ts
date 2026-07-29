@@ -4,7 +4,7 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import piBrainExtension from "../extensions/pi-brain.js";
-import { mkdtemp, writeFile, mkdir, rm, readFile } from "node:fs/promises";
+import { mkdtemp, writeFile, mkdir, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 
@@ -56,6 +56,7 @@ function createMockApi(): MockApi {
     setActiveTools: (names: string[]) => {
       activeToolCalls.push(names);
     },
+    sendUserMessage: () => {},
   } as unknown as MockApi;
   return api;
 }
@@ -103,6 +104,42 @@ async function main() {
     if (!api.commands["brain:diff"]) throw new Error("brain:diff command missing");
     await api.commands["brain:diff"]("brain types", ctx);
     console.log("✓ brain:diff ran without error");
+
+    // Test /brain:sync-code (proposal generation, no --apply)
+    if (!api.commands["brain:sync-code"]) throw new Error("brain:sync-code command missing");
+    await api.commands["brain:sync-code"]("brain types", ctx);
+    const proposalsDir = join(home, "wiki", "brain", "ai-suggestions", "sync-code", "types");
+    const proposalFiles = await readdir(proposalsDir);
+    if (proposalFiles.length === 0) throw new Error("Expected sync-code proposals");
+    console.log("✓ brain:sync-code generated proposals");
+
+    // Test /brain:revise
+    if (!api.commands["brain:revise"]) throw new Error("brain:revise command missing");
+    let userMessageSent = false;
+    (api as any).sendUserMessage = () => { userMessageSent = true; };
+    await api.commands["brain:revise"]("brain prds/test-types", ctx);
+    if (!userMessageSent) throw new Error("Expected brain:revise to send a user message");
+    console.log("✓ brain:revise sent revision prompt");
+
+    // Test /brain:enqueue and /brain:run-tasks
+    if (!api.commands["brain:enqueue"]) throw new Error("brain:enqueue command missing");
+    await api.commands["brain:enqueue"]("brain sync test-task", ctx);
+    if (!api.commands["brain:run-tasks"]) throw new Error("brain:run-tasks command missing");
+    await api.commands["brain:run-tasks"]("", ctx);
+    console.log("✓ brain:enqueue and brain:run-tasks executed");
+
+    // Test /brain:rfc-contribute
+    if (!api.commands["brain:rfc-contribute"]) throw new Error("brain:rfc-contribute command missing");
+    await mkdir(join(home, "wiki", "brain", "rfcs"), { recursive: true });
+    await writeFile(
+      join(home, "wiki", "brain", "rfcs", "test-rfc.md"),
+      "---\nkind: rfc\nstatus: draft\nconfidence: low\n---\n\n# RFC — Test\n\n## Contributions\n",
+      "utf-8"
+    );
+    await api.commands["brain:rfc-contribute"]("brain test-rfc human Test contribution", ctx);
+    const rfcContent = await readFile(join(home, "wiki", "brain", "rfcs", "test-rfc.md"), "utf-8");
+    if (!rfcContent.includes("Test contribution")) throw new Error("Expected RFC contribution");
+    console.log("✓ brain:rfc-contribute appended contribution");
 
     console.log("✓ commands test passed");
   } finally {
