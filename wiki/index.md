@@ -57,10 +57,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Add a pre-push hook to prevent direct pushes to main](brain/ai-suggestions/refinement/add-pre-push-hook-for-main.md)
-- [Audit `LOCAL_FIRST` in gitignored `.env`](brain/ai-suggestions/refinement/audit-local-first-env-configuration.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
-- [Review top ten `brain_links` suggestions](brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
