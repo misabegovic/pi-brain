@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T13:24:55.524Z",
-  "node_count": 94,
-  "edge_count": 583,
+  "generated_at": "2026-07-29T13:55:23.889Z",
+  "node_count": 89,
+  "edge_count": 572,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,41 +170,6 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-validate-script-to-package-json.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a `validate` script to package.json"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-with-otp.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Publish v0.3.3 to npm with OTP"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Publish v0.3.3 to npm"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-top-link-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review top `brain_links` suggestions for missing cross-links"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/verify-readme-ci-badge.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Verify README CI badge shows green"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3275,41 +3240,6 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-validate-script-to-package-json",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a `validate` script to package.json"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-with-otp",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm with OTP"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top `brain_links` suggestions for missing cross-links"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/verify-readme-ci-badge",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Verify README CI badge shows green"
-    },
-    {
-      "source": "index",
       "target": "brain/constraints/adr-before-structural-changes",
       "kind": "markdown",
       "provenance": "body",
@@ -3650,20 +3580,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "State — org"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top `brain_links` suggestions for missing cross-links"
     },
     {
       "source": "org/options",
@@ -4080,20 +3996,6 @@
     },
     {
       "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top `brain_links` suggestions for missing cross-links"
-    },
-    {
-      "source": "org/roadmap",
       "target": "brain/pitches/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
@@ -4126,13 +4028,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Remote promotion requires a pull request"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
     },
     {
       "source": "org/state",
@@ -4476,13 +4371,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top `brain_links` suggestions for missing cross-links"
     },
     {
       "source": "org/state",
@@ -4984,14 +4872,6 @@
     },
     {
       "path": "brain/adrs/remote-promotion-requires-pr.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-top-link-suggestions.md",
       "incoming": 4
     },
     {
