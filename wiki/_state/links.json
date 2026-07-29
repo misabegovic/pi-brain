@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T10:44:18.188Z",
-  "node_count": 100,
-  "edge_count": 579,
+  "generated_at": "2026-07-29T10:46:35.905Z",
+  "node_count": 104,
+  "edge_count": 583,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -193,6 +193,13 @@
       "title": "Add `.env.example` for the product repo"
     },
     {
+      "path": "brain/ai-suggestions/refinement/add-human-narrative-to-org-state.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add human narrative to `wiki/org/state.md`"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md",
       "kind": "ai-suggestion",
       "status": "draft",
@@ -235,11 +242,32 @@
       "title": "Merge PR #14 and act on its four suggestions"
     },
     {
+      "path": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Review active constraints after regenerative-intent delivery"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/review-top-link-suggestions.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/suggestion-queue-grooming-day.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Hold a suggestion-queue grooming day"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/update-brain-setup-skill-for-new-workflow.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Update `skills/brain-setup/SKILL.md` for the new workflow"
     },
     {
       "path": "brain/ai-suggestions/refinement/update-readme-for-regenerative-intent.md",
@@ -3310,6 +3338,13 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-human-narrative-to-org-state",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add human narrative to `wiki/org/state.md`"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc",
       "kind": "markdown",
       "provenance": "body",
@@ -3352,10 +3387,31 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review active constraints after regenerative-intent delivery"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
       "kind": "markdown",
       "provenance": "body",
       "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/suggestion-queue-grooming-day",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Hold a suggestion-queue grooming day"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/update-brain-setup-skill-for-new-workflow",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Update `skills/brain-setup/SKILL.md` for the new workflow"
     },
     {
       "source": "index",
