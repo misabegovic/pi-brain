@@ -74,8 +74,8 @@ function parseYamlLike(text: string): unknown {
     return obj;
   }
 
-  function parseList(indent: number): Array<Record<string, unknown> | string> {
-    const list: Array<Record<string, unknown> | string> = [];
+  function parseList(indent: number): Array<Record<string, unknown> | string | number | boolean> {
+    const list: Array<Record<string, unknown> | string | number | boolean> = [];
     while (i < lines.length) {
       const line = lines[i];
       if (line.trim() === "" || line.length < indent) return list;

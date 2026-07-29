@@ -241,7 +241,7 @@ export function registerTasks(pi: ExtensionAPI) {
       }
       try {
         const task = await enqueueTask(home, description, operation as keyof AutonomyTrustConfig, scope);
-        ctx.ui.notify(`Enqueued task ${task.id}`, "success");
+        ctx.ui.notify(`Enqueued task ${task.id}`, "info");
       } catch (err: any) {
         ctx.ui.notify(`Failed to enqueue: ${err.message}`, "error");
       }

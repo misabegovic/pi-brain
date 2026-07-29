@@ -87,7 +87,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       const inboxPath = join(home.path, "wiki", "_state", "inbox.md");
       const current = await readInbox(home);
       await writeFile(inboxPath, current.trimEnd() + entry + "\n", "utf-8");
-      ctx.ui.notify(`Captured: ${id}`, "success");
+      ctx.ui.notify(`Captured: ${id}`, "info");
     },
   });
 
@@ -125,7 +125,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       const errors = await validateMarkdown(home);
       const viewMessage = await regenerateViews(home);
       const errorText = errors.length > 0 ? errors.map((e) => `${e.path}: ${e.errors.join(", ")}`).join("\n") : "No validation errors.";
-      ctx.ui.notify(`${viewMessage}\n${errorText}`, errors.length > 0 ? "warning" : "success");
+      ctx.ui.notify(`${viewMessage}\n${errorText}`, errors.length > 0 ? "warning" : "info");
     },
   });
 
@@ -305,7 +305,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
 
       ctx.ui.notify(
         `pi-brain set up for ${org.trim()}\nRepos: ${repos.join(", ") || "none"}\n${errors.length > 0 ? "Validation warnings present." : "Ready to capture, ingest, and shape."}`,
-        errors.length > 0 ? "warning" : "success"
+        errors.length > 0 ? "warning" : "info"
       );
     },
   });
@@ -322,7 +322,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       }
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "Connectors finished.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "Connectors finished.", result.code === 0 ? "info" : "error");
     },
   });
 
@@ -379,7 +379,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       }
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "Link graph finished.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "Link graph finished.", result.code === 0 ? "info" : "error");
     },
   });
 
@@ -408,7 +408,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       const cmdArgs = args.trim() ? [script, args.trim()] : [script];
       const result = await execFilePromise("node", cmdArgs, { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "State pages regenerated.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "State pages regenerated.", result.code === 0 ? "info" : "error");
     },
   });
 
@@ -424,8 +424,8 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
         return;
       }
       const question = rest.join(" ");
-      const result = await pi.tools.brain_deepdive({ target, question });
-      ctx.ui.notify(result.content[0].text.slice(0, 200), "success");
+      const result = await (pi as any).tools.brain_deepdive({ target, question });
+      ctx.ui.notify(result.content[0].text.slice(0, 200), "info");
     },
   });
 
@@ -448,7 +448,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       const cmdArgs = scope ? [script, target, scope] : [script, target];
       const result = await execFilePromise("node", cmdArgs, { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "Repo ingested.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "Repo ingested.", result.code === 0 ? "info" : "error");
     },
   });
 
@@ -465,7 +465,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       }
       const result = await execFilePromise("node", [script], { cwd: home.path });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "No projects found.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "No projects found.", result.code === 0 ? "info" : "error");
     },
   });
 
@@ -505,7 +505,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
       if (dryRun) cmdArgs.push("--dry-run");
       const result = await execFilePromise("node", cmdArgs, { cwd: ctx.cwd });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
-      ctx.ui.notify(output || "Conversion complete.", result.code === 0 ? "success" : "error");
+      ctx.ui.notify(output || "Conversion complete.", result.code === 0 ? "info" : "error");
     },
   });
 
