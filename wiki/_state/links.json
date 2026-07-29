@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-29T14:18:19.206Z",
-  "node_count": 93,
+  "generated_at": "2026-07-29T14:22:54.299Z",
+  "node_count": 90,
   "edge_count": 582,
   "nodes": [
     {
@@ -172,32 +172,11 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
-      "path": "brain/ai-suggestions/refinement/add-pre-push-hook-for-main.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a pre-push hook to prevent direct pushes to main"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/audit-local-first-env-configuration.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Audit `LOCAL_FIRST` in gitignored `.env`"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review top ten `brain_links` suggestions"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -706,10 +685,52 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/adrs/multi-agent-intent-collaboration",
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
@@ -3268,31 +3289,10 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-pre-push-hook-for-main",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a pre-push hook to prevent direct pushes to main"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/audit-local-first-env-configuration",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Audit `LOCAL_FIRST` in gitignored `.env`"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top ten `brain_links` suggestions"
     },
     {
       "source": "index",
@@ -3643,13 +3643,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top ten `brain_links` suggestions"
     },
     {
       "source": "org/options",
@@ -4070,13 +4063,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top ten `brain_links` suggestions"
     },
     {
       "source": "org/roadmap",
@@ -4465,13 +4451,6 @@
     },
     {
       "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review top ten `brain_links` suggestions"
-    },
-    {
-      "source": "org/state",
       "target": "brain/bets/agent-maintained-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -4781,11 +4760,19 @@
       "incoming": 9
     },
     {
+      "path": "brain/adrs/structured-intent-and-build.md",
+      "incoming": 9
+    },
+    {
       "path": "brain/bets/brain-diff-drift-detection.md",
       "incoming": 9
     },
     {
-      "path": "brain/adrs/structured-intent-and-build.md",
+      "path": "brain/adrs/autonomous-colleague-mode.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/adrs/brain-diff-drift-detection.md",
       "incoming": 8
     },
     {
@@ -4793,15 +4780,19 @@
       "incoming": 8
     },
     {
-      "path": "brain/adrs/autonomous-colleague-mode.md",
+      "path": "brain/adrs/background-task-runner.md",
       "incoming": 7
     },
     {
-      "path": "brain/adrs/brain-diff-drift-detection.md",
+      "path": "brain/adrs/brain-sync-code.md",
       "incoming": 7
     },
     {
       "path": "brain/adrs/local-first-brain-self-maintenance.md",
+      "incoming": 7
+    },
+    {
+      "path": "brain/adrs/multi-agent-rfc-collaboration.md",
       "incoming": 7
     },
     {
@@ -4861,19 +4852,7 @@
       "incoming": 6
     },
     {
-      "path": "brain/adrs/background-task-runner.md",
-      "incoming": 6
-    },
-    {
-      "path": "brain/adrs/brain-sync-code.md",
-      "incoming": 6
-    },
-    {
       "path": "brain/adrs/extension-cleanup-resource-conflicts.md",
-      "incoming": 6
-    },
-    {
-      "path": "brain/adrs/multi-agent-rfc-collaboration.md",
       "incoming": 6
     },
     {
@@ -4977,10 +4956,6 @@
       "incoming": 4
     },
     {
-      "path": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md",
-      "incoming": 4
-    },
-    {
       "path": "brain/feedback/eager-implementation-contract-breach.md",
       "incoming": 4
     },
@@ -5053,61 +5028,11 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/autonomous-colleague-mode",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/background-task-runner",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/brain-diff-drift-detection",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/brain-sync-code",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/multi-agent-rfc-collaboration",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/multi-agent-intent-collaboration",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/adrs/structured-intent-and-build",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/autonomous-refinement-protocol",
-        "brain/adrs/multi-agent-intent-collaboration",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/bets/autonomous-colleague-mode",
       "via": [
         "brain/bets/agent-maintained-intent",
-        "brain/epics/regenerative-intent"
+        "brain/epics/regenerative-intent",
+        "brain/adrs/autonomous-colleague-mode"
       ]
     },
     {
@@ -5121,10 +5046,50 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/background-task-runner",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/background-task-runner"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/brain-diff-drift-detection",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/brain-diff-drift-detection"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/brain-sync-code",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/brain-sync-code"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/bets/multi-agent-intent-collaboration",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/adrs/multi-agent-intent-collaboration"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/multi-agent-rfc-collaboration",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/multi-agent-rfc-collaboration"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/bets/structured-intent-and-build",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/structured-intent-and-build"
       ]
     },
     {
@@ -5195,6 +5160,14 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/autonomous-colleague-mode",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/autonomous-colleague-mode"
+      ]
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
       "target": "brain/records/autonomous-refinement-protocol",
       "via": [
         "brain/epics/regenerative-intent",
@@ -5203,10 +5176,10 @@
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/records/multi-agent-intent-collaboration",
+      "target": "brain/records/background-task-runner",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/multi-agent-intent-collaboration"
+        "brain/adrs/background-task-runner"
       ]
     }
   ]
