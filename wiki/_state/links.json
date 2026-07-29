@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T12:00:14.168Z",
-  "node_count": 93,
-  "edge_count": 588,
+  "generated_at": "2026-07-29T12:04:26.264Z",
+  "node_count": 92,
+  "edge_count": 584,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,20 +170,6 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add end-to-end tests for the new PR #12 commands"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/consider-v0-3-3-release.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Consider a v0.3.3 release"
     },
     {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
@@ -625,6 +611,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Release"
+    },
+    {
+      "path": "brain/records/version-0-3-3.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — pi-brain v0.3.3 release"
     },
     {
       "path": "index.md",
@@ -2973,6 +2966,20 @@
       "context": "ADR — Versioning and release strategy"
     },
     {
+      "source": "brain/records/version-0-3-3",
+      "target": "brain/epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/version-0-3-3",
+      "target": "brain/records/version-0-3-2",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-3-2.md"
+    },
+    {
       "source": "index",
       "target": "brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -3251,20 +3258,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add end-to-end tests for the new PR #12 commands"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Consider a v0.3.3 release"
     },
     {
       "source": "index",
@@ -3597,6 +3590,13 @@
     },
     {
       "source": "index",
+      "target": "brain/records/version-0-3-3",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.3.3 release"
+    },
+    {
+      "source": "index",
       "target": "index",
       "kind": "markdown",
       "provenance": "body",
@@ -3622,20 +3622,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "State — org"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add end-to-end tests for the new PR #12 commands"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Consider a v0.3.3 release"
     },
     {
       "source": "org/options",
@@ -4073,20 +4059,6 @@
     },
     {
       "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add end-to-end tests for the new PR #12 commands"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Consider a v0.3.3 release"
-    },
-    {
-      "source": "org/roadmap",
       "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
       "kind": "markdown",
       "provenance": "body",
@@ -4325,6 +4297,13 @@
     },
     {
       "source": "org/state",
+      "target": "brain/records/version-0-3-3",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.3.3 release"
+    },
+    {
+      "source": "org/state",
       "target": "index",
       "kind": "markdown",
       "provenance": "body",
@@ -4476,20 +4455,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add end-to-end tests for the new PR #12 commands"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/consider-v0-3-3-release",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Consider a v0.3.3 release"
     },
     {
       "source": "org/state",
@@ -4780,7 +4745,7 @@
     },
     {
       "path": "brain/epics/regenerative-intent.md",
-      "incoming": 40
+      "incoming": 41
     },
     {
       "path": "brain/bets/autonomous-refinement-protocol.md",
@@ -5015,14 +4980,6 @@
       "incoming": 4
     },
     {
-      "path": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/consider-v0-3-3-release.md",
-      "incoming": 4
-    },
-    {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
       "incoming": 4
     },
@@ -5072,6 +5029,10 @@
     },
     {
       "path": "brain/records/version-0-3-0.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/version-0-3-2.md",
       "incoming": 3
     },
     {
