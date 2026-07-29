@@ -10,21 +10,21 @@ created_at: 2026-07-29
 
 ## Observation
 
-PR #13 fixed `extensions/pi-brain/views.ts` so `brain_sync` generates `index.md` links relative to `wiki/`. The current long-running pi session still loads the pre-fix extension, so the in-tool `brain_sync` emits `wiki/brain/...` prefixes. This has been flagged in multiple refinement runs.
+PR #13 fixed `extensions/pi-brain/views.ts` so `brain_sync` generates `index.md` links relative to `wiki/`. This fix is on disk, but the current long-running pi session loaded the extension before the fix and still emits `wiki/brain/...` prefixes when `/brain:sync` runs inside pi.
 
 ## Why now
 
-With CI green and the queue being groomed, this is the right time to confirm the fix works in a fresh session.
+Before the fix can be trusted, it needs to be verified in a fresh session.
 
 ## Suggested action
 
 1. Start a new pi session in this clone.
 2. Run `/brain:sync`.
-3. Check that `wiki/index.md` links use `brain/...md` (not `wiki/brain/...md`).
+3. Inspect `wiki/index.md` and confirm links use `brain/...md`, not `wiki/brain/...md`.
 4. Run `/brain:links` and confirm 0 dead links.
-5. Update or delete `verify-extension-reloads-after-pr-13.md` based on the result.
+5. Delete `verify-extension-reload-in-fresh-session.md` if the test passes.
 
 ## Sources
 
 - `extensions/pi-brain/views.ts`
-- `wiki/brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md`
+- PR #13: https://github.com/misabegovic/pi-brain/pull/13
