@@ -7,6 +7,8 @@
 
 pi-brain is a self-contained, cloneable template for project- or customer-specific knowledge bases inside [pi](https://pi.dev). It is an **intent store**: it keeps the permanent layer of decisions, architecture, and product reasoning alongside the volatile layer of drafts, experiments, and AI suggestions. When volatile work is approved, it is promoted into the permanent layer and can then modify the actual project.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the PR-first workflow and local validation instructions.
+
 ## What it gives pi
 
 - **Persistent working memory** — every session starts with a glance at the project's briefing and tend queue.
