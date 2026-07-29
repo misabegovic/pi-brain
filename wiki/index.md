@@ -57,6 +57,8 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Add a test for the suggestion TTL gate](brain/ai-suggestions/refinement/add-test-for-suggestion-ttl-gate.md)
+- [Document `npm run validate` in README](brain/ai-suggestions/refinement/document-validate-script-in-readme.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 - [Review top ten `brain_links` suggestions](brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md)
 
