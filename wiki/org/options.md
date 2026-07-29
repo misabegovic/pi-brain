@@ -6,14 +6,16 @@ confidence: low
 
 # Options — org
 
+The immediate options are finishing touches after the regenerative-intent delivery: e2e tests for new commands, verifying the extension reload fix, and a minor release. Longer-term options (upstream template sync, full extension-surface expansion) are parked until the current cleanup is complete.
+
 ## Where we could go next
 
 <!-- brain-state: shaping -->
 - [Add end-to-end tests for the new PR #12 commands](../brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
+- [Consider a v0.3.3 release](../brain/ai-suggestions/refinement/consider-v0-3-3-release.md)
 - [Implement confidence decay or TTL for AI suggestions](../brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
-- [Review active constraints after regenerative-intent delivery](../brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
 - [Review top `brain_links` suggestions for missing cross-links](../brain/ai-suggestions/refinement/review-top-link-suggestions.md)
-- [Verify the pi extension reloads the PR #13 view fix](../brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
+- [Verify extension reload in a fresh pi session](../brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
