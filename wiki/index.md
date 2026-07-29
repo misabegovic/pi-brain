@@ -57,6 +57,10 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Create a demo RFC to exercise `/brain:rfc-contribute`](wiki/brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute.md)
+- [Fetch or manually capture the aicoding.leaflet.pub content](wiki/brain/ai-suggestions/refinement/fetch-aicoding-source.md)
+- [Merge PR #12 and create records for the nine delivered bets](wiki/brain/ai-suggestions/refinement/merge-pr-and-create-records.md)
+- [Tend the three queued inbox items](wiki/brain/ai-suggestions/refinement/tend-inbox-items.md)
 - [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206.md)
 - [Sync proposal — Task](wiki/brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831.md)
 
