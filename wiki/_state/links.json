@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T14:16:19.941Z",
-  "node_count": 93,
-  "edge_count": 582,
+  "generated_at": "2026-07-29T14:17:01.689Z",
+  "node_count": 91,
+  "edge_count": 580,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,20 +170,6 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-test-for-suggestion-ttl-gate.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Add a test for the suggestion TTL gate"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/document-validate-script-in-readme.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Document `npm run validate` in README"
     },
     {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
@@ -3265,20 +3251,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-test-for-suggestion-ttl-gate",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a test for the suggestion TTL gate"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/document-validate-script-in-readme",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Document `npm run validate` in README"
     },
     {
       "source": "index",
