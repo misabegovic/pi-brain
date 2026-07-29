@@ -40,7 +40,18 @@ function getProposalsDir(home: { path: string }, scope: string, target: string):
 }
 
 function generateProposalMarkdown(item: DriftItem): string {
-  const lines: string[] = [`# Sync proposal — ${item.interfaceName}`, ""];
+  const lines: string[] = [
+    "---",
+    "kind: ai-suggestion",
+    "status: draft",
+    "confidence: low",
+    `interface: ${item.interfaceName}`,
+    `drift_kind: ${item.kind}`,
+    "---",
+    "",
+    `# Sync proposal — ${item.interfaceName}`,
+    "",
+  ];
   lines.push(`## Drift`, "", item.message, "");
   lines.push(`## Options`, "");
 
