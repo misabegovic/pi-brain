@@ -4,7 +4,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { getPackageRoot } from "./resources.ts";
-import { parseFrontmatter, extractSimpleYamlValue } from "./utils.ts";
+import { parseFrontmatter, extractSimpleYamlValue, isValidIdentifier } from "./utils.ts";
 
 const MAX_PARALLEL = 4;
 const MAX_OUTPUT = 50 * 1024;
@@ -249,6 +249,10 @@ export function registerCollaboration(pi: ExtensionAPI) {
       const task = parts.slice(1).join(" ");
       if (!task) {
         ctx.ui.notify("Usage: /brain:collaborate <scope> <task>", "warning");
+        return;
+      }
+      if (!isValidIdentifier(scope)) {
+        ctx.ui.notify("Scope must be a simple identifier (letters, numbers, -, _).", "warning");
         return;
       }
 

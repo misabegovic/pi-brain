@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { requireBrain } from "./context.ts";
-import { pathExists } from "./utils.ts";
+import { pathExists, isValidIdentifier } from "./utils.ts";
 
 const ALLOWED_KINDS = new Set(["prds", "adrs", "bets", "records"]);
 
@@ -32,6 +32,10 @@ export function registerRevise(pi: ExtensionAPI) {
       const [kind, slug] = kindSlugParts;
       if (!ALLOWED_KINDS.has(kind)) {
         ctx.ui.notify(`Unsupported kind: ${kind}. Use prds/adrs/bets/records.`, "warning");
+        return;
+      }
+      if (!isValidIdentifier(scope) || !isValidIdentifier(slug)) {
+        ctx.ui.notify("Scope and slug must be simple identifiers (letters, numbers, -, _).", "warning");
         return;
       }
 
