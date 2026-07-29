@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T12:04:26.264Z",
-  "node_count": 92,
-  "edge_count": 584,
+  "generated_at": "2026-07-29T12:08:03.167Z",
+  "node_count": 95,
+  "edge_count": 587,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,11 +172,32 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/refinement/extend-e2e-tests-for-remaining-commands.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Extend e2e tests for the remaining commands"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/implement-lightweight-suggestion-ttl.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Implement lightweight suggestion TTL"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Implement confidence decay or TTL for AI suggestions"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Publish v0.3.3 to npm"
     },
     {
       "path": "brain/ai-suggestions/refinement/review-top-link-suggestions.md",
@@ -3261,10 +3282,31 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/extend-e2e-tests-for-remaining-commands",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Extend e2e tests for the remaining commands"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/implement-lightweight-suggestion-ttl",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Implement lightweight suggestion TTL"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
       "kind": "markdown",
       "provenance": "body",
       "context": "Implement confidence decay or TTL for AI suggestions"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Publish v0.3.3 to npm"
     },
     {
       "source": "index",
