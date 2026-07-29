@@ -57,7 +57,10 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Add CONTRIBUTING.md](brain/ai-suggestions/refinement/add-contributing-md.md)
+- [Add tests for autonomy trust levels](brain/ai-suggestions/refinement/add-tests-for-autonomy-trust-levels.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
+- [Review README for stale or missing details](brain/ai-suggestions/refinement/review-readme-for-stale-details.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
