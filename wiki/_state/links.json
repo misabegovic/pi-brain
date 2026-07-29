@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T10:01:34.519Z",
-  "node_count": 94,
-  "edge_count": 597,
+  "generated_at": "2026-07-29T10:24:03.385Z",
+  "node_count": 88,
+  "edge_count": 567,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,48 +170,6 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/create-records-for-nine-bets.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Create records for the nine regenerative-intent bets"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Decide the fate of the demo ai-suggestions artifacts"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Fetch or manually capture the aicoding.leaflet.pub source content"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/fix-brain-links-md-handling.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Fix `brain_links` markdown `.md` handling bug"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/resolve-aicoding-source.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Resolve the aicoding.leaflet.pub source"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/tend-inbox-items-after-records.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Tend the three queued inbox items now that records exist"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -629,7 +587,7 @@
     {
       "path": "brain/rfcs/demo-rfc.md",
       "kind": "rfc",
-      "status": "draft",
+      "status": "archived",
       "confidence": "low",
       "title": "RFC — Demo: Should pi-brain ship a default TUI theme?"
     },
@@ -1277,34 +1235,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/bets/version-0-1-0.md"
-    },
-    {
-      "source": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
-      "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
-    },
-    {
-      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
-      "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
-    },
-    {
-      "source": "brain/ai-suggestions/refinement/fix-brain-links-md-handling",
-      "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
-    },
-    {
-      "source": "brain/ai-suggestions/refinement/resolve-aicoding-source",
-      "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
     },
     {
       "source": "brain/bets/agent-maintained-intent",
@@ -3275,48 +3205,6 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Create records for the nine regenerative-intent bets"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Decide the fate of the demo ai-suggestions artifacts"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/fix-brain-links-md-handling",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fix `brain_links` markdown `.md` handling bug"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/resolve-aicoding-source",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Resolve the aicoding.leaflet.pub source"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/tend-inbox-items-after-records",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Tend the three queued inbox items now that records exist"
-    },
-    {
-      "source": "index",
       "target": "brain/constraints/adr-before-structural-changes",
       "kind": "markdown",
       "provenance": "body",
@@ -3653,48 +3541,6 @@
     },
     {
       "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Create records for the nine regenerative-intent bets"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Decide the fate of the demo ai-suggestions artifacts"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/fix-brain-links-md-handling",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fix `brain_links` markdown `.md` handling bug"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/resolve-aicoding-source",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Resolve the aicoding.leaflet.pub source"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/tend-inbox-items-after-records",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Tend the three queued inbox items now that records exist"
-    },
-    {
-      "source": "org/options",
       "target": "brain/epics/regenerative-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -3713,13 +3559,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Tap pi’s full extension surface for pi-brain"
-    },
-    {
-      "source": "org/options",
-      "target": "brain/rfcs/demo-rfc",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "RFC — Demo: Should pi-brain ship a default TUI theme?"
     },
     {
       "source": "org/roadmap",
@@ -4115,48 +3954,6 @@
     },
     {
       "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Create records for the nine regenerative-intent bets"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Decide the fate of the demo ai-suggestions artifacts"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/fix-brain-links-md-handling",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fix `brain_links` markdown `.md` handling bug"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/resolve-aicoding-source",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Resolve the aicoding.leaflet.pub source"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/tend-inbox-items-after-records",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Tend the three queued inbox items now that records exist"
-    },
-    {
-      "source": "org/roadmap",
       "target": "brain/epics/regenerative-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -4175,13 +3972,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Tap pi’s full extension surface for pi-brain"
-    },
-    {
-      "source": "org/roadmap",
-      "target": "brain/rfcs/demo-rfc",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "RFC — Demo: Should pi-brain ship a default TUI theme?"
     },
     {
       "source": "org/state",
@@ -4535,48 +4325,6 @@
     },
     {
       "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Create records for the nine regenerative-intent bets"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Decide the fate of the demo ai-suggestions artifacts"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/fix-brain-links-md-handling",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Fix `brain_links` markdown `.md` handling bug"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/resolve-aicoding-source",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Resolve the aicoding.leaflet.pub source"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/tend-inbox-items-after-records",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Tend the three queued inbox items now that records exist"
-    },
-    {
-      "source": "org/state",
       "target": "brain/bets/agent-maintained-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -4845,12 +4593,12 @@
   "orphans": [],
   "hubs": [
     {
-      "path": "brain/epics/regenerative-intent.md",
-      "incoming": 44
-    },
-    {
       "path": "brain/constraints/adr-before-structural-changes.md",
       "incoming": 43
+    },
+    {
+      "path": "brain/epics/regenerative-intent.md",
+      "incoming": 40
     },
     {
       "path": "brain/bets/autonomous-refinement-protocol.md",
@@ -5085,30 +4833,6 @@
       "incoming": 4
     },
     {
-      "path": "brain/ai-suggestions/refinement/create-records-for-nine-bets.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/decide-demo-artifacts-fate.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/fix-brain-links-md-handling.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/resolve-aicoding-source.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/tend-inbox-items-after-records.md",
-      "incoming": 4
-    },
-    {
       "path": "brain/feedback/eager-implementation-contract-breach.md",
       "incoming": 4
     },
@@ -5118,10 +4842,6 @@
     },
     {
       "path": "brain/records/smarter-autonomy.md",
-      "incoming": 4
-    },
-    {
-      "path": "brain/rfcs/demo-rfc.md",
       "incoming": 4
     },
     {

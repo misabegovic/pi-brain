@@ -2,14 +2,37 @@
   "name": "@misabegovic/pi-brain",
   "version": "0.3.2",
   "description": "A cozy knowledge home for pi. Distributed as a global package; brain clones are content-only and inherit skills, prompts, themes, tools, and the extension from the install.",
-  "keywords": ["pi-package", "brain", "knowledge-base", "wiki", "memory"],
+  "keywords": [
+    "pi-package",
+    "brain",
+    "knowledge-base",
+    "wiki",
+    "memory"
+  ],
   "license": "MIT",
   "author": "Muhamed Isabegovic",
+  "type": "module",
   "pi": {
-    "extensions": ["./extensions/pi-brain/index.ts"],
-    "skills": ["./skills"],
-    "prompts": ["./prompts"],
-    "themes": ["./themes"]
+    "extensions": [
+      "./extensions/pi-brain/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.82.1",
+    "@earendil-works/pi-tui": "^0.82.1",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
