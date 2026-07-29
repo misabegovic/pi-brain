@@ -13,7 +13,6 @@ import {
   readInbox,
 } from "./brain-home.ts";
 import { getPackageRoot } from "./resources.ts";
-import { searchFiles } from "./search.ts";
 import { autoGroom } from "./inbox.ts";
 import { runCompactionHarvest } from "./compaction-harvest.ts";
 import { buildInjectedMessages } from "./context-injection.ts";

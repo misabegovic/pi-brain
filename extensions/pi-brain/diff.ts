@@ -4,7 +4,6 @@ import { join } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { requireBrain } from "./context.ts";
 import { collectBlocks, type IntentBlock } from "./intent-blocks.ts";
-import { renderTypescriptTypes } from "./build-renderers.ts";
 import { isValidIdentifier } from "./utils.ts";
 
 export interface TsInterface {
