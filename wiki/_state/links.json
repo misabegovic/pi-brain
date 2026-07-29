@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T10:46:35.905Z",
-  "node_count": 104,
-  "edge_count": 583,
+  "generated_at": "2026-07-29T11:06:09.389Z",
+  "node_count": 108,
+  "edge_count": 587,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,6 +172,13 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/refinement/act-on-mark-epic-accepted.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Act on the repeatedly suggested epic acceptance task"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md",
       "kind": "ai-suggestion",
       "status": "draft",
@@ -200,11 +207,25 @@
       "title": "Add human narrative to `wiki/org/state.md`"
     },
     {
+      "path": "brain/ai-suggestions/refinement/consolidate-documentation-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Consolidate the documentation suggestions into one PR"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Delete or promote the archived demo RFC"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/delete-stale-merge-pr-14-suggestion.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Delete the stale \"Merge PR #14\" suggestion"
     },
     {
       "path": "brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md",
@@ -240,6 +261,13 @@
       "status": "draft",
       "confidence": "high",
       "title": "Merge PR #14 and act on its four suggestions"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Pause autonomous refinement until the suggestion queue is groomed"
     },
     {
       "path": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md",
@@ -3317,6 +3345,13 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/act-on-mark-epic-accepted",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Act on the repeatedly suggested epic acceptance task"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests",
       "kind": "markdown",
       "provenance": "body",
@@ -3345,10 +3380,24 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/consolidate-documentation-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Consolidate the documentation suggestions into one PR"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc",
       "kind": "markdown",
       "provenance": "body",
       "context": "Delete or promote the archived demo RFC"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/delete-stale-merge-pr-14-suggestion",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Delete the stale \"Merge PR #14\" suggestion"
     },
     {
       "source": "index",
@@ -3384,6 +3433,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Merge PR #14 and act on its four suggestions"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Pause autonomous refinement until the suggestion queue is gr"
     },
     {
       "source": "index",
