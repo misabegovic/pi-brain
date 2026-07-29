@@ -4,7 +4,7 @@
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import piBrainExtension from "../extensions/pi-brain";
+import piBrainExtension from "../extensions/pi-brain.js";
 import { mkdtemp, writeFile, mkdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -17,6 +17,7 @@ interface MockTool {
 interface MockApi extends ExtensionAPI {
   tools: MockTool[];
   activeToolCalls: string[][];
+  handlers: Record<string, any>;
 }
 
 async function createTempBrainHome(): Promise<string> {

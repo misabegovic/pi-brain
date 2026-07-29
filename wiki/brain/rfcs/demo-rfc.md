@@ -1,6 +1,6 @@
 ---
 kind: rfc
-status: draft
+status: archived
 confidence: low
 scope: brain
 ---

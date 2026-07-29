@@ -4,7 +4,7 @@
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import piBrainExtension from "../extensions/pi-brain";
+import piBrainExtension from "../extensions/pi-brain.js";
 
 interface MockTool {
   name: string;
