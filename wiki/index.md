@@ -57,10 +57,14 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](wiki/brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Cite the fetched aicoding source in the regenerative-intent epic](wiki/brain/ai-suggestions/refinement/cite-aicoding-source-in-epic.md)
 - [Create records for the nine regenerative-intent bets](wiki/brain/ai-suggestions/refinement/create-records-for-nine-bets.md)
 - [Decide the fate of the demo ai-suggestions artifacts](wiki/brain/ai-suggestions/refinement/decide-demo-artifacts-fate.md)
+- [Create a demo RFC to exercise `/brain:rfc-contribute`](wiki/brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute.md)
 - [Fetch or manually capture the aicoding.leaflet.pub source content](wiki/brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md)
 - [Fix `brain_links` markdown `.md` handling bug](wiki/brain/ai-suggestions/refinement/fix-brain-links-md-handling.md)
+- [Fix dead links in generated `org/` pages and `index.md`](wiki/brain/ai-suggestions/refinement/fix-generated-org-pages-and-index.md)
+- [Fix source and skill link paths in older ADRs/PRDs/bets](wiki/brain/ai-suggestions/refinement/fix-source-and-skill-link-paths.md)
 - [Resolve the aicoding.leaflet.pub source](wiki/brain/ai-suggestions/refinement/resolve-aicoding-source.md)
 - [Tend the three queued inbox items now that records exist](wiki/brain/ai-suggestions/refinement/tend-inbox-items-after-records.md)
 
