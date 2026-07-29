@@ -78,6 +78,18 @@ Run `brain_validate` + `brain_views` in one step.
 - `/brain:in <path-or-url>` — ingest a source into `sources/`
 - `/brain:setup` — bootstrap or reconfigure a pi-brain home
 - `/brain:connect` — run configured pull connectors
+
+## Regenerative intent commands
+
+- `/brain:build <scope> <target>` — generate code from YAML intent blocks (e.g., `data_model` → TypeScript interfaces).
+- `/brain:diff <scope> <target>` — compare intent blocks to generated/target code and report drift.
+- `/brain:sync-code <scope> <target> [--apply]` — propose or apply reconciliation between intent and code.
+- `/brain:revise <scope> <kind>/<slug>` — draft a revision proposal for an existing approved artifact.
+- `/brain:collaborate <scope> <task>` — delegate intent work to specialized subagents (PM, Tech Lead, Developer, Security Reviewer).
+- `/brain:rfc-contribute <scope> <slug> <agent|human> <prompt>` — add an attributed contribution to an RFC.
+- `/brain:enqueue <scope> <operation> <description>` — queue a background task.
+- `/brain:run-tasks` and `/brain:tasks` — execute or list background tasks.
+- `/brain:auto` — toggle autonomous maintenance mode.
 - `/brain:auto` — toggle autonomous brain-maintenance mode
 - `/brain:continue [slug]` — continue in-flight work
 - `/brain:investigate <question>` — investigate a bug, risk, or open question

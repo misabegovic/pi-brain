@@ -31,3 +31,10 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-27: Released pi-brain v0.3.2 — git tag, GitHub release, and npm package `@misabegovic/pi-brain@0.3.2` published. Record: wiki/brain/records/version-0-3-2.md.
 - 2026-07-28: capture: User asserts pi-brain's north star should be spec-driven/intent-driven development with code regenerable from specs, cit
 - 2026-07-28: capture: Epic expansion: regenerative-intent now also includes (a) agents maintaining/updating intent in collaboration with human
+- 2026-07-29: Merged PR #12 — regenerative-intent epic: all nine bets (autonomous refinement protocol, multi-agent collaboration, structured intent/build, diff/drift detection, agent-maintained intent, autonomous colleague mode, background tasks, sync-code reconciliation, multi-agent RFC collaboration). Records created for all nine bets.
+- 2026-07-29: Merged PR #13 — refinement follow-up: fixed link graph (0 dead links, 0 orphans), corrected generated page links in index/org pages, added TypeScript dev tooling (tsc --noEmit, tests), fetched aicoding.leaflet.pub source, archived resolved inbox items, deleted demo artifacts, created archived demo RFC.
+- 2026-07-29: Merged PR #14 — autonomous refinement protocol output: 4 suggestions (epic acceptance, command docs, CI, RFC fate).
+- 2026-07-29: Merged PR #15 — autonomous refinement protocol output: 4 suggestions (README, log, .env.example, setup skill).
+- 2026-07-29: Merged PR #16 — autonomous refinement protocol output: 4 suggestions (queue grooming, org state narrative, constraints review, setup skill).
+- 2026-07-29: Merged PR #17 — autonomous refinement protocol output: 4 meta-suggestions about queue grooming.
+- 2026-07-29: Merged PR #18 — autonomous refinement protocol output: 3 meta-suggestions about queue grooming.

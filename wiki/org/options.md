@@ -9,7 +9,11 @@ confidence: low
 ## Where we could go next
 
 <!-- brain-state: shaping -->
-- [Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration](../brain/epics/regenerative-intent.md)
+- [Add end-to-end tests for the new PR #12 commands](../brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
+- [Implement confidence decay or TTL for AI suggestions](../brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
+- [Review active constraints after regenerative-intent delivery](../brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
+- [Review top `brain_links` suggestions for missing cross-links](../brain/ai-suggestions/refinement/review-top-link-suggestions.md)
+- [Verify the pi extension reloads the PR #13 view fix](../brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->

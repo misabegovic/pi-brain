@@ -15,6 +15,27 @@ pi-brain is a self-contained, cloneable template for project- or customer-specif
 - **Tend queue integration** — see what queued up while you were away and digest it without leaving pi.
 - **Human-gated shaping** — `/brain:shape` turns pitches into ADRs/PRDs with phase-end approval gates.
 - **A cozy theme** — warm, low-contrast colors so long brain-tending sessions feel like home.
+- **Regenerative intent** — turn approved intent into code with `/brain:build`, detect drift with `/brain:diff`, and reconcile with `/brain:sync-code`.
+- **Multi-agent collaboration** — `/brain:collaborate` and `/brain:rfc-contribute` bring specialized personas into intent work.
+- **Autonomous maintenance** — `/brain:auto`, background tasks, and `/brain:revise` keep intent current with human oversight.
+
+## Regenerative intent workflow
+
+pi-brain is evolving from a static intent store into a regenerative system where approved intent drives code and agents maintain intent over time:
+
+```
+PRD/ADR with YAML intent blocks
+            ↓
+    /brain:build → generated code
+            ↓
+    /brain:diff → drift report
+            ↓
+  /brain:sync-code → proposals / apply
+            ↓
+   /brain:revise → updated intent
+```
+
+Commands: `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, `/brain:enqueue`, `/brain:run-tasks`, `/brain:tasks`.
 
 ## Vision: how pi-brain manages knowledge
 
