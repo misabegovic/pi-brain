@@ -59,11 +59,15 @@ This is the synthesis layer for this pi-brain instance.
 ### ai-suggestion
 - [Add a GitHub Actions CI workflow for checks and tests](brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md)
 - [Add end-to-end tests for the new PR #12 commands](brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
+- [Add `.env.example` for the product repo](brain/ai-suggestions/refinement/add-env-example-for-product-repo.md)
 - [Delete or promote the archived demo RFC](brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md)
 - [Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`](brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md)
+- [Groom stale refinement suggestions](brain/ai-suggestions/refinement/groom-stale-refinement-suggestions.md)
+- [Log PR #13 and PR #14 deliveries in log/log.md](brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries.md)
 - [Mark regenerative-intent epic as accepted and record PR #13](brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md)
 - [Merge PR #14 and act on its four suggestions](brain/ai-suggestions/refinement/merge-pr-14-and-act-on-suggestions.md)
 - [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
+- [Update README.md for regenerative-intent features](brain/ai-suggestions/refinement/update-readme-for-regenerative-intent.md)
 - [Verify the pi extension reloads the PR #13 view fix](brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 
 ### constraint

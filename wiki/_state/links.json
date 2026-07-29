@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T10:41:22.985Z",
-  "node_count": 96,
-  "edge_count": 575,
+  "generated_at": "2026-07-29T10:44:18.188Z",
+  "node_count": 100,
+  "edge_count": 579,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -186,6 +186,13 @@
       "title": "Add end-to-end tests for the new PR #12 commands"
     },
     {
+      "path": "brain/ai-suggestions/refinement/add-env-example-for-product-repo.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add `.env.example` for the product repo"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md",
       "kind": "ai-suggestion",
       "status": "draft",
@@ -198,6 +205,20 @@
       "status": "draft",
       "confidence": "low",
       "title": "Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Groom stale refinement suggestions"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Log PR #13 and PR #14 deliveries in log/log.md"
     },
     {
       "path": "brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md",
@@ -219,6 +240,13 @@
       "status": "draft",
       "confidence": "low",
       "title": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/update-readme-for-regenerative-intent.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Update README.md for regenerative-intent features"
     },
     {
       "path": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md",
@@ -3275,6 +3303,13 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-env-example-for-product-repo",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add `.env.example` for the product repo"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc",
       "kind": "markdown",
       "provenance": "body",
@@ -3286,6 +3321,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Document the new commands in `skills/brain/SKILL.md` and `pr"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Groom stale refinement suggestions"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Log PR #13 and PR #14 deliveries in log/log.md"
     },
     {
       "source": "index",
@@ -3307,6 +3356,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/update-readme-for-regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Update README.md for regenerative-intent features"
     },
     {
       "source": "index",
