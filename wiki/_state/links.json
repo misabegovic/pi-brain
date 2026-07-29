@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T13:55:23.889Z",
-  "node_count": 89,
-  "edge_count": 572,
+  "generated_at": "2026-07-29T13:56:48.472Z",
+  "node_count": 93,
+  "edge_count": 576,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,6 +170,34 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-test-for-suggestion-ttl-gate.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Add a test for the suggestion TTL gate"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/document-validate-script-in-readme.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Document `npm run validate` in README"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Publish v0.3.3 to npm"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Review top ten `brain_links` suggestions"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3237,6 +3265,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-test-for-suggestion-ttl-gate",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a test for the suggestion TTL gate"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/document-validate-script-in-readme",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Document `npm run validate` in README"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Publish v0.3.3 to npm"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/review-top-ten-link-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review top ten `brain_links` suggestions"
     },
     {
       "source": "index",
