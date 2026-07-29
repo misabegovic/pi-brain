@@ -152,17 +152,6 @@ pi
 /brain
 ```
 
-## Validate
-
-To run the full local validation suite:
-
-```bash
-npm install
-npm run validate
-```
-
-`npm run validate` runs TypeScript checks, tests, regenerates the wiki index, and verifies the link graph is clean.
-
 ## Configuration
 
 Edit `brain.config.yml`:
