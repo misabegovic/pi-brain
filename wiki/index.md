@@ -57,11 +57,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Add a GitHub Actions workflow for npm publish on release](brain/ai-suggestions/refinement/add-npm-publish-workflow.md)
-- [Draft a v0.4.0 epic for the next improvement cycle](brain/ai-suggestions/refinement/draft-v0-4-0-epic.md)
-- [Publish v0.3.3 to npm and close the suggestion](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-and-close-suggestion.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
-- [Review the next batch of `brain_links` suggestions](brain/ai-suggestions/refinement/review-next-batch-of-link-suggestions.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)

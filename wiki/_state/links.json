@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T14:25:16.876Z",
-  "node_count": 94,
-  "edge_count": 586,
+  "generated_at": "2026-07-29T14:28:10.271Z",
+  "node_count": 90,
+  "edge_count": 598,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,39 +172,11 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
-      "path": "brain/ai-suggestions/refinement/add-npm-publish-workflow.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a GitHub Actions workflow for npm publish on release"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/draft-v0-4-0-epic.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Draft a v0.4.0 epic for the next improvement cycle"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-and-close-suggestion.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Publish v0.3.3 to npm and close the suggestion"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-next-batch-of-link-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review the next batch of `brain_links` suggestions"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -766,6 +738,118 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/background-task-runner.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/brain-sync-code.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/adrs/agent-maintained-intent",
+      "target": "brain/records/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/structured-intent-and-build.md"
     },
     {
       "source": "brain/adrs/autonomous-colleague-mode",
@@ -3317,38 +3401,10 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-npm-publish-workflow",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a GitHub Actions workflow for npm publish on release"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/draft-v0-4-0-epic",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Draft a v0.4.0 epic for the next improvement cycle"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-and-close-suggestion",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm and close the suggestion"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-next-batch-of-link-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review the next batch of `brain_links` suggestions"
     },
     {
       "source": "index",
@@ -4836,6 +4892,38 @@
       "incoming": 8
     },
     {
+      "path": "brain/prds/autonomous-colleague-mode.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/autonomous-refinement-protocol.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/background-task-runner.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/brain-diff-drift-detection.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/brain-sync-code.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/multi-agent-intent-collaboration.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/multi-agent-rfc-collaboration.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/prds/structured-intent-and-build.md",
+      "incoming": 8
+    },
+    {
       "path": "brain/adrs/background-task-runner.md",
       "incoming": 7
     },
@@ -4865,38 +4953,6 @@
     },
     {
       "path": "brain/prds/agent-maintained-intent.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/autonomous-colleague-mode.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/autonomous-refinement-protocol.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/background-task-runner.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/brain-diff-drift-detection.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/brain-sync-code.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/multi-agent-intent-collaboration.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/multi-agent-rfc-collaboration.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/prds/structured-intent-and-build.md",
       "incoming": 7
     },
     {
@@ -5016,6 +5072,10 @@
       "incoming": 4
     },
     {
+      "path": "brain/records/autonomous-refinement-protocol.md",
+      "incoming": 4
+    },
+    {
       "path": "brain/records/brain-state-preserves-custom-content.md",
       "incoming": 4
     },
@@ -5024,11 +5084,31 @@
       "incoming": 4
     },
     {
-      "path": "brain/records/autonomous-refinement-protocol.md",
+      "path": "brain/records/autonomous-colleague-mode.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/background-task-runner.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/brain-diff-drift-detection.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/brain-sync-code.md",
       "incoming": 3
     },
     {
       "path": "brain/records/embed-pi-brain-default-behaviour.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/multi-agent-intent-collaboration.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/multi-agent-rfc-collaboration.md",
       "incoming": 3
     },
     {
@@ -5037,6 +5117,10 @@
     },
     {
       "path": "brain/records/stronger-default-implementation-guardrails.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/structured-intent-and-build.md",
       "incoming": 3
     },
     {
@@ -5088,7 +5172,8 @@
       "via": [
         "brain/bets/agent-maintained-intent",
         "brain/epics/regenerative-intent",
-        "brain/adrs/autonomous-colleague-mode"
+        "brain/adrs/autonomous-colleague-mode",
+        "brain/prds/autonomous-colleague-mode"
       ]
     },
     {
@@ -5097,7 +5182,8 @@
       "via": [
         "brain/epics/regenerative-intent",
         "brain/adrs/autonomous-refinement-protocol",
-        "brain/constraints/adr-before-structural-changes"
+        "brain/constraints/adr-before-structural-changes",
+        "brain/prds/autonomous-refinement-protocol"
       ]
     },
     {
@@ -5105,7 +5191,8 @@
       "target": "brain/bets/background-task-runner",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/background-task-runner"
+        "brain/adrs/background-task-runner",
+        "brain/prds/background-task-runner"
       ]
     },
     {
@@ -5113,7 +5200,8 @@
       "target": "brain/bets/brain-diff-drift-detection",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/brain-diff-drift-detection"
+        "brain/adrs/brain-diff-drift-detection",
+        "brain/prds/brain-diff-drift-detection"
       ]
     },
     {
@@ -5121,7 +5209,8 @@
       "target": "brain/bets/brain-sync-code",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/brain-sync-code"
+        "brain/adrs/brain-sync-code",
+        "brain/prds/brain-sync-code"
       ]
     },
     {
@@ -5129,7 +5218,8 @@
       "target": "brain/bets/multi-agent-intent-collaboration",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/multi-agent-intent-collaboration"
+        "brain/adrs/multi-agent-intent-collaboration",
+        "brain/prds/multi-agent-intent-collaboration"
       ]
     },
     {
@@ -5137,7 +5227,8 @@
       "target": "brain/bets/multi-agent-rfc-collaboration",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/multi-agent-rfc-collaboration"
+        "brain/adrs/multi-agent-rfc-collaboration",
+        "brain/prds/multi-agent-rfc-collaboration"
       ]
     },
     {
@@ -5145,97 +5236,100 @@
       "target": "brain/bets/structured-intent-and-build",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/structured-intent-and-build"
+        "brain/adrs/structured-intent-and-build",
+        "brain/prds/structured-intent-and-build"
       ]
     },
     {
       "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/autonomous-colleague-mode",
+      "target": "brain/records/refinement-follow-up-pr-13",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/records/autonomous-refinement-protocol"
+      ]
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/autonomous-refinement-protocol",
+      "via": [
+        "brain/epics/regenerative-intent",
+        "brain/adrs/smarter-autonomy",
+        "brain/bets/autonomous-refinement-protocol",
+        "brain/constraints/adr-before-structural-changes",
+        "brain/constraints/explicit-approval-for-commits"
+      ]
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/brain-diff-drift-detection",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/autonomous-refinement-protocol",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/brain-sync-code",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/background-task-runner",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/explicit-approval-for-commits",
+      "via": [
+        "brain/constraints/adr-before-structural-changes",
+        "brain/constraints/explicit-approval-for-commits"
+      ]
+    },
+    {
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/multi-agent-intent-collaboration",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/brain-diff-drift-detection",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/multi-agent-rfc-collaboration",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/brain-sync-code",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/structured-intent-and-build",
       "via": [
         "brain/epics/regenerative-intent",
         "brain/constraints/adr-before-structural-changes"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/multi-agent-intent-collaboration",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/adrs/tap-pi-extension-surface",
       "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/autonomous-refinement-protocol",
-        "brain/constraints/adr-before-structural-changes"
+        "brain/constraints/adr-before-structural-changes",
+        "brain/constraints/explicit-approval-for-commits"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/multi-agent-rfc-collaboration",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/bets/agent-maintained-intent",
       "via": [
         "brain/epics/regenerative-intent",
-        "brain/adrs/multi-agent-intent-collaboration",
-        "brain/constraints/adr-before-structural-changes"
+        "brain/bets/autonomous-refinement-protocol"
       ]
     },
     {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/prds/structured-intent-and-build",
+      "source": "brain/adrs/autonomous-colleague-mode",
+      "target": "brain/bets/background-task-runner",
       "via": [
+        "brain/bets/autonomous-colleague-mode",
         "brain/epics/regenerative-intent",
-        "brain/constraints/adr-before-structural-changes"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/records/autonomous-colleague-mode",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/autonomous-colleague-mode"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/records/autonomous-refinement-protocol",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/autonomous-refinement-protocol"
-      ]
-    },
-    {
-      "source": "brain/adrs/agent-maintained-intent",
-      "target": "brain/records/background-task-runner",
-      "via": [
-        "brain/epics/regenerative-intent",
-        "brain/adrs/background-task-runner"
+        "brain/bets/autonomous-refinement-protocol"
       ]
     }
   ]
