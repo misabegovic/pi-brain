@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { requireBrain } from "./context.ts";
-import { pathExists } from "./utils.ts";
+import { pathExists, isValidIdentifier } from "./utils.ts";
 import { loadBrainAgent, runAgent } from "./collaboration.ts";
 
 function formatContribution(author: string, task: string, text: string): string {
@@ -44,6 +44,10 @@ export function registerRfcContribute(pi: ExtensionAPI) {
       }
 
       const [scope, slug, author, ...taskParts] = parts;
+      if (!isValidIdentifier(scope) || !isValidIdentifier(slug) || !isValidIdentifier(author)) {
+        ctx.ui.notify("Scope, slug, and author must be simple identifiers (letters, numbers, -, _).", "warning");
+        return;
+      }
       const task = taskParts.join(" ");
       const home = await requireBrain(ctx.cwd);
       if (!home) {

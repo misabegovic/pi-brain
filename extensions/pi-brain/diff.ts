@@ -5,6 +5,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { requireBrain } from "./context.ts";
 import { collectBlocks, type IntentBlock } from "./intent-blocks.ts";
 import { renderTypescriptTypes } from "./build-renderers.ts";
+import { isValidIdentifier } from "./utils.ts";
 
 export interface TsInterface {
   name: string;
@@ -185,6 +186,10 @@ export function registerDiff(pi: ExtensionAPI) {
       }
 
       const [scope, target] = parts;
+      if (!isValidIdentifier(scope) || !isValidIdentifier(target)) {
+        ctx.ui.notify("Scope and target must be simple identifiers (letters, numbers, -, _).", "warning");
+        return;
+      }
       const home = await requireBrain(ctx.cwd);
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
