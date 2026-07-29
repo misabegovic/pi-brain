@@ -14,7 +14,9 @@ Take a moment with the clone:
 3. If something needs to be captured, use `brain_capture`.
 4. If the inbox has pending items, summarize them and ask whether to `/brain:tend`.
 5. If pages are stale or the index is missing, run `brain_sync`.
-6. Before any structural change, read `wiki/<scope>/constraints/*.md` and confirm an accepted ADR exists.
+6. To generate code from approved intent, use `/brain:build`; to check drift, `/brain:diff`; to reconcile, `/brain:sync-code`.
+7. For multi-agent input on intent, use `/brain:collaborate`; for async RFC contributions, `/brain:rfc-contribute`.
+8. Before any structural change, read `wiki/<scope>/constraints/*.md` and confirm an accepted ADR exists.
 
 Focus for this session: ${1:-the current project}
 
