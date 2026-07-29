@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T11:08:33.090Z",
-  "node_count": 111,
-  "edge_count": 590,
+  "generated_at": "2026-07-29T11:28:17.059Z",
+  "node_count": 93,
+  "edge_count": 588,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,20 +172,6 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
-      "path": "brain/ai-suggestions/refinement/act-on-mark-epic-accepted.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Act on the repeatedly suggested epic acceptance task"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a GitHub Actions CI workflow for checks and tests"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md",
       "kind": "ai-suggestion",
       "status": "draft",
@@ -193,102 +179,11 @@
       "title": "Add end-to-end tests for the new PR #12 commands"
     },
     {
-      "path": "brain/ai-suggestions/refinement/add-env-example-for-product-repo.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add `.env.example` for the product repo"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-human-narrative-to-org-state.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add human narrative to `wiki/org/state.md`"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/consolidate-documentation-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Consolidate the documentation suggestions into one PR"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Delete or promote the archived demo RFC"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/delete-stale-merge-pr-14-suggestion.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Delete the stale \"Merge PR #14\" suggestion"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/emergency-queue-groom-stop-adding-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Emergency queue groom: stop adding suggestions"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Groom stale refinement suggestions"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "low",
       "title": "Implement confidence decay or TTL for AI suggestions"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Log PR #13 and PR #14 deliveries in log/log.md"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Mark regenerative-intent epic as accepted and record PR #13"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/merge-pr-14-and-act-on-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "Merge PR #14 and act on its four suggestions"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/one-focus-pr-to-clear-top-suggestions.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "high",
-      "title": "One focused PR to clear the top suggestions"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Pause autonomous refinement until the suggestion queue is groomed"
     },
     {
       "path": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md",
@@ -303,27 +198,6 @@
       "status": "draft",
       "confidence": "low",
       "title": "Review top `brain_links` suggestions for missing cross-links"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/suggestion-queue-grooming-day.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "medium",
-      "title": "Hold a suggestion-queue grooming day"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/update-brain-setup-skill-for-new-workflow.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Update `skills/brain-setup/SKILL.md` for the new workflow"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/update-readme-for-regenerative-intent.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Update README.md for regenerative-intent features"
     },
     {
       "path": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md",
@@ -468,7 +342,7 @@
     {
       "path": "brain/epics/regenerative-intent.md",
       "kind": "epic",
-      "status": "draft",
+      "status": "accepted",
       "confidence": "low",
       "title": "Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration"
     },
@@ -676,6 +550,13 @@
       "title": "Record — Plain-language shape requests default to forward mode"
     },
     {
+      "path": "brain/records/refinement-follow-up-pr-13.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Refinement follow-up PR #13"
+    },
+    {
       "path": "brain/records/smarter-autonomy.md",
       "kind": "record",
       "status": "current",
@@ -744,13 +625,6 @@
       "status": "current",
       "confidence": "high",
       "title": "Release"
-    },
-    {
-      "path": "brain/rfcs/demo-rfc.md",
-      "kind": "rfc",
-      "status": "archived",
-      "confidence": "low",
-      "title": "RFC — Demo: Should pi-brain ship a default TUI theme?"
     },
     {
       "path": "index.md",
@@ -2819,6 +2693,20 @@
       "context": "Bet — Plain-language shape requests default to forward mode"
     },
     {
+      "source": "brain/records/refinement-follow-up-pr-13",
+      "target": "brain/epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/refinement-follow-up-pr-13",
+      "target": "brain/records/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/autonomous-refinement-protocol.md"
+    },
+    {
       "source": "brain/records/smarter-autonomy",
       "target": "brain/adrs/smarter-autonomy",
       "kind": "markdown",
@@ -3366,20 +3254,6 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/act-on-mark-epic-accepted",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Act on the repeatedly suggested epic acceptance task"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a GitHub Actions CI workflow for checks and tests"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
       "kind": "markdown",
       "provenance": "body",
@@ -3387,101 +3261,10 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-env-example-for-product-repo",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add `.env.example` for the product repo"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-human-narrative-to-org-state",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add human narrative to `wiki/org/state.md`"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/consolidate-documentation-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Consolidate the documentation suggestions into one PR"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Delete or promote the archived demo RFC"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/delete-stale-merge-pr-14-suggestion",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Delete the stale \"Merge PR #14\" suggestion"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Document the new commands in `skills/brain/SKILL.md` and `pr"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/emergency-queue-groom-stop-adding-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Emergency queue groom: stop adding suggestions"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/groom-stale-refinement-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Groom stale refinement suggestions"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
       "kind": "markdown",
       "provenance": "body",
       "context": "Implement confidence decay or TTL for AI suggestions"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Log PR #13 and PR #14 deliveries in log/log.md"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Mark regenerative-intent epic as accepted and record PR #13"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/merge-pr-14-and-act-on-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Merge PR #14 and act on its four suggestions"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/one-focus-pr-to-clear-top-suggestions",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "One focused PR to clear the top suggestions"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Pause autonomous refinement until the suggestion queue is gr"
     },
     {
       "source": "index",
@@ -3496,27 +3279,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Review top `brain_links` suggestions for missing cross-links"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/suggestion-queue-grooming-day",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Hold a suggestion-queue grooming day"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/update-brain-setup-skill-for-new-workflow",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Update `skills/brain-setup/SKILL.md` for the new workflow"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/update-readme-for-regenerative-intent",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Update README.md for regenerative-intent features"
     },
     {
       "source": "index",
@@ -3758,6 +3520,13 @@
     },
     {
       "source": "index",
+      "target": "brain/records/refinement-follow-up-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Refinement follow-up PR #13"
+    },
+    {
+      "source": "index",
       "target": "brain/records/smarter-autonomy",
       "kind": "markdown",
       "provenance": "body",
@@ -3828,13 +3597,6 @@
     },
     {
       "source": "index",
-      "target": "brain/rfcs/demo-rfc",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "RFC — Demo: Should pi-brain ship a default TUI theme?"
-    },
-    {
-      "source": "index",
       "target": "index",
       "kind": "markdown",
       "provenance": "body",
@@ -3863,10 +3625,38 @@
     },
     {
       "source": "org/options",
-      "target": "brain/epics/regenerative-intent",
+      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
       "kind": "markdown",
       "provenance": "body",
-      "context": "Epic — Regenerative pi-brain: intent as the living substrate"
+      "context": "Add end-to-end tests for the new PR #12 commands"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Implement confidence decay or TTL for AI suggestions"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review active constraints after regenerative-intent delivery"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Verify the pi extension reloads the PR #13 view fix"
     },
     {
       "source": "org/options",
@@ -4157,6 +3947,13 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Regenerative pi-brain: intent as the living substrate"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/prds/agent-maintained-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -4276,10 +4073,38 @@
     },
     {
       "source": "org/roadmap",
-      "target": "brain/epics/regenerative-intent",
+      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
       "kind": "markdown",
       "provenance": "body",
-      "context": "Epic — Regenerative pi-brain: intent as the living substrate"
+      "context": "Add end-to-end tests for the new PR #12 commands"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Implement confidence decay or TTL for AI suggestions"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review active constraints after regenerative-intent delivery"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Verify the pi extension reloads the PR #13 view fix"
     },
     {
       "source": "org/roadmap",
@@ -4420,6 +4245,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Plain-language shape requests default to forward mo"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/refinement-follow-up-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Refinement follow-up PR #13"
     },
     {
       "source": "org/state",
@@ -4644,6 +4476,41 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add end-to-end tests for the new PR #12 commands"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Implement confidence decay or TTL for AI suggestions"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review active constraints after regenerative-intent delivery"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/review-top-link-suggestions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review top `brain_links` suggestions for missing cross-links"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Verify the pi extension reloads the PR #13 view fix"
     },
     {
       "source": "org/state",
@@ -4882,13 +4749,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "PRD — Upstream template sync for pi-brain clones"
-    },
-    {
-      "source": "org/state",
-      "target": "brain/rfcs/demo-rfc",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "RFC — Demo: Should pi-brain ship a default TUI theme?"
     },
     {
       "source": "org/state",
@@ -5155,6 +5015,26 @@
       "incoming": 4
     },
     {
+      "path": "brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/review-top-link-suggestions.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md",
+      "incoming": 4
+    },
+    {
       "path": "brain/feedback/eager-implementation-contract-breach.md",
       "incoming": 4
     },
@@ -5165,6 +5045,10 @@
     {
       "path": "brain/records/smarter-autonomy.md",
       "incoming": 4
+    },
+    {
+      "path": "brain/records/autonomous-refinement-protocol.md",
+      "incoming": 3
     },
     {
       "path": "brain/records/embed-pi-brain-default-behaviour.md",

@@ -57,28 +57,10 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Act on the repeatedly suggested epic acceptance task](brain/ai-suggestions/refinement/act-on-mark-epic-accepted.md)
-- [Add a GitHub Actions CI workflow for checks and tests](brain/ai-suggestions/refinement/add-ci-workflow-for-checks-and-tests.md)
 - [Add end-to-end tests for the new PR #12 commands](brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
-- [Add `.env.example` for the product repo](brain/ai-suggestions/refinement/add-env-example-for-product-repo.md)
-- [Add human narrative to `wiki/org/state.md`](brain/ai-suggestions/refinement/add-human-narrative-to-org-state.md)
-- [Consolidate the documentation suggestions into one PR](brain/ai-suggestions/refinement/consolidate-documentation-suggestions.md)
-- [Delete or promote the archived demo RFC](brain/ai-suggestions/refinement/delete-or-promote-archived-demo-rfc.md)
-- [Delete the stale "Merge PR #14" suggestion](brain/ai-suggestions/refinement/delete-stale-merge-pr-14-suggestion.md)
-- [Document the new commands in `skills/brain/SKILL.md` and `prompts/brain-home.md`](brain/ai-suggestions/refinement/document-new-commands-in-brain-skill-and-home-prompt.md)
-- [Emergency queue groom: stop adding suggestions](brain/ai-suggestions/refinement/emergency-queue-groom-stop-adding-suggestions.md)
-- [Groom stale refinement suggestions](brain/ai-suggestions/refinement/groom-stale-refinement-suggestions.md)
 - [Implement confidence decay or TTL for AI suggestions](brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
-- [Log PR #13 and PR #14 deliveries in log/log.md](brain/ai-suggestions/refinement/log-pr-13-and-pr-14-deliveries.md)
-- [Mark regenerative-intent epic as accepted and record PR #13](brain/ai-suggestions/refinement/mark-epic-accepted-and-record-pr-13.md)
-- [Merge PR #14 and act on its four suggestions](brain/ai-suggestions/refinement/merge-pr-14-and-act-on-suggestions.md)
-- [One focused PR to clear the top suggestions](brain/ai-suggestions/refinement/one-focus-pr-to-clear-top-suggestions.md)
-- [Pause autonomous refinement until the suggestion queue is groomed](brain/ai-suggestions/refinement/pause-refinement-until-queue-groomed.md)
 - [Review active constraints after regenerative-intent delivery](brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
 - [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
-- [Hold a suggestion-queue grooming day](brain/ai-suggestions/refinement/suggestion-queue-grooming-day.md)
-- [Update `skills/brain-setup/SKILL.md` for the new workflow](brain/ai-suggestions/refinement/update-brain-setup-skill-for-new-workflow.md)
-- [Update README.md for regenerative-intent features](brain/ai-suggestions/refinement/update-readme-for-regenerative-intent.md)
 - [Verify the pi extension reloads the PR #13 view fix](brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 
 ### constraint
@@ -125,6 +107,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — Multi-agent intent collaboration](brain/records/multi-agent-intent-collaboration.md)
 - [Record — Multi-agent RFC collaboration](brain/records/multi-agent-rfc-collaboration.md)
 - [Record — Plain-language shape requests default to forward mode](brain/records/plain-language-triggers-shape.md)
+- [Record — Refinement follow-up PR #13](brain/records/refinement-follow-up-pr-13.md)
 - [Record — Smarter autonomy for pi-brain clones](brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](brain/records/stronger-default-implementation-guardrails.md)
 - [Record — Structured intent and `/brain:build`](brain/records/structured-intent-and-build.md)
@@ -135,9 +118,6 @@ This is the synthesis layer for this pi-brain instance.
 - [Release](brain/records/version-0-3-0.md)
 - [Release](brain/records/version-0-3-1.md)
 - [Release](brain/records/version-0-3-2.md)
-
-### rfc
-- [RFC — Demo: Should pi-brain ship a default TUI theme?](brain/rfcs/demo-rfc.md)
 
 ### meta
 - [pi-brain home](index.md)

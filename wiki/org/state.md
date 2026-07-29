@@ -8,7 +8,11 @@ confidence: medium
 
 ## Where we are
 
-Summarize the current truth for this scope. Be honest about gaps.
+The regenerative-intent epic has been delivered: all nine bets are accepted, implemented, and recorded. PR #13 followed up by fixing the link graph, generated-page links, and adding TypeScript dev tooling (strict `tsc --noEmit` plus tests). The corpus is now at zero dead links and zero orphans.
+
+Current focus is closing documentation and automation gaps: README/skills/prompts now cover the new commands, `.env.example` documents PR-first setup, a CI workflow runs checks and tests, and the delivery log is up to date. The remaining open work is mostly test coverage and real-world exercise of the new commands.
+
+Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, and the background task commands do not exist yet.
 
 ## What is stable
 
@@ -31,6 +35,7 @@ Summarize the current truth for this scope. Be honest about gaps.
 - [Record — Multi-agent intent collaboration](../brain/records/multi-agent-intent-collaboration.md)
 - [Record — Multi-agent RFC collaboration](../brain/records/multi-agent-rfc-collaboration.md)
 - [Record — Plain-language shape requests default to forward mode](../brain/records/plain-language-triggers-shape.md)
+- [Record — Refinement follow-up PR #13](../brain/records/refinement-follow-up-pr-13.md)
 - [Record — Smarter autonomy for pi-brain clones](../brain/records/smarter-autonomy.md)
 - [Record — Stronger default guardrails against eager implementation](../brain/records/stronger-default-implementation-guardrails.md)
 - [Record — Structured intent and `/brain:build`](../brain/records/structured-intent-and-build.md)
@@ -68,6 +73,11 @@ Summarize the current truth for this scope. Be honest about gaps.
 - [ADR — Tap pi’s full extension surface for pi-brain](../brain/adrs/tap-pi-extension-surface.md)
 - [ADR — Upstream template sync mechanism](../brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](../brain/adrs/versioning-and-releases.md)
+- [Add end-to-end tests for the new PR #12 commands](../brain/ai-suggestions/refinement/add-e2e-tests-for-new-commands.md)
+- [Implement confidence decay or TTL for AI suggestions](../brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
+- [Review active constraints after regenerative-intent delivery](../brain/ai-suggestions/refinement/review-constraints-after-epic-delivery.md)
+- [Review top `brain_links` suggestions for missing cross-links](../brain/ai-suggestions/refinement/review-top-link-suggestions.md)
+- [Verify the pi extension reloads the PR #13 view fix](../brain/ai-suggestions/refinement/verify-extension-reloads-after-pr-13.md)
 - [Bet — Agent-maintained intent](../brain/bets/agent-maintained-intent.md)
 - [Bet — Autonomous colleague mode](../brain/bets/autonomous-colleague-mode.md)
 - [Bet — Autonomous refinement protocol for pi-brain](../brain/bets/autonomous-refinement-protocol.md)
@@ -102,7 +112,6 @@ Summarize the current truth for this scope. Be honest about gaps.
 - [PRD — Structured intent and `/brain:build`](../brain/prds/structured-intent-and-build.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 - [PRD — Upstream template sync for pi-brain clones](../brain/prds/upstream-template-sync.md)
-- [RFC — Demo: Should pi-brain ship a default TUI theme?](../brain/rfcs/demo-rfc.md)
 - [Options — org](options.md)
 - [Roadmap — org](roadmap.md)
 - [State — org](state.md)
