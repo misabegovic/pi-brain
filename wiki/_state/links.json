@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T09:03:59.895Z",
-  "node_count": 78,
-  "edge_count": 509,
+  "generated_at": "2026-07-29T09:29:47.697Z",
+  "node_count": 97,
+  "edge_count": 581,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,6 +170,76 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/create-records-for-nine-bets.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Create records for the nine bets delivered in PR #12"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Create a demo RFC to exercise `/brain:rfc-contribute`"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Fetch or manually capture the aicoding.leaflet.pub source content"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/fetch-aicoding-source.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Fetch or manually capture the aicoding.leaflet.pub content"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/merge-pr-and-create-records.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Merge PR #12 and create records for the nine delivered bets"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Review or remove the demo ai-suggestions artifacts"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/tend-inbox-items-post-merge.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Tend the three queued inbox items now that PR #12 has merged"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/tend-inbox-items.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Tend the three queued inbox items"
+    },
+    {
+      "path": "brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Sync proposal — Task"
+    },
+    {
+      "path": "brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Sync proposal — Task"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -424,11 +494,53 @@
       "title": "PRD — Upstream template sync for pi-brain clones"
     },
     {
+      "path": "brain/records/agent-maintained-intent.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Agent-maintained intent"
+    },
+    {
+      "path": "brain/records/autonomous-colleague-mode.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Autonomous colleague mode"
+    },
+    {
+      "path": "brain/records/autonomous-refinement-protocol.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Autonomous refinement protocol"
+    },
+    {
+      "path": "brain/records/background-task-runner.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Background task runner"
+    },
+    {
+      "path": "brain/records/brain-diff-drift-detection.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — `/brain:diff` drift detection"
+    },
+    {
       "path": "brain/records/brain-state-preserves-custom-content.md",
       "kind": "record",
       "status": "current",
       "confidence": "high",
       "title": "Record — brain-state preserves custom content"
+    },
+    {
+      "path": "brain/records/brain-sync-code.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — `/brain:sync-code` reconciliation"
     },
     {
       "path": "brain/records/embed-pi-brain-default-behaviour.md",
@@ -452,6 +564,20 @@
       "title": "Current truth"
     },
     {
+      "path": "brain/records/multi-agent-intent-collaboration.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Multi-agent intent collaboration"
+    },
+    {
+      "path": "brain/records/multi-agent-rfc-collaboration.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Multi-agent RFC collaboration"
+    },
+    {
       "path": "brain/records/plain-language-triggers-shape.md",
       "kind": "record",
       "status": "current",
@@ -471,6 +597,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Record — Stronger default guardrails against eager implementation"
+    },
+    {
+      "path": "brain/records/structured-intent-and-build.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Structured intent and `/brain:build`"
     },
     {
       "path": "brain/records/tap-pi-extension-surface.md",
@@ -1356,6 +1489,125 @@
       "context": "package.json"
     },
     {
+      "source": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "target": "../../../bets/",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "target": "../../../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "target": "../../../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "target": "../../../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "target": "../../../../ai-suggestions/build/types/generated.ts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/build/types/generated.ts"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "target": "../../../../ai-suggestions/sync-code/types/",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/sync-code/types/"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "target": "../../../_state/inbox",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/_state/inbox.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../_state/inbox",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/_state/inbox.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
       "source": "brain/bets/agent-maintained-intent",
       "target": "../prds/agent-maintained-intent",
       "kind": "markdown",
@@ -2588,6 +2840,146 @@
       "context": "wiki/brain/adrs/stronger-default-implementation-guardrails.m"
     },
     {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
       "source": "brain/records/brain-state-preserves-custom-content",
       "target": "../adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
@@ -2600,6 +2992,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Patch brain-state to preserve custom content"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-sync-code.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-sync-code.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-sync-code.md"
     },
     {
       "source": "brain/records/embed-pi-brain-default-behaviour",
@@ -2672,6 +3092,62 @@
       "context": "Source — user feedback"
     },
     {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-rfc-collaboration.md"
+    },
+    {
       "source": "brain/records/plain-language-triggers-shape",
       "target": "../adrs/plain-language-triggers-shape",
       "kind": "markdown",
@@ -2740,6 +3216,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "sources/brain/feedback/eager-implementation-session-snippet."
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
     },
     {
       "source": "brain/records/tap-pi-extension-surface",
@@ -3268,6 +3772,76 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Create records for the nine bets delivered in PR #12"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Create a demo RFC to exercise `/brain:rfc-contribute`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Fetch or manually capture the aicoding.leaflet.pub content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Merge PR #12 and create records for the nine delivered bets"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review or remove the demo ai-suggestions artifacts"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Tend the three queued inbox items now that PR #12 has merged"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/tend-inbox-items",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Tend the three queued inbox items"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Sync proposal — Task"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Sync proposal — Task"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/constraints/adr-before-structural-changes",
       "kind": "markdown",
       "provenance": "body",
@@ -3408,10 +3982,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Autonomous refinement protocol"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — brain-state preserves custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — `/brain:sync-code` reconciliation"
     },
     {
       "source": "index",
@@ -3436,6 +4052,20 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Multi-agent intent collaboration"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/plain-language-triggers-shape",
       "kind": "markdown",
       "provenance": "body",
@@ -3454,6 +4084,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Stronger default guardrails against eager implement"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Structured intent and `/brain:build`"
     },
     {
       "source": "index",
@@ -4124,6 +4761,16 @@
     "brain/adrs/multi-agent-intent-collaboration.md",
     "brain/adrs/multi-agent-rfc-collaboration.md",
     "brain/adrs/structured-intent-and-build.md",
+    "brain/ai-suggestions/refinement/create-records-for-nine-bets.md",
+    "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute.md",
+    "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge.md",
+    "brain/ai-suggestions/refinement/fetch-aicoding-source.md",
+    "brain/ai-suggestions/refinement/merge-pr-and-create-records.md",
+    "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts.md",
+    "brain/ai-suggestions/refinement/tend-inbox-items-post-merge.md",
+    "brain/ai-suggestions/refinement/tend-inbox-items.md",
+    "brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206.md",
+    "brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831.md",
     "brain/bets/agent-maintained-intent.md",
     "brain/bets/autonomous-colleague-mode.md",
     "brain/bets/autonomous-refinement-protocol.md",
@@ -4142,7 +4789,16 @@
     "brain/prds/brain-sync-code.md",
     "brain/prds/multi-agent-intent-collaboration.md",
     "brain/prds/multi-agent-rfc-collaboration.md",
-    "brain/prds/structured-intent-and-build.md"
+    "brain/prds/structured-intent-and-build.md",
+    "brain/records/agent-maintained-intent.md",
+    "brain/records/autonomous-colleague-mode.md",
+    "brain/records/autonomous-refinement-protocol.md",
+    "brain/records/background-task-runner.md",
+    "brain/records/brain-diff-drift-detection.md",
+    "brain/records/brain-sync-code.md",
+    "brain/records/multi-agent-intent-collaboration.md",
+    "brain/records/multi-agent-rfc-collaboration.md",
+    "brain/records/structured-intent-and-build.md"
   ],
   "hubs": [
     {
@@ -4968,6 +5624,125 @@
       "context": "package.json"
     },
     {
+      "source": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "target": "../../../bets/",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "target": "../../../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "target": "../../../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "target": "../../../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "target": "../../../../ai-suggestions/build/types/generated.ts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/build/types/generated.ts"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "target": "../../../../ai-suggestions/sync-code/types/",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/sync-code/types/"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "target": "../../../_state/inbox",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/_state/inbox.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../_state/inbox",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/_state/inbox.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../../sources/web/2026-07-28--aicoding-leaflet-pub",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "sources/web/2026-07-28--aicoding-leaflet-pub.md"
+    },
+    {
+      "source": "brain/ai-suggestions/refinement/tend-inbox-items",
+      "target": "../../../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
       "source": "brain/bets/agent-maintained-intent",
       "target": "../prds/agent-maintained-intent",
       "kind": "markdown",
@@ -6186,6 +6961,146 @@
       "context": "wiki/brain/adrs/stronger-default-implementation-guardrails.m"
     },
     {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../adrs/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../prds/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/agent-maintained-intent",
+      "target": "../bets/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/agent-maintained-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../adrs/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../prds/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-colleague-mode",
+      "target": "../bets/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-colleague-mode.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../adrs/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../prds/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/autonomous-refinement-protocol",
+      "target": "../bets/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../adrs/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../prds/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/background-task-runner",
+      "target": "../bets/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/background-task-runner.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../adrs/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../prds/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+    },
+    {
+      "source": "brain/records/brain-diff-drift-detection",
+      "target": "../bets/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+    },
+    {
       "source": "brain/records/brain-state-preserves-custom-content",
       "target": "../adrs/brain-state-preserves-custom-content",
       "kind": "markdown",
@@ -6198,6 +7113,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Bet — Patch brain-state to preserve custom content"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../adrs/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/brain-sync-code.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../prds/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/brain-sync-code.md"
+    },
+    {
+      "source": "brain/records/brain-sync-code",
+      "target": "../bets/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/brain-sync-code.md"
     },
     {
       "source": "brain/records/embed-pi-brain-default-behaviour",
@@ -6270,6 +7213,62 @@
       "context": "Source — user feedback"
     },
     {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../adrs/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../prds/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-intent-collaboration",
+      "target": "../bets/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-intent-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../adrs/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../prds/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/records/multi-agent-rfc-collaboration",
+      "target": "../bets/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/multi-agent-rfc-collaboration.md"
+    },
+    {
       "source": "brain/records/plain-language-triggers-shape",
       "target": "../adrs/plain-language-triggers-shape",
       "kind": "markdown",
@@ -6338,6 +7337,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "sources/brain/feedback/eager-implementation-session-snippet."
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../epics/regenerative-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/regenerative-intent.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../prds/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/prds/structured-intent-and-build.md"
+    },
+    {
+      "source": "brain/records/structured-intent-and-build",
+      "target": "../bets/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/bets/structured-intent-and-build.md"
     },
     {
       "source": "brain/records/tap-pi-extension-surface",
@@ -6866,6 +7893,76 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/create-records-for-nine-bets",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Create records for the nine bets delivered in PR #12"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/demo-rfc-for-rfc-contribute",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Create a demo RFC to exercise `/brain:rfc-contribute`"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/fetch-aicoding-source-post-merge",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Fetch or manually capture the aicoding.leaflet.pub source co"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/fetch-aicoding-source",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Fetch or manually capture the aicoding.leaflet.pub content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/merge-pr-and-create-records",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Merge PR #12 and create records for the nine delivered bets"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/review-demo-ai-suggestions-artifacts",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review or remove the demo ai-suggestions artifacts"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/tend-inbox-items-post-merge",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Tend the three queued inbox items now that PR #12 has merged"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/refinement/tend-inbox-items",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Tend the three queued inbox items"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/sync-code/types/14b77007-6454-4043-b04c-043b9e1f2206",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Sync proposal — Task"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/ai-suggestions/sync-code/types/f08ee68d-1184-4a8c-a965-a6bd16656831",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Sync proposal — Task"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/constraints/adr-before-structural-changes",
       "kind": "markdown",
       "provenance": "body",
@@ -7006,10 +8103,52 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/agent-maintained-intent",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Agent-maintained intent"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/autonomous-colleague-mode",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Autonomous colleague mode"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/autonomous-refinement-protocol",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Autonomous refinement protocol"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/background-task-runner",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Background task runner"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/brain-diff-drift-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — `/brain:diff` drift detection"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/brain-state-preserves-custom-content",
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — brain-state preserves custom content"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/brain-sync-code",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — `/brain:sync-code` reconciliation"
     },
     {
       "source": "index",
@@ -7034,6 +8173,20 @@
     },
     {
       "source": "index",
+      "target": "wiki/brain/records/multi-agent-intent-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Multi-agent intent collaboration"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/multi-agent-rfc-collaboration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
       "target": "wiki/brain/records/plain-language-triggers-shape",
       "kind": "markdown",
       "provenance": "body",
@@ -7052,6 +8205,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Stronger default guardrails against eager implement"
+    },
+    {
+      "source": "index",
+      "target": "wiki/brain/records/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Structured intent and `/brain:build`"
     },
     {
       "source": "index",
