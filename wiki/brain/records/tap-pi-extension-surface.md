@@ -49,7 +49,7 @@ All new APIs are guarded so the extension still loads in environments that do no
 
 ## Related
 
-- Source: [Pi has way more extension surface than pi-brain uses](../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
-- Source: [Pi extension docs](../../../sources/doc/2026-07-27--extensions-md.md)
-- Source: [Pi TUI docs](../../../sources/doc/2026-07-27--tui-md.md)
+- Source: (source: sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
+- Source: (source: sources/doc/2026-07-27--extensions-md.md)
+- Source: (source: sources/doc/2026-07-27--tui-md.md)
 - [ADR — Local-first brain self-maintenance workflow](../adrs/local-first-brain-self-maintenance.md)

@@ -33,4 +33,4 @@ author: pi-brain-agent
 - [ADR — Versioning and release strategy](../adrs/versioning-and-releases.md)
 - [ADR — Wrap, Don't Replace](../adrs/adr-pi-tool-wrapper-override.md)
 - [ADR — Live-refresh the brain status widget](../adrs/adr-live-status-widget-refresh.md)
-- [package.json](../../../package.json)
+- `package.json`

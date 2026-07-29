@@ -73,7 +73,7 @@ Patch releases give us rollback granularity and avoid over-promising minor-versi
 
 ## Related
 
-- Source: [pi-brain embed plan](../../../sources/doc/2026-07-27--pi-brain-embed-plan-md.md)
+- Source: (source: sources/doc/2026-07-27--pi-brain-embed-plan-md.md)
 - Constraint: [ADR before structural changes](../constraints/adr-before-structural-changes.md)
 - Record: [pi-brain v0.2.0 release](../records/version-0-2-0.md)
 - ADR: (to be drafted in Phase 2)

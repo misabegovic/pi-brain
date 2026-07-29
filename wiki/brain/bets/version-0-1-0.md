@@ -35,4 +35,4 @@ Small. One release: tag, GitHub release notes, npm publish.
 ## Related
 
 - [ADR — Versioning and release strategy](../adrs/versioning-and-releases.md)
-- [package.json](../../../../package.json)
+- `package.json`

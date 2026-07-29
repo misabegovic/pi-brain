@@ -40,6 +40,6 @@ Specifically:
 
 ## Related
 
-- [AGENTS.md](../../../AGENTS.md)
-- [sources/brain/feedback/live-status-widget-refresh.md](../../../sources/brain/feedback/live-status-widget-refresh.md)
-- [extensions/pi-brain/hooks.ts](../../../extensions/pi-brain/hooks.ts)
+- `AGENTS.md`
+- (source: sources/brain/feedback/live-status-widget-refresh.md)
+- `extensions/pi-brain/hooks.ts`

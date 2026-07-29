@@ -41,4 +41,4 @@ Turn this pitch into a shaped PRD + ADR by selecting a concrete mechanism (git s
 ## Related
 
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
-- [AGENTS.md](../../../../AGENTS.md)
+- `AGENTS.md`

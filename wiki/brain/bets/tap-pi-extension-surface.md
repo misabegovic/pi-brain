@@ -44,7 +44,7 @@ Big, but shipped as seven small, independently flag-gated phases. We are willing
 
 - [PRD — Tap pi’s full extension surface for pi-brain](../prds/tap-pi-extension-surface.md)
 - [ADR — Tap pi’s full extension surface for pi-brain](../adrs/tap-pi-extension-surface.md)
-- Source: [Pi has way more extension surface than pi-brain uses](../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
-- Source: [Pi extension docs](../../../sources/doc/2026-07-27--extensions-md.md)
+- Source: (source: sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
+- Source: (source: sources/doc/2026-07-27--extensions-md.md)
 - Source: `extensions/pi-brain/hooks.ts`
 - Source: `extensions/pi-brain/brain-home.ts`

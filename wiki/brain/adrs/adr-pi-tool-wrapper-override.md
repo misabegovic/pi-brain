@@ -34,6 +34,6 @@ If pi-brain overrides basic tooling provided by the pi coding agent, it **MUST**
 
 ## Related
 
-- [AGENTS.md](../../../AGENTS.md)
-- [sources/pi-tool-wrapper-override-request.md](../../../sources/pi-tool-wrapper-override-request.md)
-- [extensions/pi-brain/tool-wrapper.ts](../../../extensions/pi-brain/tool-wrapper.ts)
+- `AGENTS.md`
+- (source: sources/pi-tool-wrapper-override-request.md)
+- `extensions/pi-brain/tool-wrapper.ts`

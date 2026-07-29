@@ -47,4 +47,4 @@ Repository mutations are commitment-class actions. Even when the change is low-r
 - [wiki/brain/constraints/remote-promotion-requires-pr.md](./remote-promotion-requires-pr.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](./adr-before-structural-changes.md)
 - [ADR — Local-first brain self-maintenance workflow](../adrs/local-first-brain-self-maintenance.md)
-- [AGENTS.md](../../../../AGENTS.md)
+- `AGENTS.md`

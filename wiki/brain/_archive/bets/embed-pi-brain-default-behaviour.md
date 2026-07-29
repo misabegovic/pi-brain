@@ -4,7 +4,7 @@ status: archived
 confidence: medium
 appetite: big
 archived_at: 2026-07-27
-superseded_by: brain/records/embed-pi-brain-default-behaviour.md
+superseded_by: brain/records/embed-pi-brain-default-behaviour
 prd: brain/prds/embed-pi-brain-default-behaviour.md
 adr: brain/adrs/embed-pi-brain-default-behaviour.md
 sources:
@@ -61,6 +61,6 @@ We can make pi-brain install once as a global pi package and become the ambient 
 
 ## Related
 
-- [PRD — Embed pi-brain as default pi behaviour](../prds/embed-pi-brain-default-behaviour.md)
-- [ADR — Embed pi-brain as default pi behaviour](../adrs/embed-pi-brain-default-behaviour.md)
-- Source: [pi-brain embed plan](../../../sources/doc/2026-07-27--pi-brain-embed-plan-md.md)
+- [PRD — Embed pi-brain as default pi behaviour](../../prds/embed-pi-brain-default-behaviour.md)
+- [ADR — Embed pi-brain as default pi behaviour](../../adrs/embed-pi-brain-default-behaviour.md)
+- Source: (source: sources/doc/2026-07-27--pi-brain-embed-plan-md.md)

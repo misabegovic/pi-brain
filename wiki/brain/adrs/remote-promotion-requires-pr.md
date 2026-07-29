@@ -37,4 +37,4 @@ Add an active `must` constraint: even when `LOCAL_FIRST=true`, pushing local com
 
 - [wiki/brain/constraints/remote-promotion-requires-pr.md](../constraints/remote-promotion-requires-pr.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
-- [AGENTS.md](../../../../AGENTS.md)
+- `AGENTS.md`

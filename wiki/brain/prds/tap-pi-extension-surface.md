@@ -96,10 +96,10 @@ Success signal: no resource leaks across long-running sessions.
 
 ## Related
 
-- Source: [Pi has way more extension surface than pi-brain uses](../../../sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
-- Source: [Pi extension docs](../../../sources/doc/2026-07-27--extensions-md.md)
-- Source: [Pi TUI docs](../../../sources/doc/2026-07-27--tui-md.md)
-- Source: [Pi keybindings docs](../../../sources/doc/2026-07-27--keybindings-md.md)
+- Source: (source: sources/web/2026-07-27--muhamed-at-brain-pi-untapped-extension-surface-for-pi-brain.md)
+- Source: (source: sources/doc/2026-07-27--extensions-md.md)
+- Source: (source: sources/doc/2026-07-27--tui-md.md)
+- Source: (source: sources/doc/2026-07-27--keybindings-md.md)
 - Source: `extensions/pi-brain/hooks.ts`
 - Source: `extensions/pi-brain/brain-home.ts`
 - [ADR — Versioning and release strategy](../adrs/versioning-and-releases.md)

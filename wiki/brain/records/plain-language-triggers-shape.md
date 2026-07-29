@@ -34,5 +34,5 @@ The current, approved behavior for how the agent handles plain-language requests
 
 ## Related
 
-- [skills/brain/SKILL.md](../../../../skills/brain/SKILL.md)
-- [skills/brain-shape/SKILL.md](../../../../skills/brain-shape/SKILL.md)
+- `skills/brain/SKILL.md`
+- `skills/brain-shape/SKILL.md`

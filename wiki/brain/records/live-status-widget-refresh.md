@@ -32,4 +32,4 @@ The pi-brain status widget now refreshes automatically during a session when bra
 ## Related
 
 - [ADR — Live-refresh the brain status widget during a session](../adrs/adr-live-status-widget-refresh.md)
-- [Source — user feedback](../../../sources/brain/feedback/live-status-widget-refresh.md)
+- (source: sources/brain/feedback/live-status-widget-refresh.md)

@@ -41,4 +41,4 @@ Add an active `must` constraint: the agent must obtain explicit user approval be
 - [wiki/brain/constraints/explicit-approval-for-commits.md](../constraints/explicit-approval-for-commits.md)
 - [wiki/brain/constraints/remote-promotion-requires-pr.md](../constraints/remote-promotion-requires-pr.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
-- [AGENTS.md](../../../../AGENTS.md)
+- `AGENTS.md`

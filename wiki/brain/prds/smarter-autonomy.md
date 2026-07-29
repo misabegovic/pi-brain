@@ -77,4 +77,4 @@ These are surfaced as concise inbox captures or direct messages, not silent edit
 - [wiki/brain/adrs/smarter-autonomy.md](../adrs/smarter-autonomy.md)
 - [wiki/brain/bets/smarter-autonomy.md](../bets/smarter-autonomy.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
-- [skills/brain-auto/SKILL.md](../../../../skills/brain-auto/SKILL.md)
+- `skills/brain-auto/SKILL.md`

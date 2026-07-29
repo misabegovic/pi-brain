@@ -54,4 +54,4 @@ The template-clone workflow and the pi-package workflow are complementary:
 
 - [wiki/brain/adrs/upstream-template-sync.md](../adrs/upstream-template-sync.md)
 - [wiki/brain/bets/version-0-1-0.md](../bets/version-0-1-0.md)
-- [package.json](../../../../package.json)
+- `package.json`

@@ -22,7 +22,7 @@ Generated sections will be wrapped like this:
 ## What is stable
 
 <!-- brain-state: stable -->
-- [Some page](wiki/brain/prds/some-page.md)
+- `Some page` at `path/to/some-page.md`
 <!-- /brain-state -->
 
 Custom narrative added by the user survives regeneration.
@@ -58,5 +58,5 @@ Custom narrative added by the user survives regeneration.
 
 ## Related
 
-- [tools/brain-state.mjs](../../../../tools/brain-state.mjs)
+- `tools/brain-state.mjs`
 - [wiki/brain/bets/brain-state-preserves-custom-content.md](../bets/brain-state-preserves-custom-content.md)

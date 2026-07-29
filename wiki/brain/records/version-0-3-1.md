@@ -35,4 +35,4 @@ author: pi-brain-agent
 
 - [ADR — Versioning and release strategy](../adrs/versioning-and-releases.md)
 - [Record — pi-brain v0.3.0 release](version-0-3-0.md)
-- [package.json](../../../package.json)
+- `package.json`
