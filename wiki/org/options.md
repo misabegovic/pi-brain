@@ -11,9 +11,8 @@ The immediate options are finishing touches after the regenerative-intent delive
 ## Where we could go next
 
 <!-- brain-state: shaping -->
-- [Implement confidence decay or TTL for AI suggestions](../brain/ai-suggestions/refinement/implement-suggestion-confidence-decay.md)
+- [Publish v0.3.3 to npm](../brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 - [Review top `brain_links` suggestions for missing cross-links](../brain/ai-suggestions/refinement/review-top-link-suggestions.md)
-- [Verify extension reload in a fresh pi session](../brain/ai-suggestions/refinement/verify-extension-reload-in-fresh-session.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
