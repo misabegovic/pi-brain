@@ -56,13 +56,6 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Upstream template sync mechanism](brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
-### ai-suggestion
-- [Add a `validate` script to package.json](brain/ai-suggestions/refinement/add-validate-script-to-package-json.md)
-- [Publish v0.3.3 to npm with OTP](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm-with-otp.md)
-- [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
-- [Review top `brain_links` suggestions for missing cross-links](brain/ai-suggestions/refinement/review-top-link-suggestions.md)
-- [Verify README CI badge shows green](brain/ai-suggestions/refinement/verify-readme-ci-badge.md)
-
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
 - [Constraint — Explicit approval required for commits](brain/constraints/explicit-approval-for-commits.md)
