@@ -10,18 +10,17 @@ created_at: 2026-07-29
 
 ## Observation
 
-v0.3.3 is tagged and released on GitHub. The npm registry still lists the previous version because the publish step requires a one-time password.
+v0.3.3 is tagged and released on GitHub. The npm registry still shows the previous version. This is the only remaining task before the 0.3.3 release line is complete.
 
 ## Why now
 
-This is the final release step. Once published, the README npm badge and `pi install` will reflect the new version.
+Publishing makes the latest fixes and commands available to users.
 
 ## Suggested action
 
-1. Obtain the OTP from the authenticator app.
-2. Run `npm publish --otp=<code>` on `main`.
-3. Confirm at https://www.npmjs.com/package/@misabegovic/pi-brain.
-4. Delete this suggestion after publish succeeds.
+1. Run `npm publish --otp=<code>` on `main`.
+2. Verify at https://www.npmjs.com/package/@misabegovic/pi-brain.
+3. Delete this suggestion after publish succeeds.
 
 ## Sources
 
