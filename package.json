@@ -28,7 +28,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts",
+    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts && tsx tests/refinement.test.ts",
     "validate": "npm run check && npm test && node tools/brain-sync.mjs && node tools/brain-links.mjs"
   },
   "devDependencies": {
