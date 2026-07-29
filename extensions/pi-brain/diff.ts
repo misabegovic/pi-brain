@@ -97,7 +97,7 @@ export function diffInterfaces(intent: TsInterface[], code: TsInterface[]): Drif
     for (const ifield of i.fields) {
       const cfield = codeFieldMap.get(ifield.name);
       if (!cfield) {
-        items.push({ kind: "missing_in_code", interfaceName: i.name, fieldName: ifield.name, message: `Field ${i.name}.${ifield.name} is missing in code.` });
+        items.push({ kind: "missing_in_code", interfaceName: i.name, fieldName: ifield.name, intentType: ifield.type, message: `Field ${i.name}.${ifield.name} is missing in code.` });
         continue;
       }
       if (ifield.type !== cfield.type) {

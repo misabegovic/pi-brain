@@ -26,6 +26,19 @@ function parseYamlLike(text: string): unknown {
   const lines = text.split("\n");
   let i = 0;
 
+  function peekNonBlank(start: number): { line: string; index: number } | null {
+    for (let j = start; j < lines.length; j++) {
+      if (lines[j].trim() !== "") return { line: lines[j], index: j };
+    }
+    return null;
+  }
+
+  function leadingSpaces(line: string): number {
+    let count = 0;
+    while (count < line.length && line[count] === " ") count++;
+    return count;
+  }
+
   function parseValue(raw: string): string | number | boolean {
     const trimmed = raw.trim();
     if (trimmed === "true") return true;
@@ -40,12 +53,25 @@ function parseYamlLike(text: string): unknown {
     return trimmed;
   }
 
+  function parseScalarOrCollection(parentIndent: number): unknown {
+    const next = peekNonBlank(i);
+    if (!next) return "";
+    const childIndent = leadingSpaces(next.line);
+    if (childIndent <= parentIndent) return "";
+    if (next.line.slice(childIndent).startsWith("- ")) {
+      return parseList(childIndent);
+    }
+    return parseObject(childIndent);
+  }
+
   function parseObject(indent: number): Record<string, unknown> {
     const obj: Record<string, unknown> = {};
     while (i < lines.length) {
       const line = lines[i];
-      if (line.trim() === "" || line.length < indent) return obj;
-      if (line[indent] !== " ") return obj;
+      if (line.trim() === "") { i++; continue; }
+      const lineIndent = leadingSpaces(line);
+      if (lineIndent < indent) return obj;
+      if (lineIndent > indent) { i++; continue; }
       const content = line.slice(indent);
       if (content.startsWith("- ")) return obj;
       const colonIndex = content.indexOf(":");
@@ -54,19 +80,7 @@ function parseYamlLike(text: string): unknown {
       const rest = content.slice(colonIndex + 1).trim();
       i++;
       if (rest === "") {
-        // Could be nested object or list
-        if (i < lines.length) {
-          const nextLine = lines[i];
-          if (nextLine.length > indent && nextLine[indent] === " " && nextLine.slice(indent).startsWith("- ")) {
-            obj[key] = parseList(indent + 2);
-          } else if (nextLine.length > indent && nextLine[indent] === " ") {
-            obj[key] = parseObject(indent + 2);
-          } else {
-            obj[key] = "";
-          }
-        } else {
-          obj[key] = "";
-        }
+        obj[key] = parseScalarOrCollection(indent);
       } else {
         obj[key] = parseValue(rest);
       }
@@ -78,31 +92,39 @@ function parseYamlLike(text: string): unknown {
     const list: Array<Record<string, unknown> | string | number | boolean> = [];
     while (i < lines.length) {
       const line = lines[i];
-      if (line.trim() === "" || line.length < indent) return list;
-      if (line[indent] !== " ") return list;
+      if (line.trim() === "") { i++; continue; }
+      const lineIndent = leadingSpaces(line);
+      if (lineIndent < indent) return list;
+      if (lineIndent > indent) { i++; continue; }
       const content = line.slice(indent);
       if (!content.startsWith("- ")) return list;
       const item = content.slice(2).trim();
       i++;
       if (item === "") {
-        // Nested object follows
         list.push(parseObject(indent + 2));
       } else if (item.includes(":")) {
-        // Inline key: value plus possible nested keys
         const colonIndex = item.indexOf(":");
         const key = item.slice(0, colonIndex).trim();
         const rest = item.slice(colonIndex + 1).trim();
         const obj: Record<string, unknown> = {};
         if (rest === "") {
-          obj[key] = parseObject(indent + 2);
+          obj[key] = parseScalarOrCollection(indent);
         } else {
           obj[key] = parseValue(rest);
         }
-        // Merge any following indented keys
-        const start = i;
-        const nested = parseObject(indent + 2);
-        if (i > start) {
-          Object.assign(obj, nested);
+        // Merge any following sibling keys indented under the same list item.
+        const childIndent = indent + 2;
+        while (i < lines.length) {
+          const next = lines[i];
+          if (next.trim() === "") { i++; continue; }
+          const nextIndent = leadingSpaces(next);
+          if (nextIndent < childIndent) break;
+          if (nextIndent === childIndent && next.slice(childIndent).startsWith("- ")) break;
+          // Consume one nested key/object group.
+          const before = i;
+          const nested = parseObject(childIndent);
+          if (i > before) Object.assign(obj, nested);
+          break;
         }
         list.push(obj);
       } else {
@@ -112,8 +134,13 @@ function parseYamlLike(text: string): unknown {
     return list;
   }
 
-  const result = parseObject(0);
-  return result;
+  const first = peekNonBlank(0);
+  if (!first) return {};
+  const firstIndent = leadingSpaces(first.line);
+  if (first.line.slice(firstIndent).startsWith("- ")) {
+    return parseList(firstIndent);
+  }
+  return parseObject(firstIndent);
 }
 
 export function extractBlocks(text: string, source: string): IntentBlock[] {
