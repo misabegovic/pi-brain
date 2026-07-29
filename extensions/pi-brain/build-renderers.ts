@@ -26,8 +26,9 @@ function mapType(type: string): string {
 
 function renderDataModel(block: IntentBlock): string {
   const data = block.data as DataModel;
+  const name = data.name ?? block.name;
   const lines: string[] = [];
-  lines.push(`export interface ${data.name} {`);
+  lines.push(`export interface ${name} {`);
   for (const field of data.fields ?? []) {
     const optional = field.optional ? "?" : "";
     const comment = field.description ? ` // ${field.description}` : "";
