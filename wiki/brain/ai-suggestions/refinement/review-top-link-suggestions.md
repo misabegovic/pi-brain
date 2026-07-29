@@ -10,11 +10,11 @@ created_at: 2026-07-29
 
 ## Observation
 
-`brain_links` currently reports 313 suggestions — pairs of pages that share neighbors but do not link to each other. Many are likely noise, but the top suggestions may reveal real missing cross-links (e.g., between the regenerative-intent epic and its child records, or between related ADRs and records).
+`brain_links` reports 313 suggestions — pairs of pages that share neighbors but do not link to each other. With dead links at zero, these are the only remaining link-quality signals.
 
 ## Why now
 
-With dead links at zero, the next link-quality improvement is adding legitimate cross-links that the graph algorithm has surfaced.
+Adding legitimate cross-links improves discoverability and reduces orphan risk for future pages.
 
 ## Suggested action
 
@@ -26,3 +26,4 @@ With dead links at zero, the next link-quality improvement is adding legitimate 
 ## Sources
 
 - `wiki/_state/links.json`
+- `wiki/brain/ai-suggestions/refinement/review-top-link-suggestions.md`
