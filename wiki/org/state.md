@@ -75,6 +75,7 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [ADR — Tap pi’s full extension surface for pi-brain](../brain/adrs/tap-pi-extension-surface.md)
 - [ADR — Upstream template sync mechanism](../brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](../brain/adrs/versioning-and-releases.md)
+- [Review top ten `brain_links` suggestions](../brain/ai-suggestions/refinement/review-top-ten-link-suggestions.md)
 - [Bet — Agent-maintained intent](../brain/bets/agent-maintained-intent.md)
 - [Bet — Autonomous colleague mode](../brain/bets/autonomous-colleague-mode.md)
 - [Bet — Autonomous refinement protocol for pi-brain](../brain/bets/autonomous-refinement-protocol.md)

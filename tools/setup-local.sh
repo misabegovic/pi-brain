@@ -32,19 +32,17 @@ else
   echo "✓ pi $(pi --version)"
 fi
 
-# git hooks
+# git hook
 if [ -d "$ROOT/.git" ]; then
-  for hook in pre-commit pre-push; do
-    HOOK_SOURCE="$ROOT/tools/git-hooks/$hook"
-    HOOK_TARGET="$ROOT/.git/hooks/$hook"
-    if [ ! -f "$HOOK_TARGET" ]; then
-      cp "$HOOK_SOURCE" "$HOOK_TARGET"
-      chmod +x "$HOOK_TARGET"
-      echo "✓ installed $hook hook"
-    else
-      echo "✓ $hook hook already present"
-    fi
-  done
+  HOOK_SOURCE="$ROOT/tools/git-hooks/pre-commit"
+  HOOK_TARGET="$ROOT/.git/hooks/pre-commit"
+  if [ ! -f "$HOOK_TARGET" ]; then
+    cp "$HOOK_SOURCE" "$HOOK_TARGET"
+    chmod +x "$HOOK_TARGET"
+    echo "✓ installed pre-commit hook"
+  else
+    echo "✓ pre-commit hook already present"
+  fi
 else
   echo "⚠️  not a git repo; skipping hook install"
 fi
