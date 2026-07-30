@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T11:33:26.424Z",
-  "node_count": 90,
-  "edge_count": 597,
+  "generated_at": "2026-07-30T12:19:17.223Z",
+  "node_count": 91,
+  "edge_count": 600,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -177,6 +177,13 @@
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/readme-clarify-tool-script-locations.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "high",
+      "title": "Clarify README instructions for locating `tools/` scripts"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3408,6 +3415,13 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/readme-clarify-tool-script-locations",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Clarify README instructions for locating `tools/` scripts"
+    },
+    {
+      "source": "index",
       "target": "brain/constraints/adr-before-structural-changes",
       "kind": "markdown",
       "provenance": "body",
@@ -3755,6 +3769,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/readme-clarify-tool-script-locations",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Clarify README instructions for locating `tools/` scripts"
     },
     {
       "source": "org/options",
@@ -4168,6 +4189,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/readme-clarify-tool-script-locations",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Clarify README instructions for locating `tools/` scripts"
     },
     {
       "source": "org/roadmap",
@@ -5075,6 +5103,10 @@
     {
       "path": "brain/records/smarter-autonomy.md",
       "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/readme-clarify-tool-script-locations.md",
+      "incoming": 3
     },
     {
       "path": "brain/records/autonomous-colleague-mode.md",

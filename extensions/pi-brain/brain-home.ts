@@ -165,6 +165,7 @@ const DEFAULT_TRUST: AutonomyTrustConfig = {
   groom: "notify",
   refine: "notify",
   suggest: "notify",
+  agent: "notify",
   shelves: "blocked",
   commits: "blocked",
   code: "blocked",

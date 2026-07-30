@@ -13,7 +13,7 @@ confidence: high
 
 ## What was delivered
 
-A file-based task queue in `wiki/_state/tasks/{pending,running,completed,failed}/` with commands `/brain:enqueue`, `/brain:run-tasks`, `/brain:run-tasks --detach`, and `/brain:tasks`. The system is local-first and daemon-free; execution can be triggered by an external scheduler, an interactive run, or a detached run that keeps the session available.
+A file-based task queue in `wiki/_state/tasks/{pending,running,completed,failed}/` with commands `/brain:enqueue`, `/brain:run-tasks`, `/brain:run-tasks --detach`, `/brain:run-tasks --detach --parallel`, `/brain:bg-agent`, and `/brain:tasks`. The system is local-first and daemon-free; execution can be triggered by an external scheduler, an interactive run, a detached run, or parallel detached runs. Independent tasks can run concurrently; `/brain:bg-agent` spins off a general background agent from a plain description.
 
 ## Implementation
 
@@ -25,8 +25,10 @@ A file-based task queue in `wiki/_state/tasks/{pending,running,completed,failed}
 ## Verification
 
 - Tasks are created, listed, run, and completed as files.
-- Only `sync`, `groom`, `refine`, and `suggest` operations are allowed as task operations.
+- `sync`, `groom`, `refine`, `suggest`, and `agent` operations are allowed as task operations.
 - Detached execution starts pending tasks in a subprocess and returns immediately.
+- Parallel detached execution starts one subprocess per pending task.
+- `/brain:bg-agent` enqueues an `agent` task and starts it in parallel detached mode.
 
 ## Known limitations
 

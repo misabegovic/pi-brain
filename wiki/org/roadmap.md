@@ -73,6 +73,7 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 
 <!-- brain-state: shaping -->
 - [Publish v0.3.3 to npm](../brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
+- [Clarify README instructions for locating `tools/` scripts](../brain/ai-suggestions/refinement/readme-clarify-tool-script-locations.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
