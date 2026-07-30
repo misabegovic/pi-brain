@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T07:26:54.743Z",
-  "node_count": 90,
-  "edge_count": 598,
+  "generated_at": "2026-07-30T07:29:37.134Z",
+  "node_count": 92,
+  "edge_count": 600,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,11 +172,25 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/refinement/add-issue-and-pr-templates.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add GitHub issue and discussion templates"
+    },
+    {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/review-skills-for-stale-command-references.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Review skills for stale command references"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3401,10 +3415,24 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-issue-and-pr-templates",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add GitHub issue and discussion templates"
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/review-skills-for-stale-command-references",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Review skills for stale command references"
     },
     {
       "source": "index",

@@ -3,7 +3,7 @@ kind: ai-suggestion
 status: draft
 confidence: high
 topic: release
-created_at: 2026-07-29
+created_at: 2026-07-30
 ---
 
 # Publish v0.3.3 to npm
