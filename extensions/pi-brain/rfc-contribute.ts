@@ -5,7 +5,7 @@ import { requireBrain } from "./context.ts";
 import { pathExists, isValidIdentifier } from "./utils.ts";
 import { loadBrainAgent, runAgent } from "./collaboration.ts";
 
-function formatContribution(author: string, task: string, text: string): string {
+export function formatContribution(author: string, task: string, text: string): string {
   const date = new Date().toISOString().slice(0, 10);
   const lines = [
     "",
@@ -19,7 +19,7 @@ function formatContribution(author: string, task: string, text: string): string 
   return lines.join("\n");
 }
 
-function appendContribution(rfcText: string, contribution: string): string {
+export function appendContribution(rfcText: string, contribution: string): string {
   const marker = "## Contributions";
   if (rfcText.includes(marker)) {
     return rfcText.replace(marker, `${marker}\n${contribution}`);
