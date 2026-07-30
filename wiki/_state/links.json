@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T09:38:18.042Z",
-  "node_count": 91,
-  "edge_count": 598,
+  "generated_at": "2026-07-30T10:35:08.602Z",
+  "node_count": 90,
+  "edge_count": 597,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,13 +170,6 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-test-for-brain-projects-lister.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a test for brain-projects lister"
     },
     {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
@@ -3405,13 +3398,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-test-for-brain-projects-lister",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a test for brain-projects lister"
     },
     {
       "source": "index",
