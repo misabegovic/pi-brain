@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T14:47:29.087Z",
-  "node_count": 94,
-  "edge_count": 602,
+  "generated_at": "2026-07-30T07:26:54.743Z",
+  "node_count": 90,
+  "edge_count": 598,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -172,39 +172,11 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
-      "path": "brain/ai-suggestions/refinement/add-test-for-brain-links-tool.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a test for the standalone `brain-links` tool"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/add-test-for-pre-push-hook.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Add a test for the pre-push hook"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
       "kind": "ai-suggestion",
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-active-constraints-for-staleness.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review active constraints for staleness"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-getting-started-for-new-commands.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review GETTING_STARTED.md for new commands and validation"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3429,38 +3401,10 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-test-for-brain-links-tool",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a test for the standalone `brain-links` tool"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/add-test-for-pre-push-hook",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Add a test for the pre-push hook"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-active-constraints-for-staleness",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review active constraints for staleness"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-getting-started-for-new-commands",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review GETTING_STARTED.md for new commands and validation"
     },
     {
       "source": "index",
