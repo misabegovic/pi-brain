@@ -49,6 +49,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain status",
     description: "Read the pi-brain status dashboard and inbox summary.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -102,6 +103,7 @@ export function registerTools(pi: ExtensionAPI) {
       scope: Type.Optional(Type.String({ description: "Optional repo/org/brain scope." })),
       kind: Type.Optional(Type.String({ description: "Optional kind: decision, insight, task, source." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -157,6 +159,7 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       question: Type.String({ description: "The question to ask." }),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -178,6 +181,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain tend",
     description: "List the pi-brain inbox queue.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -201,6 +205,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain validate",
     description: "Validate frontmatter conformance of wiki pages.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -220,6 +225,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain views",
     description: "Regenerate the pi-brain index view from the wiki corpus.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -234,6 +240,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain sync",
     description: "Run validate and regenerate views.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -257,6 +264,7 @@ export function registerTools(pi: ExtensionAPI) {
       version: Type.Optional(Type.String({ description: "Target version tag (e.g., v0.2.2). Defaults to latest." })),
       apply: Type.Optional(Type.Boolean({ description: "If true, apply changes. If false, show the diff summary." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -341,6 +349,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain pull connectors",
     description: "Run configured pull connectors (GitHub, etc.) to snapshot external sources into sources/.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -376,6 +385,7 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       enabled: Type.Optional(Type.Boolean({ description: "Set to true/false to toggle; omit to read current state." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -416,6 +426,7 @@ export function registerTools(pi: ExtensionAPI) {
       subdir: Type.Optional(Type.String({ description: "Subdirectory for existing project code (default: files)." })),
       dry_run: Type.Optional(Type.Boolean({ description: "Preview the conversion without moving files." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (home) {
@@ -443,6 +454,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain projects",
     description: "List onboarded projects in this pi-brain clone.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -468,6 +480,7 @@ export function registerTools(pi: ExtensionAPI) {
       target: Type.String({ description: "Path or URL to the repository." }),
       scope: Type.Optional(Type.String({ description: "Scope name (default: repo basename)." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -496,6 +509,7 @@ export function registerTools(pi: ExtensionAPI) {
       max_files: Type.Optional(Type.Number({ description: "Max files to read when target is a directory.", default: 10 })),
       store: Type.Optional(Type.Boolean({ description: "Store a lightweight record in wiki/_state/deepdives.json.", default: true })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: { files: [] } };
@@ -574,6 +588,7 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       scope: Type.Optional(Type.String({ description: "Scope to regenerate (default: org)." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -597,6 +612,7 @@ export function registerTools(pi: ExtensionAPI) {
     label: "Brain links",
     description: "Derive the pi-brain link graph: orphans, hubs, dead links, and suggestions.",
     parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
@@ -627,6 +643,7 @@ export function registerTools(pi: ExtensionAPI) {
       ),
       summary: Type.Optional(Type.String({ description: "Optional one-line summary of the source." })),
     }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: {} };
