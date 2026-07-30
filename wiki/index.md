@@ -57,7 +57,9 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Add GitHub issue and discussion templates](brain/ai-suggestions/refinement/add-issue-and-pr-templates.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
+- [Review skills for stale command references](brain/ai-suggestions/refinement/review-skills-for-stale-command-references.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
