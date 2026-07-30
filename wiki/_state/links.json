@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T08:39:27.287Z",
-  "node_count": 91,
-  "edge_count": 598,
+  "generated_at": "2026-07-30T08:40:52.998Z",
+  "node_count": 90,
+  "edge_count": 597,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -177,13 +177,6 @@
       "status": "draft",
       "confidence": "high",
       "title": "Publish v0.3.3 to npm"
-    },
-    {
-      "path": "brain/ai-suggestions/refinement/review-gitignore-for-stale-entries.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
-      "confidence": "low",
-      "title": "Review .gitignore for stale entries"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -3412,13 +3405,6 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "index",
-      "target": "brain/ai-suggestions/refinement/review-gitignore-for-stale-entries",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Review .gitignore for stale entries"
     },
     {
       "source": "index",
