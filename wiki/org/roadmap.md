@@ -67,7 +67,6 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 - [pi-brain home](../index.md)
 - [Options — org](options.md)
 - [Roadmap — org](roadmap.md)
-- [State — org](state.md)
 <!-- /brain-state -->
 
 ## In shaping
