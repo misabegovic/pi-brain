@@ -88,6 +88,14 @@ async function main() {
   }
   await rm(emptyHome.path, { recursive: true, force: true });
 
+  // 7. Verify agent operation is allowed
+  const agentHome = await createTestHome();
+  const agentTask = await enqueueTask(agentHome, "research something", "agent", "brain");
+  if (agentTask.operation !== "agent") {
+    throw new Error("Expected agent operation to be allowed");
+  }
+  await rm(agentHome.path, { recursive: true, force: true });
+
   // Cleanup
   await rm(home.path, { recursive: true, force: true });
 
