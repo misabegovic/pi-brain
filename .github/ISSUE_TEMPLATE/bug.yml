@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a problem with pi-brain
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please see [CONTRIBUTING.md](../../CONTRIBUTING.md) for the PR-first workflow.
+  - type: input
+    id: version
+    attributes:
+      label: pi-brain version
+      description: What version of the package or clone are you using?
+      placeholder: "0.3.3"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal set of steps that triggers the bug.
+      placeholder: |
+        1. Run `/brain:build brain types`
+        2. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened? Include error messages if any.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Node version, OS, pi version, or anything else relevant.

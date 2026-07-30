@@ -89,14 +89,14 @@ Run `brain_validate` + `brain_views` in one step.
 - `/brain:rfc-contribute <scope> <slug> <agent|human> <prompt>` — add an attributed contribution to an RFC.
 - `/brain:enqueue <scope> <operation> <description>` — queue a background task.
 - `/brain:run-tasks` and `/brain:tasks` — execute or list background tasks.
-- `/brain:auto` — toggle autonomous maintenance mode.
-- `/brain:auto` — toggle autonomous brain-maintenance mode
-- `/brain:continue [slug]` — continue in-flight work
-- `/brain:investigate <question>` — investigate a bug, risk, or open question
-- `/brain:links` — derive and show the link graph
-- `/brain:groom` — groom the corpus
-- `/brain:state [scope]` — regenerate state/roadmap/options pages
-- `/brain:deepdive <path> [question]` — transiently inspect a target repo file/directory
-- `/brain:ingest-repo <path-or-url> [scope]` — onboard a repository as a maintained project
-- `/brain:projects` — list onboarded projects
-- `/brain:convert [subdir]` — convert current repo into a pi-brain clone
+- `/brain:auto` — toggle autonomous brain-maintenance mode.
+- `/brain:continue [slug]` — continue in-flight work.
+- `/brain:investigate <question>` — investigate a bug, risk, or open question.
+- `/brain:links` — derive and show the link graph.
+- `/brain:groom` — groom the corpus.
+- `/brain:state [scope]` — regenerate state/roadmap/options pages.
+- `/brain:deepdive <path> [question]` — transiently inspect a target repo file/directory.
+- `/brain:ingest-repo <path-or-url> [scope]` — onboard a repository as a maintained project.
+- `/brain:projects` — list onboarded projects.
+- `/brain:convert [subdir]` — convert current repo into a pi-brain clone.
+- `/brain:dump-prompt` — dump the active prompt context.
