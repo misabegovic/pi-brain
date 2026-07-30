@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { mkdir, readFile, readdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, unlink, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import * as path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -22,6 +22,7 @@ export interface BrainTask {
   maxAttempts: number;
   attempts: number;
   error?: string;
+  output?: string;
 }
 
 function taskDir(home: BrainHome, status: TaskStatus): string {
@@ -51,12 +52,10 @@ async function saveTask(home: BrainHome, task: BrainTask, status: TaskStatus): P
 
 async function moveTask(home: BrainHome, task: BrainTask, from: TaskStatus, to: TaskStatus): Promise<void> {
   const fromPath = path.join(taskDir(home, from), `${task.id}.json`);
-  const toPath = path.join(taskDir(home, to), `${task.id}.json`);
   if (existsSync(fromPath)) {
-    await rename(fromPath, toPath);
-  } else {
-    await saveTask(home, task, to);
+    await unlink(fromPath);
   }
+  await saveTask(home, task, to);
 }
 
 function getPiInvocation(args: string[]): { command: string; args: string[] } {
@@ -73,7 +72,7 @@ function getPiInvocation(args: string[]): { command: string; args: string[] } {
   return { command: "pi", args };
 }
 
-async function executeTaskSubprocess(task: BrainTask, cwd: string): Promise<{ output: string; exitCode: number }> {
+export async function executeTaskSubprocess(task: BrainTask, cwd: string): Promise<{ output: string; exitCode: number }> {
   const prompt = [
     `You are running a background task for pi-brain.`,
     ``,
@@ -175,7 +174,11 @@ export async function listTasks(home: BrainHome): Promise<Record<TaskStatus, Bra
   return result;
 }
 
-export async function runTasks(home: BrainHome, cwd: string): Promise<{ completed: number; failed: number }> {
+export async function runTasks(
+  home: BrainHome,
+  cwd: string,
+  executor: (task: BrainTask, cwd: string) => Promise<{ output: string; exitCode: number }> = executeTaskSubprocess,
+): Promise<{ completed: number; failed: number }> {
   await ensureTaskDirs(home);
   const all = await listTasks(home);
   let completed = 0;
@@ -192,10 +195,11 @@ export async function runTasks(home: BrainHome, cwd: string): Promise<{ complete
     }
 
     await moveTask(home, task, "pending", "running");
-    const result = await executeTaskSubprocess(task, cwd);
+    const result = await executor(task, cwd);
     task.attempts++;
 
     if (result.exitCode === 0) {
+      task.output = result.output.slice(0, 2000);
       await moveTask(home, task, "running", "completed");
       completed++;
     } else {
