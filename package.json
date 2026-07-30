@@ -40,8 +40,8 @@
     "validate": "npm run check && npm test && node tools/brain-sync.mjs && node tools/brain-links.mjs"
   },
   "devDependencies": {
-    "@earendil-works/pi-coding-agent": "^0.82.1",
-    "@earendil-works/pi-tui": "^0.82.1",
+    "@earendil-works/pi-coding-agent": "^0.83.0",
+    "@earendil-works/pi-tui": "^0.83.0",
     "tsx": "^4.23.1",
     "typescript": "^5.9.3"
   },
