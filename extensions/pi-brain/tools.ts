@@ -101,7 +101,15 @@ export function registerTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       note: Type.String({ description: "The note to capture." }),
       scope: Type.Optional(Type.String({ description: "Optional repo/org/brain scope." })),
-      kind: Type.Optional(Type.String({ description: "Optional kind: decision, insight, task, source." })),
+      kind: Type.Optional(Type.Union(
+        [
+          Type.Literal("decision"),
+          Type.Literal("insight"),
+          Type.Literal("task"),
+          Type.Literal("source"),
+        ],
+        { description: "Optional kind: decision, insight, task, source." }
+      )),
     }),
     constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {

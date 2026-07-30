@@ -27,9 +27,19 @@ Capture a note into the inbox.
 
 - `note`: the full text of the note.
 - `scope` (optional): repo name, `org`, or `brain`.
-- `kind` (optional): `decision`, `insight`, `discussion`, `task`, `source`, `experiment`, `feedback`.
+- `kind` (optional): `decision`, `insight`, `task`, `source`. Defaults to `task`.
 
 Keep captures factual and cite sources when you have them. Do not rewrite the note; record what was said or observed.
+
+## Tool conventions
+
+All pi-brain tools opt into JSON-schema constrained sampling for more reliable argument generation:
+
+```ts
+constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const }
+```
+
+`strict: "prefer"` tells providers that support strict schema enforcement to use it; unsupported providers fall back to normal tool calling. New tools added to `extensions/pi-brain/tools.ts` should include this configuration.
 
 ### `brain_ask`
 
