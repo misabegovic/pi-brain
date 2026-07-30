@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest an improvement or new capability for pi-brain
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Please see [CONTRIBUTING.md](../../CONTRIBUTING.md) for the PR-first workflow.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or gap
+      description: What problem are you trying to solve? What is missing?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the behavior or change you would like to see.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches have you considered?
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links to relevant docs, ADRs, or prior discussions.
