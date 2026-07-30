@@ -12,6 +12,7 @@ Run pi-brain maintenance work outside interactive sessions via a file-based task
 ```
 /brain:enqueue <scope> <operation> <description>
 /brain:run-tasks
+/brain:run-tasks --detach
 /brain:tasks
 ```
 
@@ -29,9 +30,10 @@ Operations `shelves`, `commits`, and `code` are never allowed as background task
 ## How it works
 
 1. Tasks are stored as JSON files in `wiki/_state/tasks/pending/`.
-2. `/brain:run-tasks` processes pending tasks sequentially.
-3. Each task runs in a fresh `pi --mode json -p` subprocess.
-4. Tasks move to `completed/` or `failed/` based on result.
+2. `/brain:run-tasks` processes pending tasks sequentially and blocks until done.
+3. `/brain:run-tasks --detach` starts the same work in a detached subprocess and returns immediately, so the interactive session stays available.
+4. Each task runs in a fresh subprocess.
+5. Tasks move to `completed/` or `failed/` based on result.
 
 ## Scheduling
 

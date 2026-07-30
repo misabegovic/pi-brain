@@ -29,9 +29,9 @@ Scheduling is the responsibility of the host environment (cron, systemd timer, l
 
 ### Execution model
 
-- `/brain:run-tasks` processes pending tasks sequentially.
-- Each task runs in a minimal pi subprocess via `pi --mode json -p --no-session`.
-- The subprocess receives the task as a user message and executes it.
+- `/brain:run-tasks` processes pending tasks sequentially and blocks until done.
+- `/brain:run-tasks --detach` starts the same work in a detached Node.js subprocess and returns immediately, so the interactive session stays available.
+- Each task runs in a minimal subprocess via `pi --mode json -p --no-session` (synchronous mode) or via `tools/run-tasks.mjs` (detached mode).
 - Status files are moved through the queue directories.
 
 ### Trust
@@ -64,7 +64,8 @@ Scheduling is the responsibility of the host environment (cron, systemd timer, l
 ## Consequences
 
 - Users can configure cron/systemd to run `pi /brain:run-tasks` periodically.
-- pi-brain remains daemon-free.
+- Users can run `/brain:run-tasks --detach` inside an interactive session to start work without blocking the conversation.
+- pi-brain remains daemon-free; the detached runner is a short-lived process that exits when the queue is empty.
 - The trust-level framework from autonomous-colleague-mode applies to background execution.
 - Future work could add webhook-triggered tasks or connector-driven task enqueueing.
 

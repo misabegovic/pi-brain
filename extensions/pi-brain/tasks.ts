@@ -61,11 +61,27 @@ async function moveTask(home: BrainHome, task: BrainTask, from: TaskStatus, to: 
 function getPiInvocation(args: string[]): { command: string; args: string[] } {
   const currentScript = process.argv[1];
   const isBunVirtualScript = currentScript?.startsWith("/$bunfs/root/");
-  if (currentScript && !isBunVirtualScript && existsSync(currentScript)) {
-    return { command: process.execPath, args: [currentScript, ...args] };
-  }
+  const scriptBase = currentScript ? path.basename(currentScript).toLowerCase() : "";
   const execName = path.basename(process.execPath).toLowerCase();
   const isGenericRuntime = /^(node|bun)(\.exe)?$/.test(execName);
+
+  // If we're running inside the pi binary itself (not under node/bun with a
+  // helper script), re-invoke pi with the same binary and arguments.
+  if (!isGenericRuntime && currentScript && !isBunVirtualScript && existsSync(currentScript)) {
+    return { command: process.execPath, args: [currentScript, ...args] };
+  }
+
+  // If we're running under node/bun but the script is the pi binary, reuse it.
+  if (
+    isGenericRuntime &&
+    (scriptBase === "pi" || scriptBase === "pi.exe") &&
+    currentScript &&
+    !isBunVirtualScript &&
+    existsSync(currentScript)
+  ) {
+    return { command: process.execPath, args: [currentScript, ...args] };
+  }
+
   if (!isGenericRuntime) {
     return { command: process.execPath, args };
   }
@@ -223,6 +239,39 @@ export async function runTasks(
   return { completed, failed };
 }
 
+export async function runTasksDetached(home: BrainHome, cwd: string): Promise<{ started: boolean; pid?: number; message: string }> {
+  await ensureTaskDirs(home);
+  const all = await listTasks(home);
+  if (all.pending.length === 0) {
+    return { started: false, message: "No pending background tasks." };
+  }
+
+  const runnerPath = path.join(home.path, "tools", "run-tasks.mjs");
+  const command = process.execPath;
+  const args: string[] = [];
+
+  // If the current process was launched via tsx/npx, preserve that so the
+  // runner can import TypeScript source files.
+  const currentScript = process.argv[1];
+  if (currentScript && /tsx|ts-node/.test(currentScript)) {
+    args.push(currentScript);
+  }
+  args.push(runnerPath);
+
+  const proc = spawn(command, args, {
+    cwd,
+    detached: true,
+    stdio: ["ignore", "ignore", "ignore"],
+  });
+  proc.unref();
+
+  return {
+    started: true,
+    pid: proc.pid ?? undefined,
+    message: `Started ${all.pending.length} background task(s) (pid ${proc.pid}). Check /brain:tasks for status.`,
+  };
+}
+
 export function registerTasks(pi: ExtensionAPI) {
   pi.registerCommand("brain:enqueue", {
     description: "Enqueue a background task (usage: /brain:enqueue <scope> <operation> <description>)",
@@ -258,11 +307,17 @@ export function registerTasks(pi: ExtensionAPI) {
   });
 
   pi.registerCommand("brain:run-tasks", {
-    description: "Process all pending background tasks",
-    handler: async (_args, ctx) => {
+    description: "Process all pending background tasks (usage: /brain:run-tasks [--detach])",
+    handler: async (args, ctx) => {
       const home = await requireBrain(ctx.cwd);
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const detach = args.trim() === "--detach";
+      if (detach) {
+        const result = await runTasksDetached(home, ctx.cwd);
+        ctx.ui.notify(result.message, result.started ? "info" : "warning");
         return;
       }
       ctx.ui.notify("Running background tasks...", "info");
