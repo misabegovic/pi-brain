@@ -43,3 +43,8 @@ The autonomous refinement protocol may draft suggestions under `wiki/brain/ai-su
 ## Questions?
 
 Open an issue or ask in the pi-brain discussions.
+
+## Security and conduct
+
+- See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
+- See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards.
