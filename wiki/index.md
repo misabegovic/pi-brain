@@ -57,8 +57,6 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
-- [Add a LICENSE file](brain/ai-suggestions/refinement/add-license-file.md)
-- [Add a test for the pre-commit hook](brain/ai-suggestions/refinement/add-test-for-pre-commit-hook.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 
 ### constraint

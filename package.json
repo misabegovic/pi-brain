@@ -36,7 +36,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts && tsx tests/refinement.test.ts && tsx tests/autonomy.test.ts && tsx tests/brain-home.test.ts && tsx tests/pre-push-hook.test.ts && tsx tests/brain-links.test.ts && tsx tests/brain-sync.test.ts && tsx tests/brain-state.test.ts",
+    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts && tsx tests/refinement.test.ts && tsx tests/autonomy.test.ts && tsx tests/brain-home.test.ts && tsx tests/pre-push-hook.test.ts && tsx tests/brain-links.test.ts && tsx tests/brain-sync.test.ts && tsx tests/brain-state.test.ts && tsx tests/pre-commit-hook.test.ts",
     "validate": "npm run check && npm test && node tools/brain-sync.mjs && node tools/brain-links.mjs"
   },
   "devDependencies": {
