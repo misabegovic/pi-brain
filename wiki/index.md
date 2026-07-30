@@ -58,6 +58,7 @@ This is the synthesis layer for this pi-brain instance.
 
 ### ai-suggestion
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
+- [Clarify README instructions for locating `tools/` scripts](brain/ai-suggestions/refinement/readme-clarify-tool-script-locations.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)

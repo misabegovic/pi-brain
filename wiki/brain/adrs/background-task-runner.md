@@ -25,12 +25,15 @@ Scheduling is the responsibility of the host environment (cron, systemd timer, l
 
 - Tasks are JSON files in `pending/`, `running/`, `completed/`, and `failed/` subdirectories.
 - Each task has an `operation` field mapping to an operation class.
-- Only low-risk operations are allowed: `sync`, `groom`, `refine`, `suggest`.
+- Low-risk operations are allowed: `sync`, `groom`, `refine`, `suggest`.
+- `agent` operation allows spinning off a general background agent with an arbitrary prompt/description.
 
 ### Execution model
 
 - `/brain:run-tasks` processes pending tasks sequentially and blocks until done.
 - `/brain:run-tasks --detach` starts the same work in a detached Node.js subprocess and returns immediately, so the interactive session stays available.
+- `/brain:run-tasks --detach --parallel` starts one detached subprocess per pending task, allowing independent tasks to run concurrently.
+- `/brain:bg-agent <scope> <description>` enqueues an `agent` task and starts it immediately in parallel detached mode.
 - Each task runs in a minimal subprocess via `pi --mode json -p --no-session` (synchronous mode) or via `tools/run-tasks.mjs` (detached mode).
 - Status files are moved through the queue directories.
 
