@@ -13,12 +13,12 @@ const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
 const WIKI_DIR = join(CWD, "wiki");
 const CONFIG_PATH = join(CWD, "brain.config.yml");
 
-function extractYamlValue(text, key) {
+export function extractYamlValue(text, key) {
   const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));
   return match?.[1].trim().replace(/^["']|["']$/g, "");
 }
 
-function parseFrontmatter(text) {
+export function parseFrontmatter(text) {
   const trimmed = text.trim();
   if (!trimmed.startsWith("---")) return null;
   const end = trimmed.indexOf("---", 3);
@@ -26,9 +26,9 @@ function parseFrontmatter(text) {
   return trimmed.slice(3, end).trim();
 }
 
-async function getScopesFromConfig() {
+export async function getScopesFromConfig(configPath = CONFIG_PATH) {
   try {
-    const text = await readFile(CONFIG_PATH, "utf-8");
+    const text = await readFile(configPath, "utf-8");
     const match = text.match(/active_repos:\n((?:  - .*\n)*)/);
     if (!match) return [];
     return match[1].match(/- (.*)/g)?.map((line) => line.replace("- ", "").trim()) ?? [];
@@ -70,7 +70,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (import.meta.url === new URL(process.argv[1], "file://").href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

@@ -36,7 +36,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts && tsx tests/refinement.test.ts && tsx tests/autonomy.test.ts && tsx tests/brain-home.test.ts && tsx tests/pre-push-hook.test.ts && tsx tests/brain-links.test.ts && tsx tests/brain-sync.test.ts && tsx tests/brain-state.test.ts && tsx tests/pre-commit-hook.test.ts && tsx tests/utils.test.ts && tsx tests/intent-blocks.test.ts && tsx tests/build-renderers.test.ts && tsx tests/diff.test.ts && tsx tests/search.test.ts && tsx tests/inbox.test.ts && tsx tests/rfc-contribute.test.ts && tsx tests/context-injection.test.ts && tsx tests/compaction-harvest.test.ts && tsx tests/tool-result-enrichment.test.ts",
+    "test": "tsx tests/load.test.ts && tsx tests/integration.test.ts && tsx tests/commands.test.ts && tsx tests/refinement.test.ts && tsx tests/autonomy.test.ts && tsx tests/brain-home.test.ts && tsx tests/pre-push-hook.test.ts && tsx tests/brain-links.test.ts && tsx tests/brain-sync.test.ts && tsx tests/brain-state.test.ts && tsx tests/pre-commit-hook.test.ts && tsx tests/utils.test.ts && tsx tests/intent-blocks.test.ts && tsx tests/build-renderers.test.ts && tsx tests/diff.test.ts && tsx tests/search.test.ts && tsx tests/inbox.test.ts && tsx tests/rfc-contribute.test.ts && tsx tests/context-injection.test.ts && tsx tests/compaction-harvest.test.ts && tsx tests/tool-result-enrichment.test.ts && tsx tests/brain-projects.test.ts",
     "validate": "npm run check && npm test && node tools/brain-sync.mjs && node tools/brain-links.mjs"
   },
   "devDependencies": {
