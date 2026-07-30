@@ -1,7 +1,7 @@
 import type { BrainHome, TrustLevel } from "./types.ts";
 import { readAutonomyTrust } from "./brain-home.ts";
 
-export type OperationClass = "sync" | "groom" | "refine" | "suggest" | "shelves" | "commits" | "code";
+export type OperationClass = "sync" | "groom" | "refine" | "suggest" | "agent" | "shelves" | "commits" | "code";
 
 export interface AutonomyOperation {
   class: OperationClass;

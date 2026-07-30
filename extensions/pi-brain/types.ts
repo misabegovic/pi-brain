@@ -24,6 +24,7 @@ export interface AutonomyTrustConfig {
   groom: TrustLevel;
   refine: TrustLevel;
   suggest: TrustLevel;
+  agent: TrustLevel;
   shelves: TrustLevel;
   commits: TrustLevel;
   code: TrustLevel;

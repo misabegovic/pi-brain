@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { mkdir, readFile, readdir, unlink, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import * as path from "node:path";
 import { randomUUID } from "node:crypto";
@@ -9,7 +9,7 @@ import { requireBrain } from "./context.ts";
 import { getTrustLevel, shouldProceed } from "./autonomy.ts";
 import { isValidIdentifier } from "./utils.ts";
 
-const ALLOWED_BG_OPERATIONS = new Set(["sync", "groom", "refine", "suggest"]);
+const ALLOWED_BG_OPERATIONS = new Set(["sync", "groom", "refine", "suggest", "agent"]);
 
 type TaskStatus = "pending" | "running" | "completed" | "failed";
 
@@ -19,6 +19,7 @@ export interface BrainTask {
   operation: keyof AutonomyTrustConfig;
   scope: string;
   createdAt: string;
+  startedAt?: string;
   maxAttempts: number;
   attempts: number;
   error?: string;
@@ -190,85 +191,169 @@ export async function listTasks(home: BrainHome): Promise<Record<TaskStatus, Bra
   return result;
 }
 
+export interface RunTasksOptions {
+  only?: string;
+}
+
+async function claimNextPendingTask(home: BrainHome): Promise<BrainTask | null> {
+  await ensureTaskDirs(home);
+  const dir = taskDir(home, "pending");
+  const files = await readdir(dir).catch(() => [] as string[]);
+  for (const file of files.filter((f) => f.endsWith(".json"))) {
+    const pendingPath = path.join(dir, file);
+    const runningPath = path.join(taskDir(home, "running"), file);
+    try {
+      await rename(pendingPath, runningPath);
+    } catch {
+      // Another worker claimed this task; try the next one.
+      continue;
+    }
+    const task = await loadTask(runningPath);
+    if (task) {
+      task.startedAt = new Date().toISOString();
+      await saveTask(home, task, "running");
+      return task;
+    }
+  }
+  return null;
+}
+
+async function executeOneTask(
+  home: BrainHome,
+  task: BrainTask,
+  cwd: string,
+  executor: (task: BrainTask, cwd: string) => Promise<{ output: string; exitCode: number }>,
+): Promise<void> {
+  const trust = await getTrustLevel(home, task.operation);
+  if (!shouldProceed(trust)) {
+    task.attempts++;
+    task.error = `Operation ${task.operation} is blocked by autonomy trust.`;
+    await moveTask(home, task, "running", "failed");
+    return;
+  }
+
+  const result = await executor(task, cwd);
+  task.attempts++;
+
+  if (result.exitCode === 0) {
+    task.output = result.output.slice(0, 2000);
+    await moveTask(home, task, "running", "completed");
+  } else {
+    task.error = result.output.slice(0, 2000);
+    if (task.attempts >= task.maxAttempts) {
+      await moveTask(home, task, "running", "failed");
+    } else {
+      await moveTask(home, task, "running", "pending");
+    }
+  }
+}
+
 export async function runTasks(
   home: BrainHome,
   cwd: string,
   executor: (task: BrainTask, cwd: string) => Promise<{ output: string; exitCode: number }> = executeTaskSubprocess,
+  options: RunTasksOptions = {},
 ): Promise<{ completed: number; failed: number }> {
   await ensureTaskDirs(home);
-  const all = await listTasks(home);
   let completed = 0;
   let failed = 0;
 
-  for (const task of all.pending) {
-    const trust = await getTrustLevel(home, task.operation);
-    if (!shouldProceed(trust)) {
-      task.attempts++;
-      task.error = `Operation ${task.operation} is blocked by autonomy trust.`;
-      await moveTask(home, task, "pending", "failed");
-      failed++;
-      continue;
+  if (options.only) {
+    const all = await listTasks(home);
+    const task = all.pending.find((t) => t.id === options.only);
+    if (task) {
+      await moveTask(home, task, "pending", "running");
+      await executeOneTask(home, task, cwd, executor);
+      return { completed: 1, failed: 0 };
     }
+    return { completed: 0, failed: 0 };
+  }
 
-    await moveTask(home, task, "pending", "running");
-    const result = await executor(task, cwd);
-    task.attempts++;
-
-    if (result.exitCode === 0) {
-      task.output = result.output.slice(0, 2000);
-      await moveTask(home, task, "running", "completed");
-      completed++;
-    } else {
-      task.error = result.output.slice(0, 2000);
-      if (task.attempts >= task.maxAttempts) {
-        await moveTask(home, task, "running", "failed");
-        failed++;
-      } else {
-        await moveTask(home, task, "running", "pending");
-      }
+  // Clean up stale running tasks from a previous crashed worker. Only fail
+  // tasks that have no recent claim (older than 5 minutes).
+  const all = await listTasks(home);
+  const now = Date.now();
+  for (const task of all.running) {
+    const startTime = task.startedAt ? new Date(task.startedAt).getTime() : new Date(task.createdAt).getTime();
+    const runningAgeMs = now - startTime;
+    if (runningAgeMs > 5 * 60 * 1000) {
+      task.error = "Task was still marked running after a previous worker exited.";
+      await moveTask(home, task, "running", "failed");
+      failed++;
     }
   }
 
-  // Clean up old running tasks that may have been left behind
-  for (const task of all.running) {
-    task.error = "Task was still marked running when run-tasks started.";
-    await moveTask(home, task, "running", "failed");
-    failed++;
+  while (true) {
+    const task = await claimNextPendingTask(home);
+    if (!task) break;
+    await executeOneTask(home, task, cwd, executor);
+    const status = await listTasks(home);
+    if (status.completed.some((t) => t.id === task.id)) completed++;
+    else if (status.failed.some((t) => t.id === task.id)) failed++;
   }
 
   return { completed, failed };
 }
 
-export async function runTasksDetached(home: BrainHome, cwd: string): Promise<{ started: boolean; pid?: number; message: string }> {
+export interface RunTasksDetachedOptions {
+  parallel?: boolean;
+}
+
+export async function runTasksDetached(
+  home: BrainHome,
+  cwd: string,
+  options: RunTasksDetachedOptions = {},
+): Promise<{ started: boolean; pids: number[]; message: string }> {
   await ensureTaskDirs(home);
   const all = await listTasks(home);
   if (all.pending.length === 0) {
-    return { started: false, message: "No pending background tasks." };
+    return { started: false, pids: [], message: "No pending background tasks." };
   }
 
   const runnerPath = path.join(home.path, "tools", "run-tasks.mjs");
   const command = process.execPath;
-  const args: string[] = [];
+  const baseArgs: string[] = [];
 
   // If the current process was launched via tsx/npx, preserve that so the
   // runner can import TypeScript source files.
   const currentScript = process.argv[1];
   if (currentScript && /tsx|ts-node/.test(currentScript)) {
-    args.push(currentScript);
+    baseArgs.push(currentScript);
   }
-  args.push(runnerPath);
+  baseArgs.push(runnerPath);
 
-  const proc = spawn(command, args, {
+  const pids: number[] = [];
+
+  if (options.parallel) {
+    for (const task of all.pending) {
+      const args = [...baseArgs, `--task-id=${task.id}`];
+      const proc = spawn(command, args, {
+        cwd,
+        detached: true,
+        stdio: ["ignore", "ignore", "ignore"],
+      });
+      proc.unref();
+      if (proc.pid) pids.push(proc.pid);
+    }
+    return {
+      started: true,
+      pids,
+      message: `Started ${all.pending.length} background worker(s) (parallel) for ${all.pending.length} pending task(s). Check /brain:tasks for status.`,
+    };
+  }
+
+  const proc = spawn(command, baseArgs, {
     cwd,
     detached: true,
     stdio: ["ignore", "ignore", "ignore"],
   });
   proc.unref();
+  if (proc.pid) pids.push(proc.pid);
 
   return {
     started: true,
-    pid: proc.pid ?? undefined,
-    message: `Started ${all.pending.length} background task(s) (pid ${proc.pid}). Check /brain:tasks for status.`,
+    pids,
+    message: `Started 1 background worker (sequential) for ${all.pending.length} pending task(s). Check /brain:tasks for status.`,
   };
 }
 
@@ -307,22 +392,58 @@ export function registerTasks(pi: ExtensionAPI) {
   });
 
   pi.registerCommand("brain:run-tasks", {
-    description: "Process all pending background tasks (usage: /brain:run-tasks [--detach])",
+    description: "Process all pending background tasks (usage: /brain:run-tasks [--detach] [--parallel])",
     handler: async (args, ctx) => {
       const home = await requireBrain(ctx.cwd);
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
         return;
       }
-      const detach = args.trim() === "--detach";
-      if (detach) {
-        const result = await runTasksDetached(home, ctx.cwd);
+      const flags = new Set(args.trim().split(/\s+/).filter(Boolean));
+      const detach = flags.has("--detach");
+      const parallel = flags.has("--parallel");
+      if (detach || parallel) {
+        const result = await runTasksDetached(home, ctx.cwd, { parallel });
         ctx.ui.notify(result.message, result.started ? "info" : "warning");
         return;
       }
       ctx.ui.notify("Running background tasks...", "info");
       const result = await runTasks(home, ctx.cwd);
       ctx.ui.notify(`Background tasks done: ${result.completed} completed, ${result.failed} failed.`, "info");
+    },
+  });
+
+  pi.registerCommand("brain:bg-agent", {
+    description: "Spin off a background agent for a task (usage: /brain:bg-agent <scope> <description>)",
+    handler: async (args, ctx) => {
+      const trimmed = args.trim();
+      if (!trimmed) {
+        ctx.ui.notify("Usage: /brain:bg-agent <scope> <description>", "warning");
+        return;
+      }
+      const parts = trimmed.split(/\s+/);
+      if (parts.length < 2) {
+        ctx.ui.notify("Usage: /brain:bg-agent <scope> <description>", "warning");
+        return;
+      }
+      const [scope, ...descriptionParts] = parts;
+      if (!isValidIdentifier(scope)) {
+        ctx.ui.notify("Scope must be a simple identifier (letters, numbers, -, _).", "warning");
+        return;
+      }
+      const description = descriptionParts.join(" ");
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      try {
+        const task = await enqueueTask(home, description, "agent", scope);
+        const result = await runTasksDetached(home, ctx.cwd, { parallel: true });
+        ctx.ui.notify(`Queued background agent ${task.id}. ${result.message}`, result.started ? "info" : "warning");
+      } catch (err: any) {
+        ctx.ui.notify(`Failed to start background agent: ${err.message}`, "error");
+      }
     },
   });
 
