@@ -5,3 +5,9 @@ node_modules/
 .idea/
 wiki/_state/deepdives.json
 .env
+
+# Build and package artifacts
+coverage/
+dist/
+*.tgz
+
