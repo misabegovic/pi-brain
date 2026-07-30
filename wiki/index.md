@@ -57,6 +57,9 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### ai-suggestion
+- [Add tests for context injection and harvest helpers](brain/ai-suggestions/refinement/add-tests-for-context-injection-and-harvest.md)
+- [Add tests for inbox helpers](brain/ai-suggestions/refinement/add-tests-for-inbox-helpers.md)
+- [Add tests for revision and RFC formatting helpers](brain/ai-suggestions/refinement/add-tests-for-revision-and-rfc-formatting.md)
 - [Publish v0.3.3 to npm](brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 
 ### constraint
