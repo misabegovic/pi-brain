@@ -36,6 +36,10 @@ This gives every pi session the brain extension, skills, prompts, themes, templa
   ```bash
   bash tools/setup-local.sh
   ```
+- [ ] Validate the local setup.
+  ```bash
+  npm run validate
+  ```
 - [ ] Configure a provider API key so pi can use an LLM.
   - Set `GOOGLE_API_KEY`, `ANTHROPIC_API_KEY`, etc. in `.env` or via `/login`.
 - [ ] Decide on delivery mode.
@@ -83,7 +87,28 @@ This gives every pi session the brain extension, skills, prompts, themes, templa
 - [ ] After merge, create/update the record in `wiki/<scope>/records/`.
 - [ ] Mark the original ADR/PRD as superseded or archived if needed.
 
-## 7. Maintain the brain
+## 7. Generate and sync code from intent
+
+If your PRD/ADR uses YAML intent blocks, pi-brain can generate and track code:
+
+- [ ] Build from approved intent.
+  ```bash
+  /brain:build <scope> <types|interfaces|...>
+  ```
+- [ ] Check for drift between intent and existing code.
+  ```bash
+  /brain:diff <scope> <types|...>
+  ```
+- [ ] Reconcile drift with proposals.
+  ```bash
+  /brain:sync-code <scope> <types|...>
+  ```
+- [ ] Propose revisions to intent based on new evidence.
+  ```bash
+  /brain:revise <scope> <artifact-slug>
+  ```
+
+## 8. Maintain the brain
 
 - [ ] Run `/brain:tend` to digest the inbox.
 - [ ] Run `/brain:links` to find orphans, dead links, and suggestions.
