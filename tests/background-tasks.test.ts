@@ -10,6 +10,7 @@ import {
   enqueueTask,
   listTasks,
   runTasks,
+  runTasksDetached,
   type BrainTask,
 } from "../extensions/pi-brain/tasks.js";
 
@@ -78,6 +79,14 @@ async function main() {
   if (!blocked) {
     throw new Error("Expected enqueueTask to reject blocked operation 'shelves'");
   }
+
+  // 6. Verify detached runner returns early when no tasks are pending
+  const emptyHome = await createTestHome();
+  const detached = await runTasksDetached(emptyHome, emptyHome.path);
+  if (detached.started !== false) {
+    throw new Error(`Expected detached runner not to start, got ${JSON.stringify(detached)}`);
+  }
+  await rm(emptyHome.path, { recursive: true, force: true });
 
   // Cleanup
   await rm(home.path, { recursive: true, force: true });
