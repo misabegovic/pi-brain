@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T09:13:58.773Z",
-  "node_count": 90,
-  "edge_count": 597,
+  "generated_at": "2026-07-30T09:16:05.955Z",
+  "node_count": 93,
+  "edge_count": 600,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -170,6 +170,27 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-test-for-build-renderers.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add a test for build renderers"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-test-for-diff-detection.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add a test for drift detection"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/add-test-for-search-indexing.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "low",
+      "title": "Add a test for search indexing"
     },
     {
       "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
@@ -3398,6 +3419,27 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-test-for-build-renderers",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a test for build renderers"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-test-for-diff-detection",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a test for drift detection"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/add-test-for-search-indexing",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Add a test for search indexing"
     },
     {
       "source": "index",
