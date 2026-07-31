@@ -5,7 +5,7 @@ import { join, relative, resolve } from "node:path";
 import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
 import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
 import { resolveResource, readPackageVersion } from "./resources.ts";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult } from "./enola.ts";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult, captureEnolaRegressions } from "./enola.ts";
 import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
 import { appendInboxItem, appendAutoIngestBatch, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
@@ -705,6 +705,24 @@ export function registerTools(pi: ExtensionAPI) {
           details: {},
         };
       }
+    },
+  });
+
+  pi.registerTool({
+    name: "brain_enola_capture",
+    label: "Brain enola capture",
+    description: "Run enola check and capture any structural regressions as an ai-suggestion.",
+    parameters: Type.Object({}),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
+    async execute(_toolCallId: string, _params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: { ok: false, exitCode: 1 } };
+
+      const result = await captureEnolaRegressions(home);
+      return {
+        content: [{ type: "text" as const, text: result.message }],
+        details: { ok: result.captured, exitCode: 0 },
+      };
     },
   });
 

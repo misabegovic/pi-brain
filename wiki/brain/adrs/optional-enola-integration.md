@@ -19,7 +19,8 @@ pi-brain will offer an **optional** enola integration. It is enabled per brain c
 ### What is provided
 
 - `brain_enola` tool with operations: `check`, `baseline`, `query`.
-- Commands: `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query <term>`.
+- `brain_enola_capture` tool to run a check and save regressions as an ai-suggestion.
+- Commands: `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-baseline`, `/brain:enola-query <term>`.
 - `readEnolaConfig()` reads `enola.enabled`, `enola.target_repo`, `enola.binary`, `enola.gate_build`, and `enola.gate_sync_code` from `brain.config.yml`.
 - Optional gates: `/brain:build` and `/brain:sync-code` can run `enola check` first and block on structural regressions when configured.
 - A GitHub Actions workflow `.github/workflows/enola.yml` that only runs when `enola.config.yml` is present in the repo root.
