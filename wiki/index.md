@@ -111,6 +111,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — Plain-language shape requests default to forward mode](brain/records/plain-language-triggers-shape.md)
 - [Record — Refinement follow-up PR #13](brain/records/refinement-follow-up-pr-13.md)
 - [Record — Smarter autonomy for pi-brain clones](brain/records/smarter-autonomy.md)
+- [Record — split high-complexity registration functions](brain/records/split-heavy-registration-functions.md)
 - [Record — Stronger default guardrails against eager implementation](brain/records/stronger-default-implementation-guardrails.md)
 - [Record — Structured intent and `/brain:build`](brain/records/structured-intent-and-build.md)
 - [Current truth](brain/records/tap-pi-extension-surface.md)
