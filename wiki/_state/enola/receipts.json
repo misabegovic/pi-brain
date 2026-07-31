@@ -1,14 +1,14 @@
 {
   "pi-brain": {
-    "snapshot_id": "sha256:8924883aa95d7a8aab10c497c2315e71771146fb6611acc8586d0e909b1ad748",
+    "snapshot_id": "sha256:57cb7589c871d23a8821c21da688ba29ec981dc6eb17f93b1762762d5097f9f7",
     "enola_version": "0.2.9",
-    "generated_at": "2026-07-31T10:48:53Z",
-    "duration": "39.582097ms",
+    "generated_at": "2026-07-31T11:14:12Z",
+    "duration": "41.055996ms",
     "repo_path": "/home/muhamed/projects/pi-brain",
     "git": {
-      "ref": "brain/enola-receipts-and-drift",
-      "commit": "0f1c75b127defe3dbd348fc06180abc8fe889979",
-      "dirty": true
+      "ref": "main",
+      "commit": "bfe65dfb2ce52408ab2bf38b192451c873d446b7",
+      "dirty": false
     },
     "extractors": [
       "typescript"
@@ -31,14 +31,14 @@
     "config_hash": "sha256:300a38fbedbeb6889cf759c04120e621670adcb67a904ddcd2723b6857e59e6c",
     "ignore_glob_hash": "sha256:54c17b6a0fe6e58f13ce498807b6321aaede07956af61ed78e380d378dfbf826",
     "output_hashes": {
-      "facts.jsonl": "sha256:a365afd41752d8c16c3c7503c190c7bbaaf5e720a85f02bbf36025e674452971",
+      "facts.jsonl": "sha256:d10c7649724a3358dcafe06e2f0b1be1efb9042795c4f614c52ade3e8fa37532",
       "insights.json": "sha256:026b99db7a5715d2dbcfcb25c951efa20d469113aedb0186a5eff1143876e702",
-      "llm_context.md": "sha256:bf63e58c628f0dec21cea1dcb8a6367e35c4cd8de4c84dd77cc27583339f7c88"
+      "llm_context.md": "sha256:0dd54433e75da7dc4b59b115ecda6a4589f3707b120e8e133f07e4a253e70208"
     },
     "fact_count": 490,
     "insight_count": 15,
     "quality": {
-      "files_seen": 238,
+      "files_seen": 240,
       "files_parsed": 36,
       "files_skipped": 25,
       "dirs_skipped": 2,
@@ -67,6 +67,6 @@
       "parse_errors": 0,
       "heuristic_insights": 14
     },
-    "content_digest": "sha256:93891b161a7f0c9b37dbe136554c23e0848fab56534cdd25fda5a2954a6399e0"
+    "content_digest": "sha256:7af2e3df9652a7ca3904918cb6617f7dd3d949ed26de649253b383693a37e874"
   }
 }
