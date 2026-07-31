@@ -13,6 +13,7 @@ import { registerBuild } from "./build.ts";
 import { registerDiff } from "./diff.ts";
 import { registerRevise } from "./revise.ts";
 import { registerTasks } from "./tasks.ts";
+import { registerEnolaCommands } from "./enola.ts";
 import { registerSyncCode } from "./sync-code.ts";
 import { registerRfcContribute } from "./rfc-contribute.ts";
 
@@ -22,6 +23,7 @@ export function registerCommands(pi: ExtensionAPI, lastSystemPrompt: { current: 
   registerDiff(pi);
   registerRevise(pi);
   registerTasks(pi);
+  registerEnolaCommands(pi);
   registerSyncCode(pi);
   registerRfcContribute(pi);
   pi.registerCommand("brain", {

@@ -59,3 +59,9 @@ export interface BrainEventBusConfig {
 export interface SessionShutdownConfig {
   enabled: boolean;
 }
+
+export interface EnolaConfig {
+  enabled: boolean;
+  targetRepo?: string;
+  binary?: string;
+}
