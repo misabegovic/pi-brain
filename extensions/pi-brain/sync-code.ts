@@ -7,6 +7,8 @@ import { collectBlocks } from "./intent-blocks.ts";
 import { parseTypeScriptInterfaces, diffInterfaces, type DriftItem, type TsInterface } from "./diff.ts";
 import { isValidIdentifier } from "./utils.ts";
 import { randomUUID } from "node:crypto";
+import { readEnolaConfig } from "./brain-home.ts";
+import { enolaGateCheck } from "./enola.ts";
 
 interface DataModelField {
   name: string;
@@ -242,6 +244,15 @@ export function registerSyncCode(pi: ExtensionAPI) {
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
         return;
+      }
+
+      const enolaConfig = await readEnolaConfig(home);
+      if (enolaConfig.enabled && enolaConfig.gateSyncCode) {
+        const gate = await enolaGateCheck(home, "/brain:sync-code");
+        if (!gate.proceed) {
+          ctx.ui.notify(gate.message, "warning");
+          return;
+        }
       }
 
       if (apply && !ctx.hasUI) {

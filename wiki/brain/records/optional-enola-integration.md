@@ -18,9 +18,10 @@ An optional enola architecture-intelligence integration for pi-brain.
 
 - `extensions/pi-brain/types.ts` — `EnolaConfig` interface.
 - `extensions/pi-brain/brain-home.ts` — `readEnolaConfig()`.
-- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaQuery`, `formatEnolaResult`, and `registerEnolaCommands`.
+- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaQuery`, `formatEnolaResult`, `enolaGateCheck`, and `registerEnolaCommands`.
 - `extensions/pi-brain/tools.ts` — `brain_enola` tool.
-- `extensions/pi-brain/commands.ts` — `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query`.
+- `extensions/pi-brain/commands.ts` — `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query`.
+- `extensions/pi-brain/build.ts` and `extensions/pi-brain/sync-code.ts` — optional enola gates before code generation.
 - `.github/workflows/enola.yml` — opt-in CI workflow gated on `enola.config.yml`.
 - `skills/brain-enola/SKILL.md` — agent skill documentation.
 - `tests/enola.test.ts` — unit tests for the integration helpers.
