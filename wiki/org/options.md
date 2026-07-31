@@ -11,7 +11,6 @@ The immediate options are finishing touches after the regenerative-intent delive
 ## Where we could go next
 
 <!-- brain-state: shaping -->
-- [Publish v0.3.3 to npm](../brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
