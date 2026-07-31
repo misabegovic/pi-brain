@@ -58,6 +58,8 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
 ### refinement
+- [Audit shared utility hotspots flagged by enola](brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md)
+- [Split high-complexity registration functions in extensions/pi-brain](brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md)
 - [Learn from an earlier brain enola integration and strengthen pi-brain's](brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
 
 ### constraint
