@@ -141,7 +141,44 @@ export function formatEnolaResult(result: EnolaResult): string {
   return parts.filter(Boolean).join("\n\n");
 }
 
+export async function enolaGateCheck(home: BrainHome, context: string): Promise<{ proceed: boolean; message: string }> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { proceed: true, message: "enola is not enabled; skipping architecture gate." };
+  }
+
+  const result = await runEnolaCheck(home);
+  if (result.ok) {
+    return { proceed: true, message: "enola check passed. No structural regressions." };
+  }
+
+  return {
+    proceed: false,
+    message: `enola check blocked ${context}.\n\n${formatEnolaResult(result)}`,
+  };
+}
+
 export function registerEnolaCommands(pi: ExtensionAPI) {
+  pi.registerCommand("brain:enola-status", {
+    description: "Show enola configuration status (usage: /brain:enola-status)",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const config = await readEnolaConfig(home);
+      const lines = [
+        `enabled: ${config.enabled}`,
+        `target_repo: ${config.targetRepo ?? "(brain home)"}`,
+        `binary: ${config.binary ?? "enola"}`,
+        `gate_build: ${config.gateBuild ?? false}`,
+        `gate_sync_code: ${config.gateSyncCode ?? false}`,
+      ];
+      ctx.ui.notify(lines.join("\n"), "info");
+    },
+  });
+
   pi.registerCommand("brain:enola-check", {
     description: "Run enola check on the configured target repo (usage: /brain:enola-check)",
     handler: async (_args, ctx) => {

@@ -5,6 +5,8 @@ import { requireBrain } from "./context.ts";
 import { collectBlocks } from "./intent-blocks.ts";
 import { renderTarget } from "./build-renderers.ts";
 import { isValidIdentifier } from "./utils.ts";
+import { readEnolaConfig } from "./brain-home.ts";
+import { enolaGateCheck } from "./enola.ts";
 
 export function registerBuild(pi: ExtensionAPI) {
   pi.registerCommand("brain:build", {
@@ -31,6 +33,15 @@ export function registerBuild(pi: ExtensionAPI) {
       if (!home) {
         ctx.ui.notify("No pi-brain home found.", "error");
         return;
+      }
+
+      const enolaConfig = await readEnolaConfig(home);
+      if (enolaConfig.enabled && enolaConfig.gateBuild) {
+        const gate = await enolaGateCheck(home, "/brain:build");
+        if (!gate.proceed) {
+          ctx.ui.notify(gate.message, "warning");
+          return;
+        }
       }
 
       const blocks = await collectBlocks(home, scope);
