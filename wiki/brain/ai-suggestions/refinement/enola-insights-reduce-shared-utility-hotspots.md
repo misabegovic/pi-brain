@@ -2,8 +2,8 @@
 title: Audit shared utility hotspots flagged by enola
 description: Enola flagged extractSimpleYamlValue, readEnolaConfig, requireBrain, pathExists, and getMarkdownFiles as god classes / hotspots. Audit whether dependents can use more focused APIs or whether the utilities belong in more specific modules.
 kind: refinement
-status: open
-confidence: medium
+status: closed
+confidence: high
 source: enola analysis of extensions/pi-brain
 ---
 
