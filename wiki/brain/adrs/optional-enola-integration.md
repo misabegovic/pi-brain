@@ -18,11 +18,14 @@ pi-brain will offer an **optional** enola integration. It is enabled per brain c
 
 ### What is provided
 
-- `brain_enola` tool with operations: `check`, `baseline`, `query`.
+- `brain_enola` tool with operations: `check`, `baseline`, `generate`, `diff`, `citations`, `query`, `impact`.
 - `brain_enola_capture` tool to run a check and save regressions as an ai-suggestion.
-- Commands: `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-baseline`, `/brain:enola-query <term>`.
-- `readEnolaConfig()` reads `enola.enabled`, `enola.target_repo`, `enola.binary`, `enola.check_args`, `enola.baseline_args`, `enola.query_args`, `enola.impact_args`, `enola.gate_build`, `enola.gate_sync_code`, and `enola.auto_baseline` from `brain.config.yml`.
+- Commands: `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-generate`, `/brain:enola-diff`, `/brain:enola-citations`, `/brain:enola-baseline`, `/brain:enola-query <term>`, `/brain:enola-impact <symbol>`.
+- `readEnolaConfig()` reads enola settings from `brain.config.yml`.
 - CLI-agnostic: enola command arguments are configurable so the integration works with different enola variants.
+- Receipt state: `wiki/_state/enola/receipts.json` records per-repo snapshot metadata and content digests.
+- Drift detection: `/brain:enola-diff` compares live snapshots to recorded receipts.
+- Citation verification: `/brain:enola-citations` verdicts `enola receipt ...` citations in wiki prose.
 - Optional gates: `/brain:build` and `/brain:sync-code` can run the configured check command first and block on structural regressions when configured.
 - Optional auto-baseline: `/brain:build` and `/brain:sync-code --apply` can re-pin the enola baseline after successful code changes when configured.
 - A GitHub Actions workflow `.github/workflows/enola.yml` that only runs when `enola.config.yml` is present in the repo root.

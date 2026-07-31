@@ -145,8 +145,16 @@ pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to dete
 4. Use enola-aware commands:
    - `/brain:enola-check`
    - `/brain:enola-capture`
+   - `/brain:enola-generate` — record a snapshot receipt
+   - `/brain:enola-diff` — detect architecture drift
+   - `/brain:enola-citations` — verify receipt citations
    - `/brain:enola-impact <symbol>`
    - `/brain:enola-query <term>`
+
+5. Cite receipts in wiki prose:
+   ```markdown
+   enola receipt pi-brain `sha256:72d38a9e…` @ `0f1c75b`, 2026-07-31
+   ```
 
 When gating is enabled, `/brain:build` and `/brain:sync-code` will block on structural regressions. When `auto_baseline` is enabled, the baseline is re-pinned after successful code generation or apply.
 
