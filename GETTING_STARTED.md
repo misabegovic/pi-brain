@@ -118,6 +118,38 @@ If your PRD/ADR uses YAML intent blocks, pi-brain can generate and track code:
 - [ ] Run `/brain:update` to update pi-brain. It tries the package path first (`pi install @misabegovic/pi-brain@latest`) and falls back to the legacy GitHub diff/apply flow if needed.
 - [ ] Run `node tools/migrate-clone.mjs <clone-path> --dry-run` to migrate an existing full-repo clone to the content-only, package-resolved model.
 
+## Optional enola architecture intelligence
+
+pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to detect architectural regressions in target repositories.
+
+1. Install enola:
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
+   ```
+2. Add to `brain.config.yml`:
+   ```yaml
+   enola:
+     enabled: true
+     target_repo: ./path/to/target/repo
+     gate_build: true
+     gate_sync_code: true
+     auto_baseline: true
+     # If your enola binary uses different commands, override them:
+     # check_args: "--generate --explain"
+     # baseline_args: "--generate"
+   ```
+3. Pin the initial baseline:
+   ```bash
+   /brain:enola-baseline
+   ```
+4. Use enola-aware commands:
+   - `/brain:enola-check`
+   - `/brain:enola-capture`
+   - `/brain:enola-impact <symbol>`
+   - `/brain:enola-query <term>`
+
+When gating is enabled, `/brain:build` and `/brain:sync-code` will block on structural regressions. When `auto_baseline` is enabled, the baseline is re-pinned after successful code generation or apply.
+
 ## Experimental features
 
 - `PI_BRAIN_EXPERIMENTAL_CONTEXT=1` enables relevant-record injection on every turn. Prototype only — measure quality before relying on it.
