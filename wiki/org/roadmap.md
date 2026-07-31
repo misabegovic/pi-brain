@@ -26,6 +26,7 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 - [ADR — Local-first brain self-maintenance workflow](../brain/adrs/local-first-brain-self-maintenance.md)
 - [ADR — Multi-agent intent collaboration for pi-brain](../brain/adrs/multi-agent-intent-collaboration.md)
 - [ADR — Multi-agent RFC collaboration](../brain/adrs/multi-agent-rfc-collaboration.md)
+- [ADR — Optional enola architecture intelligence integration](../brain/adrs/optional-enola-integration.md)
 - [ADR — Plain-language shape requests default to forward mode](../brain/adrs/plain-language-triggers-shape.md)
 - [ADR — Remote promotion requires a pull request](../brain/adrs/remote-promotion-requires-pr.md)
 - [ADR — Smarter autonomy boundaries](../brain/adrs/smarter-autonomy.md)
@@ -50,6 +51,7 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 - [Bet — Tap pi’s full extension surface for pi-brain](../brain/bets/tap-pi-extension-surface.md)
 - [Bet — Build `/brain:update` for safe upstream template sync](../brain/bets/upstream-template-sync.md)
 - [Bet — Cut pi-brain v0.1.0](../brain/bets/version-0-1-0.md)
+- [Epic — Full enola integration for pi-brain v0.4.0](../brain/epics/enola-integration.md)
 - [Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration](../brain/epics/regenerative-intent.md)
 - [PRD — Agent-maintained intent](../brain/prds/agent-maintained-intent.md)
 - [PRD — Autonomous colleague mode](../brain/prds/autonomous-colleague-mode.md)
@@ -72,7 +74,6 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 ## In shaping
 
 <!-- brain-state: shaping -->
-- [Publish v0.3.3 to npm](../brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->
