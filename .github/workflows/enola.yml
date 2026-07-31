@@ -21,7 +21,8 @@ jobs:
           fi
       - name: Install enola
         if: steps.check.outputs.enabled == 'true'
-        run: curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
+        shell: bash
+        run: curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | bash
       - name: Run enola diff
         if: steps.check.outputs.enabled == 'true'
-        run: pi /brain:enola-diff
+        run: npx tsx -e "import('./extensions/pi-brain/enola.ts').then(async ({runEnolaDiff}) => { const r = await runEnolaDiff({path: process.cwd()}); console.log(r.stdout || r.stderr); if (!r.ok) process.exit(1); });"
