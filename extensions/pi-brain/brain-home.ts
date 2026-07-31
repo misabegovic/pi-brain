@@ -152,8 +152,13 @@ function parseBoolean(value: string | undefined, fallback: boolean): boolean {
   return value === "true" || value === "yes" || value === "on" || value === "1";
 }
 
+function parseArgs(value: string | undefined, fallback: string[]): string[] {
+  if (!value) return fallback;
+  return value.trim().split(/\s+/).filter(Boolean);
+}
+
 export async function readEnolaConfig(home: BrainHome): Promise<EnolaConfig> {
-  const defaults: EnolaConfig = { enabled: false, gateBuild: false, gateSyncCode: false };
+  const defaults: EnolaConfig = { enabled: false, gateBuild: false, gateSyncCode: false, autoBaseline: false };
   try {
     const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
     const enabled = extractSimpleYamlValue(config, "enola.enabled");
@@ -161,12 +166,22 @@ export async function readEnolaConfig(home: BrainHome): Promise<EnolaConfig> {
     const binary = extractSimpleYamlValue(config, "enola.binary");
     const gateBuild = extractSimpleYamlValue(config, "enola.gate_build");
     const gateSyncCode = extractSimpleYamlValue(config, "enola.gate_sync_code");
+    const autoBaseline = extractSimpleYamlValue(config, "enola.auto_baseline");
+    const checkArgs = extractSimpleYamlValue(config, "enola.check_args");
+    const baselineArgs = extractSimpleYamlValue(config, "enola.baseline_args");
+    const queryArgs = extractSimpleYamlValue(config, "enola.query_args");
+    const impactArgs = extractSimpleYamlValue(config, "enola.impact_args");
     return {
       enabled: enabled ? enabled === "true" : defaults.enabled,
       targetRepo: targetRepo ?? defaults.targetRepo,
       binary: binary ?? defaults.binary,
+      checkArgs: parseArgs(checkArgs, defaults.checkArgs ?? ["check"]),
+      baselineArgs: parseArgs(baselineArgs, defaults.baselineArgs ?? ["baseline", "pin"]),
+      queryArgs: parseArgs(queryArgs, defaults.queryArgs ?? ["check"]),
+      impactArgs: parseArgs(impactArgs, defaults.impactArgs ?? ["check"]),
       gateBuild: parseBoolean(gateBuild, defaults.gateBuild ?? false),
       gateSyncCode: parseBoolean(gateSyncCode, defaults.gateSyncCode ?? false),
+      autoBaseline: parseBoolean(autoBaseline, defaults.autoBaseline ?? false),
     };
   } catch {
     return defaults;
