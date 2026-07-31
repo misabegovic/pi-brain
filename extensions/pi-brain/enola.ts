@@ -9,8 +9,8 @@
  */
 
 import { execFile } from "node:child_process";
-import { stat } from "node:fs/promises";
-import { resolve } from "node:path";
+import { stat, mkdir, writeFile } from "node:fs/promises";
+import { resolve, join } from "node:path";
 import type { BrainHome, EnolaConfig } from "./types.ts";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { readEnolaConfig } from "./brain-home.ts";
@@ -158,7 +158,72 @@ export async function enolaGateCheck(home: BrainHome, context: string): Promise<
   };
 }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .slice(0, 48)
+    .replace(/(^-|-$)/g, "") || "enola";
+}
+
+export async function captureEnolaRegressions(home: BrainHome): Promise<{ captured: boolean; path?: string; message: string }> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { captured: false, message: "enola is not enabled; skipping capture." };
+  }
+
+  const result = await runEnolaCheck(home);
+  if (result.ok) {
+    return { captured: false, message: "No structural regressions to capture." };
+  }
+
+  const date = new Date().toISOString().slice(0, 10);
+  const id = slugify(`enola-regression-${date}`);
+  const dir = join(home.path, "wiki", "brain", "ai-suggestions", "enola");
+  await mkdir(dir, { recursive: true });
+  const filePath = join(dir, `${id}.md`);
+
+  const body = [
+    "---",
+    "kind: ai-suggestion",
+    "status: draft",
+    "confidence: medium",
+    `source: enola check (${date})`,
+    "---",
+    "",
+    `# Structural regression detected by enola (${date})`,
+    "",
+    "## Output",
+    "",
+    "```",
+    result.stdout || result.stderr || "(no output)",
+    "```",
+    "",
+    "## Suggested action",
+    "",
+    "Review the introduced coupling, dependency cycle, or module-boundary violation and decide whether to fix it in code or update intent.",
+    "",
+  ].join("\n");
+
+  await writeFile(filePath, body, "utf-8");
+  const relativePath = filePath.slice(home.path.length + 1);
+  return { captured: true, path: relativePath, message: `Captured enola regression to ${relativePath}` };
+}
+
 export function registerEnolaCommands(pi: ExtensionAPI) {
+  pi.registerCommand("brain:enola-capture", {
+    description: "Run enola check and capture regressions as an ai-suggestion (usage: /brain:enola-capture)",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const result = await captureEnolaRegressions(home);
+      ctx.ui.notify(result.message, result.captured ? "info" : "warning");
+    },
+  });
+
   pi.registerCommand("brain:enola-status", {
     description: "Show enola configuration status (usage: /brain:enola-status)",
     handler: async (_args, ctx) => {
