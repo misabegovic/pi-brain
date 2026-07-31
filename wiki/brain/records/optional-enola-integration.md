@@ -18,11 +18,12 @@ An optional enola architecture-intelligence integration for pi-brain.
 
 - `extensions/pi-brain/types.ts` — `EnolaConfig` interface.
 - `extensions/pi-brain/brain-home.ts` — `readEnolaConfig()`.
-- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaQuery`, `runEnolaImpact`, `formatEnolaResult`, `enolaGateCheck`, `captureEnolaRegressions`, and `registerEnolaCommands`.
-- `extensions/pi-brain/tools.ts` — `brain_enola` (with check/baseline/query/impact) and `brain_enola_capture` tools.
-- `extensions/pi-brain/commands.ts` — `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-baseline`, `/brain:enola-query`, `/brain:enola-impact`.
+- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaGenerate`, `runEnolaDiff`, `runEnolaCitations`, `runEnolaQuery`, `runEnolaImpact`, `formatEnolaResult`, `enolaGateCheck`, `captureEnolaRegressions`, and `registerEnolaCommands`.
+- `extensions/pi-brain/tools.ts` — `brain_enola` (with check/baseline/generate/diff/citations/query/impact) and `brain_enola_capture` tools.
+- `extensions/pi-brain/commands.ts` — `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-generate`, `/brain:enola-diff`, `/brain:enola-citations`, `/brain:enola-baseline`, `/brain:enola-query`, `/brain:enola-impact`.
 - `extensions/pi-brain/refinement.ts` — autonomous refinement protocol prompt mentions `brain_enola_capture`.
 - `extensions/pi-brain/build.ts` and `extensions/pi-brain/sync-code.ts` — optional enola gates and optional auto-baseline after code generation.
+- `wiki/_state/enola/receipts.json` — per-repo snapshot receipt state.
 - `.github/workflows/enola.yml` — opt-in CI workflow gated on `enola.config.yml`.
 - `skills/brain-enola/SKILL.md` — agent skill documentation.
 - `tests/enola.test.ts` — unit tests for the integration helpers.
@@ -44,3 +45,4 @@ An optional enola architecture-intelligence integration for pi-brain.
 
 - [wiki/brain/adrs/optional-enola-integration.md](../adrs/optional-enola-integration.md)
 - `skills/brain-enola/SKILL.md`
+- [wiki/brain/records/enola-receipts-and-drift.md](../records/enola-receipts-and-drift.md)

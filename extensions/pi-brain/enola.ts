@@ -8,13 +8,14 @@
  * configured, calls return a helpful message instead of throwing.
  */
 
-import { execFile } from "node:child_process";
-import { stat, mkdir, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { stat, mkdir, writeFile, readFile } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import type { BrainHome, EnolaConfig } from "./types.ts";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { readEnolaConfig } from "./brain-home.ts";
 import { requireBrain } from "./context.ts";
+import { getMarkdownFiles } from "./utils.ts";
 
 export interface EnolaResult {
   ok: boolean;
@@ -62,15 +63,20 @@ function runEnola(
   cwd: string,
 ): Promise<{ exitCode: number; stdout: string; stderr: string }> {
   return new Promise((resolve) => {
-    const proc = execFile(binary, args, { cwd }, (error, stdout, stderr) => {
-      if (error && error.code !== "ENOENT") {
-        resolve({ exitCode: error.code as number ?? 1, stdout, stderr });
-      } else {
-        resolve({ exitCode: 0, stdout, stderr });
-      }
+    const proc = spawn(binary, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
+    let stdout = "";
+    let stderr = "";
+    proc.stdout.on("data", (data: Buffer) => {
+      stdout += data.toString("utf-8");
+    });
+    proc.stderr.on("data", (data: Buffer) => {
+      stderr += data.toString("utf-8");
     });
     proc.on("error", (err) => {
       resolve({ exitCode: 1, stdout: "", stderr: err.message });
+    });
+    proc.on("close", (exitCode) => {
+      resolve({ exitCode: exitCode ?? 0, stdout, stderr });
     });
   });
 }
@@ -270,6 +276,244 @@ export async function captureEnolaRegressions(home: BrainHome): Promise<{ captur
   return { captured: true, path: relativePath, message: `Captured enola regression to ${relativePath}` };
 }
 
+// ---------------------------------------------------------------------------
+// Receipt-based architecture state (inspired by projects/tt/brain)
+// ---------------------------------------------------------------------------
+
+export interface EnolaReceipt {
+  snapshot_id: string;
+  enola_version: string;
+  generated_at: string;
+  repo_path: string;
+  git?: { ref?: string; commit?: string; dirty?: boolean };
+  fact_count?: number;
+  insight_count?: number;
+  output_hashes?: Record<string, string>;
+  content_digest?: string;
+}
+
+export interface EnolaReceipts {
+  [repoName: string]: EnolaReceipt;
+}
+
+function getEnolaStateDir(home: BrainHome): string {
+  return join(home.path, "wiki", "_state", "enola");
+}
+
+function getEnolaReceiptsPath(home: BrainHome): string {
+  return join(getEnolaStateDir(home), "receipts.json");
+}
+
+function getEnolaOutputDir(home: BrainHome): string {
+  return join(home.path, ".enola");
+}
+
+function getEnolaReceiptPath(home: BrainHome): string {
+  return join(getEnolaOutputDir(home), "receipt.json");
+}
+
+function repoNameFromPath(repoPath: string): string {
+  return repoPath.replace(/\\/g, "/").split("/").filter(Boolean).pop() ?? "unknown";
+}
+
+async function computeFactsDigest(factsPath: string): Promise<string | undefined> {
+  try {
+    const text = await readFile(factsPath, "utf-8");
+    const lines = text.split("\n").filter((l) => l.trim());
+    const canonical = lines
+      .map((l) => {
+        try {
+          return JSON.stringify(JSON.parse(l), Object.keys(JSON.parse(l)).sort());
+        } catch {
+          return l;
+        }
+      })
+      .sort();
+    const crypto = await import("node:crypto");
+    return "sha256:" + crypto.createHash("sha256").update(canonical.join("\n")).digest("hex");
+  } catch {
+    return undefined;
+  }
+}
+
+export async function runEnolaGenerate(home: BrainHome): Promise<EnolaResult> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { ok: true, exitCode: 0, stdout: "", stderr: "enola is not enabled in brain.config.yml." };
+  }
+
+  const target = await resolveTargetRepo(home, config);
+  if (!target) {
+    return { ok: false, exitCode: 1, stdout: "", stderr: `enola target_repo not found: ${config.targetRepo}` };
+  }
+
+  const binary = findEnolaBinary(config);
+  // Use baseline args for generation (typically "--generate" or "baseline pin").
+  const args = config.baselineArgs ?? ["--generate"];
+  const result = await runEnola(binary, args, target);
+
+  if (result.exitCode !== 0) {
+    return { ok: false, exitCode: result.exitCode, stdout: result.stdout, stderr: result.stderr };
+  }
+
+  const receiptPath = getEnolaReceiptPath(home);
+  let receipt: EnolaReceipt | null = null;
+  try {
+    receipt = JSON.parse(await readFile(receiptPath, "utf-8")) as EnolaReceipt;
+  } catch {
+    return { ok: false, exitCode: 1, stdout: "", stderr: `enola ran but no receipt found at ${receiptPath}` };
+  }
+
+  const factsPath = join(getEnolaOutputDir(home), "facts.jsonl");
+  const digest = await computeFactsDigest(factsPath);
+  if (digest) receipt.content_digest = digest;
+
+  const name = repoNameFromPath(receipt.repo_path);
+  const receipts: EnolaReceipts = {};
+  try {
+    Object.assign(receipts, JSON.parse(await readFile(getEnolaReceiptsPath(home), "utf-8")));
+  } catch {
+    // no existing receipts
+  }
+  receipts[name] = receipt;
+
+  await mkdir(getEnolaStateDir(home), { recursive: true });
+  await writeFile(getEnolaReceiptsPath(home), JSON.stringify(receipts, null, 2) + "\n", "utf-8");
+
+  return {
+    ok: true,
+    exitCode: 0,
+    stdout: `Recorded enola receipt for ${name}: ${receipt.fact_count ?? 0} facts @ ${(receipt.git?.commit ?? "").slice(0, 8)}`,
+    stderr: "",
+    summary: `Architecture baseline recorded for ${name}.`,
+  };
+}
+
+export async function readEnolaReceipts(home: BrainHome): Promise<EnolaReceipts> {
+  try {
+    return JSON.parse(await readFile(getEnolaReceiptsPath(home), "utf-8")) as EnolaReceipts;
+  } catch {
+    return {};
+  }
+}
+
+export async function runEnolaDiff(home: BrainHome): Promise<EnolaResult> {
+  const config = await readEnolaConfig(home);
+  const binary = findEnolaBinary(config);
+  const target = await resolveTargetRepo(home, config);
+  const receipts = await readEnolaReceipts(home);
+  if (!config.enabled || !target || Object.keys(receipts).length === 0) {
+    // Gracefully skip when enola is not fully configured or no baseline exists.
+    return {
+      ok: true,
+      exitCode: 0,
+      stdout: "",
+      stderr: "enola diff skipped: not enabled, missing target repo, or no recorded receipts. Run /brain:enola-generate first.",
+    };
+  }
+
+  const args = config.baselineArgs ?? ["--generate"];
+  const result = await runEnola(binary, args, target);
+  if (result.exitCode !== 0) {
+    return { ok: false, exitCode: result.exitCode, stdout: result.stdout, stderr: result.stderr };
+  }
+
+  const liveReceipt: EnolaReceipt | null = JSON.parse(
+    await readFile(getEnolaReceiptPath(home), "utf-8").catch(() => "null"),
+  );
+  if (!liveReceipt) {
+    return { ok: false, exitCode: 1, stdout: "", stderr: "enola ran but produced no receipt." };
+  }
+
+  const factsPath = join(getEnolaOutputDir(home), "facts.jsonl");
+  const liveDigest = await computeFactsDigest(factsPath);
+  if (liveDigest) liveReceipt.content_digest = liveDigest;
+
+  const name = repoNameFromPath(liveReceipt.repo_path);
+  const recorded = await readEnolaReceipts(home);
+  const prior = recorded[name];
+  if (!prior) {
+    return {
+      ok: true,
+      exitCode: 0,
+      stdout: `No prior receipt for ${name}. Current: ${liveReceipt.fact_count ?? 0} facts.`,
+      stderr: "",
+      summary: `New architecture snapshot for ${name}.`,
+    };
+  }
+
+  const changed = liveReceipt.content_digest && prior.content_digest
+    ? liveReceipt.content_digest !== prior.content_digest
+    : liveReceipt.snapshot_id !== prior.snapshot_id;
+
+  if (!changed) {
+    return {
+      ok: true,
+      exitCode: 0,
+      stdout: `Architecture snapshot for ${name} is unchanged.`,
+      stderr: "",
+      summary: `No architecture drift for ${name}.`,
+    };
+  }
+
+  const delta = (liveReceipt.fact_count ?? 0) - (prior.fact_count ?? 0);
+  return {
+    ok: true,
+    exitCode: 0,
+    stdout: `Architecture drift detected for ${name}.\nFacts: ${prior.fact_count ?? 0} → ${liveReceipt.fact_count ?? 0} (${delta >= 0 ? "+" : ""}${delta})\nCommit: ${(prior.git?.commit ?? "").slice(0, 8)} → ${(liveReceipt.git?.commit ?? "").slice(0, 8)}`,
+    stderr: "",
+    summary: `Architecture drift detected for ${name}.`,
+  };
+}
+
+const ENOLA_CITATION_RX = /enola receipt ([\w.-]+) `sha256:([0-9a-f]{12,})…?` @ `([0-9a-f]{7,40})`, (\d{4}-\d{2}-\d{2})/g;
+
+export interface EnolaCitation {
+  repo: string;
+  digest: string;
+  commit: string;
+  date: string;
+  source: string;
+  verdict: "ok" | "stale" | "malformed" | "unknown-repo";
+}
+
+export async function runEnolaCitations(home: BrainHome): Promise<{ ok: boolean; citations: EnolaCitation[]; message: string }> {
+  const receipts = await readEnolaReceipts(home);
+  const citations: EnolaCitation[] = [];
+  const files = await getMarkdownFiles(join(home.path, "wiki"));
+
+  for (const file of files) {
+    const text = await readFile(file, "utf-8");
+    let match: RegExpExecArray | null;
+    while ((match = ENOLA_CITATION_RX.exec(text)) !== null) {
+      const [, repo, digest, commit, date] = match;
+      const receipt = receipts[repo];
+      let verdict: EnolaCitation["verdict"] = "unknown-repo";
+      if (receipt) {
+        const receiptDigest = receipt.content_digest ?? receipt.snapshot_id ?? "";
+        const receiptCommit = receipt.git?.commit ?? "";
+        if (receiptDigest.startsWith("sha256:") && receiptDigest.slice(7).startsWith(digest)) {
+          verdict = receiptCommit.startsWith(commit) ? "ok" : "stale";
+        } else if (receiptCommit.startsWith(commit)) {
+          verdict = "stale";
+        } else {
+          verdict = "stale";
+        }
+      }
+      citations.push({ repo, digest, commit, date, source: file.slice(home.path.length + 1), verdict });
+    }
+  }
+
+  const counts = { ok: 0, stale: 0, malformed: 0, "unknown-repo": 0 };
+  for (const c of citations) counts[c.verdict]++;
+  const message = [
+    `Found ${citations.length} enola citation(s) in wiki prose.`,
+    `ok: ${counts.ok}, stale: ${counts.stale}, unknown-repo: ${counts["unknown-repo"]}, malformed: ${counts.malformed}`,
+  ].join("\n");
+
+  return { ok: true, citations, message };
+}
+
 export function registerEnolaCommands(pi: ExtensionAPI) {
   pi.registerCommand("brain:enola-capture", {
     description: "Run enola check and capture regressions as an ai-suggestion (usage: /brain:enola-capture)",
@@ -281,6 +525,45 @@ export function registerEnolaCommands(pi: ExtensionAPI) {
       }
       const result = await captureEnolaRegressions(home);
       ctx.ui.notify(result.message, result.captured ? "info" : "warning");
+    },
+  });
+
+  pi.registerCommand("brain:enola-generate", {
+    description: "Generate enola snapshot and record receipt (usage: /brain:enola-generate)",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const result = await runEnolaGenerate(home);
+      ctx.ui.notify(formatEnolaResult(result), result.ok ? "info" : "warning");
+    },
+  });
+
+  pi.registerCommand("brain:enola-diff", {
+    description: "Compare current enola snapshot to recorded receipts (usage: /brain:enola-diff)",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const result = await runEnolaDiff(home);
+      ctx.ui.notify(formatEnolaResult(result), result.ok ? "info" : "warning");
+    },
+  });
+
+  pi.registerCommand("brain:enola-citations", {
+    description: "Check enola receipt citations in wiki prose (usage: /brain:enola-citations)",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const result = await runEnolaCitations(home);
+      ctx.ui.notify(result.message, result.ok ? "info" : "warning");
     },
   });
 

@@ -154,7 +154,12 @@ function parseBoolean(value: string | undefined, fallback: boolean): boolean {
 
 function parseArgs(value: string | undefined, fallback: string[]): string[] {
   if (!value) return fallback;
-  return value.trim().split(/\s+/).filter(Boolean);
+  return value
+    .trim()
+    .replace(/^"|"$/g, "")
+    .replace(/^'|'$/g, "")
+    .split(/\s+/)
+    .filter(Boolean);
 }
 
 export async function readEnolaConfig(home: BrainHome): Promise<EnolaConfig> {

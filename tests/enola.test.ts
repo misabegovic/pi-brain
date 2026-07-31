@@ -5,7 +5,7 @@
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
 
 async function createTestHome(enabled: boolean, targetRepo?: string, checkArgs?: string): Promise<{ path: string }> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-enola-"));
@@ -90,6 +90,30 @@ async function main() {
     // ok — command ran and produced output
   }
   await rm(argsHome.path, { recursive: true, force: true });
+
+  // 10. runEnolaGenerate skips when disabled
+  const generateDisabledHome = await createTestHome(false);
+  const generateDisabled = await runEnolaGenerate(generateDisabledHome);
+  if (!generateDisabled.stdout.includes("not enabled") && !generateDisabled.stderr.includes("not enabled")) {
+    throw new Error(`Expected disabled generate message, got ${JSON.stringify(generateDisabled)}`);
+  }
+  await rm(generateDisabledHome.path, { recursive: true, force: true });
+
+  // 11. runEnolaDiff skips when no receipts exist
+  const diffNoBaselineHome = await createTestHome(true);
+  const diffNoBaseline = await runEnolaDiff(diffNoBaselineHome);
+  if (!diffNoBaseline.stderr.includes("no recorded receipts") && !diffNoBaseline.stdout.includes("skipped")) {
+    throw new Error(`Expected diff skip message, got ${JSON.stringify(diffNoBaseline)}`);
+  }
+  await rm(diffNoBaselineHome.path, { recursive: true, force: true });
+
+  // 12. runEnolaCitations returns empty when no citations exist
+  const citationsHome = await createTestHome(true);
+  const citationsResult = await runEnolaCitations(citationsHome);
+  if (!citationsResult.ok || citationsResult.citations.length !== 0) {
+    throw new Error(`Expected zero citations, got ${JSON.stringify(citationsResult)}`);
+  }
+  await rm(citationsHome.path, { recursive: true, force: true });
 
   console.log("✓ enola test passed");
 }

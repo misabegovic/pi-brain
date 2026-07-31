@@ -9,11 +9,33 @@ on:
 jobs:
   enola:
     runs-on: ubuntu-latest
-    # Only run when enola is configured for this repo.
-    if: ${{ hashFiles('enola.config.yml') != '' }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install enola
-        run: curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
-      - name: Run enola check
-        run: enola check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check if enola is configured and available
+        id: check
+        run: |
+          enabled=false
+          if grep -qE '^enola\.enabled:\s*true' brain.config.yml 2>/dev/null; then
+            enabled=true
+          fi
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+          if command -v enola >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run enola diff
+        if: steps.check.outputs.enabled == 'true' && steps.check.outputs.available == 'true'
+        run: |
+          npx tsx -e "
+            import('./extensions/pi-brain/enola.ts').then(async ({runEnolaDiff}) => {
+              const r = await runEnolaDiff({path: process.cwd()});
+              console.log(r.stdout || r.stderr);
+              if (!r.ok) process.exit(1);
+            });
+          "

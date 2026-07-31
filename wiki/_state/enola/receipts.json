@@ -1,0 +1,72 @@
+{
+  "pi-brain": {
+    "snapshot_id": "sha256:8924883aa95d7a8aab10c497c2315e71771146fb6611acc8586d0e909b1ad748",
+    "enola_version": "0.2.9",
+    "generated_at": "2026-07-31T10:48:53Z",
+    "duration": "39.582097ms",
+    "repo_path": "/home/muhamed/projects/pi-brain",
+    "git": {
+      "ref": "brain/enola-receipts-and-drift",
+      "commit": "0f1c75b127defe3dbd348fc06180abc8fe889979",
+      "dirty": true
+    },
+    "extractors": [
+      "typescript"
+    ],
+    "explainers": [
+      "cycles",
+      "layers",
+      "crossrepo",
+      "coverage",
+      "unused-routes",
+      "god-class",
+      "hotspots",
+      "dependency-depth",
+      "exported-surface",
+      "complexity-outliers"
+    ],
+    "renderers": [
+      "llm_context"
+    ],
+    "config_hash": "sha256:300a38fbedbeb6889cf759c04120e621670adcb67a904ddcd2723b6857e59e6c",
+    "ignore_glob_hash": "sha256:54c17b6a0fe6e58f13ce498807b6321aaede07956af61ed78e380d378dfbf826",
+    "output_hashes": {
+      "facts.jsonl": "sha256:a365afd41752d8c16c3c7503c190c7bbaaf5e720a85f02bbf36025e674452971",
+      "insights.json": "sha256:026b99db7a5715d2dbcfcb25c951efa20d469113aedb0186a5eff1143876e702",
+      "llm_context.md": "sha256:bf63e58c628f0dec21cea1dcb8a6367e35c4cd8de4c84dd77cc27583339f7c88"
+    },
+    "fact_count": 490,
+    "insight_count": 15,
+    "quality": {
+      "files_seen": 238,
+      "files_parsed": 36,
+      "files_skipped": 25,
+      "dirs_skipped": 2,
+      "skipped_sample": [
+        ".git/ (glob: .git/**)",
+        "node_modules/ (glob: node_modules/**)",
+        "tests/autonomy.test.ts (glob: **/*.test.ts)",
+        "tests/background-tasks.test.ts (glob: **/*.test.ts)",
+        "tests/brain-home.test.ts (glob: **/*.test.ts)",
+        "tests/brain-links.test.ts (glob: **/*.test.ts)",
+        "tests/brain-projects.test.ts (glob: **/*.test.ts)",
+        "tests/brain-state.test.ts (glob: **/*.test.ts)",
+        "tests/brain-sync.test.ts (glob: **/*.test.ts)",
+        "tests/build-renderers.test.ts (glob: **/*.test.ts)",
+        "tests/commands.test.ts (glob: **/*.test.ts)",
+        "tests/compaction-harvest.test.ts (glob: **/*.test.ts)",
+        "tests/context-injection.test.ts (glob: **/*.test.ts)",
+        "tests/diff.test.ts (glob: **/*.test.ts)",
+        "tests/enola.test.ts (glob: **/*.test.ts)",
+        "tests/inbox.test.ts (glob: **/*.test.ts)",
+        "tests/integration.test.ts (glob: **/*.test.ts)",
+        "tests/intent-blocks.test.ts (glob: **/*.test.ts)",
+        "tests/load.test.ts (glob: **/*.test.ts)",
+        "tests/pre-commit-hook.test.ts (glob: **/*.test.ts)"
+      ],
+      "parse_errors": 0,
+      "heuristic_insights": 14
+    },
+    "content_digest": "sha256:93891b161a7f0c9b37dbe136554c23e0848fab56534cdd25fda5a2954a6399e0"
+  }
+}
