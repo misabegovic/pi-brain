@@ -15,6 +15,17 @@ active_repos: []
 # If true, autonomous mode may run configured pull connectors at session start.
 auto_connect: false
 
+# Optional enola architecture intelligence integration.
+# Adjust args to match your installed enola binary variant.
+enola.enabled: true
+enola.check_args: "--generate --explain --no-dashboard"
+enola.baseline_args: "--generate --no-dashboard"
+enola.query_args: "--generate --explain --no-dashboard"
+enola.impact_args: "--generate --explain --no-dashboard"
+enola.gate_build: false
+enola.gate_sync_code: false
+enola.auto_baseline: false
+
 # Repos that were tracked once and are now archived.
 archived_repos: []
 
