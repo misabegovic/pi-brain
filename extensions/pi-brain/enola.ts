@@ -28,6 +28,22 @@ function findEnolaBinary(config: EnolaConfig): string {
   return config.binary ?? "enola";
 }
 
+function getCheckArgs(config: EnolaConfig): string[] {
+  return config.checkArgs ?? ["check"];
+}
+
+function getBaselineArgs(config: EnolaConfig): string[] {
+  return config.baselineArgs ?? ["baseline", "pin"];
+}
+
+function getQueryArgs(config: EnolaConfig): string[] {
+  return config.queryArgs ?? ["check"];
+}
+
+function getImpactArgs(config: EnolaConfig): string[] {
+  return config.impactArgs ?? ["check"];
+}
+
 async function resolveTargetRepo(home: BrainHome, config: EnolaConfig): Promise<string | null> {
   if (!config.targetRepo) return home.path;
   const target = resolve(home.path, config.targetRepo);
@@ -71,7 +87,7 @@ export async function runEnolaCheck(home: BrainHome): Promise<EnolaResult> {
   }
 
   const binary = findEnolaBinary(config);
-  const result = await runEnola(binary, ["check"], target);
+  const result = await runEnola(binary, getCheckArgs(config), target);
 
   // enola exits non-zero when it finds a structural regression.
   const ok = result.exitCode === 0;
@@ -98,7 +114,7 @@ export async function runEnolaBaseline(home: BrainHome): Promise<EnolaResult> {
   }
 
   const binary = findEnolaBinary(config);
-  const result = await runEnola(binary, ["baseline", "pin"], target);
+  const result = await runEnola(binary, getBaselineArgs(config), target);
   return {
     ok: result.exitCode === 0,
     exitCode: result.exitCode,
@@ -120,8 +136,8 @@ export async function runEnolaQuery(home: BrainHome, query: string): Promise<Eno
   }
 
   const binary = findEnolaBinary(config);
-  // enola does not have a stable query CLI yet; run check and grep for the symbol/module.
-  const result = await runEnola(binary, ["check"], target);
+  // enola does not have a stable query CLI yet; run the configured query command and grep for the symbol/module.
+  const result = await runEnola(binary, getQueryArgs(config), target);
   const lines = (result.stdout + result.stderr).split("\n");
   const matches = lines.filter((line) => line.toLowerCase().includes(query.toLowerCase()));
 
@@ -131,6 +147,50 @@ export async function runEnolaQuery(home: BrainHome, query: string): Promise<Eno
     stdout: matches.join("\n") || "No matches found in current output.",
     stderr: "",
     summary: `Queried enola output for "${query}".`,
+  };
+}
+
+export async function runEnolaImpact(home: BrainHome, symbol: string): Promise<EnolaResult> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { ok: true, exitCode: 0, stdout: "", stderr: "enola is not enabled in brain.config.yml." };
+  }
+
+  const target = await resolveTargetRepo(home, config);
+  if (!target) {
+    return { ok: false, exitCode: 1, stdout: "", stderr: `enola target_repo not found: ${config.targetRepo}` };
+  }
+
+  const binary = findEnolaBinary(config);
+  const result = await runEnola(binary, getImpactArgs(config), target);
+  const text = result.stdout + result.stderr;
+  const lines = text.split("\n");
+  const queryLower = symbol.toLowerCase();
+
+  // Collect lines mentioning the symbol and a few lines of surrounding context.
+  const matchedIndices = new Set<number>();
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].toLowerCase().includes(queryLower)) {
+      for (let j = Math.max(0, i - 2); j <= Math.min(lines.length - 1, i + 2); j++) {
+        matchedIndices.add(j);
+      }
+    }
+  }
+
+  const impactLines: string[] = [];
+  let previous = -2;
+  for (const idx of Array.from(matchedIndices).sort((a, b) => a - b)) {
+    if (idx > previous + 1) impactLines.push("...");
+    impactLines.push(lines[idx]);
+    previous = idx;
+  }
+
+  return {
+    ok: true,
+    exitCode: 0,
+    stdout: impactLines.join("\n") || "No impact data found in current output.",
+    stderr: "",
+    summary: `Impact analysis for "${symbol}" from enola output.`,
   };
 }
 
@@ -284,6 +344,24 @@ export function registerEnolaCommands(pi: ExtensionAPI) {
         return;
       }
       const result = await runEnolaQuery(home, query);
+      ctx.ui.notify(formatEnolaResult(result), "info");
+    },
+  });
+
+  pi.registerCommand("brain:enola-impact", {
+    description: "Show impact radius for a symbol or module (usage: /brain:enola-impact <symbol>)",
+    handler: async (args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const symbol = args.trim();
+      if (!symbol) {
+        ctx.ui.notify("Usage: /brain:enola-impact <symbol>", "warning");
+        return;
+      }
+      const result = await runEnolaImpact(home, symbol);
       ctx.ui.notify(formatEnolaResult(result), "info");
     },
   });

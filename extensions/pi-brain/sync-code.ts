@@ -8,7 +8,7 @@ import { parseTypeScriptInterfaces, diffInterfaces, type DriftItem, type TsInter
 import { isValidIdentifier } from "./utils.ts";
 import { randomUUID } from "node:crypto";
 import { readEnolaConfig } from "./brain-home.ts";
-import { enolaGateCheck } from "./enola.ts";
+import { enolaGateCheck, runEnolaBaseline } from "./enola.ts";
 
 interface DataModelField {
   name: string;
@@ -281,7 +281,12 @@ export function registerSyncCode(pi: ExtensionAPI) {
         for (const item of items) {
           await applyCodeChange(generatedPath, item);
         }
-        ctx.ui.notify(`Applied ${items.length} code change(s). Proposals remain in ai-suggestions/sync-code/.`, "info");
+        let baselineMessage = "";
+        if (enolaConfig.enabled && enolaConfig.autoBaseline) {
+          const baseline = await runEnolaBaseline(home);
+          baselineMessage = `\n${baseline.summary ?? "Architecture baseline updated."}`;
+        }
+        ctx.ui.notify(`Applied ${items.length} code change(s). Proposals remain in ai-suggestions/sync-code/.${baselineMessage}`, "info");
       } else {
         ctx.ui.notify(
           `Generated ${proposalPaths.length} proposal(s) in ai-suggestions/sync-code/${target}/. Use --apply to update code.`,
