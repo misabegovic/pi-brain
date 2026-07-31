@@ -64,6 +64,11 @@ export interface EnolaConfig {
   enabled: boolean;
   targetRepo?: string;
   binary?: string;
+  checkArgs?: string[];
+  baselineArgs?: string[];
+  queryArgs?: string[];
+  impactArgs?: string[];
   gateBuild?: boolean;
   gateSyncCode?: boolean;
+  autoBaseline?: boolean;
 }

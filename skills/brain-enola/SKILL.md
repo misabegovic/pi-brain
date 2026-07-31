@@ -23,9 +23,16 @@ enola:
   enabled: true
   target_repo: ./path/to/target/repo    # optional; defaults to the brain home
   binary: enola                          # optional; path to enola binary
+  check_args: "check"                   # optional; default: "check"
+  baseline_args: "baseline pin"         # optional; default: "baseline pin"
+  query_args: "check"                   # optional; default: "check"
+  impact_args: "check"                  # optional; default: "check"
   gate_build: true                       # optional; run enola check before /brain:build
   gate_sync_code: true                   # optional; run enola check before /brain:sync-code
+  auto_baseline: true                    # optional; re-pin baseline after build/sync-code apply
 ```
+
+If your enola variant uses different commands, override `check_args`, `baseline_args`, etc. For example, the MCP-style enola binary uses `--generate --explain` for checks.
 
 ## Tools
 
@@ -34,6 +41,7 @@ enola:
 - `operation: "check"` — run `enola check` on the configured target repo.
 - `operation: "baseline"` — pin the architecture baseline.
 - `operation: "query"` with `query: "symbol-or-module"` — search current enola output.
+- `operation: "impact"` with `query: "symbol-or-module"` — show impact radius with surrounding context.
 
 If enola is not enabled or not installed, the tool returns a helpful message instead of failing.
 
@@ -44,6 +52,7 @@ If enola is not enabled or not installed, the tool returns a helpful message ins
 - `/brain:enola-capture` — run check and save regressions as an ai-suggestion.
 - `/brain:enola-baseline`
 - `/brain:enola-query <term>`
+- `/brain:enola-impact <symbol>` — show impact radius for a symbol or module.
 
 ## CI
 

@@ -5,7 +5,7 @@ import { join, relative, resolve } from "node:path";
 import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
 import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
 import { resolveResource, readPackageVersion } from "./resources.ts";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult, captureEnolaRegressions } from "./enola.ts";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, formatEnolaResult, captureEnolaRegressions } from "./enola.ts";
 import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
 import { appendInboxItem, appendAutoIngestBatch, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
@@ -736,10 +736,11 @@ export function registerTools(pi: ExtensionAPI) {
           Type.Literal("check", { description: "Run enola check and report structural regressions." }),
           Type.Literal("baseline", { description: "Pin the architecture baseline." }),
           Type.Literal("query", { description: "Search enola output for a symbol or module." }),
+          Type.Literal("impact", { description: "Show impact radius for a symbol or module with context." }),
         ],
         { description: "Operation to perform." }
       ),
-      query: Type.Optional(Type.String({ description: "For operation=query, the symbol or module to search for." })),
+      query: Type.Optional(Type.String({ description: "For operation=query or impact, the symbol or module." })),
     }),
     constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
@@ -754,6 +755,12 @@ export function registerTools(pi: ExtensionAPI) {
           result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=query.", summary: "Missing query parameter." };
         } else {
           result = await runEnolaQuery(home, params.query);
+        }
+      } else if (params.operation === "impact") {
+        if (!params.query) {
+          result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=impact.", summary: "Missing query parameter." };
+        } else {
+          result = await runEnolaImpact(home, params.query);
         }
       } else {
         result = await runEnolaCheck(home);
