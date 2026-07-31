@@ -1,0 +1,19 @@
+name: enola architecture check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  enola:
+    runs-on: ubuntu-latest
+    # Only run when enola is configured for this repo.
+    if: ${{ hashFiles('enola.config.yml') != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install enola
+        run: curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
+      - name: Run enola check
+        run: enola check

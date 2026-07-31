@@ -5,6 +5,7 @@ import { join, relative, resolve } from "node:path";
 import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
 import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
 import { resolveResource, readPackageVersion } from "./resources.ts";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult } from "./enola.ts";
 import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
 import { appendInboxItem, appendAutoIngestBatch, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
@@ -704,6 +705,46 @@ export function registerTools(pi: ExtensionAPI) {
           details: {},
         };
       }
+    },
+  });
+
+  pi.registerTool({
+    name: "brain_enola",
+    label: "Brain enola",
+    description: "Run an optional enola architecture check/baseline/query on the configured target repo.",
+    parameters: Type.Object({
+      operation: Type.Union(
+        [
+          Type.Literal("check", { description: "Run enola check and report structural regressions." }),
+          Type.Literal("baseline", { description: "Pin the architecture baseline." }),
+          Type.Literal("query", { description: "Search enola output for a symbol or module." }),
+        ],
+        { description: "Operation to perform." }
+      ),
+      query: Type.Optional(Type.String({ description: "For operation=query, the symbol or module to search for." })),
+    }),
+    constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
+    async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: { ok: false, exitCode: 1 } };
+
+      let result;
+      if (params.operation === "baseline") {
+        result = await runEnolaBaseline(home);
+      } else if (params.operation === "query") {
+        if (!params.query) {
+          result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=query.", summary: "Missing query parameter." };
+        } else {
+          result = await runEnolaQuery(home, params.query);
+        }
+      } else {
+        result = await runEnolaCheck(home);
+      }
+
+      return {
+        content: [{ type: "text" as const, text: formatEnolaResult(result) }],
+        details: { ok: result.ok, exitCode: result.exitCode },
+      };
     },
   });
 
