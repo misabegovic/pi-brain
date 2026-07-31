@@ -92,7 +92,8 @@ export function registerRefinement(
     pi.sendMessage(
       {
         customType: "brain-refinement-trigger",
-        content: "Run the autonomous refinement protocol.",
+        content:
+          "Run the autonomous refinement protocol. If enola is enabled, also run brain_enola_capture to surface any architectural regressions as ai-suggestions.",
         display: false,
       },
       { triggerTurn: true },
