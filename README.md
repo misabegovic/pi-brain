@@ -37,7 +37,7 @@ PRD/ADR with YAML intent blocks
    /brain:revise → updated intent
 ```
 
-Commands: `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, `/brain:enqueue`, `/brain:run-tasks`, `/brain:tasks`, `/brain:bg-agent`, `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query`.
+Commands: `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, `/brain:enqueue`, `/brain:run-tasks`, `/brain:tasks`, `/brain:bg-agent`, `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query`.
 
 ## Vision: how pi-brain manages knowledge
 

@@ -5,7 +5,7 @@
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult } from "../extensions/pi-brain/enola.js";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult, enolaGateCheck } from "../extensions/pi-brain/enola.js";
 
 async function createTestHome(enabled: boolean, targetRepo?: string): Promise<{ path: string }> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-enola-"));
@@ -56,6 +56,14 @@ async function main() {
   if (!formatted.includes("summary") || !formatted.includes("out") || !formatted.includes("err")) {
     throw new Error(`Unexpected formatted output: ${formatted}`);
   }
+
+  // 6. enolaGateCheck skips when disabled and proceeds
+  const gateDisabledHome = await createTestHome(false);
+  const gateDisabled = await enolaGateCheck(gateDisabledHome, "test");
+  if (!gateDisabled.proceed) {
+    throw new Error(`Expected gate to proceed when disabled, got ${JSON.stringify(gateDisabled)}`);
+  }
+  await rm(gateDisabledHome.path, { recursive: true, force: true });
 
   console.log("✓ enola test passed");
 }
