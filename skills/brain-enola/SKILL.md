@@ -40,6 +40,9 @@ If your enola variant uses different commands, override `check_args`, `baseline_
 
 - `operation: "check"` — run `enola check` on the configured target repo.
 - `operation: "baseline"` — pin the architecture baseline.
+- `operation: "generate"` — generate enola snapshot and record a receipt in `wiki/_state/enola/receipts.json`.
+- `operation: "diff"` — compare the current snapshot to recorded receipts and report drift.
+- `operation: "citations"` — check wiki prose for `enola receipt ...` citations and verdict them ok/stale/unknown-repo.
 - `operation: "query"` with `query: "symbol-or-module"` — search current enola output.
 - `operation: "impact"` with `query: "symbol-or-module"` — show impact radius with surrounding context.
 
@@ -50,9 +53,22 @@ If enola is not enabled or not installed, the tool returns a helpful message ins
 - `/brain:enola-status` — show current configuration.
 - `/brain:enola-check`
 - `/brain:enola-capture` — run check and save regressions as an ai-suggestion.
+- `/brain:enola-generate` — generate snapshot and record receipt.
+- `/brain:enola-diff` — compare current snapshot to recorded receipts.
+- `/brain:enola-citations` — check enola receipt citations in wiki prose.
 - `/brain:enola-baseline`
 - `/brain:enola-query <term>`
 - `/brain:enola-impact <symbol>` — show impact radius for a symbol or module.
+
+## Receipts and citations
+
+When you run `/brain:enola-generate`, pi-brain records per-repo snapshot metadata in `wiki/_state/enola/receipts.json`. You can cite a receipt in wiki prose like:
+
+```markdown
+enola receipt pi-brain `sha256:72d38a9e…` @ `0f1c75b`, 2026-07-31
+```
+
+Then `/brain:enola-citations` will verdict the citation against the recorded state.
 
 ## CI
 

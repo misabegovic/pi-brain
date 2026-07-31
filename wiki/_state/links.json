@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T11:33:26.424Z",
-  "node_count": 90,
-  "edge_count": 597,
+  "generated_at": "2026-07-31T10:52:13.746Z",
+  "node_count": 94,
+  "edge_count": 613,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -116,6 +116,13 @@
       "title": "ADR — Multi-agent RFC collaboration"
     },
     {
+      "path": "brain/adrs/optional-enola-integration.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "medium",
+      "title": "ADR — Optional enola architecture intelligence integration"
+    },
+    {
       "path": "brain/adrs/plain-language-triggers-shape.md",
       "kind": "decision",
       "status": "accepted",
@@ -172,11 +179,11 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
-      "kind": "ai-suggestion",
-      "status": "draft",
+      "path": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md",
+      "kind": "refinement",
+      "status": "closed",
       "confidence": "high",
-      "title": "Publish v0.3.3 to npm"
+      "title": "Learn from projects/tt/brain enola integration and strengthen pi-brain's"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -310,6 +317,13 @@
       "status": "active",
       "confidence": "high",
       "title": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "path": "brain/epics/enola-integration.md",
+      "kind": "epic",
+      "status": "accepted",
+      "confidence": "high",
+      "title": "Epic — Full enola integration for pi-brain v0.4.0"
     },
     {
       "path": "brain/epics/regenerative-intent.md",
@@ -487,6 +501,13 @@
       "title": "Record — Embed pi-brain as default pi behaviour"
     },
     {
+      "path": "brain/records/enola-receipts-and-drift.md",
+      "kind": "record",
+      "status": "closed",
+      "confidence": "high",
+      "title": "Record — enola receipts, drift detection, and citation verification"
+    },
+    {
       "path": "brain/records/extension-cleanup-resource-conflicts.md",
       "kind": "record",
       "status": "current",
@@ -513,6 +534,13 @@
       "status": "delivered",
       "confidence": "high",
       "title": "Record — Multi-agent RFC collaboration"
+    },
+    {
+      "path": "brain/records/optional-enola-integration.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Optional enola integration"
     },
     {
       "path": "brain/records/plain-language-triggers-shape.md",
@@ -1223,6 +1251,13 @@
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
     },
     {
+      "source": "brain/adrs/optional-enola-integration",
+      "target": "brain/records/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/optional-enola-integration.md"
+    },
+    {
       "source": "brain/adrs/plain-language-triggers-shape",
       "target": "brain/bets/plain-language-triggers-shape",
       "kind": "markdown",
@@ -1872,6 +1907,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+    },
+    {
+      "source": "brain/epics/enola-integration",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/epics/enola-integration",
+      "target": "brain/records/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/epics/enola-integration",
+      "target": "brain/records/version-0-3-3",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-3-3.md"
+    },
+    {
+      "source": "brain/epics/enola-integration",
+      "target": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Lessons from projects/tt/brain enola integration"
     },
     {
       "source": "brain/epics/regenerative-intent",
@@ -2721,6 +2784,20 @@
       "context": "Constraint — ADR before structural changes"
     },
     {
+      "source": "brain/records/enola-receipts-and-drift",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/records/enola-receipts-and-drift",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/enola-integration.md"
+    },
+    {
       "source": "brain/records/extension-cleanup-resource-conflicts",
       "target": "brain/adrs/extension-cleanup-resource-conflicts",
       "kind": "markdown",
@@ -2810,6 +2887,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "wiki/brain/bets/multi-agent-rfc-collaboration.md"
+    },
+    {
+      "source": "brain/records/optional-enola-integration",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/records/optional-enola-integration",
+      "target": "brain/records/enola-receipts-and-drift",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/enola-receipts-and-drift.md"
     },
     {
       "source": "brain/records/plain-language-triggers-shape",
@@ -3120,6 +3211,13 @@
       "context": "wiki/brain/records/version-0-3-2.md"
     },
     {
+      "source": "brain/records/version-0-3-3",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/enola-integration.md"
+    },
+    {
       "source": "index",
       "target": "brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -3345,6 +3443,13 @@
     },
     {
       "source": "index",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Optional enola architecture intelligence integration"
+    },
+    {
+      "source": "index",
       "target": "brain/adrs/plain-language-triggers-shape",
       "kind": "markdown",
       "provenance": "body",
@@ -3401,10 +3506,10 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
+      "target": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration",
       "kind": "markdown",
       "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
+      "context": "Learn from projects/tt/brain enola integration and strengthe"
     },
     {
       "source": "index",
@@ -3426,6 +3531,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "index",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Full enola integration for pi-brain v0.4.0"
     },
     {
       "source": "index",
@@ -3604,6 +3716,13 @@
     },
     {
       "source": "index",
+      "target": "brain/records/enola-receipts-and-drift",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — enola receipts, drift detection, and citation verif"
+    },
+    {
+      "source": "index",
       "target": "brain/records/extension-cleanup-resource-conflicts",
       "kind": "markdown",
       "provenance": "body",
@@ -3629,6 +3748,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "index",
+      "target": "brain/records/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Optional enola integration"
     },
     {
       "source": "index",
@@ -3751,13 +3877,6 @@
     },
     {
       "source": "org/options",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/options",
       "target": "brain/pitches/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
@@ -3874,6 +3993,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Optional enola architecture intelligence integration"
     },
     {
       "source": "org/roadmap",
@@ -4045,6 +4171,13 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Full enola integration for pi-brain v0.4.0"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/epics/regenerative-intent",
       "kind": "markdown",
       "provenance": "body",
@@ -4164,13 +4297,6 @@
     },
     {
       "source": "org/roadmap",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/roadmap",
       "target": "brain/pitches/upstream-template-sync",
       "kind": "markdown",
       "provenance": "body",
@@ -4206,13 +4332,6 @@
     },
     {
       "source": "org/state",
-      "target": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Publish v0.3.3 to npm"
-    },
-    {
-      "source": "org/state",
       "target": "brain/constraints/explicit-approval-for-commits",
       "kind": "markdown",
       "provenance": "body",
@@ -4224,6 +4343,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Constraint — Remote promotion requires a pull request"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Epic — Full enola integration for pi-brain v0.4.0"
     },
     {
       "source": "org/state",
@@ -4308,6 +4434,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Optional enola integration"
     },
     {
       "source": "org/state",
@@ -4504,6 +4637,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Multi-agent RFC collaboration"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Optional enola architecture intelligence integration"
     },
     {
       "source": "org/state",
@@ -4961,6 +5101,10 @@
       "incoming": 6
     },
     {
+      "path": "brain/adrs/optional-enola-integration.md",
+      "incoming": 6
+    },
+    {
       "path": "brain/bets/background-task-runner.md",
       "incoming": 6
     },
@@ -5041,6 +5185,10 @@
       "incoming": 5
     },
     {
+      "path": "brain/epics/enola-integration.md",
+      "incoming": 5
+    },
+    {
       "path": "brain/records/version-0-2-0.md",
       "incoming": 5
     },
@@ -5057,10 +5205,6 @@
       "incoming": 4
     },
     {
-      "path": "brain/ai-suggestions/refinement/publish-v0-3-3-to-npm.md",
-      "incoming": 4
-    },
-    {
       "path": "brain/feedback/eager-implementation-contract-breach.md",
       "incoming": 4
     },
@@ -5070,6 +5214,10 @@
     },
     {
       "path": "brain/records/brain-state-preserves-custom-content.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/records/optional-enola-integration.md",
       "incoming": 4
     },
     {
@@ -5130,6 +5278,10 @@
     },
     {
       "path": "brain/records/version-0-3-2.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/version-0-3-3.md",
       "incoming": 3
     },
     {

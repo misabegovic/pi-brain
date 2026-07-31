@@ -9,11 +9,19 @@ on:
 jobs:
   enola:
     runs-on: ubuntu-latest
-    # Only run when enola is configured for this repo.
-    if: ${{ hashFiles('enola.config.yml') != '' }}
     steps:
       - uses: actions/checkout@v4
+      - name: Check if enola is configured
+        id: check
+        run: |
+          if grep -qE '^enola\.enabled:\s*true' brain.config.yml 2>/dev/null; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Install enola
+        if: steps.check.outputs.enabled == 'true'
         run: curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
-      - name: Run enola check
-        run: enola check
+      - name: Run enola diff
+        if: steps.check.outputs.enabled == 'true'
+        run: pi /brain:enola-diff

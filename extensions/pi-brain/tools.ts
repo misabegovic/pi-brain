@@ -5,7 +5,7 @@ import { join, relative, resolve } from "node:path";
 import { execFilePromise, pathExists, countInboxItems, listInboxItems } from "./utils.ts";
 import { readOrg, readAutonomy, writeAutonomy, countPages, countSources, countPagesByKind, readInbox } from "./brain-home.ts";
 import { resolveResource, readPackageVersion } from "./resources.ts";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, formatEnolaResult, captureEnolaRegressions } from "./enola.ts";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, formatEnolaResult, captureEnolaRegressions } from "./enola.ts";
 import { searchFiles } from "./search.ts";
 import { validateMarkdown, regenerateViews } from "./views.ts";
 import { appendInboxItem, appendAutoIngestBatch, appendLog, ingestFile, ingestDirectory, ingestUrl } from "./inbox.ts";
@@ -735,6 +735,9 @@ export function registerTools(pi: ExtensionAPI) {
         [
           Type.Literal("check", { description: "Run enola check and report structural regressions." }),
           Type.Literal("baseline", { description: "Pin the architecture baseline." }),
+          Type.Literal("generate", { description: "Generate enola snapshot and record receipt." }),
+          Type.Literal("diff", { description: "Compare current snapshot to recorded receipts." }),
+          Type.Literal("citations", { description: "Check enola receipt citations in wiki prose." }),
           Type.Literal("query", { description: "Search enola output for a symbol or module." }),
           Type.Literal("impact", { description: "Show impact radius for a symbol or module with context." }),
         ],
@@ -747,9 +750,21 @@ export function registerTools(pi: ExtensionAPI) {
       const home = await requireBrain(ctx.cwd);
       if (!home) return { content: [{ type: "text" as const, text: setupHint() }], details: { ok: false, exitCode: 1 } };
 
+      if (params.operation === "citations") {
+        const citResult = await runEnolaCitations(home);
+        return {
+          content: [{ type: "text" as const, text: citResult.message }],
+          details: { ok: citResult.ok, exitCode: 0 },
+        };
+      }
+
       let result;
       if (params.operation === "baseline") {
         result = await runEnolaBaseline(home);
+      } else if (params.operation === "generate") {
+        result = await runEnolaGenerate(home);
+      } else if (params.operation === "diff") {
+        result = await runEnolaDiff(home);
       } else if (params.operation === "query") {
         if (!params.query) {
           result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=query.", summary: "Missing query parameter." };

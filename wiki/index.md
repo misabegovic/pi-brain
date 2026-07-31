@@ -57,6 +57,9 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Upstream template sync mechanism](brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
+### refinement
+- [Learn from projects/tt/brain enola integration and strengthen pi-brain's](brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md)
+
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
 - [Constraint — Explicit approval required for commits](brain/constraints/explicit-approval-for-commits.md)
@@ -97,6 +100,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — brain-state preserves custom content](brain/records/brain-state-preserves-custom-content.md)
 - [Record — `/brain:sync-code` reconciliation](brain/records/brain-sync-code.md)
 - [Record — Embed pi-brain as default pi behaviour](brain/records/embed-pi-brain-default-behaviour.md)
+- [Record — enola receipts, drift detection, and citation verification](brain/records/enola-receipts-and-drift.md)
 - [Record — Extension cleanup: remove duplicate resource registration and dead code](brain/records/extension-cleanup-resource-conflicts.md)
 - [Current truth](brain/records/live-status-widget-refresh.md)
 - [Record — Multi-agent intent collaboration](brain/records/multi-agent-intent-collaboration.md)
