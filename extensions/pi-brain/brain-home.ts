@@ -11,6 +11,7 @@ import type {
   BrainShortcutsConfig,
   BrainEventBusConfig,
   SessionShutdownConfig,
+  EnolaConfig,
 } from "./types.ts";
 import { pathExists, getMarkdownFiles, extractSimpleYamlValue, parseFrontmatter } from "./utils.ts";
 
@@ -143,6 +144,23 @@ export async function readSessionShutdownConfig(home: BrainHome): Promise<Sessio
     return { enabled: value !== "false" };
   } catch {
     return { enabled: true };
+  }
+}
+
+export async function readEnolaConfig(home: BrainHome): Promise<EnolaConfig> {
+  const defaults: EnolaConfig = { enabled: false };
+  try {
+    const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
+    const enabled = extractSimpleYamlValue(config, "enola.enabled");
+    const targetRepo = extractSimpleYamlValue(config, "enola.target_repo");
+    const binary = extractSimpleYamlValue(config, "enola.binary");
+    return {
+      enabled: enabled ? enabled === "true" : defaults.enabled,
+      targetRepo: targetRepo ?? defaults.targetRepo,
+      binary: binary ?? defaults.binary,
+    };
+  } catch {
+    return defaults;
   }
 }
 
