@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-31T11:05:03.129Z",
-  "node_count": 94,
-  "edge_count": 613,
+  "generated_at": "2026-07-31T11:14:59.257Z",
+  "node_count": 96,
+  "edge_count": 615,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -177,6 +177,20 @@
       "status": "accepted",
       "confidence": "medium",
       "title": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md",
+      "kind": "refinement",
+      "status": "open",
+      "confidence": "medium",
+      "title": "Audit shared utility hotspots flagged by enola"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md",
+      "kind": "refinement",
+      "status": "open",
+      "confidence": "medium",
+      "title": "Split high-complexity registration functions in extensions/pi-brain"
     },
     {
       "path": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md",
@@ -3503,6 +3517,20 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Versioning and release strategy for pi-brain"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Audit shared utility hotspots flagged by enola"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Split high-complexity registration functions in extensions/p"
     },
     {
       "source": "index",
