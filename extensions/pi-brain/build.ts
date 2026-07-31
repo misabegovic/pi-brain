@@ -6,7 +6,7 @@ import { collectBlocks } from "./intent-blocks.ts";
 import { renderTarget } from "./build-renderers.ts";
 import { isValidIdentifier } from "./utils.ts";
 import { readEnolaConfig } from "./brain-home.ts";
-import { enolaGateCheck } from "./enola.ts";
+import { enolaGateCheck, runEnolaBaseline } from "./enola.ts";
 
 export function registerBuild(pi: ExtensionAPI) {
   pi.registerCommand("brain:build", {
@@ -66,7 +66,12 @@ export function registerBuild(pi: ExtensionAPI) {
       await mkdir(outputDir, { recursive: true });
       await writeFile(outputPath, output, "utf-8");
 
-      ctx.ui.notify(`Generated ${outputPath}\n\n${output.slice(0, 1200)}`, "info");
+      if (enolaConfig.enabled && enolaConfig.autoBaseline) {
+        const baseline = await runEnolaBaseline(home);
+        ctx.ui.notify(`Generated ${outputPath}\n\n${baseline.summary ?? "Baseline updated."}\n\n${output.slice(0, 1000)}`, "info");
+      } else {
+        ctx.ui.notify(`Generated ${outputPath}\n\n${output.slice(0, 1200)}`, "info");
+      }
     },
   });
 }
