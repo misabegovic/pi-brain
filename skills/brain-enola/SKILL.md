@@ -23,6 +23,8 @@ enola:
   enabled: true
   target_repo: ./path/to/target/repo    # optional; defaults to the brain home
   binary: enola                          # optional; path to enola binary
+  gate_build: true                       # optional; run enola check before /brain:build
+  gate_sync_code: true                   # optional; run enola check before /brain:sync-code
 ```
 
 ## Tools
@@ -37,6 +39,7 @@ If enola is not enabled or not installed, the tool returns a helpful message ins
 
 ## Commands the human can type
 
+- `/brain:enola-status` — show current configuration.
 - `/brain:enola-check`
 - `/brain:enola-baseline`
 - `/brain:enola-query <term>`
