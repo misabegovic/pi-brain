@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-31T11:14:59.257Z",
-  "node_count": 96,
-  "edge_count": 615,
+  "generated_at": "2026-07-31T11:43:36.632Z",
+  "node_count": 97,
+  "edge_count": 618,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -181,15 +181,15 @@
     {
       "path": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md",
       "kind": "refinement",
-      "status": "open",
-      "confidence": "medium",
+      "status": "closed",
+      "confidence": "high",
       "title": "Audit shared utility hotspots flagged by enola"
     },
     {
       "path": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md",
       "kind": "refinement",
-      "status": "open",
-      "confidence": "medium",
+      "status": "closed",
+      "confidence": "high",
       "title": "Split high-complexity registration functions in extensions/pi-brain"
     },
     {
@@ -576,6 +576,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Record — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "path": "brain/records/split-heavy-registration-functions.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — split high-complexity registration functions"
     },
     {
       "path": "brain/records/stronger-default-implementation-guardrails.md",
@@ -2966,6 +2973,20 @@
       "context": "wiki/brain/bets/smarter-autonomy.md"
     },
     {
+      "source": "brain/records/split-heavy-registration-functions",
+      "target": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/refinement/enola-insights-split-he"
+    },
+    {
+      "source": "brain/records/split-heavy-registration-functions",
+      "target": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/refinement/enola-insights-reduce-s"
+    },
+    {
       "source": "brain/records/stronger-default-implementation-guardrails",
       "target": "brain/adrs/stronger-default-implementation-guardrails",
       "kind": "markdown",
@@ -3804,6 +3825,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "index",
+      "target": "brain/records/split-heavy-registration-functions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — split high-complexity registration functions"
     },
     {
       "source": "index",

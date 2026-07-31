@@ -2,8 +2,8 @@
 title: Split high-complexity registration functions in extensions/pi-brain
 description: Enola analysis flagged registerTools (complexity 116), registerCommands (92), and registerHooks (57) as complexity outliers. Refactor each into per-domain registrar helpers to improve testability and reduce the blast radius of future changes.
 kind: refinement
-status: open
-confidence: medium
+status: closed
+confidence: high
 source: enola analysis of extensions/pi-brain
 ---
 

@@ -75,10 +75,7 @@ export function parseFrontmatter(text: string): { frontmatter: string; body: str
   };
 }
 
-export function extractSimpleYamlValue(text: string, key: string): string | undefined {
-  const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));
-  return match?.[1].trim();
-}
+export { extractSimpleYamlValue } from "./yaml.ts";
 
 export const STOP_WORDS = new Set([
   "the", "and", "for", "are", "but", "not", "you", "all", "can", "had", "her", "was", "one", "our", "out", "day", "get", "has", "him", "his", "how", "its", "may", "new", "now", "old", "see", "two", "who", "boy", "did", "she", "use", "her", "way", "many", "oil", "sit", "set", "run", "eat", "far", "sea", "eye", "ago", "off", "too", "any", "say", "man", "try", "ask", "end", "why", "let", "put", "say", "she", "try", "way", "own", "say", "too", "old", "tell", "very", "when", "much", "would", "there", "their", "what", "said", "each", "which", "will", "about", "could", "other", "after", "first", "never", "these", "think", "where", "being", "every", "great", "might", "shall", "still", "those", "while", "this", "that", "with", "from", "they", "have", "were", "been", "than", "them", "into", "just", "like", "over", "also", "back", "only", "know", "take", "year", "good", "some", "come", "make", "well", "time", "here", "look", "down", "most", "long", "find", "give", "does", "made", "part", "such", "keep", "call", "came", "need", "feel", "seem", "turn", "hand", "high", "sure", "upon", "head", "help", "home", "side", "move", "both", "five", "once", "same", "must", "name", "left", "each", "done", "open", "case", "show", "live", "play", "went", "told", "seen", "heard", "talk", "soon", "read", "stop", "face", "fact", "land", "line", "kind", "next", "word", "came", "went", "told", "seen", "heard", "talk", "soon", "read", "stop", "face", "fact", "land", "line", "kind", "next", "word",
