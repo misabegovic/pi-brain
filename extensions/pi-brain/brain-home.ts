@@ -147,17 +147,26 @@ export async function readSessionShutdownConfig(home: BrainHome): Promise<Sessio
   }
 }
 
+function parseBoolean(value: string | undefined, fallback: boolean): boolean {
+  if (value === undefined) return fallback;
+  return value === "true" || value === "yes" || value === "on" || value === "1";
+}
+
 export async function readEnolaConfig(home: BrainHome): Promise<EnolaConfig> {
-  const defaults: EnolaConfig = { enabled: false };
+  const defaults: EnolaConfig = { enabled: false, gateBuild: false, gateSyncCode: false };
   try {
     const config = await readFile(join(home.path, "brain.config.yml"), "utf-8");
     const enabled = extractSimpleYamlValue(config, "enola.enabled");
     const targetRepo = extractSimpleYamlValue(config, "enola.target_repo");
     const binary = extractSimpleYamlValue(config, "enola.binary");
+    const gateBuild = extractSimpleYamlValue(config, "enola.gate_build");
+    const gateSyncCode = extractSimpleYamlValue(config, "enola.gate_sync_code");
     return {
       enabled: enabled ? enabled === "true" : defaults.enabled,
       targetRepo: targetRepo ?? defaults.targetRepo,
       binary: binary ?? defaults.binary,
+      gateBuild: parseBoolean(gateBuild, defaults.gateBuild ?? false),
+      gateSyncCode: parseBoolean(gateSyncCode, defaults.gateSyncCode ?? false),
     };
   } catch {
     return defaults;
