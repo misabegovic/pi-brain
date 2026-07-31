@@ -22,19 +22,22 @@ v0.3.3 delivers the regenerative-intent epic and follow-up cleanup:
 
 ## Pull requests
 
-- PR #12: https://github.com/misabegovic/pi-brain/pull/12
-- PR #13: https://github.com/misabegovic/pi-brain/pull/13
-- PR #14: https://github.com/misabegovic/pi-brain/pull/14
-- PR #15: https://github.com/misabegovic/pi-brain/pull/15
-- PR #16: https://github.com/misabegovic/pi-brain/pull/16
-- PR #17: https://github.com/misabegovic/pi-brain/pull/17
-- PR #18: https://github.com/misabegovic/pi-brain/pull/18
-- PR #19: https://github.com/misabegovic/pi-brain/pull/19
-- PR #20: https://github.com/misabegovic/pi-brain/pull/21
-- PR #21: https://github.com/misabegovic/pi-brain/pull/21
-- PR #22: https://github.com/misabegovic/pi-brain/pull/22
+- PR #12 through PR #22: regenerative-intent epic delivery, link graph fixes, TypeScript checks, CI, and command tests.
+- PR #61: update pi dependencies to v0.83.0.
+- PR #62: opt pi-brain tools into JSON-schema constrained sampling.
+- PR #63: constrained-sampling follow-ups (literal union for capture kind, test, documentation).
+- PR #64: test and harden the background task runner.
+- PR #65: add detached background-task execution.
+- PR #66: parallel background tasks and background agents.
+- PR #67: update CHANGELOG for v0.3.3 release notes.
+- PR #68: optional enola architecture intelligence integration.
+
+## npm publication
+
+- Published to npm as `@misabegovic/pi-brain@0.3.3`.
 
 ## Related
 
 - [wiki/brain/epics/regenerative-intent.md](../epics/regenerative-intent.md)
 - [wiki/brain/records/version-0-3-2.md](version-0-3-2.md)
+- [wiki/brain/epics/enola-integration.md](../epics/enola-integration.md)
