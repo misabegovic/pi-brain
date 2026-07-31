@@ -18,9 +18,10 @@ An optional enola architecture-intelligence integration for pi-brain.
 
 - `extensions/pi-brain/types.ts` — `EnolaConfig` interface.
 - `extensions/pi-brain/brain-home.ts` — `readEnolaConfig()`.
-- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaQuery`, `formatEnolaResult`, `enolaGateCheck`, and `registerEnolaCommands`.
-- `extensions/pi-brain/tools.ts` — `brain_enola` tool.
-- `extensions/pi-brain/commands.ts` — `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-baseline`, `/brain:enola-query`.
+- `extensions/pi-brain/enola.ts` — `runEnolaCheck`, `runEnolaBaseline`, `runEnolaQuery`, `formatEnolaResult`, `enolaGateCheck`, `captureEnolaRegressions`, and `registerEnolaCommands`.
+- `extensions/pi-brain/tools.ts` — `brain_enola` and `brain_enola_capture` tools.
+- `extensions/pi-brain/commands.ts` — `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-baseline`, `/brain:enola-query`.
+- `extensions/pi-brain/refinement.ts` — autonomous refinement protocol prompt mentions `brain_enola_capture`.
 - `extensions/pi-brain/build.ts` and `extensions/pi-brain/sync-code.ts` — optional enola gates before code generation.
 - `.github/workflows/enola.yml` — opt-in CI workflow gated on `enola.config.yml`.
 - `skills/brain-enola/SKILL.md` — agent skill documentation.

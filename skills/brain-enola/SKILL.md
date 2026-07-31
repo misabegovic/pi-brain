@@ -41,6 +41,7 @@ If enola is not enabled or not installed, the tool returns a helpful message ins
 
 - `/brain:enola-status` — show current configuration.
 - `/brain:enola-check`
+- `/brain:enola-capture` — run check and save regressions as an ai-suggestion.
 - `/brain:enola-baseline`
 - `/brain:enola-query <term>`
 
