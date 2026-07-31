@@ -5,7 +5,7 @@
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult, enolaGateCheck } from "../extensions/pi-brain/enola.js";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
 
 async function createTestHome(enabled: boolean, targetRepo?: string): Promise<{ path: string }> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-enola-"));
@@ -64,6 +64,14 @@ async function main() {
     throw new Error(`Expected gate to proceed when disabled, got ${JSON.stringify(gateDisabled)}`);
   }
   await rm(gateDisabledHome.path, { recursive: true, force: true });
+
+  // 7. captureEnolaRegressions skips when disabled
+  const captureDisabledHome = await createTestHome(false);
+  const captureDisabled = await captureEnolaRegressions(captureDisabledHome);
+  if (captureDisabled.captured) {
+    throw new Error(`Expected no capture when disabled, got ${JSON.stringify(captureDisabled)}`);
+  }
+  await rm(captureDisabledHome.path, { recursive: true, force: true });
 
   console.log("✓ enola test passed");
 }
