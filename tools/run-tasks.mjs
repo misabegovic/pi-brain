@@ -11,8 +11,9 @@
  */
 
 import { runTasks, listTasks } from "../extensions/pi-brain/tasks.ts";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 const HOME = { path: CWD };
 
 function parseTaskIdArg() {

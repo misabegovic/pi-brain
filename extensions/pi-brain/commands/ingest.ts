@@ -1,6 +1,6 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { resolveResource } from "../resources.ts";
 import { requireBrain } from "../context.ts";
 
@@ -20,8 +20,8 @@ export function registerIngestCommands(pi: ExtensionAPI) {
         ctx.ui.notify("Repo ingest runner not found", "error");
         return;
       }
-      const cmdArgs = scope ? [script, target, scope] : [script, target];
-      const result = await execFilePromise("node", cmdArgs, { cwd: home.path });
+      const cmdArgs = scope ? [target, scope] : [target];
+      const result = await runBrainScript(script, cmdArgs, home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "Repo ingested.", result.code === 0 ? "info" : "error");
     },
@@ -37,7 +37,7 @@ export function registerIngestCommands(pi: ExtensionAPI) {
         ctx.ui.notify("Projects runner not found", "error");
         return;
       }
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "No projects found.", result.code === 0 ? "info" : "error");
     },

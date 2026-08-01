@@ -1,6 +1,6 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { resolveResource } from "../resources.ts";
 import { requireBrain } from "../context.ts";
 
@@ -15,7 +15,7 @@ export function registerViewCommands(pi: ExtensionAPI) {
         ctx.ui.notify("Link graph runner not found", "error");
         return;
       }
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "Link graph finished.", result.code === 0 ? "info" : "error");
     },
@@ -41,8 +41,8 @@ export function registerViewCommands(pi: ExtensionAPI) {
         ctx.ui.notify("State runner not found", "error");
         return;
       }
-      const cmdArgs = args.trim() ? [script, args.trim()] : [script];
-      const result = await execFilePromise("node", cmdArgs, { cwd: home.path });
+      const cmdArgs = args.trim() ? [args.trim()] : [];
+      const result = await runBrainScript(script, cmdArgs, home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "State pages regenerated.", result.code === 0 ? "info" : "error");
     },
