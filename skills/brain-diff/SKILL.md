@@ -38,6 +38,10 @@ Example:
 
 - Drift reports are suggestions; they live in `ai-suggestions/drift/`.
 - Do not auto-rewrite intent or code based on a drift report.
+
+## Enola guidance (optional)
+
+If enola is enabled, run `brain_enola` with `operation: "diff"` to detect architecture drift alongside code drift. Include architecture deltas in the report when relevant. Skip silently if enola is unavailable.
 - High-risk or ambiguous drift should be captured as an inbox task.
 
 ## Related

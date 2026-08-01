@@ -37,6 +37,10 @@ Run a judgement sweep over the pi-brain corpus. This is deterministic, human-gat
 5. **Link health**
    - Run `brain_links` and surface orphans, dead links, and suggestions.
 
+6. **Architecture citation health (optional)**
+   - If enola is enabled, run `brain_enola` with `operation: "citations"` to find stale or malformed `enola receipt ...` citations.
+   - If drift is detected (`brain_enola` `operation: "diff"`), suggest re-baselining via `/brain:enola-generate`.
+
 ## Steps
 
 1. Read `wiki/_state/links.json` (or run `brain_links`).
