@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-01T18:17:23.998Z",
+  "generated_at": "2026-08-01T18:19:40.801Z",
   "node_count": 100,
-  "edge_count": 628,
+  "edge_count": 629,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -4108,6 +4108,13 @@
     },
     {
       "source": "org/roadmap",
+      "target": "brain/adrs/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Enola-guided pi-brain skills"
+    },
+    {
+      "source": "org/roadmap",
       "target": "brain/adrs/explicit-approval-for-commits",
       "kind": "markdown",
       "provenance": "body",
@@ -5370,6 +5377,10 @@
     {
       "path": "brain/records/smarter-autonomy.md",
       "incoming": 4
+    },
+    {
+      "path": "brain/adrs/enola-guided-skills.md",
+      "incoming": 3
     },
     {
       "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
