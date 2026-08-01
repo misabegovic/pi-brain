@@ -43,6 +43,10 @@ The command returns structured feedback from each agent. Consolidate the finding
 - Capture high-risk or ambiguous items in the inbox.
 - Promote the artifact through `/brain:shape` if the collaboration reveals a need for commitment-class changes.
 
+## Enola guidance (optional)
+
+If enola is enabled and the artifact touches code structure, the `brain-tech-lead` agent may run `brain_enola` with `operation: "impact"` or `operation: "check"` to ground its review in current architecture. Cite enola receipts when used. Skip silently if enola is unavailable.
+
 ## Guardrails
 
 - Subagents never edit approved shelves directly.

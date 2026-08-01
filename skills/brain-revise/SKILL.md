@@ -38,6 +38,10 @@ Example:
 - Proposals are AI suggestions; they live in `ai-suggestions/revisions/`.
 - Approved shelves are never edited by the agent.
 - Every proposed change must cite a source.
+
+## Enola guidance (optional)
+
+If enola is enabled and the artifact concerns code structure, run `brain_enola` with `operation: "diff"` to see if the codebase has drifted from the decision's architecture assumptions. Include drift findings in the revision rationale. Skip silently if enola is unavailable.
 - High-risk or uncertain revisions become inbox tasks instead.
 
 ## Promotion
