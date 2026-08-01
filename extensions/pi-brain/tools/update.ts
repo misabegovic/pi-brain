@@ -2,7 +2,7 @@ import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-a
 import { Type } from "typebox";
 import { join, relative } from "node:path";
 import { readdir, stat } from "node:fs/promises";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { execFilePromise, runBrainScript, pathExists } from "../utils.ts";
 import { readAutonomy } from "../brain-home.ts";
 import { resolveResource, readPackageVersion } from "../resources.ts";
 import { appendAutoIngestBatch, appendLog } from "../inbox.ts";
@@ -147,7 +147,7 @@ export function registerUpdateTools(pi: ExtensionAPI) {
 
       const startTime = Date.now();
       const autonomy = await readAutonomy(home);
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
 
       if (autonomy.enabled) {

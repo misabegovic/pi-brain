@@ -1,7 +1,7 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { resolveResource } from "../resources.ts";
 import { requireBrain, setupHint } from "../context.ts";
 
@@ -27,8 +27,8 @@ export function registerStateTools(pi: ExtensionAPI) {
         return { content: [{ type: "text" as const, text: "State runner not found at tools/brain-state.mjs" }], details: {} };
       }
 
-      const args = params.scope ? [script, params.scope] : [script];
-      const result = await execFilePromise("node", args, { cwd: home.path });
+      const args = params.scope ? [params.scope] : [];
+      const result = await runBrainScript(script, args, home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
         content: [{ type: "text" as const, text: output || "State pages regenerated." }],
@@ -52,7 +52,7 @@ export function registerStateTools(pi: ExtensionAPI) {
         return { content: [{ type: "text" as const, text: "Link graph runner not found at tools/brain-links.mjs" }], details: {} };
       }
 
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
         content: [{ type: "text" as const, text: output || "Link graph finished with no output." }],
