@@ -11,9 +11,10 @@
  */
 
 import { readFile, writeFile, readdir, mkdir, access } from "node:fs/promises";
-import { join, dirname, relative } from "node:path";
+import { join, relative } from "node:path";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 const WIKI_DIR = join(CWD, "wiki");
 const SCOPE = process.argv[2] || "org";
 

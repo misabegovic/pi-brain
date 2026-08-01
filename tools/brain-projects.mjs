@@ -7,9 +7,10 @@
  */
 
 import { readFile, readdir } from "node:fs/promises";
-import { join, dirname } from "node:path";
+import { join } from "node:path";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 const WIKI_DIR = join(CWD, "wiki");
 const CONFIG_PATH = join(CWD, "brain.config.yml");
 
@@ -70,7 +71,7 @@ async function main() {
   }
 }
 
-if (import.meta.url === new URL(process.argv[1], "file://").href) {
+if (process.argv[1] && import.meta.url === new URL(process.argv[1], "file://").href) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);

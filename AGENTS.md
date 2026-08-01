@@ -128,6 +128,10 @@ The extension (`extensions/pi-brain.ts`) should:
 - Register `/brain:*` commands for quick human access, including `/brain:shape`, `/brain:in`, `/brain:setup`, `/brain:connect`, `/brain:auto`, `/brain:continue`, and `/brain:investigate`.
 - Be defensive: if the directory is not a pi-brain home, return helpful setup text, not stack traces.
 
+### Tool script contract
+
+`tools/*.mjs` scripts resolve the brain home via `tools/lib/resolve-home.mjs`: `PI_BRAIN_HOME` env var → `process.cwd()` → package-dir fallback. The extension invokes every script through `runBrainScript()` (`extensions/pi-brain/utils.ts`), which sets both `cwd` and `PI_BRAIN_HOME` to the clone's home. New tools must use `resolveHome()`; new script invocations must go through `runBrainScript()`.
+
 ## Personas
 
 The agent wears different hats depending on the work:

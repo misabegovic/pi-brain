@@ -10,8 +10,9 @@
 
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, relative } from "node:path";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 
 async function pathExists(p) {
   try {
