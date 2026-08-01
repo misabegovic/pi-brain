@@ -6,11 +6,12 @@ import type { BrainHome } from "./types.ts";
 export function execFilePromise(
   file: string,
   args: string[],
-  options: { cwd?: string } = {}
+  options: { cwd?: string; env?: NodeJS.ProcessEnv } = {}
 ): Promise<{ stdout: string; stderr: string; code: number }> {
   return new Promise((resolve, reject) => {
     const child = execFile(file, args, {
       cwd: options.cwd,
+      env: options.env,
       maxBuffer: 8 * 1024 * 1024,
     });
     let stdout = "";
@@ -25,6 +26,25 @@ export function execFilePromise(
     child.on("close", (code) => {
       resolve({ stdout, stderr, code: code ?? 0 });
     });
+  });
+}
+
+/**
+ * Run a pi-brain tool script (tools/\*.mjs) against a brain home.
+ *
+ * Centralizes the invocation contract: sets both cwd and PI_BRAIN_HOME so
+ * scripts resolve the clone's brain home regardless of where the script
+ * file itself lives (clone copy, npm package copy, or .brain/overrides).
+ * See ADR: env-first brain-home resolution for tools and connectors.
+ */
+export function runBrainScript(
+  script: string,
+  args: string[],
+  home: BrainHome
+): Promise<{ stdout: string; stderr: string; code: number }> {
+  return execFilePromise("node", [script, ...args], {
+    cwd: home.path,
+    env: { ...process.env, PI_BRAIN_HOME: home.path },
   });
 }
 

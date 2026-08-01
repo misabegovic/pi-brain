@@ -10,9 +10,12 @@
 
 import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, dirname } from "node:path";
+import { resolveHome } from "../lib/resolve-home.mjs";
 
-const CWD = process.cwd();
+// Package-dir fallback for a connector script is dirname(tools/), so pass
+// dirname(import.meta.dirname) (= tools/) and let resolveHome take its parent.
+const CWD = resolveHome(import.meta.dirname ? dirname(import.meta.dirname) : undefined);
 
 function getYamlValue(text, key) {
   const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));

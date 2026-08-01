@@ -1,7 +1,7 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { getPackageRoot } from "../resources.ts";
 import { requireBrain } from "../context.ts";
 
@@ -36,10 +36,10 @@ export function registerMiscCommands(pi: ExtensionAPI, lastSystemPrompt: { curre
       const tokens = args.trim().split(/\s+/).filter(Boolean);
       const dryRun = tokens.includes("--dry-run");
       const subdir = tokens.find((t) => t !== "--dry-run");
-      const cmdArgs = [script];
+      const cmdArgs: string[] = [];
       if (subdir) cmdArgs.push(subdir);
       if (dryRun) cmdArgs.push("--dry-run");
-      const result = await execFilePromise("node", cmdArgs, { cwd: ctx.cwd });
+      const result = await runBrainScript(script, cmdArgs, { path: ctx.cwd });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "Conversion complete.", result.code === 0 ? "info" : "error");
     },
