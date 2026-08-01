@@ -21,6 +21,7 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 - [ADR — brain-state must preserve custom content](../brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — `/brain:sync-code` reconciliation](../brain/adrs/brain-sync-code.md)
 - [ADR — Embed pi-brain as default pi behaviour](../brain/adrs/embed-pi-brain-default-behaviour.md)
+- [ADR — Enola-guided pi-brain skills](../brain/adrs/enola-guided-skills.md)
 - [ADR — Explicit approval required for commits](../brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](../brain/adrs/extension-cleanup-resource-conflicts.md)
 - [ADR — Local-first brain self-maintenance workflow](../brain/adrs/local-first-brain-self-maintenance.md)
