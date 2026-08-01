@@ -37,6 +37,10 @@ Examples:
 Contribution text here...
 ```
 
+## Enola guidance (optional)
+
+If enola is enabled and the RFC touches code structure, reviewers may run `brain_enola` with `operation: "impact"` or `operation: "check"` and include architecture evidence in their contribution. Cite enola receipts when used. Skip silently if enola is unavailable.
+
 ## Guardrails
 
 - Contributions are append-only; existing contributions are never rewritten.

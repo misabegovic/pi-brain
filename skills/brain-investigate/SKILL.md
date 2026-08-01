@@ -28,6 +28,7 @@ Run a structured investigation inside the pi-brain workflow.
    - `read` relevant wiki pages and sources.
    - Read `wiki/<scope>/constraints/*.md` for active project rules that may explain or bound the issue.
    - For code-level questions, use `/brain:deepdive <path> [question]` to inspect the target repo transiently. Do not copy repo files into `sources/` unless explicitly asked.
+   - If enola is enabled (`brain.config.yml` → `enola.enabled: true`), run `brain_enola` with `operation: "query"` for the affected symbol/module and `operation: "impact"` to see coupling hotspots. Cite enola evidence when it clarifies the root cause. Skip silently if enola is unavailable.
 
 4. **Synthesize findings.**
    - Write a summary of what is known, unknown, and contradictory.

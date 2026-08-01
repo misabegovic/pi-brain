@@ -16,23 +16,22 @@ You are wearing the optional enola skill. enola is an architectural regression t
 
 ## Configuration
 
-Add an `enola` section to `brain.config.yml`:
+Add enola settings to `brain.config.yml` as flat keys (the simple parser does not handle nested objects):
 
 ```yml
-enola:
-  enabled: true
-  target_repo: ./path/to/target/repo    # optional; defaults to the brain home
-  binary: enola                          # optional; path to enola binary
-  check_args: "check"                   # optional; default: "check"
-  baseline_args: "baseline pin"         # optional; default: "baseline pin"
-  query_args: "check"                   # optional; default: "check"
-  impact_args: "check"                  # optional; default: "check"
-  gate_build: true                       # optional; run enola check before /brain:build
-  gate_sync_code: true                   # optional; run enola check before /brain:sync-code
-  auto_baseline: true                    # optional; re-pin baseline after build/sync-code apply
+enola.enabled: true
+enola.target_repo: ./path/to/target/repo    # optional; defaults to the brain home
+enola.binary: enola                          # optional; path to enola binary
+enola.check_args: "--generate --explain"     # optional; default: "check"
+enola.baseline_args: "--generate"            # optional; default: "baseline pin"
+enola.query_args: "--generate --explain"     # optional; default: "check"
+enola.impact_args: "--generate --explain"    # optional; default: "check"
+enola.gate_build: true                       # optional; run enola check before /brain:build
+enola.gate_sync_code: true                   # optional; run enola check before /brain:sync-code
+enola.auto_baseline: true                    # optional; re-pin baseline after build/sync-code apply
 ```
 
-If your enola variant uses different commands, override `check_args`, `baseline_args`, etc. For example, the MCP-style enola binary uses `--generate --explain` for checks.
+If your enola variant uses different commands, override `check_args`, `baseline_args`, etc.
 
 ## Tools
 
@@ -70,9 +69,23 @@ enola receipt pi-brain `sha256:72d38a9e…` @ `0f1c75b`, 2026-07-31
 
 Then `/brain:enola-citations` will verdict the citation against the recorded state.
 
+## Cross-skill usage
+
+Other pi-brain skills may consult enola when it is enabled:
+
+- `brain-shape` — impact/check before structural decisions.
+- `brain-investigate` — query/impact for root-cause analysis.
+- `brain-revise` — diff to detect architecture drift from the original decision.
+- `brain-diff` — diff to include architecture deltas in drift reports.
+- `brain-collaborate` / `brain-rfc-contribute` — impact/check in reviews.
+- `brain-groom` — citations and diff for architecture health.
+- `brain-continue` — diff when resuming code-affecting work.
+
+In all cases enola remains optional; skills must skip enola steps silently when it is disabled or not installed.
+
 ## CI
 
-If `enola.config.yml` exists in the repo root, the `.github/workflows/enola.yml` job runs `enola check` on every push/PR. It is skipped otherwise.
+`.github/workflows/enola.yml` runs only when `enola.enabled: true` is present in `brain.config.yml` and the `enola` binary is available on the runner. Otherwise the job skips.
 
 ## Safety
 

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-01T12:28:18.131Z",
-  "node_count": 97,
-  "edge_count": 618,
+  "generated_at": "2026-08-01T18:17:23.998Z",
+  "node_count": 100,
+  "edge_count": 628,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -79,6 +79,13 @@
       "status": "accepted",
       "confidence": "low",
       "title": "ADR — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "path": "brain/adrs/enola-guided-skills.md",
+      "kind": "decision",
+      "status": "accepted",
+      "confidence": "high",
+      "title": "ADR — Enola-guided pi-brain skills"
     },
     {
       "path": "brain/adrs/explicit-approval-for-commits.md",
@@ -191,6 +198,13 @@
       "status": "closed",
       "confidence": "high",
       "title": "Split high-complexity registration functions in extensions/pi-brain"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "high",
+      "title": "Integrate optional enola intelligence into relevant pi-brain skills"
     },
     {
       "path": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md",
@@ -513,6 +527,13 @@
       "status": "current",
       "confidence": "high",
       "title": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "path": "brain/records/enola-guided-skills.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — Enola-guided pi-brain skills"
     },
     {
       "path": "brain/records/enola-receipts-and-drift.md",
@@ -1137,6 +1158,27 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "pi-brain v0.2.0 release"
+    },
+    {
+      "source": "brain/adrs/enola-guided-skills",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/adrs/enola-guided-skills",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/enola-integration.md"
+    },
+    {
+      "source": "brain/adrs/enola-guided-skills",
+      "target": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/refinement/integrate-enola-into-re"
     },
     {
       "source": "brain/adrs/explicit-approval-for-commits",
@@ -2805,6 +2847,34 @@
       "context": "Constraint — ADR before structural changes"
     },
     {
+      "source": "brain/records/enola-guided-skills",
+      "target": "brain/adrs/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/enola-guided-skills.md"
+    },
+    {
+      "source": "brain/records/enola-guided-skills",
+      "target": "brain/adrs/optional-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/optional-enola-integration.md"
+    },
+    {
+      "source": "brain/records/enola-guided-skills",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/enola-integration.md"
+    },
+    {
+      "source": "brain/records/enola-guided-skills",
+      "target": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/ai-suggestions/refinement/integrate-enola-into-re"
+    },
+    {
       "source": "brain/records/enola-receipts-and-drift",
       "target": "brain/adrs/optional-enola-integration",
       "kind": "markdown",
@@ -3443,6 +3513,13 @@
     },
     {
       "source": "index",
+      "target": "brain/adrs/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Enola-guided pi-brain skills"
+    },
+    {
+      "source": "index",
       "target": "brain/adrs/explicit-approval-for-commits",
       "kind": "markdown",
       "provenance": "body",
@@ -3552,6 +3629,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Split high-complexity registration functions in extensions/p"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Integrate optional enola intelligence into relevant pi-brain"
     },
     {
       "source": "index",
@@ -3762,6 +3846,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Embed pi-brain as default pi behaviour"
+    },
+    {
+      "source": "index",
+      "target": "brain/records/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Enola-guided pi-brain skills"
     },
     {
       "source": "index",
@@ -5077,6 +5168,10 @@
       "incoming": 8
     },
     {
+      "path": "brain/adrs/optional-enola-integration.md",
+      "incoming": 8
+    },
+    {
       "path": "brain/bets/autonomous-colleague-mode.md",
       "incoming": 8
     },
@@ -5137,6 +5232,10 @@
       "incoming": 7
     },
     {
+      "path": "brain/epics/enola-integration.md",
+      "incoming": 7
+    },
+    {
       "path": "brain/pitches/upstream-template-sync.md",
       "incoming": 7
     },
@@ -5154,10 +5253,6 @@
     },
     {
       "path": "brain/adrs/extension-cleanup-resource-conflicts.md",
-      "incoming": 6
-    },
-    {
-      "path": "brain/adrs/optional-enola-integration.md",
       "incoming": 6
     },
     {
@@ -5241,10 +5336,6 @@
       "incoming": 5
     },
     {
-      "path": "brain/epics/enola-integration.md",
-      "incoming": 5
-    },
-    {
       "path": "brain/records/version-0-2-0.md",
       "incoming": 5
     },
@@ -5279,6 +5370,10 @@
     {
       "path": "brain/records/smarter-autonomy.md",
       "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
+      "incoming": 3
     },
     {
       "path": "brain/records/autonomous-colleague-mode.md",

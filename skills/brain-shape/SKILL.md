@@ -20,6 +20,15 @@ You are inside a **pi-brain clone**. The work happens in this repository's own `
 
 `<scope>` is an active repo declared in `brain.config.yml`, or the meta-scopes `org` / `brain`.
 
+## Enola guidance (optional)
+
+If enola is enabled (`brain.config.yml` → `enola.enabled: true`) and the shape touches code structure, ground the decision in architecture:
+
+1. Run `brain_enola` with `operation: "impact"` on the affected module/symbol to understand blast radius.
+2. Run `operation: "check"` if the change may introduce coupling, cycles, or layer violations.
+3. Cite enola evidence in the ADR/PRD when relevant: `enola receipt <repo> sha256:<digest> @ <commit>, <date>`.
+4. If enola is disabled, not installed, or irrelevant, skip these steps silently.
+
 ## Decision policy — manual by default, structural first
 
 `/brain:shape` is **manual by default** and is the correct path for any structural/repo change. Pause at every load-bearing decision and surface options + trade-offs; let the user pick. Do not pick silently.

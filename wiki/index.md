@@ -42,6 +42,7 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — brain-state must preserve custom content](brain/adrs/brain-state-preserves-custom-content.md)
 - [ADR — `/brain:sync-code` reconciliation](brain/adrs/brain-sync-code.md)
 - [ADR — Embed pi-brain as default pi behaviour](brain/adrs/embed-pi-brain-default-behaviour.md)
+- [ADR — Enola-guided pi-brain skills](brain/adrs/enola-guided-skills.md)
 - [ADR — Explicit approval required for commits](brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Extension cleanup: remove duplicate resource registration and dead code](brain/adrs/extension-cleanup-resource-conflicts.md)
 - [ADR — Local-first brain self-maintenance workflow](brain/adrs/local-first-brain-self-maintenance.md)
@@ -60,6 +61,7 @@ This is the synthesis layer for this pi-brain instance.
 ### refinement
 - [Audit shared utility hotspots flagged by enola](brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md)
 - [Split high-complexity registration functions in extensions/pi-brain](brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md)
+- [Integrate optional enola intelligence into relevant pi-brain skills](brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md)
 - [Learn from projects/tt/brain enola integration and strengthen pi-brain's](brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md)
 
 ### constraint
@@ -102,6 +104,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — brain-state preserves custom content](brain/records/brain-state-preserves-custom-content.md)
 - [Record — `/brain:sync-code` reconciliation](brain/records/brain-sync-code.md)
 - [Record — Embed pi-brain as default pi behaviour](brain/records/embed-pi-brain-default-behaviour.md)
+- [Record — Enola-guided pi-brain skills](brain/records/enola-guided-skills.md)
 - [Record — enola receipts, drift detection, and citation verification](brain/records/enola-receipts-and-drift.md)
 - [Record — Extension cleanup: remove duplicate resource registration and dead code](brain/records/extension-cleanup-resource-conflicts.md)
 - [Current truth](brain/records/live-status-widget-refresh.md)

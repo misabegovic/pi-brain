@@ -30,6 +30,10 @@ Resume work that was started but not finished. This skill detects the phase from
 2. If the user gives a slug or description, prefer matching that.
 3. If multiple candidates exist, list them and ask which to continue.
 
+## Enola guidance (optional)
+
+If enola is enabled and the in-flight work touches code structure, run `brain_enola` with `operation: "diff"` at the start to understand any architecture drift since the work was paused. Cite enola findings if they change the continuation plan. Skip silently if enola is unavailable.
+
 ## Continue paths
 
 ### PRD → ADR
