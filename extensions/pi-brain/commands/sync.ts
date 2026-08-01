@@ -1,6 +1,6 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { validateMarkdown, regenerateViews } from "../views.ts";
 import { resolveResource } from "../resources.ts";
 import { requireBrain } from "../context.ts";
@@ -41,7 +41,7 @@ export function registerSyncCommands(pi: ExtensionAPI) {
         ctx.ui.notify("Connector runner not found", "error");
         return;
       }
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       ctx.ui.notify(output || "Connectors finished.", result.code === 0 ? "info" : "error");
     },

@@ -1,7 +1,7 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
 import { join } from "node:path";
-import { execFilePromise, pathExists } from "../utils.ts";
+import { runBrainScript, pathExists } from "../utils.ts";
 import { resolveResource } from "../resources.ts";
 import { requireBrain, setupHint } from "../context.ts";
 
@@ -30,10 +30,10 @@ export function registerProjectTools(pi: ExtensionAPI) {
         return { content: [{ type: "text" as const, text: "Convert runner not found at tools/brain-convert.mjs" }], details: {} };
       }
 
-      const args = [script];
+      const args: string[] = [];
       if (params.subdir) args.push(params.subdir);
       if (params.dry_run) args.push("--dry-run");
-      const result = await execFilePromise("node", args, { cwd: ctx.cwd });
+      const result = await runBrainScript(script, args, { path: ctx.cwd });
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
         content: [{ type: "text" as const, text: output || "Conversion complete." }],
@@ -57,7 +57,7 @@ export function registerProjectTools(pi: ExtensionAPI) {
         return { content: [{ type: "text" as const, text: "Projects runner not found at tools/brain-projects.mjs" }], details: {} };
       }
 
-      const result = await execFilePromise("node", [script], { cwd: home.path });
+      const result = await runBrainScript(script, [], home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
         content: [{ type: "text" as const, text: output || "No projects found." }],
@@ -84,8 +84,8 @@ export function registerProjectTools(pi: ExtensionAPI) {
         return { content: [{ type: "text" as const, text: "Repo ingest runner not found at tools/brain-ingest-repo.mjs" }], details: {} };
       }
 
-      const args = params.scope ? [script, params.target, params.scope] : [script, params.target];
-      const result = await execFilePromise("node", args, { cwd: home.path });
+      const args = params.scope ? [params.target, params.scope] : [params.target];
+      const result = await runBrainScript(script, args, home);
       const output = [result.stdout, result.stderr].filter(Boolean).join("\n");
       return {
         content: [{ type: "text" as const, text: output || "Repo ingested." }],

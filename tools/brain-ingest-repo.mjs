@@ -10,10 +10,11 @@
  */
 
 import { readFile, writeFile, readdir, mkdir, rm } from "node:fs/promises";
-import { join, basename, dirname } from "node:path";
+import { join, basename } from "node:path";
 import { execFile } from "node:child_process";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 const REPO_SOURCE_DIR = join(CWD, "sources", "repos");
 const WIKI_DIR = join(CWD, "wiki");
 const CONFIG_PATH = join(CWD, "brain.config.yml");

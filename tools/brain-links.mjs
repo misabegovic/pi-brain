@@ -22,8 +22,9 @@
 
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { join, relative, dirname, resolve as resolvePath } from "node:path";
+import { resolveHome } from "./lib/resolve-home.mjs";
 
-const CWD = import.meta.dirname ? dirname(import.meta.dirname) : process.cwd();
+const CWD = resolveHome(import.meta.dirname);
 const WIKI_DIR = join(CWD, "wiki");
 const STATE_DIR = join(WIKI_DIR, "_state");
 

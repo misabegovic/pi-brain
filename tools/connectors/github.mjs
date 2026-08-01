@@ -15,17 +15,20 @@
  */
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { join } from "node:path";
+import { join, dirname } from "node:path";
+import { resolveHome } from "../lib/resolve-home.mjs";
 
-const CWD = process.cwd();
+// Package-dir fallback for a connector script is dirname(tools/), so pass
+// dirname(import.meta.dirname) (= tools/) and let resolveHome take its parent.
+const CWD = resolveHome(import.meta.dirname ? dirname(import.meta.dirname) : undefined);
 
 async function loadEnv() {
   try {
     const text = await readFile(join(CWD, ".env"), "utf-8");
     for (const line of text.split("\n")) {
-      const match = line.match(/^([A-Z_]+)="(.*)"$/);
+      const match = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
       if (match && !process.env[match[1]]) {
-        process.env[match[1]] = match[2];
+        process.env[match[1]] = match[2].trim().replace(/^["']|["']$/g, "");
       }
     }
   } catch {
@@ -33,29 +36,74 @@ async function loadEnv() {
   }
 }
 
-function getYamlValue(text, key) {
+export function getYamlValue(text, key) {
   const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));
   return match?.[1].trim();
 }
 
-function parseYamlList(text, key) {
+export function parseYamlList(text, key) {
   const lines = text.split("\n");
   const result = [];
   let inList = false;
+  let keyIndent = 0;
   for (const line of lines) {
-    if (line.startsWith(`${key}:`)) {
+    const keyMatch = line.match(/^(\s*)([A-Za-z_]+):\s*$/);
+    if (!inList && keyMatch && keyMatch[2] === key) {
       inList = true;
+      keyIndent = keyMatch[1].length;
       continue;
     }
     if (inList) {
-      if (line.match(/^\\s*-/)) {
-        result.push(line.replace(/^\\s*-\\s*/, "").trim());
-      } else if (line.trim() === "" || line.match(/^\\w/)) {
+      const itemMatch = line.match(/^(\s*)-\s*(.*)$/);
+      if (itemMatch && itemMatch[2] && itemMatch[1].length >= keyIndent) {
+        result.push(itemMatch[2].trim());
+      } else if (line.trim() === "" || line.trim().startsWith("#")) {
+        continue;
+      } else {
         break;
       }
     }
   }
   return result;
+}
+
+/**
+ * Parse a list nested inside a section, e.g. connectors.github.repos:
+ *   parseYamlSectionList(config, "github", "repos")
+ * The section key may itself be nested; only its direct block is scanned.
+ */
+export function parseYamlSectionList(text, section, key) {
+  const lines = text.split("\n");
+  const sectionLines = [];
+  let sectionIndent = -1;
+  for (const line of lines) {
+    if (sectionIndent === -1) {
+      const match = line.match(/^(\s*)([A-Za-z_]+):\s*$/);
+      if (match && match[2] === section) {
+        sectionIndent = match[1].length;
+      }
+      continue;
+    }
+    const indent = line.match(/^(\s*)/)[1].length;
+    if (line.trim() !== "" && indent <= sectionIndent) {
+      break;
+    }
+    sectionLines.push(line);
+  }
+  return parseYamlList(sectionLines.join("\n"), key);
+}
+
+/**
+ * Collect repo slugs from brain.config.yml: active_repos (bare names get
+ * the org as owner) plus connectors.github.repos, merged with argv slugs.
+ */
+export function collectRepoSlugs(configText, argvSlugs = []) {
+  const org = getYamlValue(configText, "org")?.replace(/^["']|["']$/g, "") || "";
+  const activeRepos = parseYamlList(configText, "active_repos").map((r) =>
+    r.includes("/") || !org ? r : `${org}/${r}`
+  );
+  const extraRepos = parseYamlSectionList(configText, "github", "repos");
+  return [...new Set([...activeRepos, ...extraRepos, ...argvSlugs])];
 }
 
 async function fetchJson(url, token) {
@@ -145,15 +193,7 @@ async function main() {
   const token = process.env.GITHUB_TOKEN || "";
 
   const configText = await readFile(join(CWD, "brain.config.yml"), "utf-8");
-  const activeRepos = parseYamlList(configText, "active_repos");
-  const extraRepos = parseYamlList(configText, "connectors")
-    .flatMap((line) => parseYamlList(configText, "repos"));
-
-  const repoSet = new Set([
-    ...activeRepos,
-    ...extraRepos,
-    ...process.argv.slice(2),
-  ]);
+  const repoSet = collectRepoSlugs(configText, process.argv.slice(2));
 
   if (repoSet.size === 0) {
     console.log("No GitHub repos configured. Add them to active_repos or connectors.github.repos in brain.config.yml.");
@@ -181,7 +221,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === new URL(process.argv[1], "file://").href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
