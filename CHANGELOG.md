@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-08-01
+
+### Added
+
+- Optional enola architecture intelligence integration: `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-generate`, `/brain:enola-diff`, `/brain:enola-citations`, `/brain:enola-baseline`, `/brain:enola-query`, `/brain:enola-impact`.
+- Enola receipt state in `wiki/_state/enola/receipts.json` with content-digest drift detection.
+- Enola citation verification for wiki prose.
+- Enola gates for `/brain:build` and `/brain:sync-code` (`enola.gate_build`, `enola.gate_sync_code`).
+- Enola auto-baseline after `/brain:build` and `/brain:sync-code --apply` (`enola.auto_baseline`).
+- Enola capture in the autonomous refinement protocol.
+- Enola-guided skill prompts: `brain-shape`, `brain-investigate`, `brain-revise`, `brain-diff`, `brain-collaborate`, `brain-rfc-contribute`, `brain-groom`, `brain-continue`.
+- Skip-when-absent enola CI workflow.
+
+### Changed
+
+- Refactored `registerTools`, `registerCommands`, and `registerHooks` into domain-specific registrars.
+- Extracted `extractSimpleYamlValue` into `extensions/pi-brain/yaml.ts`.
+
 ## [0.3.3] - 2026-07-30
 
 ### Added
