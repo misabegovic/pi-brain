@@ -17,4 +17,9 @@ Items are appended below. The agent tends them on request.
 ## Archived 2026-08-01
 
 - **shape-an-adr-for-enola-guided-skills-integrate-o** — Delivered via PR #81 (`adr: enola-guided skills`) and recorded in `wiki/brain/records/enola-guided-skills.md`.
+### v0-4-0-release-prepared-and-tagged-github-releas (2026-08-03)
+
+- **kind:** task
+- **scope:** brain
+- **summary:** v0.4.0 release prepared and tagged; GitHub release created. npm publish requires OTP — waiting for user to provide one-time password.
 
