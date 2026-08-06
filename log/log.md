@@ -41,3 +41,4 @@ Append-only operations log for this pi-brain instance.
 - 2026-07-29: capture: Decision: No further releases beyond v0.3.3. Any additional work the agent suggests and the user approves will land in t
 - 2026-08-01: capture: Shape an ADR for enola-guided skills: integrate optional enola intelligence into brain-shape, brain-investigate, brain-r
 - 2026-08-03: capture: v0.4.0 release prepared and tagged; GitHub release created. npm publish requires OTP — waiting for user to provide one-t
+- 2026-08-06: intent compilation lands — derived enola_intent stamping (tools/brain-intent.mjs, --check in validate), the govern reverse query (brain_enola operation + /brain:enola-govern), cross-skill wiring, and the vacuous-enabled test-helper fix. Release-gated on an enola build carrying the intent standard.

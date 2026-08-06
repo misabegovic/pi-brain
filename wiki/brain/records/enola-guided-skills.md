@@ -5,6 +5,15 @@ scope: brain
 confidence: high
 sources:
   - wiki/brain/adrs/enola-guided-skills.md
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/enola-guided-skills.md
 ---
 
 # Record — Enola-guided pi-brain skills

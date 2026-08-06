@@ -7,6 +7,10 @@ implemented_in:
   - extensions/pi-brain.ts
   - skills/brain-auto/SKILL.md
   - AGENTS.md
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Smarter autonomy for pi-brain clones

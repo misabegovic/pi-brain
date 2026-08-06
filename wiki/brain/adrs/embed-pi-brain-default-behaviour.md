@@ -4,6 +4,13 @@ status: accepted
 confidence: low
 sources:
   - sources/doc/2026-07-27--pi-brain-embed-plan-md.md
+enola_intent:
+  page:
+    type: decision
+    status: accepted
+    anchors:
+    - repo: pi-brain
+      path: sources/doc/2026-07-27--pi-brain-embed-plan-md.md
 ---
 
 # ADR — Embed pi-brain as default pi behaviour

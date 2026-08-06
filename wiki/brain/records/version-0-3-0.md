@@ -12,6 +12,21 @@ sources:
 created: 2026-07-27
 updated: 2026-07-27
 author: pi-brain-agent
+enola_intent:
+  page:
+    type: record
+    status: current
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: package.json
+    - repo: pi-brain
+      path: wiki/brain/adrs/adr-live-status-widget-refresh.md
+    - repo: pi-brain
+      path: wiki/brain/adrs/adr-pi-tool-wrapper-override.md
+    - repo: pi-brain
+      path: wiki/brain/adrs/versioning-and-releases.md
 ---
 
 ## Release

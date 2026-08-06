@@ -14,6 +14,10 @@ implemented_in:
   - package.json
   - README.md
   - GETTING_STARTED.md
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Embed pi-brain as default pi behaviour

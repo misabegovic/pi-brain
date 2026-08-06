@@ -9,6 +9,21 @@ sources:
   - extensions/pi-brain/tools.ts
   - .github/workflows/enola.yml
   - wiki/brain/adrs/optional-enola-integration.md
+enola_intent:
+  page:
+    type: record
+    status: closed
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: .github/workflows/enola.yml
+    - repo: pi-brain
+      path: extensions/pi-brain/enola.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/tools.ts
+    - repo: pi-brain
+      path: wiki/brain/adrs/optional-enola-integration.md
 ---
 
 # Record — enola receipts, drift detection, and citation verification

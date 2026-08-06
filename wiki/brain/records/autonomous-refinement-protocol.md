@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/autonomous-refinement-protocol.md
   - wiki/brain/adrs/autonomous-refinement-protocol.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/autonomous-refinement-protocol.md
+    - repo: pi-brain
+      path: wiki/brain/bets/autonomous-refinement-protocol.md
+    - repo: pi-brain
+      path: wiki/brain/prds/autonomous-refinement-protocol.md
 ---
 
 # Record — Autonomous refinement protocol

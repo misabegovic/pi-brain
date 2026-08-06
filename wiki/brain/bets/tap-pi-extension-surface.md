@@ -5,6 +5,10 @@ confidence: medium
 appetite: big
 prd: brain/prds/tap-pi-extension-surface.md
 adr: brain/adrs/tap-pi-extension-surface.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Tap pi’s full extension surface for pi-brain

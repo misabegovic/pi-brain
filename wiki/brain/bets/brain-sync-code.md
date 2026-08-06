@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/brain-sync-code.md
 adr: wiki/brain/adrs/brain-sync-code.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — `/brain:sync-code` reconciliation

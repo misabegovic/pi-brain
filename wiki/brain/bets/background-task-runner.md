@@ -5,6 +5,10 @@ confidence: medium
 appetite: big
 prd: wiki/brain/prds/background-task-runner.md
 adr: wiki/brain/adrs/background-task-runner.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Background task runner

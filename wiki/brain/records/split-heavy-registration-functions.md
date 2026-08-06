@@ -8,6 +8,19 @@ sources:
   - extensions/pi-brain/commands.ts
   - extensions/pi-brain/tools.ts
   - extensions/pi-brain/hooks.ts
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: extensions/pi-brain/commands.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/hooks.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/tools.ts
 ---
 
 # Record — split high-complexity registration functions

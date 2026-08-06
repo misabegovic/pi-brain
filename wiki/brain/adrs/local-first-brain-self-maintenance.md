@@ -2,6 +2,10 @@
 kind: decision
 status: accepted
 confidence: high
+enola_intent:
+  page:
+    type: decision
+    status: accepted
 ---
 
 # ADR — Local-first brain self-maintenance workflow

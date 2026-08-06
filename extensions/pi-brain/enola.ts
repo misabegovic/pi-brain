@@ -477,6 +477,192 @@ export interface EnolaCitation {
   verdict: "ok" | "stale" | "malformed" | "unknown-repo";
 }
 
+interface GoverningRelation {
+  rel: string;
+  to: string;
+  toType?: string;
+  toStatus?: string;
+}
+
+interface GoverningPage {
+  page: string;
+  type?: string;
+  status?: string;
+  relations: GoverningRelation[];
+}
+
+function stripRepoLabel(file: string, repo: string): string {
+  return repo && file.startsWith(repo + "/") ? file.slice(repo.length + 1) : file;
+}
+
+async function findFactsFile(home: BrainHome, config: EnolaConfig): Promise<string | null> {
+  const candidates: string[] = [];
+  const target = await resolveTargetRepo(home, config);
+  if (target) candidates.push(join(target, ".enola", "facts.jsonl"));
+  candidates.push(join(getEnolaOutputDir(home), "facts.jsonl"));
+  for (const candidate of candidates) {
+    try {
+      const info = await stat(candidate);
+      if (info.isFile()) return candidate;
+    } catch {
+      // keep looking
+    }
+  }
+  return null;
+}
+
+/**
+ * The reverse query between knowledge and code, answered from the on-disk
+ * facts. A code target (exact fact name or file path in either the
+ * label-prefixed or repo-relative form) lists the compiled pages whose
+ * anchors cover its file, each with its type, status, and relation trail.
+ * A compiled page path lists the page's anchors with measured coverage.
+ * The empty states keep the counterparty rule: a snapshot with no compiled
+ * pages answers "not asked", which is never the same as "asked, none
+ * governs".
+ */
+export async function runEnolaGovern(home: BrainHome, query: string): Promise<EnolaResult> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { ok: true, exitCode: 0, stdout: "", stderr: "enola is not enabled in brain.config.yml." };
+  }
+  const target = query.trim();
+  if (!target) {
+    return { ok: false, exitCode: 1, stdout: "", stderr: "govern needs a target: a file path, an exact fact name, or a compiled page path." };
+  }
+  const factsPath = await findFactsFile(home, config);
+  if (!factsPath) {
+    return { ok: true, exitCode: 0, stdout: "", stderr: "enola govern skipped: no snapshot artifacts found. Run /brain:enola-generate first." };
+  }
+
+  const anchors: Array<{ owner: string; path: string; source: string }> = [];
+  const pages = new Map<string, { type?: string; status?: string; repo: string }>();
+  const relations = new Map<string, Array<{ rel: string; to: string }>>();
+  const measured: Array<{ repo: string; file: string; name: string }> = [];
+
+  const text = await readFile(factsPath, "utf-8");
+  for (const line of text.split("\n")) {
+    if (!line.trim()) continue;
+    let fact: any;
+    try {
+      fact = JSON.parse(line);
+    } catch {
+      continue;
+    }
+    const props = fact.props ?? {};
+    if (fact.kind === "intent") {
+      const intentKind = props.intent_kind;
+      if (intentKind === "anchor") {
+        anchors.push({ owner: props.intent_owner ?? "", path: props.path ?? "", source: fact.file ?? "" });
+      } else if (intentKind === "page") {
+        pages.set(fact.file ?? "", { type: props.page_type, status: props.status, repo: fact.repo ?? "" });
+      } else if (intentKind === "relation") {
+        const key = (fact.repo ?? "") + "\u0000" + (fact.file ?? "");
+        const list = relations.get(key) ?? [];
+        list.push({ rel: props.rel ?? "", to: props.to ?? "" });
+        relations.set(key, list);
+      }
+      continue;
+    }
+    if (fact.repo && fact.file) {
+      measured.push({ repo: fact.repo, file: fact.file, name: fact.name ?? "" });
+    }
+  }
+
+  if (pages.size === 0) {
+    return {
+      ok: true,
+      exitCode: 0,
+      stdout:
+        "No knowledge pages are compiled into this snapshot — the reverse query was not asked. " +
+        "Compiling pages requires an enola build carrying the intent standard (the mdintent extractor) " +
+        "and stamped enola_intent blocks (node tools/brain-intent.mjs) with the brain home included in the snapshot.",
+      stderr: "",
+    };
+  }
+
+  const pageByForm = new Map<string, string>();
+  for (const [file, meta] of pages) {
+    pageByForm.set(meta.repo + "\u0000" + file, file);
+    pageByForm.set(meta.repo + "\u0000" + stripRepoLabel(file, meta.repo), file);
+  }
+
+  const matchedPage = [...pages.keys()].find(
+    (file) => file === target || stripRepoLabel(file, pages.get(file)!.repo) === target,
+  );
+  if (matchedPage) {
+    const own = anchors.filter((a) => a.source === matchedPage);
+    const lines: string[] = [];
+    const meta = pages.get(matchedPage)!;
+    const suffix = [meta.type, meta.status].filter(Boolean).join(", ");
+    lines.push(`${matchedPage}${suffix ? ` (${suffix})` : ""}`);
+    if (own.length === 0) {
+      lines.push("    no anchors — the page governs no code directly");
+    }
+    for (const a of own) {
+      const files = new Set<string>();
+      for (const m of measured) {
+        if (m.repo !== a.owner) continue;
+        const forms = [m.file, stripRepoLabel(m.file, m.repo)];
+        if (forms.some((f) => f === a.path || f.startsWith(a.path + "/"))) files.add(m.file);
+      }
+      lines.push(`    anchors ${a.owner} ${a.path} — ${files.size} measured file(s)`);
+    }
+    return { ok: true, exitCode: 0, stdout: lines.join("\n"), stderr: "" };
+  }
+
+  let located: { repo: string; file: string } | null = null;
+  for (const m of measured) {
+    if (m.name === target || m.file === target || stripRepoLabel(m.file, m.repo) === target) {
+      located = { repo: m.repo, file: m.file };
+      break;
+    }
+  }
+  if (!located) {
+    return {
+      ok: true,
+      exitCode: 0,
+      stdout: `Nothing measured matches ${JSON.stringify(target)} — not a compiled page, an exact fact name, or a measured file path.`,
+      stderr: "",
+    };
+  }
+
+  const forms = [located.file, stripRepoLabel(located.file, located.repo)];
+  const governing: GoverningPage[] = [];
+  const seen = new Set<string>();
+  for (const a of anchors) {
+    if (a.owner !== located.repo || seen.has(a.source)) continue;
+    if (!forms.some((f) => f === a.path || f.startsWith(a.path + "/"))) continue;
+    seen.add(a.source);
+    const meta = pages.get(a.source);
+    const rels: GoverningRelation[] = [];
+    if (meta) {
+      for (const r of relations.get(meta.repo + "\u0000" + a.source) ?? []) {
+        const targetFile = pageByForm.get(meta.repo + "\u0000" + r.to);
+        const targetMeta = targetFile ? pages.get(targetFile) : undefined;
+        rels.push({ rel: r.rel, to: r.to, toType: targetMeta?.type, toStatus: targetMeta?.status });
+      }
+      rels.sort((x, y) => x.rel.localeCompare(y.rel) || x.to.localeCompare(y.to));
+    }
+    governing.push({ page: a.source, type: meta?.type, status: meta?.status, relations: rels });
+  }
+  governing.sort((x, y) => x.page.localeCompare(y.page));
+
+  const lines = [`${located.file} (${located.repo})`];
+  if (governing.length === 0) {
+    lines.push("    no governing page — asked, none governs");
+  }
+  for (const g of governing) {
+    const suffix = [g.type, g.status].filter(Boolean).join(", ");
+    lines.push(`    governed by ${g.page}${suffix ? ` (${suffix})` : ""}`);
+    for (const r of g.relations) {
+      const rsuffix = [r.toType, r.toStatus].filter(Boolean).join(", ");
+      lines.push(`        ${r.rel} ${r.to}${rsuffix ? ` (${rsuffix})` : ""}`);
+    }
+  }
+  return { ok: true, exitCode: 0, stdout: lines.join("\n"), stderr: "" };
+}
+
 export async function runEnolaCitations(home: BrainHome): Promise<{ ok: boolean; citations: EnolaCitation[]; message: string }> {
   const receipts = await readEnolaReceipts(home);
   const citations: EnolaCitation[] = [];
@@ -645,6 +831,24 @@ export function registerEnolaCommands(pi: ExtensionAPI) {
         return;
       }
       const result = await runEnolaImpact(home, symbol);
+      ctx.ui.notify(formatEnolaResult(result), "info");
+    },
+  });
+
+  pi.registerCommand("brain:enola-govern", {
+    description: "Which compiled pages govern a file or symbol — and which code a page governs (usage: /brain:enola-govern <target>)",
+    handler: async (args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const target = args.trim();
+      if (!target) {
+        ctx.ui.notify("Usage: /brain:enola-govern <file-or-symbol-or-page>", "warning");
+        return;
+      }
+      const result = await runEnolaGovern(home, target);
       ctx.ui.notify(formatEnolaResult(result), "info");
     },
   });

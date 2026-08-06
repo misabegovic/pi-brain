@@ -3,6 +3,12 @@ kind: record
 status: delivered
 scope: brain
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
 ---
 
 # Record — pi-brain v0.3.3 release

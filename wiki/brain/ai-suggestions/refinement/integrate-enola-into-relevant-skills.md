@@ -4,6 +4,10 @@ kind: refinement
 status: closed
 confidence: high
 source: enola optional integration + skill architecture
+enola_intent:
+  page:
+    type: refinement
+    status: closed
 ---
 
 # Integrate optional enola intelligence into relevant pi-brain skills

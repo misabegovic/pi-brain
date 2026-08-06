@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/brain-sync-code.md
   - wiki/brain/adrs/brain-sync-code.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/brain-sync-code.md
+    - repo: pi-brain
+      path: wiki/brain/bets/brain-sync-code.md
+    - repo: pi-brain
+      path: wiki/brain/prds/brain-sync-code.md
 ---
 
 # Record — `/brain:sync-code` reconciliation

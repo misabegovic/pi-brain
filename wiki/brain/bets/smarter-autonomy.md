@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/smarter-autonomy.md
 adr: wiki/brain/adrs/smarter-autonomy.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Smarter autonomy for pi-brain clones

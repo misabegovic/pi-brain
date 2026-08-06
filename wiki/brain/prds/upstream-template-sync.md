@@ -5,6 +5,10 @@ confidence: low
 appetite: medium
 team: pi-brain
 repos: [pi-brain]
+enola_intent:
+  page:
+    type: initiative
+    status: living
 ---
 
 # PRD — Upstream template sync for pi-brain clones

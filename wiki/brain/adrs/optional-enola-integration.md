@@ -2,6 +2,10 @@
 kind: decision
 status: accepted
 confidence: medium
+enola_intent:
+  page:
+    type: decision
+    status: accepted
 ---
 
 # ADR — Optional enola architecture intelligence integration

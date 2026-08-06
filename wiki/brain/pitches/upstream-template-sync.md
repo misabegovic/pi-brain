@@ -3,6 +3,10 @@ kind: pitch
 status: draft
 confidence: low
 appetite: medium
+enola_intent:
+  page:
+    type: pitch
+    status: draft
 ---
 
 # Upstream template sync for pi-brain clones

@@ -4,6 +4,10 @@ status: accepted
 confidence: medium
 appetite: small
 adr: wiki/brain/adrs/plain-language-triggers-shape.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Plain-language shape requests default to forward mode

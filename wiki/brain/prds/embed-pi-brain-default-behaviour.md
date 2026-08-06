@@ -8,6 +8,13 @@ repos:
   - pi-brain
 sources:
   - sources/doc/2026-07-27--pi-brain-embed-plan-md.md
+enola_intent:
+  page:
+    type: initiative
+    status: living
+    anchors:
+    - repo: pi-brain
+      path: sources/doc/2026-07-27--pi-brain-embed-plan-md.md
 ---
 
 # PRD — Embed pi-brain as default pi behaviour

@@ -5,6 +5,10 @@ confidence: medium
 appetite: big
 team: pi-brain
 repos: []
+enola_intent:
+  page:
+    type: initiative
+    status: draft
 ---
 
 # PRD — Tap pi’s full extension surface for pi-brain

@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/multi-agent-rfc-collaboration.md
 adr: wiki/brain/adrs/multi-agent-rfc-collaboration.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Multi-agent RFC collaboration

@@ -5,6 +5,10 @@ confidence: high
 decided_by: wiki/brain/adrs/brain-state-preserves-custom-content.md
 implemented_in:
   - tools/brain-state.mjs
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — brain-state preserves custom content

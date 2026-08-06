@@ -10,6 +10,10 @@ implemented_in:
   - skills/brain-shape/SKILL.md
   - skills/brain-setup/SKILL.md
   - prompts/brain-home.md
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Stronger default guardrails against eager implementation

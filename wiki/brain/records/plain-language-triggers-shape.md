@@ -6,6 +6,10 @@ decided_by: wiki/brain/adrs/plain-language-triggers-shape.md
 implemented_in:
   - skills/brain/SKILL.md
   - skills/brain-shape/SKILL.md
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Plain-language shape requests default to forward mode

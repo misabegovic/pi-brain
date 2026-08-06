@@ -5,6 +5,10 @@ kind: refinement
 status: closed
 confidence: high
 source: enola analysis of extensions/pi-brain
+enola_intent:
+  page:
+    type: refinement
+    status: closed
 ---
 
 # Split high-complexity registration functions in extensions/pi-brain

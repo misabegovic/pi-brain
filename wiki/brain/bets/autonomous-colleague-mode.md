@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/autonomous-colleague-mode.md
 adr: wiki/brain/adrs/autonomous-colleague-mode.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Autonomous colleague mode

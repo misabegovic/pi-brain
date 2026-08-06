@@ -5,6 +5,15 @@ confidence: high
 sources:
   - wiki/brain/adrs/optional-enola-integration.md
   - wiki/brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md
+enola_intent:
+  page:
+    type: decision
+    status: accepted
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/optional-enola-integration.md
+    - repo: pi-brain
+      path: wiki/brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md
 ---
 
 # ADR — Enola-guided pi-brain skills

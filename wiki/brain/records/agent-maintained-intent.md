@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/agent-maintained-intent.md
   - wiki/brain/adrs/agent-maintained-intent.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/agent-maintained-intent.md
+    - repo: pi-brain
+      path: wiki/brain/bets/agent-maintained-intent.md
+    - repo: pi-brain
+      path: wiki/brain/prds/agent-maintained-intent.md
 ---
 
 # Record — Agent-maintained intent

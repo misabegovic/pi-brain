@@ -5,6 +5,12 @@ scope: brain
 sources:
   - PR #13: https://github.com/misabegovic/pi-brain/pull/13
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
 ---
 
 # Record — Refinement follow-up PR #13

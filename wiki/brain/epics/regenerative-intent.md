@@ -5,6 +5,13 @@ confidence: low
 appetite: big
 sources:
   - sources/web/2026-07-28--aicoding-leaflet-pub.md
+enola_intent:
+  page:
+    type: epic
+    status: accepted
+    anchors:
+    - repo: pi-brain
+      path: sources/web/2026-07-28--aicoding-leaflet-pub.md
 ---
 
 # Epic — Regenerative pi-brain: intent as the living substrate for code and collaboration

@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/brain-diff-drift-detection.md
 adr: wiki/brain/adrs/brain-diff-drift-detection.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — `/brain:diff` drift detection

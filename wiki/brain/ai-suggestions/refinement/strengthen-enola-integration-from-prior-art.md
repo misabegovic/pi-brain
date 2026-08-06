@@ -4,6 +4,10 @@ kind: refinement
 status: closed
 confidence: high
 source: comparison with an earlier brain enola architecture-graph substrate
+enola_intent:
+  page:
+    type: refinement
+    status: closed
 ---
 
 # Learn from an earlier brain enola integration and strengthen pi-brain's

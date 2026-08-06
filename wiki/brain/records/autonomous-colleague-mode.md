@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/autonomous-colleague-mode.md
   - wiki/brain/adrs/autonomous-colleague-mode.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/autonomous-colleague-mode.md
+    - repo: pi-brain
+      path: wiki/brain/bets/autonomous-colleague-mode.md
+    - repo: pi-brain
+      path: wiki/brain/prds/autonomous-colleague-mode.md
 ---
 
 # Record — Autonomous colleague mode

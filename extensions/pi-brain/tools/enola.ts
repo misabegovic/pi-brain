@@ -1,6 +1,6 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, formatEnolaResult, captureEnolaRegressions } from "../enola.ts";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, runEnolaGovern, formatEnolaResult, captureEnolaRegressions } from "../enola.ts";
 import { requireBrain, setupHint } from "../context.ts";
 
 function notFound() {
@@ -40,10 +40,11 @@ export function registerEnolaTools(pi: ExtensionAPI) {
           Type.Literal("citations", { description: "Check enola receipt citations in wiki prose." }),
           Type.Literal("query", { description: "Search enola output for a symbol or module." }),
           Type.Literal("impact", { description: "Show impact radius for a symbol or module with context." }),
+          Type.Literal("govern", { description: "Which compiled pages govern a file or symbol (with relation trails); for a page path, which code its anchors cover. Answers 'not asked' when no knowledge pages are compiled." }),
         ],
         { description: "Operation to perform." }
       ),
-      query: Type.Optional(Type.String({ description: "For operation=query or impact, the symbol or module." })),
+      query: Type.Optional(Type.String({ description: "For operation=query, impact, or govern: the symbol, module, file path, or compiled page path." })),
     }),
     constrainedSampling: { type: "json_schema" as const, strict: "prefer" as const },
     async execute(_toolCallId: string, params: any, _signal: AbortSignal | undefined, _onUpdate: unknown, ctx: ExtensionContext) {
@@ -76,6 +77,12 @@ export function registerEnolaTools(pi: ExtensionAPI) {
           result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=impact.", summary: "Missing query parameter." };
         } else {
           result = await runEnolaImpact(home, params.query);
+        }
+      } else if (params.operation === "govern") {
+        if (!params.query) {
+          result = { ok: false, exitCode: 1, stdout: "", stderr: "Query parameter is required for operation=govern.", summary: "Missing query parameter." };
+        } else {
+          result = await runEnolaGovern(home, params.query);
         }
       } else {
         result = await runEnolaCheck(home);
