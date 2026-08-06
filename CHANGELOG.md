@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Added: the intent-first contract — the first write into each sibling repo per piece of work is blocked once with its governing pages (`enola govern`) surfaced, and a turn that moved sibling code without moving any wiki page carries an intent-debt accounting into the next turn's context. Config-gated via `intent_first` (default enabled); absent graph degrades to a named skip. Ported from the origin brain's adoption.
 - Verified: the module-level dependency-cycle finding (pi-brain → commands → hooks → tools) is a directory-aggregation artifact — the file-level import graph is acyclic; verdict recorded at the extension entry point instead of refactoring healthy barrels.
 
 - Simplified: one frontmatter/YAML helper lib for tools (`tools/lib/frontmatter.mjs`) replaces five diverging copies — the same fragmentation class that produced the vacuous enola tests; `runEnolaGovern` decomposed (cyclomatic 62 → helpers, graded by enola diff); the test script is one glob runner instead of 27 chained invocations; `computeFactsDigest` parses once and deep-sorts keys (the old top-level-only sort weakened the determinism claim); all enola artifact readers resolve through one artifact-dir resolver — `generate`/`diff` previously read receipts from the brain home while enola wrote them into the configured target repo.

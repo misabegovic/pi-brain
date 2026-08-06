@@ -8,6 +8,7 @@ import { loadPrompt, hasAgentsMd } from "../prompts.ts";
 import { requireBrain, loadBriefing } from "../context.ts";
 import { formatSummary, getSessionSummary, clearSessionSummary } from "../autonomy.ts";
 import { renderBrainBriefing } from "./shared.ts";
+import { sessionKey, takeIntentDebt } from "../intent-first.ts";
 
 export function registerLifecycleHooks(
   pi: ExtensionAPI,
@@ -94,6 +95,9 @@ export function registerLifecycleHooks(
     } else {
       parts.push(`You are working inside a pi-brain clone at ${home.path}. AGENTS.md already covers the brain contract; prefer brain_ask over guessing and use brain_capture freely.`);
     }
+
+    const intentDebt = takeIntentDebt(sessionKey(ctx));
+    if (intentDebt) parts.push(intentDebt);
 
     if (state.enabled) {
       const autonomy = await loadPrompt("brain-autonomy.md", home);
