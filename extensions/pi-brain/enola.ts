@@ -308,22 +308,40 @@ function getEnolaOutputDir(home: BrainHome): string {
   return join(home.path, ".enola");
 }
 
-function getEnolaReceiptPath(home: BrainHome): string {
-  return join(getEnolaOutputDir(home), "receipt.json");
+// enola writes artifacts into the cwd it ran in — the target repo when
+// one is configured, the brain home otherwise. Every reader resolves
+// through here instead of assuming the home, which silently missed the
+// artifacts whenever target_repo was set.
+async function resolveArtifactDir(home: BrainHome, config: EnolaConfig): Promise<string> {
+  const target = await resolveTargetRepo(home, config);
+  return join(target ?? home.path, ".enola");
 }
 
 function repoNameFromPath(repoPath: string): string {
   return repoPath.replace(/\\/g, "/").split("/").filter(Boolean).pop() ?? "unknown";
 }
 
+function sortKeysDeep(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortKeysDeep);
+  if (value && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const key of Object.keys(value as Record<string, unknown>).sort()) {
+      out[key] = sortKeysDeep((value as Record<string, unknown>)[key]);
+    }
+    return out;
+  }
+  return value;
+}
+
 async function computeFactsDigest(factsPath: string): Promise<string | undefined> {
   try {
     const text = await readFile(factsPath, "utf-8");
-    const lines = text.split("\n").filter((l) => l.trim());
-    const canonical = lines
+    const canonical = text
+      .split("\n")
+      .filter((l) => l.trim())
       .map((l) => {
         try {
-          return JSON.stringify(JSON.parse(l), Object.keys(JSON.parse(l)).sort());
+          return JSON.stringify(sortKeysDeep(JSON.parse(l)));
         } catch {
           return l;
         }
@@ -356,7 +374,8 @@ export async function runEnolaGenerate(home: BrainHome): Promise<EnolaResult> {
     return { ok: false, exitCode: result.exitCode, stdout: result.stdout, stderr: result.stderr };
   }
 
-  const receiptPath = getEnolaReceiptPath(home);
+  const artifactDir = await resolveArtifactDir(home, config);
+  const receiptPath = join(artifactDir, "receipt.json");
   let receipt: EnolaReceipt | null = null;
   try {
     receipt = JSON.parse(await readFile(receiptPath, "utf-8")) as EnolaReceipt;
@@ -364,7 +383,7 @@ export async function runEnolaGenerate(home: BrainHome): Promise<EnolaResult> {
     return { ok: false, exitCode: 1, stdout: "", stderr: `enola ran but no receipt found at ${receiptPath}` };
   }
 
-  const factsPath = join(getEnolaOutputDir(home), "facts.jsonl");
+  const factsPath = join(artifactDir, "facts.jsonl");
   const digest = await computeFactsDigest(factsPath);
   if (digest) receipt.content_digest = digest;
 
@@ -418,14 +437,15 @@ export async function runEnolaDiff(home: BrainHome): Promise<EnolaResult> {
     return { ok: false, exitCode: result.exitCode, stdout: result.stdout, stderr: result.stderr };
   }
 
+  const artifactDir = await resolveArtifactDir(home, config);
   const liveReceipt: EnolaReceipt | null = JSON.parse(
-    await readFile(getEnolaReceiptPath(home), "utf-8").catch(() => "null"),
+    await readFile(join(artifactDir, "receipt.json"), "utf-8").catch(() => "null"),
   );
   if (!liveReceipt) {
     return { ok: false, exitCode: 1, stdout: "", stderr: "enola ran but produced no receipt." };
   }
 
-  const factsPath = join(getEnolaOutputDir(home), "facts.jsonl");
+  const factsPath = join(artifactDir, "facts.jsonl");
   const liveDigest = await computeFactsDigest(factsPath);
   if (liveDigest) liveReceipt.content_digest = liveDigest;
 
@@ -496,10 +516,10 @@ function stripRepoLabel(file: string, repo: string): string {
 }
 
 async function findFactsFile(home: BrainHome, config: EnolaConfig): Promise<string | null> {
-  const candidates: string[] = [];
-  const target = await resolveTargetRepo(home, config);
-  if (target) candidates.push(join(target, ".enola", "facts.jsonl"));
-  candidates.push(join(getEnolaOutputDir(home), "facts.jsonl"));
+  const candidates: string[] = [
+    join(await resolveArtifactDir(home, config), "facts.jsonl"),
+    join(getEnolaOutputDir(home), "facts.jsonl"),
+  ];
   for (const candidate of candidates) {
     try {
       const info = await stat(candidate);
@@ -509,6 +529,110 @@ async function findFactsFile(home: BrainHome, config: EnolaConfig): Promise<stri
     }
   }
   return null;
+}
+
+interface GovernIndex {
+  anchors: Array<{ owner: string; path: string; source: string }>;
+  pages: Map<string, { type?: string; status?: string; repo: string }>;
+  relations: Map<string, Array<{ rel: string; to: string }>>;
+  measured: Array<{ repo: string; file: string; name: string }>;
+}
+
+function parseGovernIndex(text: string): GovernIndex {
+  const index: GovernIndex = { anchors: [], pages: new Map(), relations: new Map(), measured: [] };
+  for (const line of text.split("\n")) {
+    if (!line.trim()) continue;
+    let fact: any;
+    try {
+      fact = JSON.parse(line);
+    } catch {
+      continue;
+    }
+    const props = fact.props ?? {};
+    if (fact.kind === "intent") {
+      const intentKind = props.intent_kind;
+      if (intentKind === "anchor") {
+        index.anchors.push({ owner: props.intent_owner ?? "", path: props.path ?? "", source: fact.file ?? "" });
+      } else if (intentKind === "page") {
+        index.pages.set(fact.file ?? "", { type: props.page_type, status: props.status, repo: fact.repo ?? "" });
+      } else if (intentKind === "relation") {
+        const key = (fact.repo ?? "") + "\u0000" + (fact.file ?? "");
+        const list = index.relations.get(key) ?? [];
+        list.push({ rel: props.rel ?? "", to: props.to ?? "" });
+        index.relations.set(key, list);
+      }
+    } else if (fact.repo && fact.file) {
+      index.measured.push({ repo: fact.repo, file: fact.file, name: fact.name ?? "" });
+    }
+  }
+  return index;
+}
+
+function pageMeta(type?: string, status?: string): string {
+  const suffix = [type, status].filter(Boolean).join(", ");
+  return suffix ? ` (${suffix})` : "";
+}
+
+function anchorCovers(path: string, forms: string[]): boolean {
+  return forms.some((f) => f === path || f.startsWith(path + "/"));
+}
+
+function renderPageCoverage(page: string, index: GovernIndex): string {
+  const meta = index.pages.get(page)!;
+  const lines = [`${page}${pageMeta(meta.type, meta.status)}`];
+  const own = index.anchors.filter((a) => a.source === page);
+  if (own.length === 0) {
+    lines.push("    no anchors — the page governs no code directly");
+  }
+  for (const a of own) {
+    const files = new Set<string>();
+    for (const m of index.measured) {
+      if (m.repo === a.owner && anchorCovers(a.path, [m.file, stripRepoLabel(m.file, m.repo)])) {
+        files.add(m.file);
+      }
+    }
+    lines.push(`    anchors ${a.owner} ${a.path} — ${files.size} measured file(s)`);
+  }
+  return lines.join("\n");
+}
+
+function renderGoverning(located: { repo: string; file: string }, index: GovernIndex): string {
+  const pageByForm = new Map<string, string>();
+  for (const [file, meta] of index.pages) {
+    pageByForm.set(meta.repo + "\u0000" + file, file);
+    pageByForm.set(meta.repo + "\u0000" + stripRepoLabel(file, meta.repo), file);
+  }
+  const forms = [located.file, stripRepoLabel(located.file, located.repo)];
+  const governing: GoverningPage[] = [];
+  const seen = new Set<string>();
+  for (const a of index.anchors) {
+    if (a.owner !== located.repo || seen.has(a.source) || !anchorCovers(a.path, forms)) continue;
+    seen.add(a.source);
+    const meta = index.pages.get(a.source);
+    const rels: GoverningRelation[] = [];
+    if (meta) {
+      for (const r of index.relations.get(meta.repo + "\u0000" + a.source) ?? []) {
+        const targetFile = pageByForm.get(meta.repo + "\u0000" + r.to);
+        const targetMeta = targetFile ? index.pages.get(targetFile) : undefined;
+        rels.push({ rel: r.rel, to: r.to, toType: targetMeta?.type, toStatus: targetMeta?.status });
+      }
+      rels.sort((x, y) => x.rel.localeCompare(y.rel) || x.to.localeCompare(y.to));
+    }
+    governing.push({ page: a.source, type: meta?.type, status: meta?.status, relations: rels });
+  }
+  governing.sort((x, y) => x.page.localeCompare(y.page));
+
+  const lines = [`${located.file} (${located.repo})`];
+  if (governing.length === 0) {
+    lines.push("    no governing page — asked, none governs");
+  }
+  for (const g of governing) {
+    lines.push(`    governed by ${g.page}${pageMeta(g.type, g.status)}`);
+    for (const r of g.relations) {
+      lines.push(`        ${r.rel} ${r.to}${pageMeta(r.toType, r.toStatus)}`);
+    }
+  }
+  return lines.join("\n");
 }
 
 /**
@@ -535,41 +659,8 @@ export async function runEnolaGovern(home: BrainHome, query: string): Promise<En
     return { ok: true, exitCode: 0, stdout: "", stderr: "enola govern skipped: no snapshot artifacts found. Run /brain:enola-generate first." };
   }
 
-  const anchors: Array<{ owner: string; path: string; source: string }> = [];
-  const pages = new Map<string, { type?: string; status?: string; repo: string }>();
-  const relations = new Map<string, Array<{ rel: string; to: string }>>();
-  const measured: Array<{ repo: string; file: string; name: string }> = [];
-
-  const text = await readFile(factsPath, "utf-8");
-  for (const line of text.split("\n")) {
-    if (!line.trim()) continue;
-    let fact: any;
-    try {
-      fact = JSON.parse(line);
-    } catch {
-      continue;
-    }
-    const props = fact.props ?? {};
-    if (fact.kind === "intent") {
-      const intentKind = props.intent_kind;
-      if (intentKind === "anchor") {
-        anchors.push({ owner: props.intent_owner ?? "", path: props.path ?? "", source: fact.file ?? "" });
-      } else if (intentKind === "page") {
-        pages.set(fact.file ?? "", { type: props.page_type, status: props.status, repo: fact.repo ?? "" });
-      } else if (intentKind === "relation") {
-        const key = (fact.repo ?? "") + "\u0000" + (fact.file ?? "");
-        const list = relations.get(key) ?? [];
-        list.push({ rel: props.rel ?? "", to: props.to ?? "" });
-        relations.set(key, list);
-      }
-      continue;
-    }
-    if (fact.repo && fact.file) {
-      measured.push({ repo: fact.repo, file: fact.file, name: fact.name ?? "" });
-    }
-  }
-
-  if (pages.size === 0) {
+  const index = parseGovernIndex(await readFile(factsPath, "utf-8"));
+  if (index.pages.size === 0) {
     return {
       ok: true,
       exitCode: 0,
@@ -581,43 +672,16 @@ export async function runEnolaGovern(home: BrainHome, query: string): Promise<En
     };
   }
 
-  const pageByForm = new Map<string, string>();
-  for (const [file, meta] of pages) {
-    pageByForm.set(meta.repo + "\u0000" + file, file);
-    pageByForm.set(meta.repo + "\u0000" + stripRepoLabel(file, meta.repo), file);
-  }
-
-  const matchedPage = [...pages.keys()].find(
-    (file) => file === target || stripRepoLabel(file, pages.get(file)!.repo) === target,
+  const matchedPage = [...index.pages.keys()].find(
+    (file) => file === target || stripRepoLabel(file, index.pages.get(file)!.repo) === target,
   );
   if (matchedPage) {
-    const own = anchors.filter((a) => a.source === matchedPage);
-    const lines: string[] = [];
-    const meta = pages.get(matchedPage)!;
-    const suffix = [meta.type, meta.status].filter(Boolean).join(", ");
-    lines.push(`${matchedPage}${suffix ? ` (${suffix})` : ""}`);
-    if (own.length === 0) {
-      lines.push("    no anchors — the page governs no code directly");
-    }
-    for (const a of own) {
-      const files = new Set<string>();
-      for (const m of measured) {
-        if (m.repo !== a.owner) continue;
-        const forms = [m.file, stripRepoLabel(m.file, m.repo)];
-        if (forms.some((f) => f === a.path || f.startsWith(a.path + "/"))) files.add(m.file);
-      }
-      lines.push(`    anchors ${a.owner} ${a.path} — ${files.size} measured file(s)`);
-    }
-    return { ok: true, exitCode: 0, stdout: lines.join("\n"), stderr: "" };
+    return { ok: true, exitCode: 0, stdout: renderPageCoverage(matchedPage, index), stderr: "" };
   }
 
-  let located: { repo: string; file: string } | null = null;
-  for (const m of measured) {
-    if (m.name === target || m.file === target || stripRepoLabel(m.file, m.repo) === target) {
-      located = { repo: m.repo, file: m.file };
-      break;
-    }
-  }
+  const located = index.measured.find(
+    (m) => m.name === target || m.file === target || stripRepoLabel(m.file, m.repo) === target,
+  );
   if (!located) {
     return {
       ok: true,
@@ -626,41 +690,7 @@ export async function runEnolaGovern(home: BrainHome, query: string): Promise<En
       stderr: "",
     };
   }
-
-  const forms = [located.file, stripRepoLabel(located.file, located.repo)];
-  const governing: GoverningPage[] = [];
-  const seen = new Set<string>();
-  for (const a of anchors) {
-    if (a.owner !== located.repo || seen.has(a.source)) continue;
-    if (!forms.some((f) => f === a.path || f.startsWith(a.path + "/"))) continue;
-    seen.add(a.source);
-    const meta = pages.get(a.source);
-    const rels: GoverningRelation[] = [];
-    if (meta) {
-      for (const r of relations.get(meta.repo + "\u0000" + a.source) ?? []) {
-        const targetFile = pageByForm.get(meta.repo + "\u0000" + r.to);
-        const targetMeta = targetFile ? pages.get(targetFile) : undefined;
-        rels.push({ rel: r.rel, to: r.to, toType: targetMeta?.type, toStatus: targetMeta?.status });
-      }
-      rels.sort((x, y) => x.rel.localeCompare(y.rel) || x.to.localeCompare(y.to));
-    }
-    governing.push({ page: a.source, type: meta?.type, status: meta?.status, relations: rels });
-  }
-  governing.sort((x, y) => x.page.localeCompare(y.page));
-
-  const lines = [`${located.file} (${located.repo})`];
-  if (governing.length === 0) {
-    lines.push("    no governing page — asked, none governs");
-  }
-  for (const g of governing) {
-    const suffix = [g.type, g.status].filter(Boolean).join(", ");
-    lines.push(`    governed by ${g.page}${suffix ? ` (${suffix})` : ""}`);
-    for (const r of g.relations) {
-      const rsuffix = [r.toType, r.toStatus].filter(Boolean).join(", ");
-      lines.push(`        ${r.rel} ${r.to}${rsuffix ? ` (${rsuffix})` : ""}`);
-    }
-  }
-  return { ok: true, exitCode: 0, stdout: lines.join("\n"), stderr: "" };
+  return { ok: true, exitCode: 0, stdout: renderGoverning(located, index), stderr: "" };
 }
 
 export async function runEnolaCitations(home: BrainHome): Promise<{ ok: boolean; citations: EnolaCitation[]; message: string }> {
