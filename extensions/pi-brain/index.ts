@@ -7,6 +7,13 @@
  * ./resources.ts, ./search.ts, ./views.ts, ./inbox.ts, ./prompts.ts, and ./state.ts.
  */
 
+// Structure note (verified 2026-08-06): module-granularity tools report a
+// dependency cycle pi-brain -> commands -> hooks -> tools -> pi-brain.
+// It is an aggregation artifact, not a real cycle: the barrel files below
+// live in the flat module while their children live in subdirectory
+// modules, and the file-level import graph is acyclic — no commands/*
+// file imports hooks or tools, no hooks/* imports commands or tools, and
+// subdirectory files import only flat helpers, never the barrels.
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { registerTools } from "./tools.ts";
 import { registerCommands } from "./commands.ts";
