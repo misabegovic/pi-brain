@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/multi-agent-rfc-collaboration.md
   - wiki/brain/adrs/multi-agent-rfc-collaboration.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/multi-agent-rfc-collaboration.md
+    - repo: pi-brain
+      path: wiki/brain/bets/multi-agent-rfc-collaboration.md
+    - repo: pi-brain
+      path: wiki/brain/prds/multi-agent-rfc-collaboration.md
 ---
 
 # Record — Multi-agent RFC collaboration

@@ -5,6 +5,10 @@ confidence: low
 appetite: medium
 team: brain
 repos: [brain]
+enola_intent:
+  page:
+    type: initiative
+    status: living
 ---
 
 # PRD — Structured intent and `/brain:build`

@@ -2,6 +2,10 @@
 kind: state
 status: living
 confidence: medium
+enola_intent:
+  page:
+    type: state
+    status: living
 ---
 
 # State — org

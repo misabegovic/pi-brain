@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/multi-agent-intent-collaboration.md
 adr: wiki/brain/adrs/multi-agent-intent-collaboration.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Multi-agent intent collaboration for pi-brain

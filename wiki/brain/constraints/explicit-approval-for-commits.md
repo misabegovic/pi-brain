@@ -16,6 +16,12 @@ globs:
   - "themes/**"
   - "tools/**"
   - "wiki/**"
+enola_intent:
+  page:
+    type: constraint
+    status: active
+    scope:
+    - global
 ---
 
 # Constraint — Explicit approval required for commits

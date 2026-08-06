@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/agent-maintained-intent.md
 adr: wiki/brain/adrs/agent-maintained-intent.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Agent-maintained intent

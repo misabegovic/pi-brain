@@ -5,6 +5,10 @@ confidence: medium
 appetite: small
 prd: brain/prds/extension-cleanup-resource-conflicts.md
 adr: brain/adrs/extension-cleanup-resource-conflicts.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Extension cleanup: remove duplicate resource registration and dead code

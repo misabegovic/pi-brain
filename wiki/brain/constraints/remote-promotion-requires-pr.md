@@ -10,6 +10,12 @@ globs:
   - ".env"
   - ".github/**"
   - "brain.config.yml"
+enola_intent:
+  page:
+    type: constraint
+    status: active
+    scope:
+    - global
 ---
 
 # Constraint — Remote promotion requires a pull request

@@ -2,6 +2,10 @@
 kind: options
 status: living
 confidence: low
+enola_intent:
+  page:
+    type: options
+    status: living
 ---
 
 # Options — org

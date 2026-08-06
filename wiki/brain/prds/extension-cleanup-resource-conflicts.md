@@ -5,6 +5,10 @@ confidence: medium
 appetite: small
 team: pi-brain
 repos: [pi-brain]
+enola_intent:
+  page:
+    type: initiative
+    status: living
 ---
 
 # PRD — Extension cleanup: remove duplicate resource registration and dead code

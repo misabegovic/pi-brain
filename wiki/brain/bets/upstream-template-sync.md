@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/upstream-template-sync.md
 adr: wiki/brain/adrs/upstream-template-sync.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Build `/brain:update` for safe upstream template sync

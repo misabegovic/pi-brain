@@ -20,6 +20,37 @@ sources:
 created: 2026-07-27
 updated: 2026-07-27
 author: pi-brain-agent
+enola_intent:
+  page:
+    type: record
+    status: current
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: brain.config.yml
+    - repo: pi-brain
+      path: extensions/pi-brain/compaction-harvest.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/context-injection.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/entry-renderers.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/events.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/hooks.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/session-shutdown.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/shortcuts.ts
+    - repo: pi-brain
+      path: extensions/pi-brain/tool-result-enrichment.ts
+    - repo: pi-brain
+      path: wiki/brain/adrs/tap-pi-extension-surface.md
+    - repo: pi-brain
+      path: wiki/brain/bets/tap-pi-extension-surface.md
+    - repo: pi-brain
+      path: wiki/brain/prds/tap-pi-extension-surface.md
 ---
 
 ## Current truth

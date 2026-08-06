@@ -10,6 +10,17 @@ sources:
 created: 2026-07-27
 updated: 2026-07-27
 author: pi-brain-agent
+enola_intent:
+  page:
+    type: adr
+    status: accepted
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: AGENTS.md
+    - repo: pi-brain
+      path: sources/pi-tool-wrapper-override-request.md
 ---
 
 ## Context

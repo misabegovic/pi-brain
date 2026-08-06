@@ -12,6 +12,21 @@ sources:
 created: 2026-07-27
 updated: 2026-07-27
 author: pi-brain-agent
+enola_intent:
+  page:
+    type: record
+    status: current
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: package.json
+    - repo: pi-brain
+      path: wiki/brain/adrs/local-first-brain-self-maintenance.md
+    - repo: pi-brain
+      path: wiki/brain/adrs/versioning-and-releases.md
+    - repo: pi-brain
+      path: wiki/brain/records/tap-pi-extension-surface.md
 ---
 
 ## Release

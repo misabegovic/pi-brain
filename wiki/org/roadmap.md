@@ -2,6 +2,10 @@
 kind: roadmap
 status: living
 confidence: medium
+enola_intent:
+  page:
+    type: roadmap
+    status: living
 ---
 
 # Roadmap — org

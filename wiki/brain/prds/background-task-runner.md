@@ -5,6 +5,10 @@ confidence: low
 appetite: big
 team: brain
 repos: [brain]
+enola_intent:
+  page:
+    type: initiative
+    status: living
 ---
 
 # PRD — Background task runner
