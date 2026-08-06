@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Verified: the module-level dependency-cycle finding (pi-brain → commands → hooks → tools) is a directory-aggregation artifact — the file-level import graph is acyclic; verdict recorded at the extension entry point instead of refactoring healthy barrels.
+
 - Simplified: one frontmatter/YAML helper lib for tools (`tools/lib/frontmatter.mjs`) replaces five diverging copies — the same fragmentation class that produced the vacuous enola tests; `runEnolaGovern` decomposed (cyclomatic 62 → helpers, graded by enola diff); the test script is one glob runner instead of 27 chained invocations; `computeFactsDigest` parses once and deep-sorts keys (the old top-level-only sort weakened the determinism claim); all enola artifact readers resolve through one artifact-dir resolver — `generate`/`diff` previously read receipts from the brain home while enola wrote them into the configured target repo.
 
 - Intent compilation: every wiki page carries a derived `enola_intent:` block (`node tools/brain-intent.mjs`, idempotent; `--check` wired into `npm run validate`) — kind, scope, supersedes relations, and resolvable citations compile into knowledge nodes and page-to-code anchors when an enola build carrying the intent standard snapshots the brain home. Annotated ` (…)` citations never anchor. The generated `wiki/index.md` is excluded (it would oscillate with the links regen).
