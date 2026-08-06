@@ -3,6 +3,10 @@ kind: epic
 status: accepted
 confidence: high
 appetite: 2 weeks
+enola_intent:
+  page:
+    type: epic
+    status: accepted
 ---
 
 # Epic — Full enola integration for pi-brain v0.4.0

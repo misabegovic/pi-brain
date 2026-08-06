@@ -7,6 +7,19 @@ sources:
   - wiki/brain/prds/brain-diff-drift-detection.md
   - wiki/brain/adrs/brain-diff-drift-detection.md
 confidence: high
+enola_intent:
+  page:
+    type: record
+    status: delivered
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: wiki/brain/adrs/brain-diff-drift-detection.md
+    - repo: pi-brain
+      path: wiki/brain/bets/brain-diff-drift-detection.md
+    - repo: pi-brain
+      path: wiki/brain/prds/brain-diff-drift-detection.md
 ---
 
 # Record — `/brain:diff` drift detection

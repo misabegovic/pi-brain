@@ -4,6 +4,10 @@ status: accepted
 confidence: medium
 appetite: small
 adr: wiki/brain/adrs/versioning-and-releases.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Cut pi-brain v0.1.0

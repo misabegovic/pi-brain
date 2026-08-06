@@ -5,6 +5,10 @@ confidence: high
 decided_by: wiki/brain/adrs/versioning-and-releases.md
 implemented_in:
   - https://github.com/misabegovic/pi-brain/releases/tag/v0.1.0
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — pi-brain v0.1.0 release

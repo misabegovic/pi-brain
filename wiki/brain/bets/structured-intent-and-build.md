@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/structured-intent-and-build.md
 adr: wiki/brain/adrs/structured-intent-and-build.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Structured intent and `/brain:build`

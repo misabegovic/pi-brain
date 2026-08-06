@@ -10,6 +10,10 @@ implemented_in:
   - extensions/pi-brain/tools.ts
   - extensions/pi-brain/commands.ts
   - extensions/pi-brain/inbox.ts
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Extension cleanup: remove duplicate resource registration and dead code

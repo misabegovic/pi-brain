@@ -4,6 +4,10 @@ status: accepted
 confidence: medium
 appetite: small
 adr: wiki/brain/adrs/brain-state-preserves-custom-content.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Patch brain-state to preserve custom content

@@ -3,6 +3,10 @@ kind: feedback
 status: captured
 confidence: medium
 source: user-session
+enola_intent:
+  page:
+    type: feedback
+    status: captured
 ---
 
 # Feedback — Agent implemented structural changes before ADR approval

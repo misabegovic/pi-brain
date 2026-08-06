@@ -7,6 +7,10 @@ implemented_in:
   - extensions/pi-brain.ts
   - skills/brain-update/SKILL.md
   - brain.config.yml
+enola_intent:
+  page:
+    type: record
+    status: current
 ---
 
 # Record — Upstream template sync

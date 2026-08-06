@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Intent compilation: every wiki page carries a derived `enola_intent:` block (`node tools/brain-intent.mjs`, idempotent; `--check` wired into `npm run validate`) — kind, scope, supersedes relations, and resolvable citations compile into knowledge nodes and page-to-code anchors when an enola build carrying the intent standard snapshots the brain home. Annotated ` (…)` citations never anchor. The generated `wiki/index.md` is excluded (it would oscillate with the links regen).
+- The reverse query: `brain_enola` gains `operation: "govern"` and `/brain:enola-govern <target>` — which compiled pages govern a file or symbol (with relation trails); for a page path, which code its anchors cover. Empty states keep the counterparty rule: no compiled pages answers *not asked*, never *asked, none governs*.
+- Cross-skill wiring: shape asks what governs the code before proposing changes; groom owns the dangling-anchor repair protocol; diff treats dangling anchors as drift signal.
+- Fixed: the enola test helper wrote nested YAML the flat-dotted-key config reader never parsed, so every enabled-path assertion passed vacuously with `enabled: false`.
+
 ## [0.4.0] - 2026-08-01
 
 ### Added

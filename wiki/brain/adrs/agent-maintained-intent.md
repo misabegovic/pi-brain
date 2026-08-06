@@ -2,6 +2,10 @@
 kind: decision
 status: accepted
 confidence: low
+enola_intent:
+  page:
+    type: decision
+    status: accepted
 ---
 
 # ADR — Agent-maintained intent

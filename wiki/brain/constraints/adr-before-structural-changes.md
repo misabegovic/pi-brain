@@ -21,6 +21,12 @@ globs:
   - "tools/git-hooks/**"
   - "personas/**"
   - "wiki/**/constraints/*.md"
+enola_intent:
+  page:
+    type: constraint
+    status: active
+    scope:
+    - global
 ---
 
 # Constraint — ADR before structural changes

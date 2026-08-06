@@ -11,6 +11,19 @@ sources:
 created: 2026-07-27
 updated: 2026-07-27
 author: pi-brain-agent
+enola_intent:
+  page:
+    type: record
+    status: current
+    scope:
+    - brain
+    anchors:
+    - repo: pi-brain
+      path: extensions/pi-brain/hooks.ts
+    - repo: pi-brain
+      path: sources/brain/feedback/live-status-widget-refresh.md
+    - repo: pi-brain
+      path: wiki/brain/adrs/adr-live-status-widget-refresh.md
 ---
 
 ## Current truth

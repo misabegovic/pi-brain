@@ -5,6 +5,10 @@ confidence: medium
 appetite: medium
 prd: wiki/brain/prds/autonomous-refinement-protocol.md
 adr: wiki/brain/adrs/autonomous-refinement-protocol.md
+enola_intent:
+  page:
+    type: bet
+    status: accepted
 ---
 
 # Bet — Autonomous refinement protocol for pi-brain
