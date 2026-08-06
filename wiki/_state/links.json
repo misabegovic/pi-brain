@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-06T10:37:52.118Z",
+  "generated_at": "2026-08-06T11:03:51.624Z",
   "node_count": 100,
-  "edge_count": 629,
+  "edge_count": 637,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -4465,6 +4465,13 @@
     },
     {
       "source": "org/state",
+      "target": "brain/adrs/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "ADR — Enola-guided pi-brain skills"
+    },
+    {
+      "source": "org/state",
       "target": "brain/adrs/explicit-approval-for-commits",
       "kind": "markdown",
       "provenance": "body",
@@ -4483,6 +4490,34 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "ADR — Remote promotion requires a pull request"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Audit shared utility hotspots flagged by enola"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Split high-complexity registration functions in extensions/p"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Integrate optional enola intelligence into relevant pi-brain"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Learn from projects/tt/brain enola integration and strengthe"
     },
     {
       "source": "org/state",
@@ -4563,6 +4598,20 @@
     },
     {
       "source": "org/state",
+      "target": "brain/records/enola-guided-skills",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — Enola-guided pi-brain skills"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/enola-receipts-and-drift",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — enola receipts, drift detection, and citation verif"
+    },
+    {
+      "source": "org/state",
       "target": "brain/records/extension-cleanup-resource-conflicts",
       "kind": "markdown",
       "provenance": "body",
@@ -4616,6 +4665,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — Smarter autonomy for pi-brain clones"
+    },
+    {
+      "source": "org/state",
+      "target": "brain/records/split-heavy-registration-functions",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — split high-complexity registration functions"
     },
     {
       "source": "org/state",
@@ -5351,11 +5407,19 @@
       "incoming": 4
     },
     {
+      "path": "brain/adrs/enola-guided-skills.md",
+      "incoming": 4
+    },
+    {
       "path": "brain/adrs/explicit-approval-for-commits.md",
       "incoming": 4
     },
     {
       "path": "brain/adrs/remote-promotion-requires-pr.md",
+      "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
       "incoming": 4
     },
     {
@@ -5379,11 +5443,15 @@
       "incoming": 4
     },
     {
-      "path": "brain/adrs/enola-guided-skills.md",
+      "path": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md",
       "incoming": 3
     },
     {
-      "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
+      "path": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md",
       "incoming": 3
     },
     {
@@ -5404,6 +5472,10 @@
     },
     {
       "path": "brain/records/embed-pi-brain-default-behaviour.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/enola-receipts-and-drift.md",
       "incoming": 3
     },
     {

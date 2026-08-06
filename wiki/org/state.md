@@ -21,9 +21,14 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 ## What is stable
 
 <!-- brain-state: stable -->
+- [ADR — Enola-guided pi-brain skills](../brain/adrs/enola-guided-skills.md)
 - [ADR — Explicit approval required for commits](../brain/adrs/explicit-approval-for-commits.md)
 - [ADR — Local-first brain self-maintenance workflow](../brain/adrs/local-first-brain-self-maintenance.md)
 - [ADR — Remote promotion requires a pull request](../brain/adrs/remote-promotion-requires-pr.md)
+- [Audit shared utility hotspots flagged by enola](../brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md)
+- [Split high-complexity registration functions in extensions/pi-brain](../brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md)
+- [Integrate optional enola intelligence into relevant pi-brain skills](../brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md)
+- [Learn from projects/tt/brain enola integration and strengthen pi-brain's](../brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md)
 - [Constraint — Explicit approval required for commits](../brain/constraints/explicit-approval-for-commits.md)
 - [Constraint — Remote promotion requires a pull request](../brain/constraints/remote-promotion-requires-pr.md)
 - [Epic — Full enola integration for pi-brain v0.4.0](../brain/epics/enola-integration.md)
@@ -35,6 +40,8 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [Record — brain-state preserves custom content](../brain/records/brain-state-preserves-custom-content.md)
 - [Record — `/brain:sync-code` reconciliation](../brain/records/brain-sync-code.md)
 - [Record — Embed pi-brain as default pi behaviour](../brain/records/embed-pi-brain-default-behaviour.md)
+- [Record — Enola-guided pi-brain skills](../brain/records/enola-guided-skills.md)
+- [Record — enola receipts, drift detection, and citation verification](../brain/records/enola-receipts-and-drift.md)
 - [Record — Extension cleanup: remove duplicate resource registration and dead code](../brain/records/extension-cleanup-resource-conflicts.md)
 - [Current truth](../brain/records/live-status-widget-refresh.md)
 - [Record — Multi-agent intent collaboration](../brain/records/multi-agent-intent-collaboration.md)
@@ -43,6 +50,7 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [Record — Plain-language shape requests default to forward mode](../brain/records/plain-language-triggers-shape.md)
 - [Record — Refinement follow-up PR #13](../brain/records/refinement-follow-up-pr-13.md)
 - [Record — Smarter autonomy for pi-brain clones](../brain/records/smarter-autonomy.md)
+- [Record — split high-complexity registration functions](../brain/records/split-heavy-registration-functions.md)
 - [Record — Stronger default guardrails against eager implementation](../brain/records/stronger-default-implementation-guardrails.md)
 - [Record — Structured intent and `/brain:build`](../brain/records/structured-intent-and-build.md)
 - [Current truth](../brain/records/tap-pi-extension-surface.md)
