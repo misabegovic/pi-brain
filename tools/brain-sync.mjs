@@ -11,6 +11,7 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { resolveHome } from "./lib/resolve-home.mjs";
+import { parseFrontmatter, getYamlValue } from "./lib/frontmatter.mjs";
 
 const CWD = resolveHome(import.meta.dirname);
 
@@ -43,23 +44,6 @@ async function getMarkdownFiles(dir) {
   }
   await walk(dir);
   return result;
-}
-
-function parseFrontmatter(text) {
-  const trimmed = text.trim();
-  if (!trimmed.startsWith("---")) return { valid: false, frontmatter: "", body: trimmed };
-  const end = trimmed.indexOf("---", 3);
-  if (end === -1) return { valid: false, frontmatter: "", body: trimmed };
-  return {
-    valid: true,
-    frontmatter: trimmed.slice(3, end).trim(),
-    body: trimmed.slice(end + 3).trim(),
-  };
-}
-
-function getYamlValue(text, key) {
-  const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));
-  return match?.[1].trim();
 }
 
 async function validate() {

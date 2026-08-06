@@ -23,6 +23,7 @@
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { join, relative, dirname, resolve as resolvePath } from "node:path";
 import { resolveHome } from "./lib/resolve-home.mjs";
+import { parseFrontmatter, getYamlValue, getYamlList } from "./lib/frontmatter.mjs";
 
 const CWD = resolveHome(import.meta.dirname);
 const WIKI_DIR = join(CWD, "wiki");
@@ -48,48 +49,6 @@ async function getMarkdownFiles(dir) {
   }
   await walk(dir);
   return result;
-}
-
-function parseFrontmatter(text) {
-  const trimmed = text.trim();
-  if (!trimmed.startsWith("---")) return { valid: false, frontmatter: "", body: trimmed };
-  const end = trimmed.indexOf("---", 3);
-  if (end === -1) return { valid: false, frontmatter: "", body: trimmed };
-  return {
-    valid: true,
-    frontmatter: trimmed.slice(3, end).trim(),
-    body: trimmed.slice(end + 3).trim(),
-  };
-}
-
-function getYamlList(text, key) {
-  const regex = new RegExp(`^${key}:\\s*$`, "m");
-  const inline = text.match(new RegExp(`^${key}:\\s*\\[(.*?)\\]`, "m"));
-  if (inline) {
-    return inline[1].split(",").map((s) => s.trim().replace(/^["']|["']$/g, "")).filter(Boolean);
-  }
-  const lines = text.split("\n");
-  const result = [];
-  let inList = false;
-  for (const line of lines) {
-    if (line.match(regex)) {
-      inList = true;
-      continue;
-    }
-    if (inList) {
-      if (line.match(/^\s*-/)) {
-        result.push(line.replace(/^\s*-\s*/, "").trim().replace(/^["']|["']$/g, ""));
-      } else if (line.trim() !== "" && !line.match(/^\s/)) {
-        break;
-      }
-    }
-  }
-  return result;
-}
-
-function getYamlValue(text, key) {
-  const match = text.match(new RegExp(`^${key}:\\s*(.*)$`, "m"));
-  return match?.[1].trim().replace(/^["']|["']$/g, "");
 }
 
 function extractLinks(body, fileDir) {

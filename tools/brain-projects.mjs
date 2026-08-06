@@ -9,6 +9,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { resolveHome } from "./lib/resolve-home.mjs";
+import { parseFrontmatter as sharedParseFrontmatter } from "./lib/frontmatter.mjs";
 
 const CWD = resolveHome(import.meta.dirname);
 const WIKI_DIR = join(CWD, "wiki");
@@ -20,11 +21,8 @@ export function extractYamlValue(text, key) {
 }
 
 export function parseFrontmatter(text) {
-  const trimmed = text.trim();
-  if (!trimmed.startsWith("---")) return null;
-  const end = trimmed.indexOf("---", 3);
-  if (end === -1) return null;
-  return trimmed.slice(3, end).trim();
+  const parsed = sharedParseFrontmatter(text);
+  return parsed.valid ? parsed.frontmatter : null;
 }
 
 export async function getScopesFromConfig(configPath = CONFIG_PATH) {
