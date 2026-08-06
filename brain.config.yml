@@ -12,6 +12,12 @@ org: "pi-brain"
 # or as absolute paths.
 active_repos: []
 
+# Intent-first gates (default: true). The first write into each sibling
+# repo per piece of work is blocked once with its governing pages
+# surfaced, and unaccounted code-without-spec turns carry an intent-debt
+# message into the next turn. Set to false to disable.
+# intent_first: true
+
 # If true, autonomous mode may run configured pull connectors at session start.
 auto_connect: false
 
