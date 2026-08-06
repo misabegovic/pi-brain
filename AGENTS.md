@@ -51,6 +51,8 @@ Agents default to "implement first." In pi-brain that default is wrong for struc
 4. Has the user explicitly approved the change in this session? If no, stop here.
 5. Only after 1–4 are satisfied may you edit files, and only in the smallest scope that satisfies the approved decision.
 
+The intent-first gates enforce the stop mechanically: the first write into each sibling repo per piece of work is blocked once with the target's governing pages (`enola govern`) surfaced into context, and a turn that moved sibling code without moving any wiki page carries an intent-debt accounting into the next turn. The gates force the reading and the accounting, never the verdict; an absent graph degrades to a named skip. Config: `intent_first` in `brain.config.yml` (default enabled).
+
 ### What to say when stopping
 
 > "This looks structural: it affects [specific thing]. Before I change files, I'll draft an ADR with `/brain:shape` and pause for your approval."

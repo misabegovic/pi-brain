@@ -13,6 +13,15 @@ import { emitBrainEvent } from "../events.ts";
 import { loadActiveConstraints, matchGlob } from "../state.ts";
 import { requireBrain } from "../context.ts";
 import { STATE_CHANGING_BRAIN_TOOLS, renderBrainBriefing } from "./shared.ts";
+import {
+  classifyIntentTarget,
+  gateFirstTouch,
+  intentFirstGateReason,
+  projectsRoot,
+  readIntentFirstConfig,
+  recordIntentTarget,
+  sessionKey,
+} from "../intent-first.ts";
 
 export function registerToolHooks(pi: ExtensionAPI) {
   pi.on("tool_call", async (event, ctx) => {
@@ -40,11 +49,32 @@ export function registerToolHooks(pi: ExtensionAPI) {
     return {};
   });
 
+  pi.on("tool_call", async (event, ctx) => {
+    const home = await requireBrain(ctx.cwd);
+    if (!home) return {};
+    const toolName = (event as any).toolCall?.name;
+    if (toolName !== "write" && toolName !== "edit") return {};
+
+    const targetPath = (event as any).toolCall?.arguments?.path ?? "";
+    const target = classifyIntentTarget(home, projectsRoot(), targetPath);
+    if (!target || target.kind !== "code") return {};
+
+    const config = await readIntentFirstConfig(home);
+    if (!config.enabled) return {};
+    if (!gateFirstTouch(sessionKey(ctx), target.repoName)) return {};
+
+    return { block: true, reason: await intentFirstGateReason(home, target) };
+  });
+
   pi.on("tool_result", async (event, ctx) => {
     const home = await requireBrain(ctx.cwd);
     if (!home) return;
 
     const toolName = (event as any).toolName as string;
+
+    if ((toolName === "write" || toolName === "edit") && typeof event.input?.path === "string") {
+      recordIntentTarget(sessionKey(ctx), classifyIntentTarget(home, projectsRoot(), event.input.path));
+    }
     let shouldRefresh = false;
 
     if (STATE_CHANGING_BRAIN_TOOLS.has(toolName)) {
