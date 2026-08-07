@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Verified against enola v0.3.9 — the first release carrying the intent standard; the govern/intent surface no longer requires a dev build. GETTING_STARTED notes the minimum version.
 - Added: the intent-first contract — the first write into each sibling repo per piece of work is blocked once with its governing pages (`enola govern`) surfaced, and a turn that moved sibling code without moving any wiki page carries an intent-debt accounting into the next turn's context. Config-gated via `intent_first` (default enabled); absent graph degrades to a named skip. Ported from the origin brain's adoption.
 - Verified: the module-level dependency-cycle finding (pi-brain → commands → hooks → tools) is a directory-aggregation artifact — the file-level import graph is acyclic; verdict recorded at the extension entry point instead of refactoring healthy barrels.
 
