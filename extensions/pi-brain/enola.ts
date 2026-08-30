@@ -19,6 +19,8 @@ import { getMarkdownFiles } from "./utils.ts";
 
 export interface EnolaResult {
   ok: boolean;
+  /** exit 3: the baseline was not comparable — a non-verdict, not a regression. */
+  declined?: boolean;
   exitCode: number;
   stdout: string;
   stderr: string;
@@ -26,7 +28,7 @@ export interface EnolaResult {
 }
 
 function findEnolaBinary(config: EnolaConfig): string {
-  return config.binary ?? "enola";
+  return process.env.ENOLA_BINARY ?? config.binary ?? "enola";
 }
 
 function getCheckArgs(config: EnolaConfig): string[] {
@@ -95,16 +97,24 @@ export async function runEnolaCheck(home: BrainHome): Promise<EnolaResult> {
   const binary = findEnolaBinary(config);
   const result = await runEnola(binary, getCheckArgs(config), target);
 
-  // enola exits non-zero when it finds a structural regression.
+  // enola exits 1 on a structural regression and 3 when the baseline and the
+  // current snapshot are not comparable. Exit 3 is a non-verdict: the delta
+  // describes how the two snapshots were built, not what was edited, so it is
+  // treated as "not asked" — never as a pass and never as a regression. The
+  // remedy it names is re-pinning the baseline.
+  const declined = result.exitCode === 3;
   const ok = result.exitCode === 0;
   return {
+    declined,
     ok,
     exitCode: result.exitCode,
     stdout: result.stdout,
     stderr: result.stderr,
     summary: ok
       ? "No structural regressions detected."
-      : "Structural regression(s) detected. See output for details.",
+      : declined
+        ? "Declined — the baseline is not comparable to the current snapshot. Treat as not asked, never as a pass; re-pin the baseline and re-run."
+        : "Structural regression(s) detected. See output for details.",
   };
 }
 
@@ -216,6 +226,16 @@ export async function enolaGateCheck(home: BrainHome, context: string): Promise<
   const result = await runEnolaCheck(home);
   if (result.ok) {
     return { proceed: true, message: "enola check passed. No structural regressions." };
+  }
+
+  if (result.declined) {
+    // A non-verdict never blocks: nothing was graded, so there is nothing to
+    // enforce. Saying so by name keeps "the graph agreed" and "the graph was
+    // not asked" distinguishable, which is the point of the exit code.
+    return {
+      proceed: true,
+      message: `enola check declined for ${context}: the baseline is not comparable to the current snapshot. No verdict was reached — re-pin the baseline (/brain:enola-baseline) and re-run.`,
+    };
   }
 
   return {

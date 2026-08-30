@@ -1,0 +1,10 @@
+# Declared architectural intent for pi-brain itself. The dependencies section
+# follows enola v0.4.8's rule H14: every direct dependency declared, pinned by
+# the lockfile, and carrying a stated purpose. The intent explainer diffs this
+# against what the manifests extractor measures, so a dependency added without
+# a purpose surfaces as a finding rather than a silent import.
+dependencies:
+  - {name: "@earendil-works/pi-coding-agent", ecosystem: npm, purpose: "the extension host pi-brain's commands, tools and gates plug into"}
+  - {name: "@earendil-works/pi-tui", ecosystem: npm, purpose: "terminal UI primitives for the interactive surfaces the extension renders"}
+  - {name: tsx, ecosystem: npm, purpose: "TypeScript execution for the test runner and tools/ scripts, without a build step"}
+  - {name: typescript, ecosystem: npm, purpose: "the type checker npm run check gates on; no emitted output"}

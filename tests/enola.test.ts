@@ -178,6 +178,41 @@ async function main() {
   }
   await rm(governHome.path, { recursive: true, force: true });
 
+  // Exit-code semantics: 3 is a declined comparison — a non-verdict that never
+  // blocks — while 1 is a regression that does. Stub binaries pin the contract,
+  // and ENOLA_BINARY (env-first, like the brain home) is how they are injected.
+  const exitCodeHome = await createTestHome(true);
+  const stubDir = await mkdtemp(join(tmpdir(), "pi-brain-enola-stub-"));
+  const declinedStub = join(stubDir, "enola-declined");
+  await writeFile(declinedStub, "#!/bin/sh\necho 'DECLINED — refusing to grade'\nexit 3\n", { mode: 0o755 });
+  const regressionStub = join(stubDir, "enola-regression");
+  await writeFile(regressionStub, "#!/bin/sh\necho 'REGRESSION: new cycle'\nexit 1\n", { mode: 0o755 });
+
+  process.env.ENOLA_BINARY = declinedStub;
+  try {
+    const declinedResult = await runEnolaCheck(exitCodeHome);
+    if (declinedResult.ok || !declinedResult.declined) {
+      throw new Error(`Expected declined non-verdict, got ${JSON.stringify(declinedResult)}`);
+    }
+    if (!declinedResult.summary?.includes("not comparable")) {
+      throw new Error(`Expected not-comparable summary, got ${JSON.stringify(declinedResult.summary)}`);
+    }
+    const declinedGate = await enolaGateCheck(exitCodeHome, "test edit");
+    if (!declinedGate.proceed || !declinedGate.message.includes("declined")) {
+      throw new Error(`Expected a declined gate to proceed by name, got ${JSON.stringify(declinedGate)}`);
+    }
+
+    process.env.ENOLA_BINARY = regressionStub;
+    const regressionGate = await enolaGateCheck(exitCodeHome, "test edit");
+    if (regressionGate.proceed) {
+      throw new Error(`Expected a regression to block, got ${JSON.stringify(regressionGate)}`);
+    }
+  } finally {
+    delete process.env.ENOLA_BINARY;
+  }
+  await rm(exitCodeHome.path, { recursive: true, force: true });
+  await rm(stubDir, { recursive: true, force: true });
+
   console.log("✓ enola test passed");
 }
 
