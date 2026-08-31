@@ -120,24 +120,24 @@ If your PRD/ADR uses YAML intent blocks, pi-brain can generate and track code:
 
 ## Optional enola architecture intelligence
 
-pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to detect architectural regressions in target repositories. The intent surface — `/brain:enola-govern` and compiled wiki verdicts — needs enola v0.3.9 or later, the first release carrying the intent standard.
+pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to detect architectural regressions in target repositories. The intent surface — `/brain:enola-govern` and compiled wiki verdicts — needs enola v0.3.9 or later; the dependency-purpose declaration below needs v0.4.8, and this repository is verified against v0.4.11. Snapshot artifacts (`facts.jsonl`, `insights.json`, `receipt.json`) follow the versioned contract enola documents under `docs/schema/` as of v0.4.10, with `receipt.json` carrying `format_version`.
 
 1. Install enola:
    ```bash
    curl -fsSL https://raw.githubusercontent.com/enola-labs/enola/main/install.sh | sh
    ```
-2. Add to `brain.config.yml`:
+2. Add to `brain.config.yml` — **flat dotted keys**, which is the shape the config parser reads (a nested `enola:` block silently parses as disabled):
    ```yaml
-   enola:
-     enabled: true
-     target_repo: ./path/to/target/repo
-     gate_build: true
-     gate_sync_code: true
-     auto_baseline: true
-     # If your enola binary uses different commands, override them:
-     # check_args: "--generate --explain"
-     # baseline_args: "--generate"
+   enola.enabled: true
+   enola.target_repo: ./path/to/target/repo
+   enola.gate_build: true
+   enola.gate_sync_code: true
+   enola.auto_baseline: true
+   # Only for a binary whose commands differ from the current CLI:
+   # enola.check_args: "check"
+   # enola.baseline_args: "baseline pin"
    ```
+   The binary resolves env-first: `ENOLA_BINARY`, then `enola.binary`, then `enola` on PATH. Set `ENOLA_BINARY` in `.env` when the PATH copy is a downstream build you do not want grading this repository.
 3. Pin the initial baseline:
    ```bash
    /brain:enola-baseline
@@ -150,13 +150,20 @@ pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to dete
    - `/brain:enola-citations` — verify receipt citations
    - `/brain:enola-impact <symbol>`
    - `/brain:enola-query <term>`
+   - `/brain:enola-plan <path> [path...]` — the pre-edit contract: declared constraints and blast radius for intended paths (also injected by the intent-first gate beside the governing trail)
+   - `/brain:enola-findings` — snapshot findings grouped by explainer, joined against the judgment ledger; candidates to verify, never verdicts
+   - `/brain:enola-judge <source:title> <accepted|rejected|noise> <why…>` — record a verdict at `wiki/_state/enola-verdicts.json` so the next session inherits it rather than re-deciding; the ledger is write-on-judgment, so absence means unjudged, never queued
 
 5. Cite receipts in wiki prose:
    ```markdown
    enola receipt pi-brain `sha256:72d38a9e…` @ `0f1c75b`, 2026-07-31
    ```
 
-When gating is enabled, `/brain:build` and `/brain:sync-code` will block on structural regressions. When `auto_baseline` is enabled, the baseline is re-pinned after successful code generation or apply.
+6. Declare dependency purposes in `enola-intent.yaml` (enola v0.4.8+). The `manifests` extractor already measures which packages are declared and pinned; what no parser can measure is *why* a package is there, so each direct dependency carries a mandatory `purpose:` and the intent explainer diffs the declaration against the manifests — a measured package nothing declares becomes a finding. This repository's own `enola-intent.yaml` is the worked example.
+
+Three enola surfaces are deliberately not wrapped, so their absence is named rather than silent: `coverage` reports cross-repository edge resolution and pi-brain drives one target repository at a time; `history`/`blame` are served by the enola binary directly (`enola log|show|diff|blame|gc` against the target); and finding *trends* are a fold over recorded receipts that no workflow here needs yet.
+
+When gating is enabled, `/brain:build` and `/brain:sync-code` will block on structural regressions — and only on regressions. `enola check` exits 3 when the baseline is not comparable to the current snapshot; that is a non-verdict ("the graph was not asked"), never a pass and never a block, and the remedy is re-pinning the baseline. When `auto_baseline` is enabled, the baseline is re-pinned after successful code generation or apply.
 
 ## Experimental features
 
