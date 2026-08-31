@@ -150,6 +150,9 @@ pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to dete
    - `/brain:enola-citations` — verify receipt citations
    - `/brain:enola-impact <symbol>`
    - `/brain:enola-query <term>`
+   - `/brain:enola-plan <path> [path...]` — the pre-edit contract: declared constraints and blast radius for intended paths (also injected by the intent-first gate beside the governing trail)
+   - `/brain:enola-findings` — snapshot findings grouped by explainer, joined against the judgment ledger; candidates to verify, never verdicts
+   - `/brain:enola-judge <source:title> <accepted|rejected|noise> <why…>` — record a verdict at `wiki/_state/enola-verdicts.json` so the next session inherits it rather than re-deciding; the ledger is write-on-judgment, so absence means unjudged, never queued
 
 5. Cite receipts in wiki prose:
    ```markdown
@@ -157,6 +160,8 @@ pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to dete
    ```
 
 6. Declare dependency purposes in `enola-intent.yaml` (enola v0.4.8+). The `manifests` extractor already measures which packages are declared and pinned; what no parser can measure is *why* a package is there, so each direct dependency carries a mandatory `purpose:` and the intent explainer diffs the declaration against the manifests — a measured package nothing declares becomes a finding. This repository's own `enola-intent.yaml` is the worked example.
+
+Three enola surfaces are deliberately not wrapped, so their absence is named rather than silent: `coverage` reports cross-repository edge resolution and pi-brain drives one target repository at a time; `history`/`blame` are served by the enola binary directly (`enola log|show|diff|blame|gc` against the target); and finding *trends* are a fold over recorded receipts that no workflow here needs yet.
 
 When gating is enabled, `/brain:build` and `/brain:sync-code` will block on structural regressions — and only on regressions. `enola check` exits 3 when the baseline is not comparable to the current snapshot; that is a non-verdict ("the graph was not asked"), never a pass and never a block, and the remedy is re-pinning the baseline. When `auto_baseline` is enabled, the baseline is re-pinned after successful code generation or apply.
 

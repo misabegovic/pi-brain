@@ -5,7 +5,7 @@
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, runEnolaGovern, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, runEnolaGovern, runEnolaPlan, listFindings, judgeFinding, readVerdictLedger, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
 
 async function createTestHome(enabled: boolean, targetRepo?: string, checkArgs?: string): Promise<{ path: string }> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-enola-"));
@@ -212,6 +212,48 @@ async function main() {
   }
   await rm(exitCodeHome.path, { recursive: true, force: true });
   await rm(stubDir, { recursive: true, force: true });
+
+  // The judgment ledger is write-on-judgment: an entry exists only because
+  // someone judged that finding, and findings join against it so a judged
+  // finding is inherited rather than re-decided.
+  const ledgerHome = await createTestHome(true);
+  const first = await judgeFinding(ledgerHome, "cycles:Cyclic dependency detected (4 modules)", "rejected", "directory-aggregation artifact; file-level acyclic");
+  if (!first.startsWith("judged ")) throw new Error(`Expected a fresh judgment, got ${first}`);
+  const second = await judgeFinding(ledgerHome, "cycles:Cyclic dependency detected (4 modules)", "noise", "explainer wrong about this class");
+  if (!second.startsWith("re-judged ")) throw new Error(`Expected a re-judgment, got ${second}`);
+  const ledger = await readVerdictLedger(ledgerHome);
+  if (ledger.entries.length !== 1 || ledger.entries[0].verdict !== "noise") {
+    throw new Error(`Expected one entry holding the latest verdict, got ${JSON.stringify(ledger.entries)}`);
+  }
+  if (!ledger._note.includes("WRITE-ON-JUDGMENT")) throw new Error("Ledger note must state the no-pending contract");
+
+  await mkdir(join(ledgerHome.path, ".enola"), { recursive: true });
+  await writeFile(
+    join(ledgerHome.path, ".enola", "insights.json"),
+    JSON.stringify([
+      { title: "Cyclic dependency detected (4 modules)", source: "cycles", confidence: 1, description: "", evidence: [] },
+      { title: "High complexity", source: "complexity-outliers", confidence: 0.7, description: "", evidence: [] },
+    ]),
+    "utf-8",
+  );
+  const findings = await listFindings(ledgerHome);
+  if (!findings.includes("[noise: explainer wrong about this class]")) {
+    throw new Error(`Expected the judged finding to carry its verdict, got ${findings}`);
+  }
+  if (!findings.includes("complexity-outliers (1):")) {
+    throw new Error(`Expected grouping by explainer, got ${findings}`);
+  }
+  await rm(ledgerHome.path, { recursive: true, force: true });
+
+  // Findings with no snapshot is a named skip, never an empty finding set.
+  const bareHome = await createTestHome(true);
+  const noSnapshot = await listFindings(bareHome);
+  if (!noSnapshot.includes("named skip")) throw new Error(`Expected a named skip, got ${noSnapshot}`);
+  const disabledPlanHome = await createTestHome(false);
+  const planDisabled = await runEnolaPlan(disabledPlanHome, ["src/app.ts"]);
+  if (!planDisabled.stderr.includes("not enabled")) throw new Error(`Expected disabled plan message, got ${JSON.stringify(planDisabled)}`);
+  await rm(bareHome.path, { recursive: true, force: true });
+  await rm(disabledPlanHome.path, { recursive: true, force: true });
 
   console.log("✓ enola test passed");
 }

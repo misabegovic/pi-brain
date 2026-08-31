@@ -665,6 +665,28 @@ function renderGoverning(located: { repo: string; file: string }, index: GovernI
  * pages answers "not asked", which is never the same as "asked, none
  * governs".
  */
+export async function runEnolaPlan(home: BrainHome, paths: string[]): Promise<EnolaResult> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) {
+    return { ok: true, exitCode: 0, stdout: "", stderr: "enola is not enabled in brain.config.yml." };
+  }
+  const target = await resolveTargetRepo(home, config);
+  if (!target) {
+    return { ok: false, exitCode: 1, stdout: "", stderr: `enola target_repo not found: ${config.targetRepo}` };
+  }
+  const binary = findEnolaBinary(config);
+  const result = await runEnola(binary, ["plan", ...paths, target], target);
+  // plan exits 0 when the report was produced; its verdicts are for the
+  // caller to weigh, never a gate — the same contract check carries.
+  return {
+    ok: result.exitCode === 0,
+    exitCode: result.exitCode,
+    stdout: result.stdout,
+    stderr: result.stderr,
+    summary: result.exitCode === 0 ? "Pre-edit contract report produced." : "enola plan could not produce a report.",
+  };
+}
+
 export async function runEnolaGovern(home: BrainHome, query: string): Promise<EnolaResult> {
   const config = await readEnolaConfig(home);
   if (!config.enabled) {
@@ -748,6 +770,93 @@ export async function runEnolaCitations(home: BrainHome): Promise<{ ok: boolean;
   ].join("\n");
 
   return { ok: true, citations, message };
+}
+
+interface EnolaVerdict {
+  signature: string;
+  verdict: "accepted" | "rejected" | "noise";
+  why: string;
+  recorded: string;
+  cited_at?: string;
+}
+
+interface EnolaVerdictLedger {
+  _note: string;
+  entries: EnolaVerdict[];
+}
+
+const VERDICT_LEDGER_NOTE =
+  "Judgment ledger for architecture-graph findings. WRITE-ON-JUDGMENT, NO PENDING STATE: " +
+  "an entry exists only because someone judged that finding. Absence means unjudged, not queued. " +
+  "Nothing may enumerate the unjudged set as work. " +
+  "accepted = real, and cited where cited_at says. rejected = not real, re-judgeable when the code moves. " +
+  "noise = the explainer is wrong about this class, permanent.";
+
+function verdictLedgerPath(home: BrainHome): string {
+  return join(home.path, "wiki", "_state", "enola-verdicts.json");
+}
+
+export async function readVerdictLedger(home: BrainHome): Promise<EnolaVerdictLedger> {
+  try {
+    return JSON.parse(await readFile(verdictLedgerPath(home), "utf-8")) as EnolaVerdictLedger;
+  } catch {
+    return { _note: VERDICT_LEDGER_NOTE, entries: [] };
+  }
+}
+
+export async function judgeFinding(
+  home: BrainHome,
+  signature: string,
+  verdict: "accepted" | "rejected" | "noise",
+  why: string,
+  citedAt?: string,
+): Promise<string> {
+  const ledger = await readVerdictLedger(home);
+  const entry: EnolaVerdict = { signature, verdict, why, recorded: new Date().toISOString().slice(0, 10) };
+  if (citedAt) entry.cited_at = citedAt;
+  const existing = ledger.entries.findIndex((e) => e.signature === signature);
+  const replaced = existing >= 0;
+  if (replaced) ledger.entries[existing] = entry;
+  else ledger.entries.push(entry);
+  await mkdir(join(home.path, "wiki", "_state"), { recursive: true });
+  await writeFile(verdictLedgerPath(home), JSON.stringify(ledger, null, 2) + "\n", "utf-8");
+  return replaced ? `re-judged ${signature}: ${verdict}` : `judged ${signature}: ${verdict}`;
+}
+
+// Findings are candidates to verify, never verdicts. This reads the snapshot's
+// insights and joins each against the judgment ledger, so a finding someone
+// already judged surfaces with its verdict instead of being re-decided.
+export async function listFindings(home: BrainHome): Promise<string> {
+  const config = await readEnolaConfig(home);
+  if (!config.enabled) return "enola is not enabled in brain.config.yml.";
+  const target = await resolveTargetRepo(home, config);
+  if (!target) return `enola target_repo not found: ${config.targetRepo}`;
+  let insights: Array<{ title: string; source: string; confidence: number }>;
+  try {
+    insights = JSON.parse(await readFile(join(target, ".enola", "insights.json"), "utf-8"));
+  } catch {
+    return "no snapshot insights at .enola/insights.json — run /brain:enola-generate first (named skip, not an empty finding set).";
+  }
+  const ledger = await readVerdictLedger(home);
+  const verdicts = new Map(ledger.entries.map((e) => [e.signature, e]));
+  const lines: string[] = [`${insights.length} finding(s); ${ledger.entries.length} judged`];
+  const bySource = new Map<string, typeof insights>();
+  for (const i of insights) {
+    const group = bySource.get(i.source) ?? [];
+    group.push(i);
+    bySource.set(i.source, group);
+  }
+  for (const [source, group] of [...bySource.entries()].sort()) {
+    lines.push(`\n${source} (${group.length}):`);
+    for (const i of group.slice(0, 10)) {
+      const sig = `${i.source}:${i.title}`;
+      const judged = verdicts.get(sig);
+      const mark = judged ? ` [${judged.verdict}: ${judged.why}]` : "";
+      lines.push(`  ${(i.confidence ?? 0).toFixed(2)}  ${i.title}${mark}`);
+    }
+    if (group.length > 10) lines.push(`  … ${group.length - 10} more`);
+  }
+  return lines.join("\n");
 }
 
 export function registerEnolaCommands(pi: ExtensionAPI) {
@@ -900,6 +1009,54 @@ export function registerEnolaCommands(pi: ExtensionAPI) {
       }
       const result = await runEnolaGovern(home, target);
       ctx.ui.notify(formatEnolaResult(result), "info");
+    },
+  });
+
+  pi.registerCommand("brain:enola-plan", {
+    description: "The pre-edit contract: declared constraints and blast radius for intended paths (usage: /brain:enola-plan <path> [path...])",
+    handler: async (args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const paths = args.trim().split(/\s+/).filter(Boolean);
+      if (paths.length === 0) {
+        ctx.ui.notify("Usage: /brain:enola-plan <path> [path...]", "warning");
+        return;
+      }
+      const result = await runEnolaPlan(home, paths);
+      ctx.ui.notify(formatEnolaResult(result), "info");
+    },
+  });
+
+  pi.registerCommand("brain:enola-findings", {
+    description: "Snapshot findings grouped by explainer, joined against the judgment ledger — candidates to verify, never verdicts",
+    handler: async (_args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      ctx.ui.notify(await listFindings(home), "info");
+    },
+  });
+
+  pi.registerCommand("brain:enola-judge", {
+    description: "Record a verdict on a finding so the next session inherits it (usage: /brain:enola-judge <source:title> <accepted|rejected|noise> <why…>)",
+    handler: async (args, ctx) => {
+      const home = await requireBrain(ctx.cwd);
+      if (!home) {
+        ctx.ui.notify("No pi-brain home found.", "error");
+        return;
+      }
+      const match = args.trim().match(/^(\S+.*?)\s+(accepted|rejected|noise)\s+(.+)$/s);
+      if (!match) {
+        ctx.ui.notify("Usage: /brain:enola-judge <source:title> <accepted|rejected|noise> <why…>", "warning");
+        return;
+      }
+      const [, signature, verdict, why] = match;
+      ctx.ui.notify(await judgeFinding(home, signature, verdict as "accepted" | "rejected" | "noise", why), "info");
     },
   });
 }
