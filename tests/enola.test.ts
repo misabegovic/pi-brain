@@ -5,7 +5,7 @@
 import { mkdtemp, rm, writeFile, mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, runEnolaGovern, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
+import { runEnolaCheck, runEnolaBaseline, runEnolaQuery, runEnolaImpact, runEnolaGenerate, runEnolaDiff, runEnolaCitations, runEnolaGovern, runEnolaPlan, listFindings, judgeFinding, readVerdictLedger, formatEnolaResult, enolaGateCheck, captureEnolaRegressions } from "../extensions/pi-brain/enola.js";
 
 async function createTestHome(enabled: boolean, targetRepo?: string, checkArgs?: string): Promise<{ path: string }> {
   const dir = await mkdtemp(join(tmpdir(), "pi-brain-enola-"));
@@ -177,6 +177,83 @@ async function main() {
     throw new Error(`Expected page-mode coverage, got ${JSON.stringify(pageMode)}`);
   }
   await rm(governHome.path, { recursive: true, force: true });
+
+  // Exit-code semantics: 3 is a declined comparison — a non-verdict that never
+  // blocks — while 1 is a regression that does. Stub binaries pin the contract,
+  // and ENOLA_BINARY (env-first, like the brain home) is how they are injected.
+  const exitCodeHome = await createTestHome(true);
+  const stubDir = await mkdtemp(join(tmpdir(), "pi-brain-enola-stub-"));
+  const declinedStub = join(stubDir, "enola-declined");
+  await writeFile(declinedStub, "#!/bin/sh\necho 'DECLINED — refusing to grade'\nexit 3\n", { mode: 0o755 });
+  const regressionStub = join(stubDir, "enola-regression");
+  await writeFile(regressionStub, "#!/bin/sh\necho 'REGRESSION: new cycle'\nexit 1\n", { mode: 0o755 });
+
+  process.env.ENOLA_BINARY = declinedStub;
+  try {
+    const declinedResult = await runEnolaCheck(exitCodeHome);
+    if (declinedResult.ok || !declinedResult.declined) {
+      throw new Error(`Expected declined non-verdict, got ${JSON.stringify(declinedResult)}`);
+    }
+    if (!declinedResult.summary?.includes("not comparable")) {
+      throw new Error(`Expected not-comparable summary, got ${JSON.stringify(declinedResult.summary)}`);
+    }
+    const declinedGate = await enolaGateCheck(exitCodeHome, "test edit");
+    if (!declinedGate.proceed || !declinedGate.message.includes("declined")) {
+      throw new Error(`Expected a declined gate to proceed by name, got ${JSON.stringify(declinedGate)}`);
+    }
+
+    process.env.ENOLA_BINARY = regressionStub;
+    const regressionGate = await enolaGateCheck(exitCodeHome, "test edit");
+    if (regressionGate.proceed) {
+      throw new Error(`Expected a regression to block, got ${JSON.stringify(regressionGate)}`);
+    }
+  } finally {
+    delete process.env.ENOLA_BINARY;
+  }
+  await rm(exitCodeHome.path, { recursive: true, force: true });
+  await rm(stubDir, { recursive: true, force: true });
+
+  // The judgment ledger is write-on-judgment: an entry exists only because
+  // someone judged that finding, and findings join against it so a judged
+  // finding is inherited rather than re-decided.
+  const ledgerHome = await createTestHome(true);
+  const first = await judgeFinding(ledgerHome, "cycles:Cyclic dependency detected (4 modules)", "rejected", "directory-aggregation artifact; file-level acyclic");
+  if (!first.startsWith("judged ")) throw new Error(`Expected a fresh judgment, got ${first}`);
+  const second = await judgeFinding(ledgerHome, "cycles:Cyclic dependency detected (4 modules)", "noise", "explainer wrong about this class");
+  if (!second.startsWith("re-judged ")) throw new Error(`Expected a re-judgment, got ${second}`);
+  const ledger = await readVerdictLedger(ledgerHome);
+  if (ledger.entries.length !== 1 || ledger.entries[0].verdict !== "noise") {
+    throw new Error(`Expected one entry holding the latest verdict, got ${JSON.stringify(ledger.entries)}`);
+  }
+  if (!ledger._note.includes("WRITE-ON-JUDGMENT")) throw new Error("Ledger note must state the no-pending contract");
+
+  await mkdir(join(ledgerHome.path, ".enola"), { recursive: true });
+  await writeFile(
+    join(ledgerHome.path, ".enola", "insights.json"),
+    JSON.stringify([
+      { title: "Cyclic dependency detected (4 modules)", source: "cycles", confidence: 1, description: "", evidence: [] },
+      { title: "High complexity", source: "complexity-outliers", confidence: 0.7, description: "", evidence: [] },
+    ]),
+    "utf-8",
+  );
+  const findings = await listFindings(ledgerHome);
+  if (!findings.includes("[noise: explainer wrong about this class]")) {
+    throw new Error(`Expected the judged finding to carry its verdict, got ${findings}`);
+  }
+  if (!findings.includes("complexity-outliers (1):")) {
+    throw new Error(`Expected grouping by explainer, got ${findings}`);
+  }
+  await rm(ledgerHome.path, { recursive: true, force: true });
+
+  // Findings with no snapshot is a named skip, never an empty finding set.
+  const bareHome = await createTestHome(true);
+  const noSnapshot = await listFindings(bareHome);
+  if (!noSnapshot.includes("named skip")) throw new Error(`Expected a named skip, got ${noSnapshot}`);
+  const disabledPlanHome = await createTestHome(false);
+  const planDisabled = await runEnolaPlan(disabledPlanHome, ["src/app.ts"]);
+  if (!planDisabled.stderr.includes("not enabled")) throw new Error(`Expected disabled plan message, got ${JSON.stringify(planDisabled)}`);
+  await rm(bareHome.path, { recursive: true, force: true });
+  await rm(disabledPlanHome.path, { recursive: true, force: true });
 
   console.log("✓ enola test passed");
 }

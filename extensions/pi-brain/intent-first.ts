@@ -22,7 +22,7 @@ import { homedir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import type { BrainHome } from "./types.ts";
 import { extractSimpleYamlValue } from "./yaml.ts";
-import { runEnolaGovern } from "./enola.ts";
+import { runEnolaGovern, runEnolaPlan } from "./enola.ts";
 
 export interface IntentFirstConfig {
   enabled: boolean;
@@ -170,6 +170,14 @@ export async function intentFirstGateReason(home: BrainHome, target: IntentTarge
     (govern.stdout || govern.stderr || "").trim() ||
     "(enola govern unavailable — named skip; consult the wiki shelves manually)";
 
+  // The pre-edit contract rides beside the trail: declared constraints binding
+  // the path and its blast radius over the current snapshot. Reported, never a
+  // gate — absent binary or snapshot degrades to a named skip.
+  const plan = await runEnolaPlan(home, [target.relPath]);
+  const contract =
+    (plan.stdout || plan.stderr || "").trim() ||
+    "(enola plan unavailable — named skip; blast radius unmeasured)";
+
   return [
     `intent-first gate (${target.repoName}): first edit for this piece of work.`,
     "",
@@ -177,6 +185,9 @@ export async function intentFirstGateReason(home: BrainHome, target: IntentTarge
     "",
     `Governing intent for ${target.relPath}:`,
     trail,
+    "",
+    `Pre-edit contract for ${target.relPath} (declared constraints, blast radius):`,
+    contract,
     "",
     "Retrying the edit proceeds. This gate re-arms on every user message; within one piece of work it will not fire again.",
   ].join("\n");
