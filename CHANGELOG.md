@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.5.0] - 2026-08-31
+
 - Added: workflow parity with the origin brain's enola surface. `/brain:enola-plan` reports the pre-edit contract (declared constraints and blast radius for intended paths), and the intent-first gate injects it beside the governing trail, so the first edit into a piece of work reads both the pages that govern it and the constraints that bind it. `/brain:enola-findings` lists snapshot findings grouped by explainer, joined against a judgment ledger; `/brain:enola-judge` records accepted/rejected/noise verdicts at `wiki/_state/enola-verdicts.json` — write-on-judgment, no pending state, so a judged finding is inherited rather than re-decided. Surfaces deliberately not wrapped are named in GETTING_STARTED (coverage is cross-repo, history is binary-served, trends are an unneeded fold), so absence reads as a decision rather than a gap.
 - Verified against enola v0.4.11 and re-baselined (1,730 facts at v0.4.11; first pinned at v0.4.10 with 1,726 facts, re-pinned when upstream released v0.4.11 the same week): 1,726 facts against the 490 the v0.2.9 snapshot held, the growth being the `mdintent` compile of this repository's own wiki and the v0.4.8 `manifests` extractor reading `package.json`. The receipt carries `format_version: 1` per v0.4.10's documented artifact contract.
 - Added: `enola-intent.yaml` declaring every direct dependency with a stated purpose (enola v0.4.8, rule H14). The intent explainer diffs the declaration against the measured manifests, so a dependency added without a purpose surfaces as a finding.
