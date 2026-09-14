@@ -22,8 +22,6 @@ enola_intent:
       path: extensions/pi-brain/hooks.ts
     - repo: pi-brain
       path: sources/brain/feedback/live-status-widget-refresh.md
-    - repo: pi-brain
-      path: wiki/brain/adrs/adr-live-status-widget-refresh.md
 ---
 
 ## Current truth

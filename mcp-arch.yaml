@@ -1,0 +1,22 @@
+# enola configuration for the pi-brain product repo itself (the brain home is
+# the graded checkout: repo "." names it "pi-brain", which is what the compiled
+# wiki anchors declare as their repo — see tools/brain-intent.mjs repoLabel()).
+#
+# No extractors:/explainers:/renderers: lists — a list-valued key REPLACES the
+# built-in list, so naming a subset silently turns off everything else.
+repo: .
+
+ignore:
+  # .pi/upstream-ref is an embedded clone of the upstream pi-brain template,
+  # kept as reference material for /brain:update diffs. Grading it duplicated
+  # every finding (each real symbol also appeared under .pi/upstream-ref/) and
+  # churned on every template update — ~1,729 phantom facts at 2026-09-14.
+  - ".pi/**"
+  # Hygiene at any depth; enola's built-in defaults already cover most of
+  # these, declared so a defaults change cannot silently widen the scope.
+  - "**/node_modules/**"
+  - "**/.git/**"
+  - ".enola/**"
+  - "**/.enola/**"
+  - "dist/**"
+  - "**/*.log"

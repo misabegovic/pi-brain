@@ -79,6 +79,7 @@ The regenerative-intent epic is delivered and the link graph is clean. Next comm
 ## In shaping
 
 <!-- brain-state: shaping -->
+- [Structural regression detected by enola (2026-09-14)](../brain/ai-suggestions/enola/enola-regression-2026-09-14.md)
 - [Upstream template sync for pi-brain clones](../brain/pitches/upstream-template-sync.md)
 - [PRD — Tap pi’s full extension surface for pi-brain](../brain/prds/tap-pi-extension-surface.md)
 <!-- /brain-state -->

@@ -21,12 +21,6 @@ enola_intent:
     anchors:
     - repo: pi-brain
       path: package.json
-    - repo: pi-brain
-      path: wiki/brain/adrs/local-first-brain-self-maintenance.md
-    - repo: pi-brain
-      path: wiki/brain/adrs/versioning-and-releases.md
-    - repo: pi-brain
-      path: wiki/brain/records/tap-pi-extension-surface.md
 ---
 
 ## Release

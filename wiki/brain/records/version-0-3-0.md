@@ -21,12 +21,6 @@ enola_intent:
     anchors:
     - repo: pi-brain
       path: package.json
-    - repo: pi-brain
-      path: wiki/brain/adrs/adr-live-status-widget-refresh.md
-    - repo: pi-brain
-      path: wiki/brain/adrs/adr-pi-tool-wrapper-override.md
-    - repo: pi-brain
-      path: wiki/brain/adrs/versioning-and-releases.md
 ---
 
 ## Release

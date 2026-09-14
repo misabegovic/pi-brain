@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/multi-agent-rfc-collaboration.md
-    - repo: pi-brain
-      path: wiki/brain/bets/multi-agent-rfc-collaboration.md
-    - repo: pi-brain
-      path: wiki/brain/prds/multi-agent-rfc-collaboration.md
 ---
 
 # Record — Multi-agent RFC collaboration

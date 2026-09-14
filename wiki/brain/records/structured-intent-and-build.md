@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/structured-intent-and-build.md
-    - repo: pi-brain
-      path: wiki/brain/bets/structured-intent-and-build.md
-    - repo: pi-brain
-      path: wiki/brain/prds/structured-intent-and-build.md
 ---
 
 # Record — Structured intent and `/brain:build`
