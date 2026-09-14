@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.5.1] - 2026-09-14
+
 - Added: root `mcp-arch.yaml` declaring the graded scope (`repo: .`) and excluding `.pi/` — the embedded upstream-template clone that duplicated every enola finding (~1,100 phantom symbols, ~1,729 facts).
 - Fixed: `tools/brain-intent.mjs` no longer anchors `wiki/` sources. Anchors are page-to-code; compiled pages emit intent page facts which do not count as touches, so every page-to-page anchor was graded dangling (50 false-positive findings, now 0).
 - Fixed: enola grading binary pinned via `enola.binary` to a stock upstream build (`enola-oss`, currently v0.4.19) — the PATH copy (a 0.4.10 downstream build) made every `enola check` decline with `version_mismatch`. Baseline re-pinned at 0.4.19 (extractors v265); a 19th explainer (`import-closure`) ships with it.

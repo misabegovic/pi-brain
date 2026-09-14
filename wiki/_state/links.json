@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-14T10:39:35.382Z",
-  "node_count": 107,
-  "edge_count": 652,
+  "generated_at": "2026-09-14T10:50:30.231Z",
+  "node_count": 108,
+  "edge_count": 655,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -723,6 +723,13 @@
       "status": "delivered",
       "confidence": "high",
       "title": "Record — pi-brain v0.5.0 release"
+    },
+    {
+      "path": "brain/records/version-0-5-1.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — pi-brain v0.5.1 release"
     },
     {
       "path": "index.md",
@@ -3414,6 +3421,20 @@
       "context": "wiki/brain/adrs/structured-intent-and-build.md"
     },
     {
+      "source": "brain/records/version-0-5-1",
+      "target": "brain/records/version-0-5-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-5-0.md"
+    },
+    {
+      "source": "brain/records/version-0-5-1",
+      "target": "brain/records/version-0-4-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-4-0.md"
+    },
+    {
       "source": "index",
       "target": "brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -4133,6 +4154,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Record — pi-brain v0.5.0 release"
+    },
+    {
+      "source": "index",
+      "target": "brain/records/version-0-5-1",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.5.1 release"
     },
     {
       "source": "index",
@@ -5674,6 +5702,14 @@
     },
     {
       "path": "brain/records/version-0-3-2.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/version-0-4-0.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/records/version-0-5-0.md",
       "incoming": 3
     },
     {

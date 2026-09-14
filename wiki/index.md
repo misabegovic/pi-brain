@@ -134,6 +134,7 @@ This is the synthesis layer for this pi-brain instance.
 - [Record — pi-brain v0.3.3 release](brain/records/version-0-3-3.md)
 - [Record — pi-brain v0.4.0 release](brain/records/version-0-4-0.md)
 - [Record — pi-brain v0.5.0 release](brain/records/version-0-5-0.md)
+- [Record — pi-brain v0.5.1 release](brain/records/version-0-5-1.md)
 
 ### meta
 - [pi-brain home](index.md)
