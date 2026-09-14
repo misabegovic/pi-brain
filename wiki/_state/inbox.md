@@ -20,3 +20,5 @@ Items are appended below. The agent tends them on request.
 ## Archived 2026-09-14
 
 - **v0-4-0-release-prepared-and-tagged-github-releas** — Resolved/superseded: the npm registry serves `@misabegovic/pi-brain@0.5.0` (verified 2026-09-14), so the OTP blocker cleared and v0.5.0 shipped on top. No action pending.
+- **npm-publish-for-misabegovic-pi-brain-0-5-1-is-pe** — Resolved 2026-09-14: user re-authenticated and published; registry serves `@misabegovic/pi-brain@0.5.1` (verified). GitHub release: https://github.com/misabegovic/pi-brain/releases/tag/v0.5.1
+

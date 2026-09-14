@@ -43,3 +43,5 @@ Append-only operations log for this pi-brain instance.
 - 2026-08-03: capture: v0.4.0 release prepared and tagged; GitHub release created. npm publish requires OTP — waiting for user to provide one-t
 - 2026-08-06: intent compilation lands — derived enola_intent stamping (tools/brain-intent.mjs, --check in validate), the govern reverse query (brain_enola operation + /brain:enola-govern), cross-skill wiring, and the vacuous-enabled test-helper fix. Release-gated on an enola build carrying the intent standard.
 - 2026-09-14: Released v0.5.1 — enola grading restored (stock binary pinned via enola.binary, upgraded to 0.4.19; mcp-arch.yaml excludes .pi/upstream-ref; brain-intent compiles page-to-code anchors only), release records for v0.4.0/v0.5.0 written, template_version bumped to v0.5.0.
+- 2026-09-14: capture: npm publish for @misabegovic/pi-brain@0.5.1 is pending: registry auth is expired (npm whoami → 401 against registry.npmj
+- 2026-09-14: Published @misabegovic/pi-brain@0.5.1 to npm (registry verified); inbox task archived.
