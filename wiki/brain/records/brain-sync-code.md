@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/brain-sync-code.md
-    - repo: pi-brain
-      path: wiki/brain/bets/brain-sync-code.md
-    - repo: pi-brain
-      path: wiki/brain/prds/brain-sync-code.md
 ---
 
 # Record — `/brain:sync-code` reconciliation

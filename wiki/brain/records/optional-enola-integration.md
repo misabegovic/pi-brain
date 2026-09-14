@@ -15,8 +15,6 @@ enola_intent:
     anchors:
     - repo: pi-brain
       path: sources/repo/2026-07-31--github-com-enola-labs-enola.md
-    - repo: pi-brain
-      path: wiki/brain/adrs/optional-enola-integration.md
 ---
 
 # Record — Optional enola integration

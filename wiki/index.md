@@ -58,11 +58,18 @@ This is the synthesis layer for this pi-brain instance.
 - [ADR — Upstream template sync mechanism](brain/adrs/upstream-template-sync.md)
 - [ADR — Versioning and release strategy for pi-brain](brain/adrs/versioning-and-releases.md)
 
+### ai-suggestion
+- [Structural regression detected by enola (2026-09-14)](brain/ai-suggestions/enola/enola-regression-2026-09-14.md)
+
 ### refinement
+- [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/enola-grader-version-drift.md)
 - [Audit shared utility hotspots flagged by enola](brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md)
 - [Split high-complexity registration functions in extensions/pi-brain](brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md)
+- [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/enola-scope-upstream-ref.md)
+- [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/enola-self-repo-anchor-resolution.md)
 - [Integrate optional enola intelligence into relevant pi-brain skills](brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md)
 - [Learn from projects/tt/brain enola integration and strengthen pi-brain's](brain/ai-suggestions/refinement/learn-from-tt-brain-enola-integration.md)
+- [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/release-bookkeeping-drift.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)
@@ -125,6 +132,8 @@ This is the synthesis layer for this pi-brain instance.
 - [Release](brain/records/version-0-3-1.md)
 - [Release](brain/records/version-0-3-2.md)
 - [Record — pi-brain v0.3.3 release](brain/records/version-0-3-3.md)
+- [Record — pi-brain v0.4.0 release](brain/records/version-0-4-0.md)
+- [Record — pi-brain v0.5.0 release](brain/records/version-0-5-0.md)
 
 ### meta
 - [pi-brain home](index.md)

@@ -6,6 +6,10 @@ node_modules/
 wiki/_state/deepdives.json
 .env
 
+# /brain:update reference material: an embedded clone of the upstream template
+# (untracked; also excluded from enola's graded scope via mcp-arch.yaml)
+.pi/
+
 # Build and package artifacts
 coverage/
 dist/

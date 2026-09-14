@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/multi-agent-intent-collaboration.md
-    - repo: pi-brain
-      path: wiki/brain/bets/multi-agent-intent-collaboration.md
-    - repo: pi-brain
-      path: wiki/brain/prds/multi-agent-intent-collaboration.md
 ---
 
 # Record — Multi-agent intent collaboration

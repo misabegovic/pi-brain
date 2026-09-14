@@ -22,8 +22,6 @@ enola_intent:
       path: extensions/pi-brain/enola.ts
     - repo: pi-brain
       path: extensions/pi-brain/tools.ts
-    - repo: pi-brain
-      path: wiki/brain/adrs/optional-enola-integration.md
 ---
 
 # Record — enola receipts, drift detection, and citation verification

@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/autonomous-colleague-mode.md
-    - repo: pi-brain
-      path: wiki/brain/bets/autonomous-colleague-mode.md
-    - repo: pi-brain
-      path: wiki/brain/prds/autonomous-colleague-mode.md
 ---
 
 # Record — Autonomous colleague mode

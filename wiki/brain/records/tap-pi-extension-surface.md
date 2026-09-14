@@ -45,12 +45,6 @@ enola_intent:
       path: extensions/pi-brain/shortcuts.ts
     - repo: pi-brain
       path: extensions/pi-brain/tool-result-enrichment.ts
-    - repo: pi-brain
-      path: wiki/brain/adrs/tap-pi-extension-surface.md
-    - repo: pi-brain
-      path: wiki/brain/bets/tap-pi-extension-surface.md
-    - repo: pi-brain
-      path: wiki/brain/prds/tap-pi-extension-surface.md
 ---
 
 ## Current truth

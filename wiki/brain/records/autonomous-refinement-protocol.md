@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/autonomous-refinement-protocol.md
-    - repo: pi-brain
-      path: wiki/brain/bets/autonomous-refinement-protocol.md
-    - repo: pi-brain
-      path: wiki/brain/prds/autonomous-refinement-protocol.md
 ---
 
 # Record — Autonomous refinement protocol

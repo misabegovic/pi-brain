@@ -11,9 +11,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/enola-guided-skills.md
 ---
 
 # Record — Enola-guided pi-brain skills

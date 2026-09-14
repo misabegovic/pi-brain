@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-31T08:02:17.776Z",
-  "node_count": 100,
-  "edge_count": 637,
+  "generated_at": "2026-09-14T10:39:35.382Z",
+  "node_count": 107,
+  "edge_count": 652,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -186,6 +186,20 @@
       "title": "ADR — Versioning and release strategy for pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/enola/enola-regression-2026-09-14.md",
+      "kind": "ai-suggestion",
+      "status": "draft",
+      "confidence": "medium",
+      "title": "Structural regression detected by enola (2026-09-14)"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/enola-grader-version-drift.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "low",
+      "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
       "path": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md",
       "kind": "refinement",
       "status": "closed",
@@ -200,6 +214,20 @@
       "title": "Split high-complexity registration functions in extensions/pi-brain"
     },
     {
+      "path": "brain/ai-suggestions/refinement/enola-scope-upstream-ref.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "low",
+      "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/enola-self-repo-anchor-resolution.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "low",
+      "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
       "path": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md",
       "kind": "refinement",
       "status": "closed",
@@ -212,6 +240,13 @@
       "status": "closed",
       "confidence": "high",
       "title": "Learn from projects/tt/brain enola integration and strengthen pi-brain's"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/release-bookkeeping-drift.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "low",
+      "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -674,6 +709,20 @@
       "status": "delivered",
       "confidence": "high",
       "title": "Record — pi-brain v0.3.3 release"
+    },
+    {
+      "path": "brain/records/version-0-4-0.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — pi-brain v0.4.0 release"
+    },
+    {
+      "path": "brain/records/version-0-5-0.md",
+      "kind": "record",
+      "status": "delivered",
+      "confidence": "high",
+      "title": "Record — pi-brain v0.5.0 release"
     },
     {
       "path": "index.md",
@@ -3323,6 +3372,48 @@
       "context": "wiki/brain/epics/enola-integration.md"
     },
     {
+      "source": "brain/records/version-0-4-0",
+      "target": "brain/records/version-0-3-3",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-3-3.md"
+    },
+    {
+      "source": "brain/records/version-0-4-0",
+      "target": "brain/records/version-0-5-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-5-0.md"
+    },
+    {
+      "source": "brain/records/version-0-4-0",
+      "target": "brain/epics/enola-integration",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/epics/enola-integration.md"
+    },
+    {
+      "source": "brain/records/version-0-5-0",
+      "target": "brain/records/version-0-4-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-4-0.md"
+    },
+    {
+      "source": "brain/records/version-0-5-0",
+      "target": "brain/records/version-0-3-3",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/records/version-0-3-3.md"
+    },
+    {
+      "source": "brain/records/version-0-5-0",
+      "target": "brain/adrs/structured-intent-and-build",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+    },
+    {
       "source": "index",
       "target": "brain/_archive/bets/embed-pi-brain-default-behaviour",
       "kind": "markdown",
@@ -3618,6 +3709,20 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/enola/enola-regression-2026-09-14",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Structural regression detected by enola (2026-09-14)"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/enola-grader-version-drift",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots",
       "kind": "markdown",
       "provenance": "body",
@@ -3632,6 +3737,20 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/enola-scope-upstream-ref",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/enola-self-repo-anchor-resolution",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills",
       "kind": "markdown",
       "provenance": "body",
@@ -3643,6 +3762,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Learn from projects/tt/brain enola integration and strengthe"
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/release-bookkeeping-drift",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
       "source": "index",
@@ -3996,6 +4122,20 @@
     },
     {
       "source": "index",
+      "target": "brain/records/version-0-4-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.4.0 release"
+    },
+    {
+      "source": "index",
+      "target": "brain/records/version-0-5-0",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Record — pi-brain v0.5.0 release"
+    },
+    {
+      "source": "index",
       "target": "index",
       "kind": "markdown",
       "provenance": "body",
@@ -4021,6 +4161,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "State — org"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/enola/enola-regression-2026-09-14",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Structural regression detected by enola (2026-09-14)"
     },
     {
       "source": "org/options",
@@ -4448,6 +4595,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Roadmap — org"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/enola/enola-regression-2026-09-14",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Structural regression detected by enola (2026-09-14)"
     },
     {
       "source": "org/roadmap",
@@ -5203,6 +5357,10 @@
       "incoming": 10
     },
     {
+      "path": "brain/adrs/structured-intent-and-build.md",
+      "incoming": 10
+    },
+    {
       "path": "brain/adrs/versioning-and-releases.md",
       "incoming": 10
     },
@@ -5212,10 +5370,6 @@
     },
     {
       "path": "brain/adrs/stronger-default-implementation-guardrails.md",
-      "incoming": 9
-    },
-    {
-      "path": "brain/adrs/structured-intent-and-build.md",
       "incoming": 9
     },
     {
@@ -5236,6 +5390,10 @@
     },
     {
       "path": "brain/bets/autonomous-colleague-mode.md",
+      "incoming": 8
+    },
+    {
+      "path": "brain/epics/enola-integration.md",
       "incoming": 8
     },
     {
@@ -5292,10 +5450,6 @@
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
-      "incoming": 7
-    },
-    {
-      "path": "brain/epics/enola-integration.md",
       "incoming": 7
     },
     {
@@ -5403,6 +5557,10 @@
       "incoming": 5
     },
     {
+      "path": "brain/records/version-0-3-3.md",
+      "incoming": 5
+    },
+    {
       "path": "brain/adrs/adr-pi-tool-wrapper-override.md",
       "incoming": 4
     },
@@ -5441,6 +5599,10 @@
     {
       "path": "brain/records/smarter-autonomy.md",
       "incoming": 4
+    },
+    {
+      "path": "brain/ai-suggestions/enola/enola-regression-2026-09-14.md",
+      "incoming": 3
     },
     {
       "path": "brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md",
@@ -5512,10 +5674,6 @@
     },
     {
       "path": "brain/records/version-0-3-2.md",
-      "incoming": 3
-    },
-    {
-      "path": "brain/records/version-0-3-3.md",
       "incoming": 3
     },
     {

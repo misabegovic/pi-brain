@@ -13,13 +13,6 @@ enola_intent:
     status: delivered
     scope:
     - brain
-    anchors:
-    - repo: pi-brain
-      path: wiki/brain/adrs/background-task-runner.md
-    - repo: pi-brain
-      path: wiki/brain/bets/background-task-runner.md
-    - repo: pi-brain
-      path: wiki/brain/prds/background-task-runner.md
 ---
 
 # Record — Background task runner

@@ -28,7 +28,10 @@ auto_connect: false
 # `enola` on PATH. Point it at a stock release when the PATH copy is a
 # downstream build you do not want grading this repository.
 enola.enabled: true
-# enola.binary: /path/to/enola
+# The PATH copy is a downstream/dev build (0.4.10 at the time of pinning).
+# enola-oss is the stock upstream build, upgraded in place; the baseline is
+# re-pinned after every upgrade (extractor versions must match to grade).
+enola.binary: /home/muhamed/.local/bin/enola-oss
 enola.gate_build: false
 enola.gate_sync_code: false
 enola.auto_baseline: false
@@ -78,4 +81,4 @@ brain_session_shutdown: true
 
 # pi-brain template version this clone was created from or last updated to.
 # Used by /brain:update to diff against upstream releases.
-template_version: "v0.4.0"
+template_version: "v0.5.0"

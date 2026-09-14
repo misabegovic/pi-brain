@@ -22,14 +22,6 @@ enola_intent:
     anchors:
     - repo: pi-brain
       path: package.json
-    - repo: pi-brain
-      path: wiki/brain/adrs/versioning-and-releases.md
-    - repo: pi-brain
-      path: wiki/brain/constraints/explicit-approval-for-commits.md
-    - repo: pi-brain
-      path: wiki/brain/constraints/remote-promotion-requires-pr.md
-    - repo: pi-brain
-      path: wiki/brain/records/extension-cleanup-resource-conflicts.md
 ---
 
 ## Release

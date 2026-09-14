@@ -120,7 +120,7 @@ If your PRD/ADR uses YAML intent blocks, pi-brain can generate and track code:
 
 ## Optional enola architecture intelligence
 
-pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to detect architectural regressions in target repositories. The intent surface — `/brain:enola-govern` and compiled wiki verdicts — needs enola v0.3.9 or later; the dependency-purpose declaration below needs v0.4.8, and this repository is verified against v0.4.11. Snapshot artifacts (`facts.jsonl`, `insights.json`, `receipt.json`) follow the versioned contract enola documents under `docs/schema/` as of v0.4.10, with `receipt.json` carrying `format_version`.
+pi-brain can integrate with [enola](https://github.com/enola-labs/enola) to detect architectural regressions in target repositories. The intent surface — `/brain:enola-govern` and compiled wiki verdicts — needs enola v0.3.9 or later; the dependency-purpose declaration below needs v0.4.8, and this repository is verified against v0.4.19. Snapshot artifacts (`facts.jsonl`, `insights.json`, `receipt.json`) follow the versioned contract enola documents under `docs/schema/` as of v0.4.10, with `receipt.json` carrying `format_version`.
 
 1. Install enola:
    ```bash
