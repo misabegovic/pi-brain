@@ -84,7 +84,7 @@ export function registerLifecycleHooks(
     const home = await requireBrain(ctx.cwd);
     lastSystemPrompt.current = event.systemPrompt ?? "";
     if (!home) return {};
-    if (event.messageType !== "user") return {};
+    if (event.messageType === "custom") return {};
 
     const state = await readAutonomy(home);
     const agentsLoaded = hasAgentsMd(event.systemPromptOptions?.contextFiles);
