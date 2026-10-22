@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Changed: `@earendil-works/pi-coding-agent` and `@earendil-works/pi-tui` dev dependencies move from ^0.83.0 to 1.4.0; type check and the full validate pass unchanged.
+- Fixed: since pi 1.2.0 `before_agent_start` also fires for runs started by `pi.sendMessage` with `triggerTurn`, which is how the refinement protocol starts its scan. The handler now leaves a `"custom"` run untouched, so the refinement run no longer receives the autonomy prompt and no longer consumes the one-shot intent debt or session briefing meant for the next user prompt. Covered by `tests/lifecycle-hooks.test.ts`; recorded as an amendment to the autonomous-refinement-protocol ADR.
+
 ## [0.5.1] - 2026-09-14
 
 - Added: root `mcp-arch.yaml` declaring the graded scope (`repo: .`) and excluding `.pi/` — the embedded upstream-template clone that duplicated every enola finding (~1,100 phantom symbols, ~1,729 facts).
