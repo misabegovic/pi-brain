@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-14T10:50:30.231Z",
-  "node_count": 108,
-  "edge_count": 655,
+  "generated_at": "2026-10-22T11:51:00.173Z",
+  "node_count": 109,
+  "edge_count": 658,
   "nodes": [
     {
       "path": "brain/_archive/bets/embed-pi-brain-default-behaviour.md",
@@ -233,6 +233,13 @@
       "status": "closed",
       "confidence": "high",
       "title": "Integrate optional enola intelligence into relevant pi-brain skills"
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity.md",
+      "kind": "refinement",
+      "status": "draft",
+      "confidence": "low",
+      "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
       "path": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md",
@@ -1029,44 +1036,44 @@
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/prds/autonomous-refinement-protocol",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/prds/autonomous-refinement-protocol.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/bets/autonomous-refinement-protocol",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/bets/autonomous-refinement-protocol.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/adrs/smarter-autonomy",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/smarter-autonomy.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/constraints/adr-before-structural-changes",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/autonomous-refinement-protocol",
       "target": "brain/constraints/explicit-approval-for-commits",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/explicit-approval-for-commits.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
@@ -3779,6 +3786,13 @@
     },
     {
       "source": "index",
+      "target": "brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "source": "index",
       "target": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art",
       "kind": "markdown",
       "provenance": "body",
@@ -4196,6 +4210,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Structural regression detected by enola (2026-09-14)"
+    },
+    {
+      "source": "org/options",
+      "target": "brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
       "source": "org/options",
@@ -4630,6 +4651,13 @@
       "kind": "markdown",
       "provenance": "body",
       "context": "Structural regression detected by enola (2026-09-14)"
+    },
+    {
+      "source": "org/roadmap",
+      "target": "brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
       "source": "org/roadmap",
@@ -5638,6 +5666,10 @@
     },
     {
       "path": "brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md",
+      "incoming": 3
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity.md",
       "incoming": 3
     },
     {

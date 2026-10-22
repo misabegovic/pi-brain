@@ -90,3 +90,13 @@ The protocol must NOT:
 - [wiki/brain/adrs/smarter-autonomy.md](../adrs/smarter-autonomy.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
 - [wiki/brain/constraints/explicit-approval-for-commits.md](../constraints/explicit-approval-for-commits.md)
+
+## Amendments
+
+### 2026-10-22: refinement runs are not user prompts to the before_agent_start hook
+
+The direction is unchanged; a host release changed what the hook sees. Since pi 1.2.0 (verified against 1.4.0), `before_agent_start` also fires for a run started by `pi.sendMessage` with `triggerTurn`, which is how the protocol starts its scan from the `agent_settled` hook. The event is a union on `messageType`: user prompts carry `prompt`, custom messages carry the starting `message`.
+
+Left unguarded, the brain's `before_agent_start` handler would append the autonomy prompt to the refinement run and would hand the one-shot intent-debt accounting and the session briefing to the refinement run instead of the next user prompt. The decision is that the handler skips a run whose `messageType` is `"custom"` (so an older host that sends no `messageType` behaves as before) and returns an empty result for a custom run, so a refinement run carries exactly what it carried before pi 1.2.0.
+
+Measured line: `tests/lifecycle-hooks.test.ts` fails on the unguarded handler (a custom-message event consumes the intent debt and the briefing) and passes on the guarded one; pi 1.4.0 is the verified host version.
