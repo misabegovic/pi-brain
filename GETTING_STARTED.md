@@ -43,7 +43,7 @@ This gives every pi session the brain extension, skills, prompts, themes, templa
 - [ ] Configure a provider API key so pi can use an LLM.
   - Set `GOOGLE_API_KEY`, `ANTHROPIC_API_KEY`, etc. in `.env` or via `/login`.
 - [ ] Decide on delivery mode.
-  - Solo/local-first: set `LOCAL_FIRST="true"` in `.env` (default). Land small commits directly.
+  - Solo/local-first: set `LOCAL_FIRST="true"` in `.env` (`.env.example` ships `"false"`, so this is opt-in). Land small commits directly.
   - Team/CI mode: set `LOCAL_FIRST="false"`. Open a PR per bet, using `.github/pull_request_template.md`.
 
 ## 3. Configure the brain
@@ -51,7 +51,7 @@ This gives every pi session the brain extension, skills, prompts, themes, templa
 - [ ] Edit `brain.config.yml`:
   - set `org`
   - add active repos/scopes
-  - enable connectors and list repos/pages/channels if needed
+  - list repos under `connectors.github.repos` if you want GitHub snapshots (the only connector that exists; the notion, slack, datadog, langfuse and structure keys are reserved placeholders that nothing reads yet)
   - set `auto_connect: true` only if you want connectors to run opportunistically
 - [ ] Run `/brain:setup` if you want the wizard.
 

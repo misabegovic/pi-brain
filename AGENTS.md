@@ -73,7 +73,7 @@ When autonomy is ON, the agent may perform low-risk maintenance silently (batchi
 
 pi-brain supports two delivery modes, controlled by `LOCAL_FIRST` in `.env`:
 
-- **LOCAL_FIRST=true (default for solo operators):** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks. Keep commits small and focused on one ADR/PRD/bet at a time.
+- **LOCAL_FIRST=true (opt-in for solo operators; `.env.example` ships `false`):** land each phase as a local commit on the current branch. Do not open PRs unless the user explicitly asks. Keep commits small and focused on one ADR/PRD/bet at a time.
 - **LOCAL_FIRST=false (team/CI mode):** open a PR per phase or per bet. Each PR must link to the approved ADR/PRD/bet in the brain.
 
 ### PR conventions

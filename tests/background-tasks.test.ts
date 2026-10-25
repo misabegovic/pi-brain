@@ -88,6 +88,20 @@ async function main() {
   }
   await rm(emptyHome.path, { recursive: true, force: true });
 
+  // 6b. A runner that would load from node_modules is refused with an explanation, not spawned silently
+  const nmRoot = await mkdtemp(join(tmpdir(), "pi-brain-bg-nm-"));
+  const nmHome = { path: join(nmRoot, "node_modules", "home") };
+  await mkdir(join(nmHome.path, "wiki", "_state"), { recursive: true });
+  await mkdir(join(nmHome.path, ".brain", "overrides", "tools"), { recursive: true });
+  await writeFile(join(nmHome.path, "brain.config.yml"), "org: test\n", "utf-8");
+  await writeFile(join(nmHome.path, ".brain", "overrides", "tools", "run-tasks.mjs"), "// override\n", "utf-8");
+  await enqueueTask(nmHome, "run sync", "sync", "brain");
+  const refused = await runTasksDetached(nmHome, nmHome.path);
+  if (refused.started !== false || !refused.message.includes("without --detach")) {
+    throw new Error(`Expected node_modules runner to be refused, got ${JSON.stringify(refused)}`);
+  }
+  await rm(nmRoot, { recursive: true, force: true });
+
   // 7. Verify agent operation is allowed
   const agentHome = await createTestHome();
   const agentTask = await enqueueTask(agentHome, "research something", "agent", "brain");

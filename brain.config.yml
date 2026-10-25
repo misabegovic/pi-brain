@@ -40,6 +40,8 @@ enola.auto_baseline: false
 archived_repos: []
 
 # Connector configuration (all pull-only, off until configured).
+# Only the github connector exists today; the other keys are reserved
+# placeholders that nothing reads yet.
 # Credentials live in .env (read-only-scoped tokens), never in this file.
 connectors:
   github:

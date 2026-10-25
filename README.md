@@ -39,7 +39,7 @@ PRD/ADR with a data_model intent block
 
 `types` is the only build and diff target. The drift report compares interface and field names, types and optionality, and lists what is missing in code, extra in code, or mismatched. It does not generate application code beyond those interfaces, and it never edits your code on its own.
 
-Commands: `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, `/brain:enqueue`, `/brain:run-tasks`, `/brain:tasks`, `/brain:bg-agent`, `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-generate`, `/brain:enola-diff`, `/brain:enola-citations`, `/brain:enola-baseline`, `/brain:enola-query`, `/brain:enola-impact`.
+Commands: `/brain:build`, `/brain:diff`, `/brain:sync-code`, `/brain:revise`, `/brain:collaborate`, `/brain:rfc-contribute`, `/brain:enqueue`, `/brain:run-tasks`, `/brain:tasks`, `/brain:bg-agent`, `/brain:enola-status`, `/brain:enola-check`, `/brain:enola-capture`, `/brain:enola-generate`, `/brain:enola-diff`, `/brain:enola-citations`, `/brain:enola-baseline`, `/brain:enola-query`, `/brain:enola-impact`, `/brain:enola-govern`, `/brain:enola-plan`, `/brain:enola-findings`, `/brain:enola-judge`.
 
 ## Vision: how pi-brain manages knowledge
 
@@ -252,10 +252,11 @@ The **package** (installed globally via `pi install @misabegovic/pi-brain`) prov
 | `/brain:ingest-repo <path-or-url> [scope]` | Onboard a repository as a maintained project. |
 | `/brain:projects` | List onboarded projects. |
 | `/brain:convert [subdir]` | Convert current repo into a pi-brain clone. |
+| `/brain:dump-prompt` | Dump the last system prompt seen to `tests/fixtures/` (a development baseline tool). |
 
 ## Tools
 
-The extension registers these tools for the agent:
+The extension registers these 19 tools for the agent:
 
 - `brain_status` — read the status dashboard.
 - `brain_capture` — append an item to the inbox.
@@ -272,6 +273,9 @@ The extension registers these tools for the agent:
 - `brain_convert` — convert current repo into a pi-brain clone.
 - `brain_pull_connectors` — run configured pull connectors.
 - `brain_autonomy` — read or toggle autonomous brain-maintenance mode.
+- `brain_update` — update pi-brain (package manager first, GitHub release diff as fallback).
+- `brain_enola` — run an enola operation (check, baseline, generate, diff, citations, query, impact or govern).
+- `brain_enola_capture` — run enola check and capture structural regressions as an ai-suggestion.
 - `brain_ingest` — ingest a file, directory, or URL into `sources/`.
 
 ## Design principles
@@ -296,10 +300,10 @@ Or let `/brain:setup` install it for you. It runs `tools/brain-sync.mjs` before 
 ## Testing
 
 ```bash
-NODE_PATH=/path/to/pi-coding-agent/node_modules \
-  node --import /path/to/jiti-register.mjs tests/load.test.ts
+npm test          # runs every tests/*.test.ts through tsx
+npm run validate  # type check, tests, wiki sync, link graph, intent check
 ```
 
 ## Roadmap
 
-pi-brain-specific evolutions — multi-repo aggregation, connector producers, richer TUI widgets, and customer packaging — are tracked in this repo's own `wiki/` as the shell is inhabited.
+Possible evolutions (multi-repo aggregation, more connectors beyond GitHub, richer TUI widgets, customer packaging) are not committed work; the roadmap is tracked in this repo's own `wiki/` as the shell is inhabited.
