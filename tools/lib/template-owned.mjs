@@ -1,5 +1,5 @@
 /**
- * template-owned — the one list of paths a pi-brain release owns.
+ * template-owned: the one list of paths a pi-brain release owns.
  *
  * A clone's content (wiki/, sources/, log/, brain.config.yml) is never in this
  * list. Both the GitHub-release update fallback (extensions/pi-brain/template-update.ts)
