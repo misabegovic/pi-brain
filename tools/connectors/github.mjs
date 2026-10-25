@@ -195,7 +195,7 @@ async function main() {
   const configText = await readFile(join(CWD, "brain.config.yml"), "utf-8");
   const repoSet = collectRepoSlugs(configText, process.argv.slice(2));
 
-  if (repoSet.size === 0) {
+  if (repoSet.length === 0) {
     console.log("No GitHub repos configured. Add them to active_repos or connectors.github.repos in brain.config.yml.");
     return;
   }

@@ -1,32 +1,13 @@
-import { readFile, writeFile, stat, mkdir, copyFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir, cp, rm } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import type { BrainHome } from "./types.ts";
 import { execFilePromise, pathExists, extractSimpleYamlValue } from "./utils.ts";
+import { TEMPLATE_OWNED_PATHS } from "../../tools/lib/template-owned.mjs";
 
 export const TEMPLATE_OWNER = "misabegovic";
 export const TEMPLATE_REPO = "pi-brain";
 
-export const TEMPLATE_OWNED_PATHS = [
-  "AGENTS.md",
-  "GETTING_STARTED.md",
-  "README.md",
-  "extensions",
-  "skills",
-  "prompts",
-  "themes",
-  "tools/templates",
-  "tools/connectors",
-  "tools/brain-convert.mjs",
-  "tools/brain-ingest-repo.mjs",
-  "tools/brain-links.mjs",
-  "tools/brain-state.mjs",
-  "tools/brain-sync.mjs",
-  "tools/clone-pi-brain.sh",
-  "tools/setup-local.sh",
-  "tools/git-hooks",
-  ".github",
-  "personas",
-];
+export { TEMPLATE_OWNED_PATHS };
 
 export interface TemplateChange {
   path: string;
@@ -112,16 +93,8 @@ export async function diffTemplatePaths(home: BrainHome, upstreamDir: string): P
 export async function applyTemplateChange(home: BrainHome, upstreamDir: string, change: TemplateChange) {
   const localPath = join(home.path, change.path);
   const upstreamPath = join(upstreamDir, change.path);
-  if (change.status === "removed") {
-    await execFilePromise("rm", ["-rf", localPath]);
-  } else {
-    const parent = dirname(localPath);
-    await mkdir(parent, { recursive: true });
-    const s = await stat(upstreamPath);
-    if (s.isDirectory()) {
-      await execFilePromise("cp", ["-R", upstreamPath, localPath]);
-    } else {
-      await copyFile(upstreamPath, localPath);
-    }
-  }
+  await rm(localPath, { recursive: true, force: true });
+  if (change.status === "removed") return;
+  await mkdir(dirname(localPath), { recursive: true });
+  await cp(upstreamPath, localPath, { recursive: true });
 }

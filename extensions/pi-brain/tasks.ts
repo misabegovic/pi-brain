@@ -5,6 +5,7 @@ import * as path from "node:path";
 import { randomUUID } from "node:crypto";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import type { BrainHome, AutonomyTrustConfig } from "./types.ts";
+import { resolveResource } from "./resources.ts";
 import { requireBrain } from "./context.ts";
 import { getTrustLevel, shouldProceed } from "./autonomy.ts";
 import { isValidIdentifier } from "./utils.ts";
@@ -310,7 +311,14 @@ export async function runTasksDetached(
     return { started: false, pids: [], message: "No pending background tasks." };
   }
 
-  const runnerPath = path.join(home.path, "tools", "run-tasks.mjs");
+  const runnerPath = await resolveResource(path.join("tools", "run-tasks.mjs"), home);
+  if (runnerPath.split(path.sep).includes("node_modules")) {
+    return {
+      started: false,
+      pids: [],
+      message: "The detached runner cannot start from an npm install (Node does not load TypeScript from node_modules). Run /brain:run-tasks without --detach to process the pending tasks in this session.",
+    };
+  }
   const command = process.execPath;
   const baseArgs: string[] = [];
 

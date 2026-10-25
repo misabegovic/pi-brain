@@ -69,8 +69,8 @@ This is the synthesis layer for this pi-brain instance.
 - [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/enola-self-repo-anchor-resolution.md)
 - [Integrate optional enola intelligence into relevant pi-brain skills](brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md)
 - [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/intent-stamp-test-order-sensitivity.md)
-- [Learn from an earlier brain enola integration and strengthen pi-brain's](brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
 - [> Unreviewed ai-suggestion — promote only via /brain:tend.](brain/ai-suggestions/refinement/release-bookkeeping-drift.md)
+- [Strengthen pi-brain's enola integration from a more mature multi-repo integration](brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
 
 ### constraint
 - [Constraint — ADR before structural changes](brain/constraints/adr-before-structural-changes.md)

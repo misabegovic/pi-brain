@@ -1,7 +1,7 @@
 ---
 kind: source
 source_kind: doc
-source_path: ~/projects/pi-brain-embed-plan.md
+source_path: pi-brain-embed-plan.md
 ingested_at: 2026-07-27
 summary: pi-brain embedding/vector search plan document.
 ---

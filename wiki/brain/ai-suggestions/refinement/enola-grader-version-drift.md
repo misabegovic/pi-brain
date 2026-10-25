@@ -38,7 +38,7 @@ The v0.5.0 baseline was pinned with **enola 0.4.11** (extractors v258, see `.eno
 
 ## Resolution
 
-Closed 2026-09-14. `enola.binary: ~/.local/bin/enola-oss` set in `brain.config.yml` — a stock 0.4.11 build (extractors v258) matching the pinned baseline; the PATH copy was a 0.4.10 downstream build. The stale 0.3.6-era `.enola-b/` directory was removed (unreferenced by any code). `enola check` now grades: PASS.
+Closed 2026-09-14. `enola.binary` pointed at a stock `enola-oss` build in `brain.config.yml` — a stock 0.4.11 build (extractors v258) matching the pinned baseline; the PATH copy was a 0.4.10 downstream build. The stale 0.3.6-era `.enola-b/` directory was removed (unreferenced by any code). `enola check` now grades: PASS.
 
 ## Related
 

@@ -62,3 +62,9 @@ pi-brain will add `/brain:diff <scope> <target>` that regenerates expected code 
 - [wiki/brain/epics/regenerative-intent.md](../epics/regenerative-intent.md)
 - [wiki/brain/adrs/structured-intent-and-build.md](../adrs/structured-intent-and-build.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+
+## Amendments
+
+### 2026-10-25: no Matched count
+
+The drift report declared a `Matched` count, but the diff never produces a matching item, so it always read zero. The `matched` drift kind and the summary line are removed; the report lists missing, extra and mismatched items, which are the only outcomes the diff computes.

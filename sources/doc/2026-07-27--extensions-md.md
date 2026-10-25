@@ -1,7 +1,7 @@
 ---
 kind: source
 source_kind: doc
-source_path: ~/.nvm/versions/node/v22.22.2/lib/node_modules/@earendil-works/pi-coding-agent/docs/extensions.md
+source_path: @earendil-works/pi-coding-agent/docs/extensions.md
 ingested_at: 2026-07-27
 summary: Pi extension API documentation covering events, hooks, context injection, tool result interception, custom UI, shortcuts, flags, and session lifecycle.
 ---

@@ -10,7 +10,7 @@ enola_intent:
 
 # Roadmap — org
 
-The regenerative-intent epic is delivered and the link graph is clean. Next committed work is test coverage and real-world exercise of the new commands, plus a v0.3.3 release once that stabilizes.
+The regenerative-intent epic delivered a working loop for `data_model` blocks only (build, diff and sync-code on `types`); the link graph is clean. The package is at 0.5.2 and no further feature work is committed; see the sections below for what was decided.
 
 ## Committed
 

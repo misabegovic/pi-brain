@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T11:51:00.173Z",
+  "generated_at": "2026-10-25T10:32:21.252Z",
   "node_count": 109,
   "edge_count": 658,
   "nodes": [
@@ -242,18 +242,18 @@
       "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
     },
     {
-      "path": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md",
-      "kind": "refinement",
-      "status": "closed",
-      "confidence": "high",
-      "title": "Learn from an earlier brain enola integration and strengthen pi-brain's"
-    },
-    {
       "path": "brain/ai-suggestions/refinement/release-bookkeeping-drift.md",
       "kind": "refinement",
       "status": "closed",
       "confidence": "low",
       "title": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "path": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md",
+      "kind": "refinement",
+      "status": "closed",
+      "confidence": "high",
+      "title": "Strengthen pi-brain's enola integration from a more mature multi-repo integration"
     },
     {
       "path": "brain/bets/agent-maintained-intent.md",
@@ -1078,79 +1078,79 @@
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/prds/background-task-runner",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/prds/background-task-runner.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/bets/background-task-runner",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/bets/background-task-runner.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/adrs/smarter-autonomy",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/smarter-autonomy.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/adrs/autonomous-colleague-mode",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/autonomous-colleague-mode.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/background-task-runner",
       "target": "brain/constraints/adr-before-structural-changes",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-diff-drift-detection",
       "target": "brain/prds/brain-diff-drift-detection",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/prds/brain-diff-drift-detection.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-diff-drift-detection",
       "target": "brain/bets/brain-diff-drift-detection",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/bets/brain-diff-drift-detection.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-diff-drift-detection",
       "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-diff-drift-detection",
       "target": "brain/adrs/structured-intent-and-build",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/structured-intent-and-build.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-diff-drift-detection",
       "target": "brain/constraints/adr-before-structural-changes",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/brain-state-preserves-custom-content",
@@ -1449,44 +1449,44 @@
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/prds/structured-intent-and-build",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/prds/structured-intent-and-build.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/bets/structured-intent-and-build",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/bets/structured-intent-and-build.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/epics/regenerative-intent",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/epics/regenerative-intent.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/adrs/autonomous-refinement-protocol",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/autonomous-refinement-protocol.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/adrs/multi-agent-intent-collaboration",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/adrs/multi-agent-intent-collaboration.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/structured-intent-and-build",
       "target": "brain/constraints/adr-before-structural-changes",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/tap-pi-extension-surface",
@@ -1526,30 +1526,30 @@
     {
       "source": "brain/adrs/upstream-template-sync",
       "target": "brain/prds/upstream-template-sync",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/prds/upstream-template-sync.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/upstream-template-sync",
       "target": "brain/bets/upstream-template-sync",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/bets/upstream-template-sync.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/upstream-template-sync",
       "target": "brain/pitches/upstream-template-sync",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/pitches/upstream-template-sync.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/upstream-template-sync",
       "target": "brain/constraints/adr-before-structural-changes",
-      "kind": "markdown",
+      "kind": "related",
       "provenance": "body",
-      "context": "wiki/brain/constraints/adr-before-structural-changes.md"
+      "context": "Related section"
     },
     {
       "source": "brain/adrs/versioning-and-releases",
@@ -2060,7 +2060,7 @@
       "target": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art",
       "kind": "markdown",
       "provenance": "body",
-      "context": "Lessons from an earlier brain enola integration"
+      "context": "Strengthen pi-brain's enola integration from a more mature m"
     },
     {
       "source": "brain/epics/regenerative-intent",
@@ -3793,17 +3793,17 @@
     },
     {
       "source": "index",
-      "target": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art",
-      "kind": "markdown",
-      "provenance": "body",
-      "context": "Learn from an earlier brain enola integration and strengthe"
-    },
-    {
-      "source": "index",
       "target": "brain/ai-suggestions/refinement/release-bookkeeping-drift",
       "kind": "markdown",
       "provenance": "body",
       "context": "> Unreviewed ai-suggestion — promote only via /brain:tend."
+    },
+    {
+      "source": "index",
+      "target": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art",
+      "kind": "markdown",
+      "provenance": "body",
+      "context": "Strengthen pi-brain's enola integration from a more mature m"
     },
     {
       "source": "index",
@@ -4727,7 +4727,7 @@
       "target": "brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art",
       "kind": "markdown",
       "provenance": "body",
-      "context": "Learn from an earlier brain enola integration and strengthe"
+      "context": "Strengthen pi-brain's enola integration from a more mature m"
     },
     {
       "source": "org/state",

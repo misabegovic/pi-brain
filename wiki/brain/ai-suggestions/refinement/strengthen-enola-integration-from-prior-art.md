@@ -1,30 +1,30 @@
 ---
-title: Learn from an earlier brain enola integration and strengthen pi-brain's
+title: Strengthen pi-brain's enola integration from a more mature multi-repo integration
 kind: refinement
 status: closed
 confidence: high
-source: comparison with an earlier brain enola architecture-graph substrate
+source: comparison with a more mature multi-repo enola integration (architecture-graph substrate)
 enola_intent:
   page:
     type: refinement
     status: closed
 ---
 
-# Learn from an earlier brain enola integration and strengthen pi-brain's
+# Strengthen pi-brain's enola integration from a more mature multi-repo integration
 
 ## Observation
 
-pi-brain now has an optional enola integration (tool, commands, build/sync-code gates, auto-baseline, capture). `an earlier brain` has a more mature enola integration called the "architecture-graph substrate". Comparing the two surfaces concrete improvements pi-brain could adopt without breaking its optional, low-dependency design.
+pi-brain now has an optional enola integration (tool, commands, build/sync-code gates, auto-baseline, capture). A larger, multi-repo knowledge base has a more mature enola integration, called here the "architecture-graph substrate". Comparing the two surfaces concrete improvements pi-brain could adopt without breaking its optional, low-dependency design.
 
-## How an earlier brain uses enola
+## How the mature integration uses enola
 
-- **Native enola config**: `mcp-arch.yaml` at the brain root lists a multi-repo cluster (`../app`, `../cli`, `../agent`, etc.), ignore globs, and output settings.
+- **Native enola config**: `mcp-arch.yaml` at the brain root lists a multi-repo cluster of sibling repositories, ignore globs, and output settings.
 - **Receipts as state**: `wiki/_state/enola/receipts.json` records per-repo snapshot metadata (snapshot_id, enola_version, git commit, fact_count, content_digest).
-- **Determinism handling**: `brain.py enola generate` computes order-independent `content_digest` hashes over `facts.jsonl` because upstream `snapshot_id` proved nondeterministic for TypeScript repos with duplicate candidate import paths.
-- **Drift detection**: `brain.py enola diff` compares live receipts against recorded ones and reports repo-level fact-count deltas.
-- **Citation verification**: `brain.py enola citations` scans wiki prose for `enola receipt <repo> sha256:... @ <commit>, <date>` citations and verdicts them as `ok`, `stale`, or `malformed`.
+- **Determinism handling**: its generate step computes order-independent `content_digest` hashes over `facts.jsonl` because upstream `snapshot_id` proved nondeterministic for TypeScript repos with duplicate candidate import paths.
+- **Drift detection**: its diff step compares live receipts against recorded ones and reports repo-level fact-count deltas.
+- **Citation verification**: its citations step scans wiki prose for `enola receipt <repo> sha256:... @ <commit>, <date>` citations and verdicts them as `ok`, `stale`, or `malformed`.
 - **Skill integration**: `/sync` runs architecture drift, `/shape` consults the graph in Phase 1, `/ask coverage:` compares wiki pages against the graph inventory, and groom flags stale/malformed citations.
-- **MCP registration**: the enola server is registered beside `brain-mcp` so any sibling repo can reach it.
+- **MCP registration**: the enola server is registered beside the knowledge base's own MCP server so any sibling repo can reach it.
 - **Skip-when-absent**: all graph-dependent checks exit 0 with a one-line message if the binary, config, or state is missing, so remote CI never depends on enola.
 
 ## How pi-brain's integration differs today

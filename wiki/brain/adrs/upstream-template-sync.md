@@ -60,3 +60,9 @@ This mechanism is exposed as a `/brain:update` command and a matching extension 
 - [wiki/brain/bets/upstream-template-sync.md](../bets/upstream-template-sync.md)
 - [wiki/brain/pitches/upstream-template-sync.md](../pitches/upstream-template-sync.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+
+## Amendments
+
+### 2026-10-25: one owned-path list, in-place replacement, one version
+
+The direction is unchanged; the GitHub-release fallback did not do what this decision describes. Copying a directory onto an existing directory nested it (`extensions/extensions/`), and the list of template-owned paths in the extension had drifted from the second copy in the clone migration tool, so tools such as `tools/lib`, `tools/brain-intent.mjs`, `tools/brain-projects.mjs` and `tools/run-tasks.mjs` were never placed. The decision is that one list (`tools/lib/template-owned.mjs`) serves both consumers, that applying a change replaces the owned path in place (remove, then copy), and that `tests/template-update.test.ts` fails when a file under `tools/` is not covered by the list. The recorded `template_version` now comes from `package.json` everywhere: the repository config, `/brain:setup` and `tools/clone-pi-brain.sh` previously stamped three different values (checked by `tests/version-consistency.test.ts`).

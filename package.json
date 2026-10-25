@@ -1,6 +1,6 @@
 {
   "name": "@misabegovic/pi-brain",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A cozy knowledge home for pi. Distributed as a global package; brain clones are content-only and inherit skills, prompts, themes, tools, and the extension from the install.",
   "keywords": [
     "pi-package",
@@ -48,5 +48,21 @@
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
     "typebox": "*"
-  }
+  },
+  "files": [
+    "extensions",
+    "skills",
+    "prompts",
+    "themes",
+    "personas",
+    "tools",
+    "types",
+    ".github",
+    ".env.example",
+    "AGENTS.md",
+    "GETTING_STARTED.md",
+    "README.md",
+    "CHANGELOG.md",
+    "tsconfig.json"
+  ]
 }

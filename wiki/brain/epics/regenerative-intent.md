@@ -84,7 +84,7 @@ Research into the pi coding-agent extension surface shows that most of the build
 - **Session state persistence:** `pi.appendEntry()` can store custom state (e.g., todo lists, running tasks) in the session file.
 - **Context handoff:** `ctx.newSession()` and `ctx.fork()` support moving accumulated context to a fresh session.
 
-(pi extension docs: `~/.nvm/versions/node/v22.22.2/lib/node_modules/@earendil-works/pi-coding-agent/docs/extensions.md`)
+(pi extension docs: the `docs/extensions.md` file shipped in the `@earendil-works/pi-coding-agent` package)
 
 ### Relevant pi examples
 

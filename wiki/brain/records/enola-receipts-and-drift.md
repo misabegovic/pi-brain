@@ -28,7 +28,7 @@ enola_intent:
 
 ## What changed
 
-Strengthened pi-brain's optional enola integration with patterns learned from `an earlier brain`:
+Strengthened pi-brain's optional enola integration with patterns learned from a more mature multi-repo enola integration:
 
 1. **Receipt state** — `/brain:enola-generate` runs enola and records snapshot metadata in `wiki/_state/enola/receipts.json`.
 2. **Content-digest drift detection** — `/brain:enola-diff` compares live snapshots to recorded receipts and reports fact-count deltas.

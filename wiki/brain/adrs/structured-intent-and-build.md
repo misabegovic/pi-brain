@@ -93,3 +93,9 @@ Generated files include:
 - [wiki/brain/adrs/autonomous-refinement-protocol.md](../adrs/autonomous-refinement-protocol.md)
 - [wiki/brain/adrs/multi-agent-intent-collaboration.md](../adrs/multi-agent-intent-collaboration.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+
+## Amendments
+
+### 2026-10-25: the loop's real size is stated
+
+The direction is unchanged; the documentation claimed more than the code does. Only `data_model` blocks are rendered (to TypeScript interfaces, target `types`); `api_surface`, `behavior` and `invariant` blocks are collected and listed but have no renderer, and no new renderers are added by this amendment. The README and GETTING_STARTED now describe the loop at that size.

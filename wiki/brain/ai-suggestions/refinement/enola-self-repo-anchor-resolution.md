@@ -34,7 +34,7 @@ anchors:
     path: wiki/brain/adrs/autonomous-refinement-protocol.md
 ```
 
-The 2026-09-14 check flags ~45 of these as `Dangling code anchor` — yet every target path exists on disk (verified for `wiki/brain/adrs/autonomous-refinement-protocol.md` and siblings). `enola doctor` reports "no mcp-arch.yaml in ~/projects/pi-brain, using built-in defaults", and the same check notes "148 depends_on targets outside the graph; 352 imports targets outside the graph" — consistent with a repo-name that enola cannot map to a checkout. `active_repos` in `brain.config.yml` is empty, so nothing declares `pi-brain` to enola either.
+The 2026-09-14 check flags ~45 of these as `Dangling code anchor` — yet every target path exists on disk (verified for `wiki/brain/adrs/autonomous-refinement-protocol.md` and siblings). `enola doctor` reports "no mcp-arch.yaml in the repository root, using built-in defaults", and the same check notes "148 depends_on targets outside the graph; 352 imports targets outside the graph" — consistent with a repo-name that enola cannot map to a checkout. `active_repos` in `brain.config.yml` is empty, so nothing declares `pi-brain` to enola either.
 
 ## Why it matters
 

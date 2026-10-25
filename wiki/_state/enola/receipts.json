@@ -4,7 +4,7 @@
     "enola_version": "0.2.9",
     "generated_at": "2026-07-31T11:14:12Z",
     "duration": "41.055996ms",
-    "repo_path": "~/projects/pi-brain",
+    "repo_path": "pi-brain",
     "git": {
       "ref": "main",
       "commit": "bfe65dfb2ce52408ab2bf38b192451c873d446b7",
