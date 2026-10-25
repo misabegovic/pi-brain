@@ -74,7 +74,7 @@ function intentToInterface(block: IntentBlock): TsInterface {
 }
 
 export interface DriftItem {
-  kind: "missing_in_code" | "extra_in_code" | "type_mismatch" | "optional_mismatch" | "matched";
+  kind: "missing_in_code" | "extra_in_code" | "type_mismatch" | "optional_mismatch";
   interfaceName: string;
   fieldName?: string;
   intentType?: string;
@@ -127,7 +127,6 @@ export function diffInterfaces(intent: TsInterface[], code: TsInterface[]): Drif
 }
 
 export function formatDriftReport(scope: string, target: string, items: DriftItem[]): string {
-  const matched = items.filter((i) => i.kind === "matched");
   const missing = items.filter((i) => i.kind === "missing_in_code");
   const extra = items.filter((i) => i.kind === "extra_in_code");
   const mismatches = items.filter((i) => i.kind === "type_mismatch" || i.kind === "optional_mismatch");
@@ -138,7 +137,6 @@ export function formatDriftReport(scope: string, target: string, items: DriftIte
     `Generated at: ${new Date().toISOString()}`,
     "",
     "## Summary",
-    `- Matched: ${matched.length}`,
     `- Missing in code: ${missing.length}`,
     `- Extra in code: ${extra.length}`,
     `- Mismatches: ${mismatches.length}`,

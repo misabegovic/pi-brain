@@ -89,19 +89,19 @@ This gives every pi session the brain extension, skills, prompts, themes, templa
 
 ## 7. Generate and sync code from intent
 
-If your PRD/ADR uses YAML intent blocks, pi-brain can generate and track code:
+If your PRD/ADR carries a `data_model` YAML intent block, pi-brain can generate TypeScript interfaces from it and track drift against your code. `types` is the only target today; other block types are not rendered:
 
 - [ ] Build from approved intent.
   ```bash
-  /brain:build <scope> <types|interfaces|...>
+  /brain:build <scope> types
   ```
 - [ ] Check for drift between intent and existing code.
   ```bash
-  /brain:diff <scope> <types|...>
+  /brain:diff <scope> types
   ```
 - [ ] Reconcile drift with proposals.
   ```bash
-  /brain:sync-code <scope> <types|...>
+  /brain:sync-code <scope> types
   ```
 - [ ] Propose revisions to intent based on new evidence.
   ```bash
