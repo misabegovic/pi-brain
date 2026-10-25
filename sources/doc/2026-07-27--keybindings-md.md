@@ -1,7 +1,7 @@
 ---
 kind: source
 source_kind: doc
-source_path: ~/.nvm/versions/node/v22.22.2/lib/node_modules/@earendil-works/pi-coding-agent/docs/keybindings.md
+source_path: @earendil-works/pi-coding-agent/docs/keybindings.md
 ingested_at: 2026-07-27
 summary: Pi keybinding documentation for registerShortcut and custom keyboard actions.
 ---
