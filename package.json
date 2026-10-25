@@ -48,5 +48,21 @@
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
     "typebox": "*"
-  }
+  },
+  "files": [
+    "extensions",
+    "skills",
+    "prompts",
+    "themes",
+    "personas",
+    "tools",
+    "types",
+    ".github",
+    ".env.example",
+    "AGENTS.md",
+    "GETTING_STARTED.md",
+    "README.md",
+    "CHANGELOG.md",
+    "tsconfig.json"
+  ]
 }
