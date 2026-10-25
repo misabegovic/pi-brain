@@ -84,3 +84,9 @@ Scheduling is the responsibility of the host environment (cron, systemd timer, l
 - [wiki/brain/adrs/smarter-autonomy.md](../adrs/smarter-autonomy.md)
 - [wiki/brain/adrs/autonomous-colleague-mode.md](../adrs/autonomous-colleague-mode.md)
 - [wiki/brain/constraints/adr-before-structural-changes.md](../constraints/adr-before-structural-changes.md)
+
+## Amendments
+
+### 2026-10-25: the runner is resolved from the package, with one stated limit
+
+The direction is unchanged. The detached runner was looked up at `tools/run-tasks.mjs` inside the clone, which a content-only clone does not contain. It is now resolved through the package (with `.brain/overrides` honoured), like every other tool script. A limit is stated rather than hidden: Node does not load TypeScript from under `node_modules`, so when the resolved runner sits in an npm install, `/brain:run-tasks --detach` declines with a message to run `/brain:run-tasks` without `--detach` in the session, instead of spawning a worker that exits silently.

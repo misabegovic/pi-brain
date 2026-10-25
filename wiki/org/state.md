@@ -28,7 +28,7 @@ Be honest about gaps: end-to-end tests for `/brain:build`, `/brain:diff`, `/brai
 - [Audit shared utility hotspots flagged by enola](../brain/ai-suggestions/refinement/enola-insights-reduce-shared-utility-hotspots.md)
 - [Split high-complexity registration functions in extensions/pi-brain](../brain/ai-suggestions/refinement/enola-insights-split-heavy-registration-functions.md)
 - [Integrate optional enola intelligence into relevant pi-brain skills](../brain/ai-suggestions/refinement/integrate-enola-into-relevant-skills.md)
-- [Learn from an earlier brain enola integration and strengthen pi-brain's](../brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
+- [Strengthen pi-brain's enola integration from a more mature multi-repo integration](../brain/ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
 - [Constraint — Explicit approval required for commits](../brain/constraints/explicit-approval-for-commits.md)
 - [Constraint — Remote promotion requires a pull request](../brain/constraints/remote-promotion-requires-pr.md)
 - [Epic — Full enola integration for pi-brain v0.4.0](../brain/epics/enola-integration.md)

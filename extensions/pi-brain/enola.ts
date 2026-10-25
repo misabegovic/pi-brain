@@ -297,7 +297,7 @@ export async function captureEnolaRegressions(home: BrainHome): Promise<{ captur
 }
 
 // ---------------------------------------------------------------------------
-// Receipt-based architecture state (inspired by an earlier brain)
+// Receipt-based architecture state (patterns from a more mature multi-repo integration)
 // ---------------------------------------------------------------------------
 
 export interface EnolaReceipt {

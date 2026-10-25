@@ -76,4 +76,4 @@ Build on the optional enola integration introduced in v0.3.3 (PR #68). Expand it
 - [wiki/brain/records/optional-enola-integration.md](../records/optional-enola-integration.md)
 - `skills/brain-enola/SKILL.md`
 - [wiki/brain/records/version-0-3-3.md](../records/version-0-3-3.md)
-- [Lessons from an earlier brain enola integration](../ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
+- [Strengthen pi-brain's enola integration from a more mature multi-repo integration](../ai-suggestions/refinement/strengthen-enola-integration-from-prior-art.md)
