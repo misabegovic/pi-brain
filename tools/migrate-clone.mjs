@@ -20,31 +20,10 @@ import { readFile, readdir, stat, mkdir, rm, copyFile, writeFile } from "node:fs
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFile } from "node:child_process";
+import { TEMPLATE_OWNED_PATHS } from "./lib/template-owned.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = dirname(__dirname);
-const TEMPLATE_OWNED_PATHS = [
-  "AGENTS.md",
-  "GETTING_STARTED.md",
-  "README.md",
-  "extensions",
-  "skills",
-  "prompts",
-  "themes",
-  "tools/templates",
-  "tools/connectors",
-  "tools/brain-convert.mjs",
-  "tools/brain-ingest-repo.mjs",
-  "tools/brain-links.mjs",
-  "tools/brain-projects.mjs",
-  "tools/brain-state.mjs",
-  "tools/brain-sync.mjs",
-  "tools/clone-pi-brain.sh",
-  "tools/setup-local.sh",
-  "tools/git-hooks",
-  ".github",
-  "personas",
-];
 
 const clonePath = process.argv[2];
 const dryRun = process.argv.includes("--dry-run");
