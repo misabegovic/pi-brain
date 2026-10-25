@@ -34,6 +34,12 @@ fi
 TARGET_DIR="$(mkdir -p "$(dirname "${TARGET_DIR}")" && cd "$(dirname "${TARGET_DIR}")" && pwd)/$(basename "${TARGET_DIR}")"
 ORG_NAME="${ORG_NAME:-$(basename "${TARGET_DIR}")}"
 
+TEMPLATE_VERSION="$(node -p "require('${TEMPLATE_REPO}/package.json').version" 2>/dev/null || true)"
+if [[ -z "${TEMPLATE_VERSION}" ]]; then
+  echo "Error: could not read the template version from ${TEMPLATE_REPO}/package.json"
+  exit 1
+fi
+
 mkdir -p "${TARGET_DIR}"
 cd "${TARGET_DIR}"
 
@@ -66,7 +72,7 @@ connectors:
   structure:
     repos: []
 
-template_version: "v0.3.0"
+template_version: "v${TEMPLATE_VERSION}"
 EOF
 
 # Core wiki pages

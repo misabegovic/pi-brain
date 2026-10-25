@@ -5,6 +5,7 @@ import { pathExists } from "../utils.ts";
 import { readOrg } from "../brain-home.ts";
 import { validateMarkdown, regenerateViews } from "../views.ts";
 import { requireBrain } from "../context.ts";
+import { readPackageVersion } from "../resources.ts";
 
 export function registerShapeCommands(pi: ExtensionAPI) {
   pi.registerCommand("brain:shape", {
@@ -109,7 +110,7 @@ export function registerShapeCommands(pi: ExtensionAPI) {
         "brain_session_shutdown: true",
         "",
         "# pi-brain template version this clone was created from or last updated to.",
-        `template_version: "v0.3.2"`,
+        `template_version: "v${await readPackageVersion()}"`,
         "",
       ];
       await writeFile(join(cwd, "brain.config.yml"), configLines.join("\n"), "utf-8");

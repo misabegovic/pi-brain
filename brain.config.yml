@@ -81,4 +81,4 @@ brain_session_shutdown: true
 
 # pi-brain template version this clone was created from or last updated to.
 # Used by /brain:update to diff against upstream releases.
-template_version: "v0.5.0"
+template_version: "v0.5.2"
